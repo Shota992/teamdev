@@ -1,0 +1,586 @@
+/**
+* File Name : style.css
+* Description : POSSE課題
+*
+* ---- Table of Contents ----
+*
+* 1.0 - Common
+*    1.1 - カスタムプロパティ
+*    1.2 - ベーススタイル
+*    1.3 - 汎用スタイル
+*
+* 2.0 - Sections
+*    2.1 - ヘッダー
+*    2.2 - フッター
+*    2.3 - メインビジュアル
+*    2.4 - POSSEとは
+*    2.5 - イベント
+*    2.6 - 日常生活
+*    2.7 - 公式LINE
+*
+* 3.0 - Animation, JavaScript Object
+*    3.1 - フェードイン
+*    3.2 - スライダー
+*
+*/
+
+/* 1.0 - Common */
+/* ============================================ */
+
+/**
+ * 1.1 - カスタムプロパティ
+ *
+ * https://developer.mozilla.org/ja/docs/Web/CSS/Using_CSS_custom_properties
+ */
+:root {
+    --dark-color: #333333;
+    --white-color: #FFFFFF;
+    --primary-color: #0071BC;
+    --primary-light-color: #F7F9FB;
+    --gray-color: #ADADAD;
+    --gray-light-color: #EEEEEE;
+    --gray-dark-color: #666666;
+    --twitter-color: #1D9BF0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    color: var(--dark-color);
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+
+/**
+* 1.2 - ベーススタイル
+*/
+.wrapper{
+    padding: 80px 0 160px;/*上 左右 下*/
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+.container{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: content-box;
+}
+
+.section{
+    margin-top: -80px;
+    padding-top: 80px;
+}
+
+.section-body{
+    margin-top: 40px;
+}
+
+.section-lead{
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.title{
+    text-align: center;
+}
+
+.title-ja{
+    font-size: 36px;
+    line-height: 1.5;
+    letter-spacing: .05em;
+    display: block;
+    font-weight: bold;
+}
+
+.title-en{
+    font-weight: bold;
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: .1em;
+    margin-top: 8px;
+    color: var(--primary-color);
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/**
+* 1.3 - 汎用スタイル
+*/
+
+/* 2.0 - Sections */
+/* ============================================ */
+
+/**
+* 2.1 - ヘッダー
+*/
+.header{ 
+    display: flex;
+    align-items: center;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white-color);
+    border-bottom: solid 1px var(--gray-light-color);/*ヘッダーの下の薄い線*/
+    padding: 0 24px;/*余白の設定*/
+    z-index: 10000;/*ヘッダーが一番上に表示されるように順序を設定*/
+    transition: background-color 0.3s linear;
+}
+
+.header-logo{
+    width: flex; /*width: 148px;*/
+    /*gap: 48px;*/
+}
+
+.header-nav{
+    display: flex;
+    align-items: center; 
+    margin-left: auto;/*ナビゲーションバーを右寄せ*/
+    gap: 48px;
+}
+
+.header-navList{
+    display: flex;
+    gap: 32px; 
+}
+
+.header-navLink{
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 14px;
+    /*line-height: 1.8;
+    letter-spacing: 0.1em;
+    transition: color 0.3s linear;
+    display: flex;*/
+}
+
+.header-snsList{
+    display: flex;
+    gap: 24px;
+} 
+
+
+
+
+.header.is-transparent{
+    background-color: transparent;
+    border: none;
+}
+
+.header.is-transparent:not(.is-open) .header-logo{
+    filter: brightness(10);
+}
+
+.header.is-transparent:not(.is-open) .header-navLink{
+    color: var(--white-color);
+}
+
+.header.is-transparent:not(.is-open) .header-snsLink{
+    filter: brightness(10);
+}
+
+
+
+
+/**
+* 2.2 - フッター
+*/
+.footer{
+    padding-top: 40px;/*余白の設定*/
+    text-align: center;
+    /*margin-top: 60px;*/
+}
+
+.footer-inner{
+    display: flex;
+    flex-direction: column;/*縦方向に配置*/
+    align-items: center;
+    gap: 24px;
+}
+
+
+.footer-logo{
+    width: 200px;
+    /*line-height: 1;
+    margin-bottom: 24px;*/
+}
+
+.footer-corporateLink{
+    color: var(--gray-dark-color);
+    font-size: 14px;
+    display: flex; 
+    align-items: center;
+    gap: 4px;
+    /*line-height: 1.8;
+    letter-spacing: 0.05em;*/
+}
+
+.footer-corporateLink::after {
+    background: url(../img/icon-external-link.svg) center center / contain no-repeat;
+    height: 14px;
+    width: 14px;
+    content: "";
+    display: block;
+}
+
+.footer-snsList{
+    display: flex;
+    gap: 24px;
+    /*justify-content: center;
+    margin-top: 24px;*/
+}
+
+.footer-copyright{
+    text-align: center;
+    margin-top: 24px;/*余白の設定*/
+    border-top: solid 1px var(--gray-light-color);
+    color: var(--english-font);
+    font-size: 10px;
+    padding: 24px;/*余白の設定*/
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/**
+* 2.3 - メインビジュアル
+*/
+.mainvisual{
+    background: url(../img/bg-mainvisual.jpg) center center / cover no-repeat;
+    height: 100vh;
+    padding: 40px 24px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.mainvisual-inner{
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mainvisual-head{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.mainvisual-title{
+    background-color: var(--white-color);/*背景色の決定*/
+    color: var(--primary-color);
+    font-weight: bold;/*太字*/
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    font-size: 24px;/*文字の大きさを設定*/
+    padding-left: 20px;/*左側の余白設定*/
+    padding-right: 4px;/*右側の余白設定*/
+}
+
+.mainvisual-lead{
+    background-color: var(--white-color);/*背景色の設定*/
+    font-weight: bold;/*太字*/
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    font-size: 60px;/*文字の大きさを設定*/
+    padding-left: 20px;/*左側の余白設定*/
+}
+
+.mainvisual-scroll{
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    color: var(--white-color);/*文字の色を設定*/
+    font-size: 14px;/*文字の大きさを設定*/
+    letter-spacing: 0.1em;/*文字間のスペースを決定*/
+    font-weight: bold;/*太字*/
+    display: flex;/*要素を横並びに設定*/
+    gap: 4px;/*要素間の余白設定 どの要素？*/
+    align-items: center;/*上下中央でそろえる指定*/
+    text-shadow: 0 0 10px rgba(51, 51, 51, 0.25);/*テキストに影をつける*/
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.mainvisual-scroll::before{
+    content: "";
+    display: block;
+    width: 8px;/*要素の幅を設定*/
+    height: 8px;/*要素の高さを設定*/
+    background-color: var(--white-color);/*背景色を設定*/
+    border-radius: 100%;/*疑似要素の角を円形に設定*/
+    box-shadow: 0 0 10px rgba(51, 51, 51, 0.25);/*要素に影をつける*/
+}
+
+/**
+* 2.4 - POSSEとは
+ */
+.about-column{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 40px;
+    align-items: center;
+}
+
+.about-image{
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.about-text{
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+}
+
+/**
+* 2.5 - イベント
+*/
+.event-slide{
+    overflow: visible;
+    margin: 0 auto;
+}
+
+/* .event-list{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+} */
+
+.event-item{
+    border-radius: 10px;
+    overflow: hidden;
+    width: 320px;
+    flex-shrink: 0;/*flexの子要素で縮んだりしないように幅を変更したくない要素に指定*/
+    background-color: var(--primary-light-color);
+    text-align: center;
+}
+
+.event-itemImage img{
+    width: 100%;
+    height: 200px;
+}
+
+.event-itemBody{
+    padding: 20px;
+}
+
+.event-itemDate{
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    padding: 0 12px;
+    border-radius: 5em;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    display: inline-block;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.event-itemName{
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    margin-top: 12px;/*4px??*/
+    font-weight: bold;
+}
+
+
+.splide__track{
+    overflow: visible;
+}
+
+
+/**
+ * 2.6 - 日常生活
+ */
+.daily-list{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+.daily-item{
+    display: flex;
+    background-color: var(--primary-light-color);
+    border-radius: 10px;
+    min-height: 324px;
+    margin-top: 40px;
+}
+
+.daily-item:nth-of-type(odd){
+    flex-direction: row-reverse;
+    margin-right: 40px;
+}
+
+.daily-item:nth-of-type(even){
+    margin-left: 40px;
+}
+
+.daily-itemImage{
+    border-radius: 10px;
+    overflow: hidden;
+    width: 480px;
+    height: 320px;
+    flex-shrink: 0;
+    margin-top: -40px;
+}
+
+.daily-itemImage img{
+    object-fit: cover;
+}
+
+.daily-item:nth-of-type(odd) .daily-itemImage{
+    margin-right: -40px;
+}
+
+.daily-item:nth-of-type(even) .daily-itemImage{
+    margin-left: -40px;
+}
+
+.daily-itemBody{
+    padding: 48px 56px;
+    width: 100%;
+}
+
+.daily-titleNumber{
+    font-weight: bold;
+    font-size: 58px;
+    color: var(--primary-color);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.daily-titleText{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    margin-left: 20px;
+}
+
+.daily-outline{
+    margin-top: 40px;
+}
+
+.daily-outlineItem::before{
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/icon-check.svg);
+    flex-shrink: 0;
+}
+
+.daily-outlineItem{
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.daily-description{
+    font-weight: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    margin-top: 12px;
+}
+
+/**
+ * 2.7 - 公式LINE
+ */
+.cta{
+    background: url(../img/bg-cta.jpg);
+    padding: 40px 24px 52px;
+    color: var(--white-color);
+    text-align: center;
+}
+
+.cta-title{
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.cta-content{
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    margin-top: 16px;
+}
+
+.cta-footer{
+    margin-top: 32px;
+}
+
+.cta-button{
+    display: block;
+    width: 315px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    background-color: var(--white-color);
+    border: solid 1px var(--primary-color);
+    border-radius: 50px;
+    position: relative;
+}
+
+.cta-button:hover{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--white-color);
+}
+
+.cta-icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 14px;
+    height: 14px;
+}
+
+.cta-button:hover .cta-icon g{
+    stroke: var(--white-color);
+}
+
+/* 3.0 - Animation, JavaScript Object */
+/* ============================================ */
+
+/**
+ * 3.1 - フェードイン
+ */
+
+/**
+ * 3.2 - スライダー
+ */
+.splide__arrow {
+    width: 40px;
+    height: 40px;
+    border: solid 1px #0071BC;
+    background-color: #FFFFFF;
+    opacity: 1;
+}
+
+.splide__arrow svg path {
+    fill: #0071BC;
+}
+

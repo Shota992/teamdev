@@ -1,0 +1,263 @@
+/**
+*ヘッダー
+*/
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    height: 100px;
+    background-color: #fff;
+    border-bottom: solid 2px #adadad;
+    padding: 0 70px;
+    z-index: 10000;
+}
+
+.header-logo{
+    /* width: 148px; */
+    display: flex;
+    align-items: center;
+}
+
+.header-textnav{
+    display: flex;
+    margin-left: auto;
+}
+
+.header-iconnav{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 48px;
+}
+
+.header-navList{
+    display: flex;
+    align-items:flex-end ;
+    gap: 50px;
+}
+
+
+.header-navItem{
+    height: 35px;
+}
+.header-navLink{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.header-navLink:hover{
+    color: pink;
+}
+
+.header-snsList{
+    display: flex;
+    gap: 35px;
+}
+
+.header-snsItem:hover{
+    cursor: pointer;
+}
+
+/**
+*フッター
+*/
+.footer{
+    padding-top: 40px;
+}
+
+.footer-copyright{
+    text-align: center;
+    font-size: 10px;
+    padding: 20px;
+    background-color: #dc00ff0d;
+}
+
+/**
+*メインビジュアル
+*/
+.main{
+    /* background-color: bisque; */
+}
+
+.mainvisual{
+    background: url(../img/photo.jpg) center center / cover no-repeat;
+    margin-top: 100px;
+    height: 500px;
+    width: 100%;
+}
+
+.mainvisual-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background-color: rgba(245, 230, 180, 0.5);
+    /* padding: 150px; */
+}
+
+.mainvisual-title{
+    font-weight: bold;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    font-size: 35px;
+    color: aliceblue; 
+}
+
+/**
+*プロフィール
+*/
+.section{
+    padding-top: 80px;
+}
+
+
+.section-body{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: .05em;
+    display: block;
+    font-weight: bold;
+    width: fit-content;
+    position: relative;
+    margin: 0 auto;
+}
+
+.title::after{
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-image: linear-gradient(to right, #fff 0%, rgb(242, 94, 2) 50%, #fff 100%);
+    position: absolute;
+}
+.profile-img{
+    text-align: center;
+    padding: 80px;
+}
+
+.profile-img img{
+    border-radius: 50%;
+    border-color: deeppink;
+    border-width: 5px;
+} 
+
+table{
+    text-align: center;
+    border-collapse: separate;
+    width: 470px;
+}
+
+td{
+    text-align: center;
+    border: solid 1px black;
+    vertical-align: middle;
+    padding: 0 15px;
+}
+
+/**
+*他己紹介
+*/
+.introduction-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.introduction-item{
+    text-align: center;
+    margin-bottom: 32px;
+    border-radius: 50px;
+}
+
+.introduction-itemYui{
+    background-image: url(../img/yui\ photo.jpg);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+    width: 320px;
+    height: 150px;
+    /* object-fit: cover; */
+}
+
+.introduction-itemYota{
+    background-image: url(../img/youta\ photo.jpg);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+    width: 320px;
+    height: 150px;
+    /* object-fit: cover; */
+}
+
+.introduction-itemRihito{
+    background-image: url(../img/rihito\ photo.jpg);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+    width: 320px;
+    height: 150px;
+    /* object-fit: cover; */
+}
+
+.introduction-comment{
+    padding: 48px;
+    background-color: bisque;
+    display: inline-block;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 3px 30px;
+    width: 320px;
+    display: inline-grid;
+}
+
+.name-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.name-title{
+    font-weight: bolder;
+    font-size: 25px;
+    color: aliceblue;
+}
+
+.yui{
+    margin: 0 auto;
+}
+
+.yota{
+
+}
+
+.rihito{
+    
+}
+
+.circle{
+    border-radius: 50%;
+    height: 800px;
+    width: 800px;
+    border:solid blue;
+    position: absolute;
+}
+
+/**
+*POSSE➂一押しポイント
+*/
+.scroll-up{
+    position: absolute;
+    right: 50px;
+}
+
+
+
