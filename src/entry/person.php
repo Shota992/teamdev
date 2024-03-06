@@ -18,8 +18,14 @@
             </div>
             <form class="person-form" method="POST">
                 <div>
-                    <label for="name" class="form-label">お名前</label>
-                    <input type="text" name="name" id="name" class="form-control" />
+                    <div>
+                        <label for="name" class="form-label">お名前</label>
+                        <input type="text" name="name" id="name" class="form-control" />
+                    </div>
+                    <div>
+                        <label for="readname" class="form-label">フリガナ</label>
+                        <input type="text" name="readname" id="readname" class="form-control" />
+                    </div>
                 </div>
                 <div></div>
                 <button></button>
