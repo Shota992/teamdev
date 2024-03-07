@@ -140,50 +140,6 @@
                                             <p>aaaaaaaaaaaaa</p>
                                         </div>
                                     </li>
-                                    <li class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag big">
-                                                <p class="slider-tagsent">大手</p>
-                                            </div>
-                                            <div class="slider-tag small">
-                                                <p class="slider-tagsent">中小</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </li>
-                                    <li class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag big">
-                                                <p class="slider-tagsent">大手</p>
-                                            </div>
-                                            <div class="slider-tag small">
-                                                <p class="slider-tagsent">中小</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="general-searches">
@@ -594,7 +550,7 @@
                     </div>
                     
                 </div>
-                <div class="choice-finished">
+                <div class="finished">
                     <button class="submit">完了</button>
                 </div>
                 
