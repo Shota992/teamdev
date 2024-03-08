@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/choice.css">
+<!--     <link rel="stylesheet" href="../assets/css/entry.css"> -->
     <title>choice</title>
     <link
       rel="stylesheet"
@@ -27,8 +28,7 @@
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
-</head>
-
+</head
 <body>
         <div class="wrapper">
             <div class="inner">
