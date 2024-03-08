@@ -28,6 +28,7 @@
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
 </head>
+
 <body>
         <div class="wrapper">
             <div class="inner">
