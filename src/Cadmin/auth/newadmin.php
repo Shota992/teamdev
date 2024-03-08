@@ -1,13 +1,11 @@
 <!-- 新規CRAFT管理者登録ページ -->
 
-<!-- CRAFT管理者ログインページ -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新規CRAFT管理者登録</title>
+    <title>CRAFT管理者新規登録</title>
 </head>
 <body>
     <header>
