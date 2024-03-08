@@ -1,1 +1,113 @@
 /* CRAFT管理画面のcss */
+
+/* header */
+.header{
+    background-color: #fff;
+    height: 95px;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    align-items: center;
+}
+
+.header img{
+    width: 280px;
+    height: auto;
+    margin: 0 60px 0 auto;
+}
+
+.header-logo{
+    margin-left: 55px;
+}
+
+.header-logo img{
+    width: 180px;
+    height: auto;
+}
+
+/* footer */
+.footer{
+    background-color: #554f4f;
+    height: 60px;
+    display: block;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright{
+    color: #fff;
+    font-size: 20px;
+}
+
+/* body共通項目 */
+body{
+    margin: 0;
+}
+
+main{
+    background-color:#d9d9d9 ;
+    padding: 240px 0;
+}
+
+.container{
+    background-color: #fff;
+    width: 33%;
+    margin: auto;
+    height: 80%;
+    padding: 100px;
+    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
+}
+
+.top-heading{
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-tag{
+    margin-bottom: 30px;
+}
+
+.form-label {
+    font-size: 21px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+    width: 80%;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 13px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 22px;
+    color: #fff;
+    background-color: #D94181;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.3);
+}
+
+.submit:hover {
+    background-color: #872850;
+}

@@ -1,3 +1,4 @@
+
 FROM mysql:8
 
 # Oracle Linux のためのパッケージマネージャーのインストール
