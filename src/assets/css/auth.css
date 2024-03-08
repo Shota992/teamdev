@@ -8,7 +8,7 @@ body{
 
 .container{
     background-color: #fff;
-    width: 35%;
+    width: 33%;
     margin: auto;
     height: 80%;
     padding: 100px;
@@ -71,3 +71,12 @@ form {
 
 
 /* ユーザーログインページ */
+.CRAFT-img{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.CRAFT-img img{
+    width: 300px;
+    height: auto;
+}
