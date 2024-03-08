@@ -28,7 +28,7 @@
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
-</head
+</head>
 <body>
         <div class="wrapper">
             <div class="inner">
