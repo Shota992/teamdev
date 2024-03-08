@@ -16,11 +16,11 @@
     </header>
     <aside>
             <nav>
-            <ul>
-                <li><a href="/">ユーザー招待</a></li>
-                <li><a href="/">問題一覧</a></li>
-                <li><a href="/">問題作成</a></li>
-            </ul>
+                <ul>
+                    <li><a href="/">ユーザー招待</a></li>
+                    <li><a href="/">問題一覧</a></li>
+                    <li><a href="/">問題作成</a></li>
+                </ul>
             </nav>
     </aside>
     <div class="wrapper">
