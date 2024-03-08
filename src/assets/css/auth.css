@@ -1,1 +1,63 @@
 /* authのcss */
+
+/* authページ共通項目 */
+body{
+    background-color:#d9d9d9 ;
+    margin: 120px;
+}
+
+.container{
+    background-color: #fff;
+    width: 50%;
+    margin: auto;
+    height: 300px;
+    padding: 100px;
+    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+}
+
+.top-heading{
+    display: inline-block;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 8px;
+}
+
+.form-control {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+}
+
+.submit {
+    background-color: #007bff;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
+
+
+/* ユーザー新規登録ページ */
+
+
+/* ユーザーログインページ */
