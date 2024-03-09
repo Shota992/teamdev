@@ -20,7 +20,7 @@
             <nav>
                 <ul class="side-nav-list">
                     <li class="side-nav"><a href="/" class="side-nav-link">学生情報一覧</a></li>
-                    <li class="side-nav"><a href="/" class="side-nav-link">パスワード変更</a></li>
+                    <li class="side-nav this-page"><a href="/" class="side-nav-link">パスワード変更</a></li>
                     <li class="side-nav"><a href="/" class="side-nav-link">ログアウト</a></li>
                 </ul>
             </nav>
