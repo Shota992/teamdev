@@ -45,9 +45,15 @@ body{
     margin: 0;
 }
 
-main{
+.main-body{
     background-color:#d9d9d9 ;
     padding: 240px 0;
+    width: 100%;
+    height: 100%;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container{
@@ -110,4 +116,38 @@ form {
 
 .submit:hover {
     background-color: #378c78f9;
+}
+
+.side-bar{
+    background-color: #45aa7f;
+    width: 20%;
+}
+
+.side-nav-list{
+}
+
+.side-nav{
+    list-style: none;
+    color: #fff;
+}
+
+.head-title{
+    background-color: #45aa7f;
+    display: block;
+    width: 90%;
+    margin-bottom: 100px;
+}
+
+.title-text{
+    color: #fff;
+    margin: 9px auto 9px 20px;
+}
+
+/* パスワード変更画面 */
+.all-main{
+    display: flex;
+}
+
+.content{
+    width: 50%;
 }

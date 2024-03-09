@@ -15,7 +15,7 @@
         </a>
         <img src="../assets/img/boozer_logo-black.png" alt="boozer">
     </header>
-    <main>
+    <main class="main-body">
         <div class="container">
             <h1 class="top-heading">エージェント企業様向け</h1>
             <form method="POST">
