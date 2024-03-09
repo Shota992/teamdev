@@ -119,7 +119,7 @@ form {
 }
 
 .side-bar{
-    background-color: #45aa7f;
+    background-color: #3e9570;
     width: 20%;
 }
 
@@ -154,7 +154,7 @@ form {
 }
 
 .head-title{
-    background-color: #45aa7f;
+    background-color: #3e9570;
     display: block;
     width: 90%;
     margin-bottom: 100px;
@@ -165,13 +165,21 @@ form {
     margin: 9px auto 9px 20px;
 }
 
+.this-page{
+    background-color: #fff;
+}
+
+.this-page a{
+    color: #3e9570;
+}
+
 /* パスワード変更画面 */
 .all-main{
     display: flex;
 }
 
 .content{
-    width: 50%;
+    width: 40%;
 }
 
 .password{
