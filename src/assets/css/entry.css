@@ -1,6 +1,8 @@
 /* entryフォルダ内ページのcss */
 
-/* 共通項目 */
+/* 
+共通項目 
+*/
 body{
     margin: 0;
 }
@@ -27,7 +29,10 @@ body{
     box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
 }
 
-/* 個人情報入力ページ */
+
+/* 
+個人情報入力ページ
+*/
 .person-form{
     background-color: #d9d9d9;
     padding: 50px;
@@ -60,35 +65,76 @@ body{
     margin-bottom: 20px;
 }
 
-.btn {
-    padding: 13px 0px;
-    border-width: 4px;
-    border-radius: 5px;
-    font-size: 22px;
+
+/* 
+申し込み完了ページ 
+*/
+
+/* 申し込みが完了しました */
+.complete_figure {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #FFF;
+    border: solid 10px #297DBA;
+    border-radius: 40px;
+}
+
+.complete_checkmark {
+}
+
+.complete_checkmark-img {
+}
+
+.complete_figureContent {
+}
+
+.complete_figureText1 {
+    color: ;
+    font-size: ;
+}
+
+.complete_figureText2 {
+    color: ;
+    font-size: ;
+}
+
+/* 今後の流れ */
+.complete_flowSection {
+}
+
+.complete_flowHead {
+}
+
+.complete_flowHeadText{
+    color: ;
+    font-size: ;
     font-weight: bold;
-    color: black;
-    background-color: #edd346;
-    width: 35%;
-    margin: 0 auto;
-    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.3);
 }
 
-.submit:hover {
-    background-color: #edbb46;
+.complete_flowHead-img {
 }
 
-.person-nav{
-    text-align: center;
+.complete_flowContent {
 }
 
-.top-heading{
-    display: inline-block;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    text-align: center;
+.complete_flowContentText {
+    color: ;
+    font-size: ;
+    font-weight: bold;
 }
 
-.top-explanation{
-    font-size: 20px;
-    margin-bottom: 25px;
+.complete_flowContentPolygon {
 }
+
+/* topページへ戻る */
+.complete_topSection {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: rgba(237, 211, 70, 0.8);
+    border: solid 3px rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+}
+
+.complete_topButton {
+}
+
