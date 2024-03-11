@@ -1,6 +1,75 @@
 /* entryフォルダ内ページのcss */
 
-/* 申し込み完了ページ */
+/* 
+共通項目 
+*/
+body{
+    margin: 0;
+}
+
+.main-body{
+    background-color:#d9d9d9 ;
+    padding: 240px 0;
+    width: 100%;
+    height: 100%;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    height: 80%;
+    padding: 100px 120px;
+    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
+}
+
+
+/* 
+個人情報入力ページ
+*/
+.person-form{
+    background-color: #d9d9d9;
+    padding: 50px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.form-tag{
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 21px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+    width: 40%;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+
+/* 
+申し込み完了ページ 
+*/
+
 /* 申し込みが完了しました */
 .complete_figureSection {
     margin-left: auto;
@@ -29,11 +98,14 @@
     margin: 20px;
 }
 
-.complete_checkmark {}
+.complete_checkmark {
+}
 
-.complete_checkmark-img {}
+.complete_checkmark-img {
+}
 
-.complete_figureContent {}
+.complete_figureContent {
+}
 
 .complete_figureText1 {
     color: ;
@@ -46,9 +118,11 @@
 }
 
 /* 今後の流れ */
-.complete_flowSection {}
+.complete_flowSection {
+}
 
-.complete_flowHead {}
+.complete_flowHead {
+}
 
 .complete_flowHeadText {
     color: ;
@@ -56,17 +130,20 @@
     font-weight: bold;
 }
 
-.complete_flowHead-img {}
+.complete_flowHead-img {
+}
 
-.complete_flowContent {}
+.complete_flowContent {
+}
 
-.omplete_flowContentText {
+.complete_flowContentText {
     color: ;
     font-size: ;
     font-weight: bold;
 }
 
-.complete_flowContentPolygon {}
+.complete_flowContentPolygon {
+}
 
 /* topページへ戻る */
 .complete_topSection {
@@ -77,4 +154,6 @@
     border-radius: 20px;
 }
 
-.complete_topButton {}
+.complete_topButton {
+}
+
