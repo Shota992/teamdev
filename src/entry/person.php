@@ -22,11 +22,11 @@
                 <div>
                     <div class="form-tag">
                         <label for="name" class="form-label">お名前</label>
-                        <input type="text" name="name" id="name" class="form-control" />
+                        <input type="text" name="name" id="name" class="form-control" required/>
                     </div>
                     <div class="form-tag">
                         <label for="readname" class="form-label">フリガナ</label>
-                        <input type="text" name="readname" id="readname" class="form-control" />
+                        <input type="text" name="readname" id="readname" class="form-control" required/>
                     </div>
                     <div class="form-tag">
                         <label for="" class="form-label">性別</label>
@@ -43,11 +43,11 @@
                     </div>
                     <div class="form-tag">
                         <label for="phone" class="form-label">携帯電話番号</label>
-                        <input type="text" name="phone" id="phone" class="form-control" />
+                        <input type="text" name="phone" id="phone" class="form-control" required/>
                     </div>
                     <div class="form-tag">
                         <label for="e-mail" class="form-label">メールアドレス</label>
-                        <input type="text" name="e-mail" id="e-mail" class="form-control" />
+                        <input type="text" name="e-mail" id="e-mail" class="form-control" required/>
                     </div>
                     <div class="form-tag">
                         <label for="graduation-year" class="form-label">卒業年度</label>
