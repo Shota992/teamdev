@@ -1,1 +1,244 @@
 /* topフォルダ内にあるページのcss */
+
+/* topフォルダ内ページ共通項目 */
+body {
+    margin: 0;
+    background-color: #d9d9d9;
+}
+
+main {
+    background-color: #d9d9d9;
+}
+
+.container {
+    background-color: #fff;
+    width: 80%;
+    margin: 100px auto;
+    height: 90%;
+    padding: 100px;
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+
+/* mainvisual */
+.mainvisual {
+    background: url(../img/mainvisual.jpg) center center /cover no-repeat;
+    height: 100vh;
+    padding: 40px 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.mainvisual-inner {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mainvisual-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+
+.mainvisual-title {}
+
+.mainvisual-lead {}
+
+.mainvisual-button {}
+
+.mainvisual-button {}
+
+.mainvisual-button-lead {}
+
+
+
+
+
+/* section */
+
+
+.wrapper {
+    background-color: #f5f5f5;
+}
+
+
+/* CRAFTとは */
+.CRAFTmainVisual {
+    background-color: #fff;
+}
+
+.CRAFTexplanationHead {
+    font-size: 32px;
+    text-shadow: 1px 2px 3px #808080;
+    text-align: center;
+    margin: 40px;
+}
+
+.CRAFTexplanationWrapper {
+    text-align: center;
+}
+
+.CRAFTexplanationBody {
+    display: inline-block;
+    background: rgba(169, 214, 246, 0.3);
+    font-size: 16px;
+    border-radius: 40px;
+    margin: 0 auto;
+    padding: 32px 48px;
+}
+
+.CRAFTlistTitle {
+    text-align: center;
+}
+
+.CRAFTlistTitleText {
+    display: inline-block;
+    border-bottom: 10px solid;
+    border-image: linear-gradient(to right, #297DBA 0%, #9EB9CC 100%);
+    border-image-slice: 1;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px 0 20px 0;
+}
+
+.CRAFTlistContent {
+    text-align: center;
+}
+
+.CRAFTlistContentTEXT {
+    display: inline-block;
+    text-align: left;
+    margin: 10px 0 20px 0;
+}
+
+/* 従来の仕組み */
+.CRAFTlist1 {
+    margin: 30px;
+}
+
+.CRAFTfigure {
+    display: flex;
+    justify-content: space-around;
+}
+
+.CRAFTfigure-img {
+    margin: 30px 0 0 0;
+    text-align: center;
+}
+
+.CRAFTpeople {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.CRAFTpeople1 {
+    text-align: center;
+    margin: 10px;
+}
+
+.CRAFTarrow1 {
+    display: flex;
+    align-items: center;
+}
+
+/* CRAFTの仕組み */
+.CRAFTlist2 {
+    margin: 30px;
+}
+
+.CRAFTcircle {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 50%;
+    border: solid 5px rgba(0, 0, 0, 0.8);
+    left: 30%;
+    margin: 30px;
+}
+
+.CRAFTcircle-img {
+    height: 150px;
+    background-size: cover;
+}
+
+.circleCRAFT {
+    /* position: relative; */
+}
+
+.CRAFTcircleDown {
+    display: flex;
+    gap: 300px;
+}
+
+.arrowGroup1 {
+    display: flex;
+}
+
+/* CRAFTを選ぶべき理由 */
+.CRAFTlist3 {
+    margin: 30px;
+}
+
+.CRAFTreason-img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(169, 214, 246, 0.3);
+}
+
+.CRAFTreasonTitle {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #297DBA;
+}
+
+.CRAFTreasonMain {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
+}
+
+.CRAFTreasonP{
+    text-align: left;
+    margin: 30px 0;
+}
+.CRAFTreason1 {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0 30px 0;
+}
+
+.CRAFTreason1text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+}
+
+.CRAFTreason2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.CRAFTreason2text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+}
