@@ -3,12 +3,12 @@
 /* 
 共通項目 
 */
-body{
+body {
     margin: 0;
 }
 
-.main-body{
-    background-color:#d9d9d9 ;
+.main-body {
+    background-color: #d9d9d9;
     padding: 240px 0;
     width: 100%;
     height: 100%;
@@ -18,22 +18,23 @@ body{
     align-items: center;
 }
 
-.container{
+.container {
     background-color: #fff;
     width: 60%;
     margin: auto;
     height: 80%;
     padding: 100px 120px;
-    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
     border-radius: 80px;
-    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 
 /* 
 個人情報入力ページ
 */
-.person-form{
+.person-form {
     background-color: #d9d9d9;
     padding: 50px;
     text-align: center;
@@ -41,7 +42,7 @@ body{
     margin: auto;
 }
 
-.form-tag{
+.form-tag {
     margin-bottom: 20px;
 }
 
@@ -71,9 +72,20 @@ body{
 */
 
 /* 申し込みが完了しました */
+.complete-container {
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    height: 80%;
+    padding: 0px 120px;
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
 .complete_figureSection {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px;
 }
 
 .complete_figure {
@@ -86,11 +98,13 @@ body{
     margin: 2em 0;
     background: #FFF;
     border: solid 10px #297DBA;
-    border-radius: 40px;
-    width: 600px;
+    border-radius: 30px;
+    width: 500px;
+    margin: 0 auto;
 }
 
 .complete_figureText1 {
+    font-weight: bold;
     margin: 15px 0;
 }
 
@@ -98,62 +112,52 @@ body{
     margin: 20px;
 }
 
-.complete_checkmark {
-}
-
 .complete_checkmark-img {
-}
+    width: 60px;
+    height: 60px;
 
-.complete_figureContent {
-}
-
-.complete_figureText1 {
-    color: ;
-    font-size: ;
-}
-
-.complete_figureText2 {
-    color: ;
-    font-size: ;
 }
 
 /* 今後の流れ */
-.complete_flowSection {
-}
+.complete_flowSection {}
 
 .complete_flowHead {
+    display: flex;
+    justify-content: center;
 }
 
 .complete_flowHeadText {
-    color: ;
-    font-size: ;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .complete_flowHead-img {
+    height: 60px;
 }
 
-.complete_flowContent {
-}
-
-.complete_flowContentText {
-    color: ;
-    font-size: ;
+.complete_flowContentText1 {
+    background-color: rgba(244, 244, 244, 0.8);
+    padding: 0.5em 1em;
+    margin: 10px;
     font-weight: bold;
+    border: solid 0.5px rgba(0, 0, 0, 0.8);
+    color: #cecece;
+    font-weight: bold;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.complete_flowContentText2 {
+    background-color: rgba(244, 244, 244, 0.8);
+    padding: 0.5em 1em;
+    margin: 10px;
+    font-weight: bold;
+    border: solid 0.8px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    box-shadow: 2px 2px 4px gray;
 }
 
 .complete_flowContentPolygon {
+    width: 150px;
 }
-
-/* topページへ戻る */
-.complete_topSection {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    background: rgba(237, 211, 70, 0.8);
-    border: solid 3px rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-}
-
-.complete_topButton {
-}
-
