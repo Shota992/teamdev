@@ -71,12 +71,31 @@ body{
 */
 
 /* 申し込みが完了しました */
+.complete_figureSection {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .complete_figure {
+    display: inline-block;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    text-align: center;
     padding: 0.5em 1em;
     margin: 2em 0;
     background: #FFF;
     border: solid 10px #297DBA;
     border-radius: 40px;
+    width: 600px;
+}
+
+.complete_figureText1 {
+    margin: 15px 0;
+}
+
+.complete_figureText2 {
+    margin: 20px;
 }
 
 .complete_checkmark {
@@ -105,7 +124,7 @@ body{
 .complete_flowHead {
 }
 
-.complete_flowHeadText{
+.complete_flowHeadText {
     color: ;
     font-size: ;
     font-weight: bold;
