@@ -1,24 +1,25 @@
 /* topフォルダ内にあるページのcss */
 
 /* topフォルダ内ページ共通項目 */
-body{
+body {
     margin: 0;
-    background-color:#d9d9d9 ;
+    background-color: #d9d9d9;
 }
 
 main{
-    background-color:#d9d9d9;
+    background-color:#d9d9d9
 }
 
-.container{
+.container {
     background-color: #fff;
-    width: 70%;
+    width: 80%;
     margin: 100px auto;
     height: 90%;
     padding: 100px;
-    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
     border-radius: 80px;
-    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -70,7 +71,7 @@ main{
 
 
 /* CRAFTとは */
-.CRAFTmainVisual{
+.CRAFTmainVisual {
     background-color: #fff;
 }
 
@@ -116,21 +117,24 @@ main{
 .CRAFTlistContentTEXT {
     display: inline-block;
     text-align: left;
+    margin: 10px 0 20px 0;
 }
 
 /* 従来の仕組み */
-.CRAFTlist1{
-    margin: 50px;
+.CRAFTlist1 {
+    margin: 30px;
 }
+
 .CRAFTfigure {
     display: flex;
     justify-content: space-around;
 }
 
-.CRAFTfigure-img{
+.CRAFTfigure-img {
     margin: 30px 0 0 0;
     text-align: center;
 }
+
 .CRAFTpeople {
     text-align: center;
     font-size: 24px;
@@ -142,24 +146,27 @@ main{
     text-align: center;
     margin: 10px;
 }
+
 .CRAFTarrow1 {
     display: flex;
     align-items: center;
 }
+
 /* CRAFTの仕組み */
-.CRAFTlist2{
-    margin: 50px;
+.CRAFTlist2 {
+    margin: 30px;
 }
+
 .CRAFTcircle {
     display: inline-block;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     text-align: center;
     line-height: 80px;
     border-radius: 50%;
     border: solid 5px rgba(0, 0, 0, 0.8);
-    /* position: absolute; */
     left: 30%;
+    margin: 30px;
 }
 
 .CRAFTcircle-img {
@@ -176,11 +183,19 @@ main{
     gap: 300px;
 }
 
-/* CRAFTを選ぶべき理由 */
-.CRAFTlist3{
-    margin: 50px;
+.arrowGroup1 {
+    display: flex;
 }
+
+/* CRAFTを選ぶべき理由 */
+.CRAFTlist3 {
+    margin: 30px;
+}
+
 .CRAFTreason-img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
     background: rgba(169, 214, 246, 0.3);
 }
 
@@ -195,14 +210,35 @@ main{
     font-size: 24px;
     font-weight: bold;
     text-align: center;
+    margin: 5px;
 }
 
+.CRAFTreasonP{
+    text-align: left;
+    margin: 30px 0;
+}
 .CRAFTreason1 {
     display: flex;
     justify-content: space-around;
+    margin: 40px 0 30px 0;
+}
+
+.CRAFTreason1text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
 }
 
 .CRAFTreason2 {
     display: flex;
     justify-content: space-around;
+    margin: 20px;
+}
+
+.CRAFTreason2text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
 }
