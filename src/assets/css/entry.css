@@ -1,5 +1,166 @@
 /* entryフォルダ内ページのcss */
 
+/* 
+共通項目 
+*/
+body {
+    margin: 0;
+}
+
+.main-body {
+    background-color: #d9d9d9;
+    padding: 240px 0;
+    width: 100%;
+    height: 100%;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    height: 80%;
+    padding: 100px 120px;
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+
+/* 
+個人情報入力ページ
+*/
+.person-form {
+    background-color: #d9d9d9;
+    padding: 50px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.form-tag {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 21px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+    width: 40%;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+
+/* 
+申し込み完了ページ 
+*/
+
+/* 申し込みが完了しました */
+.complete-container {
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    height: 80%;
+    padding: 0px 120px;
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.complete_figureSection {
+    margin: 20px;
+}
+
+.complete_figure {
+    display: inline-block;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #FFF;
+    border: solid 10px #297DBA;
+    border-radius: 30px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.complete_figureText1 {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.complete_figureText2 {
+    margin: 20px;
+}
+
+.complete_checkmark-img {
+    width: 60px;
+    height: 60px;
+
+}
+
+/* 今後の流れ */
+.complete_flowSection {}
+
+.complete_flowHead {
+    display: flex;
+    justify-content: center;
+}
+
+.complete_flowHeadText {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.complete_flowHead-img {
+    height: 60px;
+}
+
+.complete_flowContentText1 {
+    background-color: rgba(244, 244, 244, 0.8);
+    padding: 0.5em 1em;
+    margin: 10px;
+    font-weight: bold;
+    border: solid 0.5px rgba(0, 0, 0, 0.8);
+    color: #cecece;
+    font-weight: bold;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.complete_flowContentText2 {
+    background-color: rgba(244, 244, 244, 0.8);
+    padding: 0.5em 1em;
+    margin: 10px;
+    font-weight: bold;
+    border: solid 0.8px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.complete_flowContentPolygon {
+    width: 150px;
+}
 
 /* 選択企業一覧ページ */
 .check-table th,.check-table td{

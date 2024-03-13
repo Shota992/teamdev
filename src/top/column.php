@@ -5,12 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コラム</title>
-    <!-- スタイルシート読み込み -->
-    <link rel="stylesheet" href="../assets/css/top.css">
-    <!-- Google Fonts読み込み -->
-    <link rel="preconnect" href="">
-    <link rel="preconnect" href="" crossorigin>
-    <link href="" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/">
+<link rel="stylesheet" href="../assets/css">
 </head>
 
 <body> <!-- id名、クラス名を確認する＆ページの構成を見直す -->
