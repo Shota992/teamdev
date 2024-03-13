@@ -9,6 +9,7 @@
     <script src="../assets/scripts/common.js" defer>
     </script>
     </head>
+    
 <body>
     <div class="check-wrapper">
         <div class="check-container">
