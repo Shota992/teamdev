@@ -1,33 +1,33 @@
 /* headerとfooterのcss */
 header {
     width: 100%;
-    padding: 30px 2% 10px;
+    padding: 10px 2% 10px;
     background-color: #fff;
     position: fixed;
     top: 0px;
     display: flex;
     align-items: flex-end;
-
-    
-
 }
-
 
 .header_logo {
-    width: 100px;
-    height: 50px;
+    width: 170px;
+    height: auto;
 }
 
+.header-nav{
+    display: flex;
+    /* gap: 300px; */
+    margin: 0 0 0 700px;
+}
 
 .header_nav_ul {
     display: flex;
-
 }
 
 .header_nav_li_1 {
-    margin: 0 0 0 300px;
     font-weight: bold;
     position: relative;
+    font-size: 25px;
 }
 
 .header_nav_li_1::after {
@@ -41,19 +41,18 @@ header {
     transform: scale(0, 1);
     transform-origin: right top; 
     transition: transform 0.3s;  
-    }
+}
     
 .header_nav_li_1:hover::after {
     transform: scale(1, 1);     
     transform-origin: left top; 
-    }
-
-
+}
 
 .header_nav_li_2 {
-    margin: 0 0 0 20px;
+    margin: 0 100px;
     font-weight: bold;
     position: relative;
+    font-size: 25px;
 }
 
 .header_nav_li_2::after {
@@ -67,18 +66,17 @@ header {
     transform: scale(0, 1);
     transform-origin: right top; 
     transition: transform 0.3s;  
-    }
+}
     
 .header_nav_li_2:hover::after {
     transform: scale(1, 1);     
     transform-origin: left top; 
-    }
-
+}
 
 .header_nav_li_3 {
-    margin: 0 0 0 450px;
     font-weight: bold;
     position: relative;
+    font-size: 25px;
 }
 
 .header_nav_li_3::after {
@@ -92,18 +90,18 @@ header {
     transform: scale(0, 1);
     transform-origin: right top; 
     transition: transform 0.3s;  
-    }
+}
     
 .header_nav_li_3:hover::after {
     transform: scale(1, 1);     
     transform-origin: left top; 
-    }
-
+}
 
 .header_nav_li_4 {
-    margin: 0 0 0 20px;
+    margin: 0 100px;
     font-weight: bold;
     position: relative;
+    font-size: 25px;
 }
 
 .header_nav_li_4::after {
@@ -117,21 +115,17 @@ header {
     transform: scale(0, 1);
     transform-origin: right top; 
     transition: transform 0.3s;  
-    }
+}
     
 .header_nav_li_4:hover::after {
     transform: scale(1, 1);     
     transform-origin: left top; 
-    }
+}
 
 
 
 
-
-
-
-
-    /* footer */
+/* footer */
 footer {
     background: #696969;
     text-align: center;
