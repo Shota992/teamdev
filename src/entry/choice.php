@@ -549,12 +549,10 @@
                             <button class="sub-search-choice">追加</button>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="finished">
                     <button class="submit">完了</button>
                 </div>
-                
             </div>
         </div>
 
