@@ -9,15 +9,17 @@
 </head>
 <body>
 <header>
-        <h1>
+        <div class="logo">
             <a href="/">
                 <img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo">
             </a>
-        </h1>
-        <nav>
+        </div>
+        <nav class="header-nav">
             <ul class="header_nav_ul">
                 <li><a href="/" class="header_nav_li_1">CRAFTとは</a></li>
                 <li><a href="/" class="header_nav_li_2">コラム</a></li>
+            </ul>
+            <ul class="header_nav_ul">
                 <li><a href="/" class="header_nav_li_3">新規登録</a></li>
                 <li><a href="/" class="header_nav_li_4">ログイン</a></li>
             </ul>
