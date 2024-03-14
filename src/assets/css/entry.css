@@ -237,3 +237,134 @@ body {
     background-color: #ed4;
   }
   
+
+  .final-wrapper {
+    background-color: #fff;
+    border-radius: 5%;
+  }
+  
+  .final-inner {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .final-company {
+    width: 550px;
+  }
+  
+  .final-company-title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .final-company-title {
+    font-size: 18px;
+  }
+  
+  .final-company-table {
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 80px;
+    margin-bottom: 5px;
+  }
+  
+  .final-company-item-logo {
+    background-color: #27b;
+    width: 80px;
+    height: 35px;
+  }
+  
+  .final-company-item-service {
+    font-size: 16px;
+  }
+  
+  .final-company-item-name {
+    font-size: 10px;
+    margin-left: 20px;
+  }
+  
+  .final-person {
+    margin-top: 100px;
+  }
+  
+  .final-person-title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .final-person-title {
+    font-size: 18px;
+  }
+  
+  .final-person-table-container {
+    margin-top: 50px;
+  }
+  
+  .final-person-table {
+    width: 400px;
+    display: flex;
+  }
+  
+  .final-person-head {
+    height: 45px;
+    margin-bottom: 12px;
+  }
+  
+  .final-person-head {
+    width: 180px;
+    background-color: #d9d9d9;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .final-person-item {
+    width: 200px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .final-person-sent {
+    font-weight: bold;
+  }
+  
+  .final-submit {
+    margin-top: 20px;
+  }
+  
+  .final-submit-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .final-submit-button {
+    width: 500px;
+    height: 40px;
+    background-color: #ed4;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .final-edit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .final-edit-button {
+    width: 500px;
+    height: 40px;
+    background-color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+  }
