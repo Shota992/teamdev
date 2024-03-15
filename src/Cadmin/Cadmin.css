@@ -1,1 +1,319 @@
 /* CRAFT管理画面のcss */
+
+/* header */
+.header{
+    background-color: #fff;
+    height: 95px;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    align-items: center;
+}
+
+.header img{
+    width: 280px;
+    height: auto;
+    margin: 0 60px 0 auto;
+}
+
+.header-logo{
+    margin-left: 55px;
+}
+
+.header-logo img{
+    width: 180px;
+    height: auto;
+}
+
+/* footer */
+.footer{
+    background-color: #554f4f;
+    height: 60px;
+    display: block;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright{
+    color: #fff;
+    font-size: 20px;
+}
+
+/* body共通項目 */
+body{
+    margin: 0;
+}
+
+main{
+    background-color:#d9d9d9 ;
+    padding: 240px 0;
+}
+
+.container{
+    background-color: #fff;
+    width: 33%;
+    margin: auto;
+    height: 80%;
+    padding: 100px;
+    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
+}
+
+.top-heading{
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-tag{
+    margin-bottom: 30px;
+}
+
+.form-label {
+    font-size: 21px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+    width: 80%;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 23px;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 13px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 22px;
+    color: #fff;
+    background-color: #D94181;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.3);
+}
+
+.submit:hover {
+    background-color: #872850;
+}
+
+
+/* 管理者画面のサイドバー */
+.side-container {
+    width: 350px;
+    height: 700px;
+    background-color: #b36;
+    position: fixed;
+    padding-top: 100px;
+  }
+  
+  .side-content {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .side-sent {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  
+  .side-choiced {
+    background-color: #fff;
+    color: #b36;
+  }
+  
+  
+  /* エージェント企業一覧ページ */
+  .body-c {
+    background-color: #ddd;
+  }
+  
+  .index-wrapper {
+    display: flex;
+  }
+  
+  
+  
+  .index-main-container {
+    margin-left: 390px;
+    margin-right: 60px;
+    width: 100%;
+  }
+  
+  .index-main-inner {
+    margin-top: 100px;
+  }
+  
+  .index-main-head-container {
+    width: 100%;
+    height: 40px;
+    background-color: #b36;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+  }
+  
+  .index-main-head-sent {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .index-main-search {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+  }
+  
+  .index-main-search-contents {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    height: 30px;
+  }
+  
+  .index-main-search-content {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .index-main-search-button {
+    background-color: #b36;
+    width: 100px;
+    color:#fff;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+  
+  .index-main-table{
+    margin-top: 40px;
+  }
+  
+  .index-main-table-conainer{
+    width: 100%;
+  }
+  
+  .index-main-table-head{
+    background-color: #bbb;
+    height: 30px;
+  }
+  
+  .index-main-table-contents{
+    height: 40px;
+  }
+  
+  .index-even{
+    background-color: #ccc;
+  }
+  
+  /* 申込み内容一覧画面 */
+  .content-wrapper {
+    display: flex;
+  }
+  
+  .content-main-container {
+    margin-left: 390px;
+    margin-right: 60px;
+    width: 100%;
+  }
+  
+  .content-main-inner {
+    margin-top: 100px;
+  }
+  
+  .content-main-head-container {
+    width: 100%;
+    height: 40px;
+    background-color: #b36;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+  }
+  
+  .content-main-head-sent {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .content-main-search {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    height: 100px;
+  }
+  
+  .content-main-search-contents {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 30px;
+  }
+  
+  .content-main-search-radios{
+    display: flex;
+    gap: 50px;
+  }
+  
+  .content-main-search-checks{
+    display: flex;
+    gap:50px;
+  }
+  
+  .content-main-search-content {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .content-main-search-button {
+    background-color: #b36;
+    width: 100px;
+    color:#fff;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+  
+  .content-main-table{
+    margin-top: 100px;
+  }
+  
+  .content-main-table-container{
+    width: 100%;
+  }
+  
+  .content-main-table-head{
+    background-color: #bbb;
+    height: 30px;
+  }
+  
+  .content-main-table-contents{
+    height: 40px;
+  }
+  
+  .content-main-table-content{
+    padding-left: 20px;
+  }
+  
+  .content-even{
+    background-color: #ccc;
+  }
