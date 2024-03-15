@@ -1,4 +1,26 @@
 /* entryフォルダ内ページのcss */
+/* エージェント企業申し込み手順ページ */
+.processTItle{
+    display: flex;
+}
+.processTitle1{}
+.processTitle2{}
+.processStepAll{}
+.processStep1{}
+.processStep2{}
+.processStep3{}
+.processStep4{}
+.processStepImg{}
+.processNumber-img{}
+.processPolygon-img{}
+.processStepText{}
+.processStepHead{}
+.processStepContent{}
+.processPersonImg{}
+.processTry{}
+.processTry-img{}
+.processTryPolygon{}
+.process-btn
 
 /* 
 共通項目 
