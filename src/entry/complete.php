@@ -1,5 +1,4 @@
 <!-- 申し込み完了ページ -->
-<!-- 申し込み完了ページ -->
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -32,16 +31,18 @@
                     <div class="complete_flowHeadText">今後の流れについて</div>
                 </div>
                 <div class="complete_flowContent">
-                    <div class="complete_flowContentText">WEB申し込み</div>
+                    <div class="complete_flowContentText1">WEB申し込み</div>
                     <figure><img src="../assets/img/complete_flow.png" alt="" class="complete_flowContentPolygon"></figure>
-                    <div class="complete_flowContentText">企業から電話かメールでご連絡</div>
+                    <div class="complete_flowContentText2">企業から電話かメールでご連絡</div>
                     <figure><img src="../assets/img/complete_flow.png" alt="" class="complete_flowContentPolygon"></figure>
-                    <div class="complete_flowContentText">あなたを担当する就活エージェントと顔合わせ</div>
+                    <div class="complete_flowContentText2">あなたを担当する就活エージェントと顔合わせ</div>
+
                 </div>
             </section>
             <!-- topページへ戻る -->
             <section class="complete_topSection">
-                <div class="complete_topButton">TOPページへ戻る</div>
+                <button class="btn submit">TOPページへ戻る</button>
+
             </section>
         </div>
     </main>

@@ -19,13 +19,13 @@
         <aside class="side-bar">
             <nav>
                 <ul class="side-nav-list">
-                    <li class="side-nav"><a href="/">ユーザー招待</a></li>
-                    <li class="side-nav"><a href="/">問題一覧</a></li>
-                    <li class="side-nav"><a href="/">問題作成</a></li>
+                    <li class="side-nav"><a href="/" class="side-nav-link">学生情報一覧</a></li>
+                    <li class="side-nav this-page"><a href="/" class="side-nav-link">パスワード変更</a></li>
+                    <li class="side-nav"><a href="/" class="side-nav-link">ログアウト</a></li>
                 </ul>
             </nav>
         </aside>
-        <div class="main-body">
+        <div class="main-body password">
             <div class="head-title">
                 <h1 class="title-text">パスワード変更</h1>
             </div>
