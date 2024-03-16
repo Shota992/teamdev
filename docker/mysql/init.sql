@@ -59,7 +59,7 @@ CREATE TABLE if not exists  agent(
 );
 
 
-INSERT INTO user (id, content, image, supplement) VALUES
+INSERT INTO user (id, user_id, email, passwords) VALUES
 
 
 

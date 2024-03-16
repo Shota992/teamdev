@@ -167,30 +167,30 @@ body {
     border-right: none !important;
     border-left: none !important;
     border-top: none !important;
-  }
-  
-  body{
+}
+
+body{
     background-color:#d9d9d9 ;
     margin: 120px;
-  }
-  
-  .check-wrapper{
+}
+
+.check-wrapper{
     background-color: #fff;
     border-radius: 5%;
-  }
-  
-  .check-inner{
+}
+
+.check-inner{
     padding: 60px;
-  }
-  
-  .check-title{
+}
+
+.check-title{
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .check-title-sent{
+}
+
+.check-title-sent{
     font-size: 28px;
     font-weight: bold;
   }
