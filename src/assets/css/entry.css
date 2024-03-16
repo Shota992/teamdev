@@ -1,4 +1,29 @@
 /* entryフォルダ内ページのcss */
+/* 申し込み完了ページ */
+/* 申し込みが完了しました */
+.complete_figure {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #FFF;
+    border: solid 10px #297DBA;
+    border-radius: 40px;
+}
+
+.complete_checkmark {}
+
+.complete_checkmark-img {}
+
+.complete_figureContent {}
+
+.complete_figureText1 {
+    color: ;
+    font-size: ;
+}
+
+.complete_figureText2 {
+    color: ;
+    font-size: ;
+
 /* エージェント企業申し込み手順ページ */
 .processContainer{
   background-color: #fff;
@@ -209,11 +234,39 @@ body {
 .complete_checkmark-img {
   width: 60px;
   height: 60px;
-
 }
 
 /* 今後の流れ */
 .complete_flowSection {}
+
+.complete_flowHead {}
+
+.complete_flowHeadText{
+    color: ;
+    font-size: ;
+    font-weight: bold;
+}
+
+.complete_flowHead-img {}
+
+.complete_flowContent {}
+
+.omplete_flowContentText {
+    color: ;
+    font-size: ;
+    font-weight: bold;
+}
+
+.complete_flowContentPolygon {}
+
+/* topページへ戻る */
+.complete_topSection {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: rgba(237, 211, 70, 0.8);
+    border: solid 3px rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+}
 
 .complete_flowHead {
   display: flex;
