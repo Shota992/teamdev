@@ -6,13 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エージェント企業申し込み手順</title>
-    <link rel="stylesheet" href="../assets/css/">
+    <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css">
 </head>
 
 <body>
     <main>
-        <div class="container">
+        <div class="processContainer">
             <!-- 見出し -->
             <section class="processTItle">
                 <div class="processTitle1">
@@ -26,8 +26,8 @@
                 <!-- step1 -->
                 <div class="processStep1">
                     <div class="processStepImg">
-                        <img src="" alt="" class="processNumber-img">
-                        <img src="" alt="" class="processPolygon-img">
+                        <img src="../assets/img/process_step1.png" alt="" class="processNumber-img">
+                        <img src="../assets/img/process_steppolygon.png" alt="" class="processPolygon-img">
                     </div>
                     <div class="processStepText">
                         <div class="processStepHead">
@@ -42,13 +42,14 @@
                         </div>
                     </div>
                     <div class="processPersonImg">
+                        <img src="../assets/img/process_person1.png" alt="">
                     </div>
                 </div>
                 <!-- step2 -->
                 <div class="processStep2">
                     <div class="processStepImg">
-                        <img src="" alt="" class="processNumber-img">
-                        <img src="" alt="" class="processPolygon-img">
+                        <img src="../assets/img/process_Step２.png" alt="" class="processNumber-img">
+                        <img src="../assets/img/process_steppolygon.png" alt="" class="processPolygon-img">
                     </div>
                     <div class="processStepText">
                         <div class="processStepHead">
@@ -60,13 +61,14 @@
                         </div>
                     </div>
                     <div class="processPersonImg">
+                        <img src="../assets/img/process_person2.png" alt="">
                     </div>
                 </div>
                 <!-- step3 -->
-                <div class="processStep">
+                <div class="processStep3">
                     <div class="processStepImg">
-                        <img src="" alt="" class="processNumber-img">
-                        <img src="" alt="" class="processPolygon-img">
+                        <img src="../assets/img/process_Step３.png" alt="" class="processNumber-img">
+                        <img src="../assets/img/process_steppolygon.png" alt="" class="processPolygon-img">
                     </div>
                     <div class="processStepText">
                         <div class="processStepHead">
@@ -78,13 +80,13 @@
                         </div>
                     </div>
                     <div class="processPersonImg">
+                        <img src="../assets/img/process_person3.png" alt="">
                     </div>
                 </div>
                 <!-- step4 -->
                 <div class="processStep4">
                     <div class="processStepImg">
-                        <img src="" alt="" class="processNumber-img">
-                        <img src="" alt="" class="processPolygon-img">
+                        <img src="../assets/img/process_Step４.png" alt="" class="processNumber-img">
                     </div>
                     <div class="processStepText">
                         <div class="processStepHead">
@@ -95,13 +97,14 @@
                         </div>
                     </div>
                     <div class="processPersonImg">
+                        <img src="../assets/img/process_person4.png" alt="">
                     </div>
                 </div>
             </section>
             <!-- さっそくｔｒｙ -->
             <section class="processTry">
                 <div class="processTry-img">
-                    <img src="" alt="" class="processTryPolygon">
+                    <img src="../assets/img/process_steppolygon.png" alt="" class="processTryPolygon">
                 </div>
                 <div class="process-btn">
                     <button class="btn">さっそくTry！</button>
