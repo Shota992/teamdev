@@ -1,33 +1,127 @@
 /* entryフォルダ内ページのcss */
+/* エージェント企業申し込み手順ページ */
+.processContainer{
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+  height: 80%;
+  padding: 100px 80px;
+  text-align: center;
+  /*インラインブロック要素の子要素を左右で中央寄せ*/
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+.processTItle {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.processTitle1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.processTitle2 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.processStepAll {}
+
+.processStep1 {
+  display: flex;
+  margin: 20px;
+}
+
+.processStep2 {
+  display: flex;
+  margin: 20px;
+}
+
+.processStep3 {
+  display: flex;
+  margin: 20px;
+}
+
+.processStep4 {
+  display: flex;
+  margin: 20px;
+
+}
+
+.processStepImg {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.processNumber-img {}
+
+.processPolygon-img {
+  width: 60px;
+}
+
+.processStepText {
+  margin-left: 50px;
+}
+
+.processStepHead {
+  text-align: left;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.processStepContent {
+  font-size: 16px;
+  text-align: left;
+  margin: 20px 20px 20px 50px;
+}
+
+.processPersonImg {
+}
+
+.processTry {}
+
+.processTry-img {}
+
+.processTryPolygon {
+  width: 80px;
+}
+
+.process-btn
 
 /* 
 共通項目 
 */
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .main-body {
-    background-color: #d9d9d9;
-    padding: 240px 0;
-    width: 100%;
-    height: 100%;
-    /* 水平・垂直方向の中央揃え */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #d9d9d9;
+  padding: 240px 0;
+  width: 100%;
+  height: 100%;
+  /* 水平・垂直方向の中央揃え */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
-    background-color: #fff;
-    width: 60%;
-    margin: auto;
-    height: 80%;
-    padding: 100px 120px;
-    text-align: center;
-    /*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 80px;
-    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+  height: 80%;
+  padding: 100px 120px;
+  text-align: center;
+  /*インラインブロック要素の子要素を左右で中央寄せ*/
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 
@@ -35,35 +129,35 @@ body {
 個人情報入力ページ
 */
 .person-form {
-    background-color: #d9d9d9;
-    padding: 50px;
-    text-align: center;
-    width: 70%;
-    margin: auto;
+  background-color: #d9d9d9;
+  padding: 50px;
+  text-align: center;
+  width: 70%;
+  margin: auto;
 }
 
 .form-tag {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-label {
-    font-size: 21px;
-    margin: 0 auto;
-    margin-bottom: 8px;
-    display: block;
-    text-align: left;
-    width: 40%;
+  font-size: 21px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+  width: 40%;
 }
 
 .form-control {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 23px;
-    display: block;
-    width: 40%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 23px;
+  display: block;
+  width: 40%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 
@@ -73,48 +167,48 @@ body {
 
 /* 申し込みが完了しました */
 .complete-container {
-    background-color: #fff;
-    width: 60%;
-    margin: auto;
-    height: 80%;
-    padding: 0px 120px;
-    text-align: center;
-    /*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 80px;
-    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  width: 60%;
+  margin: auto;
+  height: 80%;
+  padding: 0px 120px;
+  text-align: center;
+  /*インラインブロック要素の子要素を左右で中央寄せ*/
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 .complete_figureSection {
-    margin: 20px;
+  margin: 20px;
 }
 
 .complete_figure {
-    display: inline-block;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    background: #FFF;
-    border: solid 10px #297DBA;
-    border-radius: 30px;
-    width: 500px;
-    margin: 0 auto;
+  display: inline-block;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  background: #FFF;
+  border: solid 10px #297DBA;
+  border-radius: 30px;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .complete_figureText1 {
-    font-weight: bold;
-    margin: 15px 0;
+  font-weight: bold;
+  margin: 15px 0;
 }
 
 .complete_figureText2 {
-    margin: 20px;
+  margin: 20px;
 }
 
 .complete_checkmark-img {
-    width: 60px;
-    height: 60px;
+  width: 60px;
+  height: 60px;
 
 }
 
@@ -122,249 +216,249 @@ body {
 .complete_flowSection {}
 
 .complete_flowHead {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .complete_flowHeadText {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .complete_flowHead-img {
-    height: 60px;
+  height: 60px;
 }
 
 .complete_flowContentText1 {
-    background-color: rgba(244, 244, 244, 0.8);
-    padding: 0.5em 1em;
-    margin: 10px;
-    font-weight: bold;
-    border: solid 0.5px rgba(0, 0, 0, 0.8);
-    color: #cecece;
-    font-weight: bold;
-    box-shadow: 2px 2px 4px gray;
+  background-color: rgba(244, 244, 244, 0.8);
+  padding: 0.5em 1em;
+  margin: 10px;
+  font-weight: bold;
+  border: solid 0.5px rgba(0, 0, 0, 0.8);
+  color: #cecece;
+  font-weight: bold;
+  box-shadow: 2px 2px 4px gray;
 }
 
 .complete_flowContentText2 {
-    background-color: rgba(244, 244, 244, 0.8);
-    padding: 0.5em 1em;
-    margin: 10px;
-    font-weight: bold;
-    border: solid 0.8px rgba(0, 0, 0, 0.8);
-    font-weight: bold;
-    box-shadow: 2px 2px 4px gray;
+  background-color: rgba(244, 244, 244, 0.8);
+  padding: 0.5em 1em;
+  margin: 10px;
+  font-weight: bold;
+  border: solid 0.8px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  box-shadow: 2px 2px 4px gray;
 }
 
 .complete_flowContentPolygon {
-    width: 150px;
+  width: 150px;
 }
 
 /* 選択企業一覧ページ */
-.check-table th,.check-table td{
-    border-right: none !important;
-    border-left: none !important;
-    border-top: none !important;
-  }
-  
-  body{
-    background-color:#d9d9d9 ;
-    margin: 120px;
-  }
-  
-  .check-wrapper{
-    background-color: #fff;
-    border-radius: 5%;
-  }
-  
-  .check-inner{
-    padding: 60px;
-  }
-  
-  .check-title{
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .check-title-sent{
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .check-table-container{
-    margin-top: 20px;
-  }
-  
-  .check-table{
-    width: 100%;
-  }
-  
-  .check-table-head{
-    height: 40px;
-    background-color: #ddd;
-  }
-  
-  .check-table-item{
-    height: 60px;
-  }
-  
-  .check-item{
-    padding: 10px;
-  }
-  
-  .check-delete-button{
-    background-color: #27b;
-    color: #fff;
-    width: 60px;
-    height: 30px;
-  }
-  
-  .check-next-box{
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-  }
-  
-  .check-next-button{
-    height: 40px;
-    width: 170px;
-    background-color: #ed4;
-  }
-  
+.check-table th, .check-table td {
+  border-right: none !important;
+  border-left: none !important;
+  border-top: none !important;
+}
 
-  .final-wrapper {
-    background-color: #fff;
-    border-radius: 5%;
-  }
-  
-  .final-inner {
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .final-company {
-    width: 550px;
-  }
-  
-  .final-company-title-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .final-company-title {
-    font-size: 18px;
-  }
-  
-  .final-company-table {
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    height: 80px;
-    margin-bottom: 5px;
-  }
-  
-  .final-company-item-logo {
-    background-color: #27b;
-    width: 80px;
-    height: 35px;
-  }
-  
-  .final-company-item-service {
-    font-size: 16px;
-  }
-  
-  .final-company-item-name {
-    font-size: 10px;
-    margin-left: 20px;
-  }
-  
-  .final-person {
-    margin-top: 100px;
-  }
-  
-  .final-person-title-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .final-person-title {
-    font-size: 18px;
-  }
-  
-  .final-person-table-container {
-    margin-top: 50px;
-  }
-  
-  .final-person-table {
-    width: 400px;
-    display: flex;
-  }
-  
-  .final-person-head {
-    height: 45px;
-    margin-bottom: 12px;
-  }
-  
-  .final-person-head {
-    width: 180px;
-    background-color: #d9d9d9;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .final-person-item {
-    width: 200px;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .final-person-sent {
-    font-weight: bold;
-  }
-  
-  .final-submit {
-    margin-top: 20px;
-  }
-  
-  .final-submit-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .final-submit-button {
-    width: 500px;
-    height: 40px;
-    background-color: #ed4;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .final-edit-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .final-edit-button {
-    width: 500px;
-    height: 40px;
-    background-color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-  }
+body {
+  background-color: #d9d9d9;
+  margin: 120px;
+}
+
+.check-wrapper {
+  background-color: #fff;
+  border-radius: 5%;
+}
+
+.check-inner {
+  padding: 60px;
+}
+
+.check-title {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-title-sent {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.check-table-container {
+  margin-top: 20px;
+}
+
+.check-table {
+  width: 100%;
+}
+
+.check-table-head {
+  height: 40px;
+  background-color: #ddd;
+}
+
+.check-table-item {
+  height: 60px;
+}
+
+.check-item {
+  padding: 10px;
+}
+
+.check-delete-button {
+  background-color: #27b;
+  color: #fff;
+  width: 60px;
+  height: 30px;
+}
+
+.check-next-box {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.check-next-button {
+  height: 40px;
+  width: 170px;
+  background-color: #ed4;
+}
+
+
+.final-wrapper {
+  background-color: #fff;
+  border-radius: 5%;
+}
+
+.final-inner {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-company {
+  width: 550px;
+}
+
+.final-company-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.final-company-title {
+  font-size: 18px;
+}
+
+.final-company-table {
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 80px;
+  margin-bottom: 5px;
+}
+
+.final-company-item-logo {
+  background-color: #27b;
+  width: 80px;
+  height: 35px;
+}
+
+.final-company-item-service {
+  font-size: 16px;
+}
+
+.final-company-item-name {
+  font-size: 10px;
+  margin-left: 20px;
+}
+
+.final-person {
+  margin-top: 100px;
+}
+
+.final-person-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.final-person-title {
+  font-size: 18px;
+}
+
+.final-person-table-container {
+  margin-top: 50px;
+}
+
+.final-person-table {
+  width: 400px;
+  display: flex;
+}
+
+.final-person-head {
+  height: 45px;
+  margin-bottom: 12px;
+}
+
+.final-person-head {
+  width: 180px;
+  background-color: #d9d9d9;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.final-person-item {
+  width: 200px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.final-person-sent {
+  font-weight: bold;
+}
+
+.final-submit {
+  margin-top: 20px;
+}
+
+.final-submit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.final-submit-button {
+  width: 500px;
+  height: 40px;
+  background-color: #ed4;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.final-edit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.final-edit-button {
+  width: 500px;
+  height: 40px;
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
