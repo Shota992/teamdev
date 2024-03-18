@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-container">
+                <div class="card-container reverse">
                     <figure class="card-figure">
                         <img src="../assets/img/top2.png" alt="エージェント企業の選び方の画像" class="card-img">
                     </figure>
@@ -99,7 +99,15 @@
             </section>
             <section>
                 <div>
-                    
+                    <div class="top_list_head">
+                        <h2 class="top_list_title">エージェント企業一覧</h2>
+                    </div>
+                    <div class="top_list_div">
+                        <div class="top_list_item_1"><img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" ></div>
+                        <div class="top_list_item_2"><img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"></div>
+                        <div class="top_list_item_1"><img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" ></div>
+                        <div class="top_list_item_2"><img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"></div>
+                    </div>
                 </div>
             </section>
         </div>
