@@ -270,10 +270,15 @@ form {
   
   .student-main-table{
     margin-top: 40px;
+    border-collapse:collapse;
   }
   
-  .student-main-table-conainer{
+  .student-main-table-container{
     width: 100%;
+    table-layout: fixed;
+    overflow-x:auto;
+    overflow-y: auto;
+
   }
   
   .student-main-table-head{

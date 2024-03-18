@@ -1,4 +1,10 @@
 <!-- 学生情報閲覧ページ -->
+<?php
+require __DIR__ . '/../dbconnect.php';
+$students = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" href="./Eadmin.css" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
     <script src="./assets/js/script.js">
     </script>
 </head>
@@ -50,42 +57,20 @@
                             <td class="student-main-table-content">志望業界</td>
                             <td class="student-main-table-content">申込み日時</td>
                         </tr>
-                        <tr class="student-main-table-contents student-odd">
-                            <td class="student-main-table-content">倉富戸</td>
-                            <td class="student-main-table-content">クラフト</td>
-                            <td class="student-main-table-content">男</td>
-                            <td class="student-main-table-content">蔵大学</td>
-                            <td class="student-main-table-content">000-0000-0000</td>
-                            <td class="student-main-table-content">ccc@ccc.com</td>
-                            <td class="student-main-table-content">2025年卒</td>
-                            <td class="student-main-table-content">情報系</td>
-                            <td class="student-main-table-content">IT</td>
-                            <td class="student-main-table-content">20204/03/12 21:45</td>
-                        </tr>
-                        <tr class="student-main-table-contents student-even">
-                            <td class="student-main-table-content">倉富戸</td>
-                            <td class="student-main-table-content">クラフト</td>
-                            <td class="student-main-table-content">男</td>
-                            <td class="student-main-table-content">蔵大学</td>
-                            <td class="student-main-table-content">000-0000-0000</td>
-                            <td class="student-main-table-content">ccc@ccc.com</td>
-                            <td class="student-main-table-content">2025年卒</td>
-                            <td class="student-main-table-content">情報系</td>
-                            <td class="student-main-table-content">IT</td>
-                            <td class="student-main-table-content">20204/03/12 21:45</td>
-                        </tr>
-                        <tr class="student-main-table-contents student-odd">
-                            <td class="student-main-table-content">倉富戸</td>
-                            <td class="student-main-table-content">クラフト</td>
-                            <td class="student-main-table-content">男</td>
-                            <td class="student-main-table-content">蔵大学</td>
-                            <td class="student-main-table-content">000-0000-0000</td>
-                            <td class="student-main-table-content">ccc@ccc.com</td>
-                            <td class="student-main-table-content">2025年卒</td>
-                            <td class="student-main-table-content">情報系</td>
-                            <td class="student-main-table-content">IT</td>
-                            <td class="student-main-table-content">20204/03/12 21:45</td>
-                        </tr>
+                        <?php foreach ($students as $student) { ?>
+                            <tr class="student-main-table-contents student-odd">
+                                <td class="student-main-table-content"><?=$student["name"];?></td>
+                                <td class="student-main-table-content"><?=$student["sub_name"];?></td>
+                                <td class="student-main-table-content"><?=$student["sex"];?></td>
+                                <td class="student-main-table-content"><?=$student["school"];?></td>
+                                <td class="student-main-table-content"><?=$student["tel_num"];?></td>
+                                <td class="student-main-table-content"><?=$student["mail"];?></td>
+                                <td class="student-main-table-content"><?=$student["graduation"];?></td>
+                                <td class="student-main-table-content"><?=$student["division"];?></td>
+                                <td class="student-main-table-content"><?=$student["desire"];?></td>
+                                <td class="student-main-table-content">20204/03/12 21:45</td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
