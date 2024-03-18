@@ -90,6 +90,11 @@ main {
 .card-container {
     display: flex;
     margin-top: 100px;
+    flex-direction: row;
+}
+
+.card-container.reverse {
+    flex-direction: row-reverse;
 }
 
 .card-figure {
@@ -139,6 +144,27 @@ main {
 .card-content-text p {
     text-align: left;
     line-height: 50px;
+}
+
+.top_list_head{
+    margin-top: 60px;
+}
+
+.top_list_title {
+    font-size: 25px;
+}
+
+.top_list_div {
+    display: flex;
+    margin-top: 60px;
+}
+
+.top_list_item_1 {
+    margin-left: 30px;
+}
+
+.top_list_item_2 {
+    margin-left: 30px;
 }
 
 /* section */
