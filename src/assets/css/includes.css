@@ -12,9 +12,20 @@ header {
 
 }
 
+.header_parent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 
 .header_logo {
-    width: 100px;
+    width: 160px;
+    height: 50px;
+}
+
+.header_logo_boozer {
+    width: 280px;
     height: 50px;
 }
 
