@@ -61,7 +61,6 @@ CREATE TABLE if not exists  agent(
 );
 
 
-INTO user (id, content, image, supplement) VALUES
 INSERT INTO user (id,user_id,email,passwords) VALUES
     (1,1,'aaa@gmail.com','aaa'),
     (2,2,'bbb@gmail.com','bbb'),
@@ -109,11 +108,6 @@ INSERT INTO agent(id, mail,password,agent_id)VALUES
     (6,'fff@gmail.com','fff@gmail.com',6),
     (7,'ggg@gmail.com','ggg@gmail.com',7),
     (8,'hhh@gmail.com','hhh@gmail.com',8);
-
-
-
-
-
 
 
 -- docker compose exec db bash
