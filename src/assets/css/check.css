@@ -1,0 +1,78 @@
+/* 選択企業一覧ページ */
+.check-table th, .check-table td {
+    
+  }
+  
+  body {
+    background-color: #d9d9d9;
+    margin: 120px;
+  }
+  
+  .check-wrapper {
+    background-color: #fff;
+    border-radius: 5%;
+  }
+  
+  .check-inner {
+    padding: 60px;
+  }
+  
+  .check-title {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .check-title-sent {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .check-table-container {
+    margin-top: 20px;
+  }
+  
+  .check-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .check-table-head {
+    height: 40px;
+    background-color: #ddd;
+  }
+  
+  .check-table-item {
+    height: 60px;
+  }
+  
+  .check-item {
+    padding: 10px;
+  }
+
+.check-company-item-name{
+    margin-left: 40px;
+    font-size: 14px;
+}
+  
+  .check-delete-button {
+    background-color: #27b;
+    color: #fff;
+    width: 60px;
+    height: 30px;
+  }
+  
+  .check-next-box {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .check-next-button {
+    height: 40px;
+    width: 170px;
+    background-color: #ed4;
+  }
