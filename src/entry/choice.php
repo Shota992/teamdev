@@ -1,4 +1,25 @@
 <!-- 総合・特化選択ページ -->
+<?php
+require __DIR__ . '/../dbconnect.php';
+$users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
+$infos = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
+$choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+if (isset($_POST["search_site"])){
+$search_site = isset($_POST["search_site"]);
+
+    //実行
+$sql="SELECT * FROM info WHERE site_name like '%{$search_site}%' ";
+$in = $dbh->prepare($sql);
+$in->execute();
+$infos = $in->fetchAll(PDO::FETCH_ASSOC);
+
+}else{
+    $infos=array();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -537,17 +558,21 @@
                                 企業名の検索
                             </p>
                             <div class="kyc-search-bar">
-                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off">
+                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search_site']) ){ echo $_POST['search_site']; } ?>">
                             </div>
                         </div>
                         <div class="submit-container">
-                            <button class="submit">検索</button>
+                            <button class="submit">
+                                <input type="submit" name="search" value="検索">
+                            </button>
                         </div>
+                        <?php foreach ($infos as $info){?>
                         <div class="search-result">
-                            <div class="sub-search-image"></div>
-                            <div class="sub-search-title">企業名</div>
+                            <div class="sub-search-image"><?=$info["logo"];?></div>
+                            <div class="sub-search-title"><?=$info["site_name"];?></div>
                             <button class="sub-search-choice">追加</button>
                         </div>
+                        <?php }?>
                     </div>
                 </div>
                 <div class="finished">

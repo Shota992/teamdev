@@ -2,6 +2,17 @@
 <?php
 require __DIR__ . '/../dbconnect.php';
 $students = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
+$agents = $dbh->query("SELECT * FROM agent")->fetchAll(PDO::FETCH_ASSOC);
+$choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
+
+
+$sql="SELECT student.*
+        FROM choice
+        INNER JOIN student on choice.user_id=student.user_id
+        WHERE choice.agent_id='2'";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -57,7 +68,7 @@ $students = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
                             <td class="student-main-table-content">志望業界</td>
                             <td class="student-main-table-content">申込み日時</td>
                         </tr>
-                        <?php foreach ($students as $student) { ?>
+                        <?php foreach ($agents as $student) { ?>
                             <tr class="student-main-table-contents student-odd">
                                 <td class="student-main-table-content"><?=$student["name"];?></td>
                                 <td class="student-main-table-content"><?=$student["sub_name"];?></td>
