@@ -70,14 +70,14 @@ INSERT INTO user (id,user_id,email,passwords) VALUES
     (6,6,'fff@gmail.com','fff');
 
 INSERT INTO info (id,agent_id,site_name,agent_name,logo,explanation,type,size,area,amounts,category,url,email) VALUES
-    (1,1,'doda','パーソルキャリア株式会社','aaa','aaaaaaaaaaaaaaaaaaaaaaaa','総合','大手','全国','1000万','','https://aaaa','aaa@gmail.com'),
-    (2,2,'リクナビ就活エージェント','リクルート株式会社','bbb','bbbbbbbbbbbbbbbbbbbb','総合','中小','東京','','500万','https://bbbb','bbb@gmail.com'),
-    (3,3,'doda','パーソルキャリア株式会社','ccc','cccccccccccccccccccc','総合','中小','全国','','2000万','https://cccc','ccc@gmail.com'),
-    (4,4,'リクナビ就活エージェント','リクルート株式会社','ddd','dddddddddddddddddddd','総合','大手','東京','','500万','https://dddd','ddd@gmail.com'),
-    (5,5,'doda','パーソルキャリア株式会社','eee','eeeeeeeeeeeeeeeeeeeee','特化','','東京','女性','500万','https://eeee','eee@gmail.com'),
-    (6,6,'リクナビ就活エージェント','リクルート株式会社','fff','fffffffffffffffffffff','特化','','全国','IT','500万','https://ffff','fff@gmail.com'),
-    (7,7,'doda','パーソルキャリア株式会社','ggg','ggggggggggggggggggggg','特化','','大阪','税理士','1000万','https://gggg','ggg@gmail.com'),
-    (8,8,'リクナビ就活エージェント','リクルート株式会社','hhh','hhhhhhhhhhhhhhhhhhhh','特化','','全国','外資系','200万','https://hhhh','hhh@gmail.com');
+    (1,1,'doda','パーソルキャリア株式会社','aaa','aaaaaaaaaaaaaaaaaaaaaaaa','総合','大手','全国','100万','','https://aaaa','aaa@gmail.com'),
+    (2,2,'リクナビ就活エージェント','リクルート株式会社','bbb','bbbbbbbbbbbbbbbbbbbb','総合','中小','東京','200万','','https://bbbb','bbb@gmail.com'),
+    (3,3,'doda','パーソルキャリア株式会社','ccc','cccccccccccccccccccc','総合','中小','全国','300万','','https://cccc','ccc@gmail.com'),
+    (4,4,'リクナビ就活エージェント','リクルート株式会社','ddd','dddddddddddddddddddd','総合','大手','東京','400万','','https://dddd','ddd@gmail.com'),
+    (5,5,'doda','パーソルキャリア株式会社','eee','eeeeeeeeeeeeeeeeeeeee','特化','','東京','500万','女性','https://eeee','eee@gmail.com'),
+    (6,6,'リクナビ就活エージェント','リクルート株式会社','fff','fffffffffffffffffffff','特化','','全国','600万','IT','https://ffff','fff@gmail.com'),
+    (7,7,'doda','パーソルキャリア株式会社','ggg','ggggggggggggggggggggg','特化','','大阪','700万','税理士','https://gggg','ggg@gmail.com'),
+    (8,8,'リクナビ就活エージェント','リクルート株式会社','hhh','hhhhhhhhhhhhhhhhhhhh','特化','','全国','800万','外資系','https://hhhh','hhh@gmail.com');
 
 INSERT INTO student(id,user_id,name,sub_name,sex,school,tel_num,mail,graduation,division,desire)VALUES
     (1,1,'倉富戸','クラフト','男','蔵大学','000-0000-0000','aaa@gmail.com','2025','文系','商社'),
