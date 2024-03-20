@@ -1,4 +1,3 @@
-<!-- 学生ログインページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
 $users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
@@ -6,7 +5,7 @@ $users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // バリデーション
+
     if (empty($_POST['email'])) {
     $message = 'メールアドレスは必須項目です。';
     } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -17,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // データベースへの接続
+
     $stmt = $dbh->prepare('SELECT * FROM user WHERE email = :email');
     $stmt->bindValue(':email', $email);
     $stmt->execute();
     $user = $stmt->fetch();
 
-    // ユーザーが存在し、パスワードが正しいか確認
+
     if ($user && password_verify($password, $user["passwords"])) {
         session_start();
         $_SESSION['id'] = $user["id"];
@@ -72,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </main>
     <footer>
-        <?php 
+        <?php
         // include __DIR__ . '/../includes/footer2.php'; ?>
     </footer>
     <script>
