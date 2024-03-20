@@ -62,7 +62,7 @@ CREATE TABLE if not exists  agent(
 
 
 INSERT INTO user (id,user_id,email,passwords) VALUES
-    (1,1,'aaa@gmail.com','aaa'),
+    (1,1,'aaa@gmail.com','$2y$10$urwQ6DNl73feFkbn7udUB.pD.QJvZ52gpHs5EOYmw44t0wMZievpi'),
     (2,2,'bbb@gmail.com','bbb'),
     (3,3,'ccc@gmail.com','ccc'),
     (4,4,'ddd@gmail.com','ddd'),
