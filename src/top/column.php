@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <?php include_once '../includes/header1.php'; ?>
     <main>
         <div class="container">
             <!-- 目次 -->
@@ -189,6 +190,7 @@
             </section>
         </div>
     </main>
+    <?php include_once '../includes/footer1.php'; ?>
 </body>
 
 </html>
