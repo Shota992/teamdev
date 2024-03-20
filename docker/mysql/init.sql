@@ -63,11 +63,11 @@ CREATE TABLE if not exists  agent(
 
 INSERT INTO user (id,user_id,email,passwords) VALUES
     (1,1,'aaa@gmail.com','$2y$10$urwQ6DNl73feFkbn7udUB.pD.QJvZ52gpHs5EOYmw44t0wMZievpi'),
-    (2,2,'bbb@gmail.com','bbb'),
-    (3,3,'ccc@gmail.com','ccc'),
-    (4,4,'ddd@gmail.com','ddd'),
-    (5,5,'eee@gmail.com','eee'),
-    (6,6,'fff@gmail.com','fff');
+    (2,2,'bbb@gmail.com','$2y$10$JJ7XwCUQuk6QucSQp..ReOiOugVIfXGbpp.T5jAQksjxt4zeBqnpK'),
+    (3,3,'ccc@gmail.com','$2y$10$4fMuI1M1AhM7RwJWxogNPO9D9Un6J3ICw3JaBIoehbaeBkSQI4Dl2'),
+    (4,4,'ddd@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
+    (5,5,'eee@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
+    (6,6,'fff@gmail.com','$2y$10$.uvyB7bkfWNda4Kw1zv14ucnOzSedULx4cqs76ZPVKcir1JZ2hmue');
 
 INSERT INTO info (id,agent_id,site_name,agent_name,logo,explanation,type,size,area,amounts,category,url,email) VALUES
     (1,1,'doda','パーソルキャリア株式会社','aaa','aaaaaaaaaaaaaaaaaaaaaaaa','総合','大手','全国','100万','','https://aaaa','aaa@gmail.com'),
@@ -95,19 +95,19 @@ INSERT INTO choice(id,agent_id,user_id)VALUES
     (7,6,2);
 
 INSERT INTO craft(id,mail,password)VALUES
-    (1,'aaa@gmail.com','aaaaaa'),
-    (2,'bbb@gmail.com','bbbbbb'),
-    (3,'ccc@gmail.com','cccccc');
+    (1,'aaa@gmail.com','$2y$10$9lerfYbP.TR2uvxqq9OQ3uA/B92S9lt14qJbB9gekRtdihfCgw0SW'),
+    (2,'bbb@gmail.com','$2y$10$vUANQL4WKzHdfAET5nhQ8O/cs7FWJpxCHoK2CvHlY9G9RLSUWz/Qq'),
+    (3,'ccc@gmail.com','$2y$10$5SskWiIVhVn2jUNjxy/KbekxG.9xBSd8T5unbMMY.zWlj5pmyYWeC');
 
 INSERT INTO agent(id, mail,password,agent_id)VALUES
-    (1,'aaa@gmail.com','aaa@gmail.com',1),
-    (2,'bbb@gmail.com','bbb@gmail.com',2),
-    (3,'ccc@gmail.com','ccc@gmail.com',3),
-    (4,'ddd@gmail.com','ddd@gmail.com',4),
-    (5,'eee@gmail.com','eee@gmail.com',5),
-    (6,'fff@gmail.com','fff@gmail.com',6),
-    (7,'ggg@gmail.com','ggg@gmail.com',7),
-    (8,'hhh@gmail.com','hhh@gmail.com',8);
+    (1,'aaa@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
+    (2,'bbb@gmail.com','BBB',2),
+    (3,'ccc@gmail.com','CCC',3),
+    (4,'ddd@gmail.com','DDD',4),
+    (5,'eee@gmail.com','EEE',5),
+    (6,'fff@gmail.com','FFF',6),
+    (7,'ggg@gmail.com','GGG',7),
+    (8,'hhh@gmail.com','HHH',8);
 
 
 -- docker compose exec db bash
