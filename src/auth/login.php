@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user["passwords"])) {
         session_start();
         $_SESSION['id'] = $user["id"];
-        header('Location: /../../../top/top.php');
+        header('Location: /../../../top/aftertop.php');
         exit();
     } else {
       // 認証失敗: エラーメッセージをセット
