@@ -31,14 +31,14 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="student-wrapper">
         <div class="side-container">
             <nav class="index-side-contents">
-            <a href="/" class="side-content side-choiced">
+            <a href="#" class="side-content side-choiced">
                 <div class="side-sent side-choiced">学生情報一覧</div>
             </a>
-            <a href="/" class="side-content">
+            <a href="./password.php" class="side-content">
                 <div class="side-sent">パスワード変更
                 </div>
             </a>
-            <a href="/" class="side-content">
+            <a href="./../top/top.php" class="side-content">
                 <div class="side-sent">ログアウト</div>
             </a>
             </nav>
