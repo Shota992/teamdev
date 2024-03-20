@@ -66,13 +66,13 @@ $dbh=null;
                 <div class="side-sent">エージェント企業新規登録
                 </div>
             </a>
-            <a class="side-content">
+            <a href="./auth/newadmin.php" class="side-content">
                 <div class="side-sent">新規管理者登録</div>
             </a>
-            <a class="side-content">
+            <a href="./content.php" class="side-content">
                 <div class="side-sent">申込み内容一覧</div>
             </a>
-            <a class="side-content">
+            <a href="./auth/logout.php" class="side-content">
                 <div class="side-sent">ログアウト</div>
             </a>
             </div>
