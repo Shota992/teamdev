@@ -47,6 +47,12 @@ CREATE TABLE if not exists choice (
     user_id VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE if not exists choice_ing(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    agent_id VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE if not exists  craft(
     id INT PRIMARY KEY AUTO_INCREMENT,
     mail VARCHAR(255) NOT NULL,
@@ -86,6 +92,15 @@ INSERT INTO student(id,user_id,name,sub_name,sex,school,tel_num,mail,graduation,
     (4,4,'D川','でがわ','男','蔵大学','000-0000-0000','ddd@gmail.com','2027','心理学系','マスコミ');
 
 INSERT INTO choice(id,agent_id,user_id)VALUES
+    (1,1,3),
+    (2,4,3),
+    (3,6,3),
+    (4,2,1),
+    (5,3,1),
+    (6,8,2),
+    (7,6,2);
+
+INSERT INTO choice_ing(id,agent_id,user_id)VALUES
     (1,1,3),
     (2,4,3),
     (3,6,3),
