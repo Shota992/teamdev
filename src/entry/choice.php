@@ -8,9 +8,9 @@ $choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST["search_site"])){
-$search_site = isset($_POST["search_site"]);
+$search_site = $_POST["search_site"];
 
-    //実行
+//実行
 $sql="SELECT * FROM info WHERE site_name like '%{$search_site}%' ";
 $in = $dbh->prepare($sql);
 $in->execute();
