@@ -33,10 +33,25 @@ main {
     justify-content: flex-end;
 }
 
+.mainvisual-after {
+    background: url(../img/aftertop.png) center center /cover no-repeat;
+    height: 100vh;
+    padding: 170px 90px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .mainvisual-inner {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+.mainvisual-inner-after {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .mainvisual-head {
@@ -431,3 +446,4 @@ main {
     border-top: solid 2px #297DBA;
     border-bottom: solid 2px #297DBA;
 }
+

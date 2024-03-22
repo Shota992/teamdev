@@ -10,8 +10,8 @@
 <body>
 
     <main>
-        <section class="mainvisual">
-            <div class="mainvisual-inner">
+        <section class="mainvisual-after">
+            <div class="mainvisual-inner-after">
                 <div class="mainvisual-head">
                     <div class="mainvisual-head-div">
                             <h1 class="mainvisual-title">CRAFT</h1>
