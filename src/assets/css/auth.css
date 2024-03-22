@@ -8,12 +8,12 @@ body{
 
 main{
     background-color:#d9d9d9 ;
-    padding-top: 300px;
+    padding-top: 150px;
 }
 
 .container{
     background-color: #fff;
-    width: 33%;
+    width: 60%;
     margin: auto;
     height: 80%;
     padding: 100px;
@@ -24,6 +24,7 @@ main{
 
 .top-heading{
     display: inline-block;
+    font-weight: bold;
     margin-top: 0px;
     margin-bottom: 30px;
 }

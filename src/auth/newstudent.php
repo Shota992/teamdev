@@ -1,19 +1,30 @@
 <!-- 新規登録画面ページ -->
 <?php
-if (isset($_POST['user'])) {
-    $dsn = 'mysql:dbname=EC;charset=utf8';
-    $user = 'ユーザー名';
-    $password = 'パスワード';
-    $dbh = new PDO($dsn, $user, $password);
-    $stmt = $dbh->prepare("INSERT INTO USER VALUES(:user,:password,:name,:address,:tel)");
-    $stmt->bindParam(':user', $_POST['user']);
-    $stmt->bindParam(':password', $_POST['password']);
-    $stmt->bindParam(':name', $_POST['name']);
-    $stmt->bindParam(':address', $_POST['address']);
-    $stmt->bindParam(':tel', $_POST['tel']);
+require_once '../dbconnect.php';
+//フォームからの値をそれぞれ変数に代入
+$mail = $_POST['email'];
+$pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+//フォームに入力されたmailがすでに登録されていないかチェック
+$sql = "SELECT * FROM user WHERE email = :email";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':email', $mail);
+$stmt->execute();
+$member = $stmt->fetch();
+if ($member['email'] === $mail) {
+    $msg = '同じメールアドレスが存在します。';
+} else {
+    //登録されていなければinsert 
+    $sql = "INSERT INTO user(email, password) VALUES (:email, :password)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':password', $password);
     $stmt->execute();
+    $msg = '会員登録が完了しました';
 }
 ?>
+
+<h1><?php echo $msg; ?></h1><!--メッセージの出力-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +50,6 @@ if (isset($_POST['user'])) {
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
                 <button type="submit" disabled class="btn submit">新規登録</button>
-                <p style="text-align:center;margin-top: 1.5em;">※パスワードは半角英数字をそれぞれ１文字以上含んだ、８文字以上で設定してください。</p>
             </form>
         </div>
     </main>
