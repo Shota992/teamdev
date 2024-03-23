@@ -16,7 +16,6 @@
     ?>
     <main class="main-body">
         <div class="processContainer">
-            <!-- 見出し -->
             <section class="processTItle">
                 <div class="processTitle1">
                     企業比較→申込みの
