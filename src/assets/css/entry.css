@@ -119,8 +119,6 @@ body {
 }
 
 /* 今後の流れ */
-.complete_flowSection {}
-
 .complete_flowHead {
     display: flex;
     justify-content: center;
