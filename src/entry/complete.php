@@ -11,7 +11,10 @@
 </head>
 
 <body>
-    <main>
+    <?php
+    include_once '../includes/header2.php';
+    ?>
+    <main class="main-body">
         <div class="container">
             <!-- 申し込みが完了しました -->
             <section class="complete_figure">
@@ -36,16 +39,17 @@
                     <div class="complete_flowContentText2">企業から電話かメールでご連絡</div>
                     <figure><img src="../assets/img/complete_flow.png" alt="" class="complete_flowContentPolygon"></figure>
                     <div class="complete_flowContentText2">あなたを担当する就活エージェントと顔合わせ</div>
-
                 </div>
             </section>
             <!-- topページへ戻る -->
             <section class="complete_topSection">
                 <button class="btn submit">TOPページへ戻る</button>
-
             </section>
         </div>
     </main>
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 
 </html>
