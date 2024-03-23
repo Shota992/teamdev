@@ -14,9 +14,8 @@
     <?php
     include_once '../includes/header2.php';
     ?>
-    <main>
+    <main class="main-body">
         <div class="processContainer">
-            <!-- 見出し -->
             <section class="processTItle">
                 <div class="processTitle1">
                     企業比較→申込みの
@@ -110,7 +109,7 @@
                     <img src="../assets/img/process_steppolygon.png" alt="" class="processTryPolygon">
                 </div>
                 <div class="process-btn">
-                    <button class="btn">さっそくTry！</button>
+                    <button class="btn submit">さっそくTry！</button>
                 </div>
             </section>
         </div>

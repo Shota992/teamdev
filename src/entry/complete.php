@@ -11,19 +11,20 @@
 </head>
 
 <body>
+    <?php
+    include_once '../includes/header2.php';
+    ?>
     <main class="main-body">
-        <div class="complete-container">
+        <div class="container">
             <!-- 申し込みが完了しました -->
-            <section class="complete_figureSection">
-                <div class="complete_figure">
-                    <div class="complete_checkmark">
-                        <figure><img src="../assets/img/complete_checkmark.png" alt="" class="complete_checkmark-img"></figure>
-                    </div>
-                    <div class="complete_figureContent">
-                        <p class="complete_figureText1">申し込みが完了しました</p>
-                        <p class="complete_figureText2">お申込みありがとうございました。<br>
-                            お申込内容は履歴ページで確認できます。</p>
-                    </div>
+            <section class="complete_figure">
+                <div class="complete_checkmark">
+                    <figure><img src="../assets/img/complete_checkmark.png" alt="" class="complete_checkmark-img"></figure>
+                </div>
+                <div class="complete_figureContent">
+                    <p class="complete_figureText1">申し込みが完了しました</p>
+                    <p class="complete_figureText2">お申込みありがとうございました。<br>
+                        お申込内容は履歴ページで確認できます。</p>
                 </div>
             </section>
             <!-- 今後の流れ -->
@@ -46,6 +47,9 @@
             </section>
         </div>
     </main>
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 
 </html>
