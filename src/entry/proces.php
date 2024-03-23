@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    <?php
+    include_once '../includes/header2.php';
+    ?>
     <main>
         <div class="processContainer">
             <!-- 見出し -->
@@ -112,6 +115,9 @@
             </section>
         </div>
     </main>
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 
 </html>
