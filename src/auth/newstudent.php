@@ -1,29 +1,48 @@
 <!-- 新規登録画面ページ -->
 <?php
-require_once '../dbconnect.php';
-//フォームからの値をそれぞれ変数に代入
-$mail = $_POST['email'];
-$pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-//フォームに入力されたmailがすでに登録されていないかチェック
-$sql = "SELECT * FROM user WHERE email = :email";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':email', $mail);
-$stmt->execute();
-$member = $stmt->fetch();
-if ($member['email'] === $mail) {
-    $msg = '同じメールアドレスが存在します。';
-} else {
-    //登録されていなければinsert 
-    $sql = "INSERT INTO user(email, password) VALUES (:email, :password)";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':email', $email);
-    $stmt->bindValue(':password', $password);
-    $stmt->execute();
-    $msg = '会員登録が完了しました';
+require("../dbconnect.php");
+print_r('session_start()');
+
+// フォームが送信された場合の処理
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 入力されたメールアドレスとパスワードを取得
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // 入力チェック
+    $errors = [];
+    if (empty($email)) {
+        $errors['email'] = 'メールアドレスを入力してください';
+    }
+    if (empty($password)) {
+        $errors['password'] = 'パスワードを入力してください';
+    }
+
+    // メールアドレスの重複チェック
+    $stmt = $dbh->prepare('SELECT COUNT(*) AS cnt FROM user WHERE email = ?');
+    $stmt->execute([$email]);
+    $result = $stmt->fetch();
+    if ($result['cnt'] > 0) {
+        $errors['email'] = 'このメールアドレスはすでに登録されています';
+    }
+
+    // エラーがなければ新規登録処理を行う
+    if (empty($errors)) {
+        // パスワードをハッシュ化
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // ユーザー情報をデータベースに挿入
+        $stmt = $dbh->prepare('INSERT INTO user (email, passwords) VALUES (?, ?)');
+        $stmt->execute([$email, $hashed_password]);
+
+        // 登録完了後の処理を記述（例：登録完了画面へのリダイレクトなど）
+        header('Location: ../top/aftertop.php');
+        exit;
+    }
 }
 ?>
 
-<h1><?php echo $msg; ?></h1><!--メッセージの出力-->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,12 +63,18 @@ if ($member['email'] === $mail) {
                 <div class="form-tag">
                     <label for="email" class="form-label">ログインID（メールアドレス）</label>
                     <input type="email" name="email" class="email form-control" id="email">
+                    <?php if (!empty($errors['email'])) : ?>
+                        <p class="error"><?php echo $errors['email']; ?></p>
+                    <?php endif; ?>
                 </div>
                 <div class="form-tag">
                     <label for="password" class="form-label">パスワード</label>
                     <input type="password" name="password" id="password" class="form-control">
+                    <?php if (!empty($errors['password'])) : ?>
+                        <p class="error"><?php echo $errors['password']; ?></p>
+                    <?php endif; ?>
                 </div>
-                <button type="submit" disabled class="btn submit">新規登録</button>
+                <button type="submit"  class="btn submit">新規登録</button>
             </form>
         </div>
     </main>
