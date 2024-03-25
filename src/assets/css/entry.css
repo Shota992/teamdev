@@ -29,7 +29,7 @@
     font-weight: bold;
 }
 
-.processStepAll {}
+/* .processStepAll {} */
 
 .processStep1 {
     display: flex;
@@ -61,7 +61,7 @@
     gap: 30px;
 }
 
-.processNumber-img {}
+/* .processNumber-img {} */
 
 .processPolygon-img {
     width: 60px;
@@ -83,11 +83,11 @@
     margin: 20px 20px 20px 50px;
 }
 
-.processPersonImg {}
+/* .processPersonImg {}
 
 .processTry {}
 
-.processTry-img {}
+.processTry-img {} */
 
 .processTryPolygon {
     width: 80px;
@@ -264,6 +264,7 @@ body {
 .final-wrapper {
     background-color: #fff;
     border-radius: 5%;
+    width: 55%;
 }
 
 .final-inner {
@@ -368,6 +369,7 @@ body {
 .final-submit-container {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .final-submit-button {
@@ -376,12 +378,23 @@ body {
     background-color: #ed4;
     font-size: 20px;
     font-weight: bold;
+    border: 3px solid #000;
 }
+
+.final-submit-button:hover{
+    background-color: rgb(238, 198, 68);
+}
+
+.final-edit-button:hover{
+    background-color: rgb(238, 198, 68);
+} 
 
 .final-edit-container {
     display: flex;
     justify-content: center;
     margin-top: 40px;
+    text-align: center;
+    border: 3px solid #000;
 }
 
 .final-edit-button {
