@@ -1,19 +1,49 @@
 <!-- 新規登録画面ページ -->
 <?php
-if (isset($_POST['user'])) {
-    $dsn = 'mysql:dbname=EC;charset=utf8';
-    $user = 'ユーザー名';
-    $password = 'パスワード';
-    $dbh = new PDO($dsn, $user, $password);
-    $stmt = $dbh->prepare("INSERT INTO USER VALUES(:user,:password,:name,:address,:tel)");
-    $stmt->bindParam(':user', $_POST['user']);
-    $stmt->bindParam(':password', $_POST['password']);
-    $stmt->bindParam(':name', $_POST['name']);
-    $stmt->bindParam(':address', $_POST['address']);
-    $stmt->bindParam(':tel', $_POST['tel']);
-    $stmt->execute();
+require("../dbconnect.php");
+print_r('session_start()');
+
+// フォームが送信された場合の処理
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 入力されたメールアドレスとパスワードを取得
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // 入力チェック
+    $errors = [];
+    if (empty($email)) {
+        $errors['email'] = 'メールアドレスを入力してください';
+    }
+    if (empty($password)) {
+        $errors['password'] = 'パスワードを入力してください';
+    }
+
+    // メールアドレスの重複チェック
+    $stmt = $dbh->prepare('SELECT COUNT(*) AS cnt FROM user WHERE email = ?');
+    $stmt->execute([$email]);
+    $result = $stmt->fetch();
+    if ($result['cnt'] > 0) {
+        $errors['email'] = 'このメールアドレスはすでに登録されています';
+    }
+
+    // エラーがなければ新規登録処理を行う
+    if (empty($errors)) {
+        // パスワードをハッシュ化
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // ユーザー情報をデータベースに挿入
+        $stmt = $dbh->prepare('INSERT INTO user (email, passwords) VALUES (?, ?)');
+        $stmt->execute([$email, $hashed_password]);
+
+        // 登録完了後の処理を記述（例：登録完了画面へのリダイレクトなど）
+        header('Location: ../top/aftertop.php');
+        exit;
+    }
 }
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,13 +63,18 @@ if (isset($_POST['user'])) {
                 <div class="form-tag">
                     <label for="email" class="form-label">ログインID（メールアドレス）</label>
                     <input type="email" name="email" class="email form-control" id="email">
+                    <?php if (!empty($errors['email'])) : ?>
+                        <p class="error"><?php echo $errors['email']; ?></p>
+                    <?php endif; ?>
                 </div>
                 <div class="form-tag">
                     <label for="password" class="form-label">パスワード</label>
                     <input type="password" name="password" id="password" class="form-control">
+                    <?php if (!empty($errors['password'])) : ?>
+                        <p class="error"><?php echo $errors['password']; ?></p>
+                    <?php endif; ?>
                 </div>
-                <button type="submit" disabled class="btn submit">新規登録</button>
-                <p style="text-align:center;margin-top: 1.5em;">※パスワードは半角英数字をそれぞれ１文字以上含んだ、８文字以上で設定してください。</p>
+                <button type="submit"  class="btn submit">新規登録</button>
             </form>
         </div>
     </main>
