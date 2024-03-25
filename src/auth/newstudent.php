@@ -1,7 +1,6 @@
-<!-- 新規登録画面ページ -->
 <?php
 require("../dbconnect.php");
-print_r('session_start()');
+session_start();
 
 // フォームが送信された場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -55,31 +54,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <?php include_once '../includes/header3.php'; ?>
-    <main>
-        <div class="container">
-            <h1 class="top-heading">新規登録</h1>
-            <form action="../auth/newstudent.php" method="POST">
-                <div class="form-tag">
-                    <label for="email" class="form-label">ログインID（メールアドレス）</label>
-                    <input type="email" name="email" class="email form-control" id="email">
-                    <?php if (!empty($errors['email'])) : ?>
-                        <p class="error"><?php echo $errors['email']; ?></p>
-                    <?php endif; ?>
-                </div>
-                <div class="form-tag">
-                    <label for="password" class="form-label">パスワード</label>
-                    <input type="password" name="password" id="password" class="form-control">
-                    <?php if (!empty($errors['password'])) : ?>
-                        <p class="error"><?php echo $errors['password']; ?></p>
-                    <?php endif; ?>
-                </div>
-                <button type="submit"  class="btn submit">新規登録</button>
-            </form>
-        </div>
-    </main>
-    <?php
-    include_once '../includes/footer2.php'; ?>
+    <div class="wrap">
+        <?php include_once '../includes/header3.php'; ?>
+        <main>
+            <div class="container">
+                <h1 class="top-heading">新規登録</h1>
+                <form action="../auth/newstudent.php" method="POST">
+                    <div class="form-tag">
+                        <label for="email" class="form-label">ログインID（メールアドレス）</label>
+                        <input type="email" name="email" class="email form-control" id="email">
+                        <?php if (!empty($errors['email'])) : ?>
+                            <p class="error"><?php echo $errors['email']; ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-tag">
+                        <label for="password" class="form-label">パスワード</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                        <?php if (!empty($errors['password'])) : ?>
+                            <p class="error"><?php echo $errors['password']; ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <button type="submit" class="btn submit">新規登録</button>
+                </form>
+            </div>
+        </main>
+        <?php
+        include_once '../includes/footer2.php'; ?>
+    </div>
 </body>
 
 </html>

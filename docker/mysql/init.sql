@@ -3,8 +3,7 @@ CREATE DATABASE posse;
 USE posse;
 
 CREATE TABLE if not exists user (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id VARCHAR(255) NOT NULL,
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL,
     passwords VARCHAR(255)
 );
@@ -67,13 +66,13 @@ CREATE TABLE if not exists  agent(
 );
 
 
-INSERT INTO user (id,user_id,email,passwords) VALUES
-    (1,1,'aaa@gmail.com','$2y$10$urwQ6DNl73feFkbn7udUB.pD.QJvZ52gpHs5EOYmw44t0wMZievpi'),
-    (2,2,'bbb@gmail.com','$2y$10$JJ7XwCUQuk6QucSQp..ReOiOugVIfXGbpp.T5jAQksjxt4zeBqnpK'),
-    (3,3,'ccc@gmail.com','$2y$10$4fMuI1M1AhM7RwJWxogNPO9D9Un6J3ICw3JaBIoehbaeBkSQI4Dl2'),
-    (4,4,'ddd@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
-    (5,5,'eee@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
-    (6,6,'fff@gmail.com','$2y$10$.uvyB7bkfWNda4Kw1zv14ucnOzSedULx4cqs76ZPVKcir1JZ2hmue');
+INSERT INTO user (user_id,email,passwords) VALUES
+    (1,'aaa@gmail.com','$2y$10$urwQ6DNl73feFkbn7udUB.pD.QJvZ52gpHs5EOYmw44t0wMZievpi'),
+    (2,'bbb@gmail.com','$2y$10$JJ7XwCUQuk6QucSQp..ReOiOugVIfXGbpp.T5jAQksjxt4zeBqnpK'),
+    (3,'ccc@gmail.com','$2y$10$4fMuI1M1AhM7RwJWxogNPO9D9Un6J3ICw3JaBIoehbaeBkSQI4Dl2'),
+    (4,'ddd@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
+    (5,'eee@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
+    (6,'fff@gmail.com','$2y$10$.uvyB7bkfWNda4Kw1zv14ucnOzSedULx4cqs76ZPVKcir1JZ2hmue');
 
 INSERT INTO info (id,agent_id,site_name,agent_name,logo,explanation,type,size,area,amounts,category,url,email) VALUES
     (1,1,'doda','パーソルキャリア株式会社','aaa','aaaaaaaaaaaaaaaaaaaaaaaa','総合','大手','全国','100万','','https://aaaa','aaa@gmail.com'),
@@ -115,7 +114,7 @@ INSERT INTO craft(id,mail,password)VALUES
     (3,'ccc@gmail.com','$2y$10$5SskWiIVhVn2jUNjxy/KbekxG.9xBSd8T5unbMMY.zWlj5pmyYWeC');
 
 INSERT INTO agent(id, mail,password,agent_id)VALUES
-    (1,'aaa@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
+    (1,'mi3mi3king@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
     (2,'bbb@gmail.com','BBB',2),
     (3,'ccc@gmail.com','CCC',3),
     (4,'ddd@gmail.com','DDD',4),
