@@ -115,7 +115,7 @@ INSERT INTO craft(id,mail,password)VALUES
     (3,'ccc@gmail.com','$2y$10$5SskWiIVhVn2jUNjxy/KbekxG.9xBSd8T5unbMMY.zWlj5pmyYWeC');
 
 INSERT INTO agent(id, mail,password,agent_id)VALUES
-    (1,'aaa@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
+    (1,'mi3mi3king@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
     (2,'bbb@gmail.com','BBB',2),
     (3,'ccc@gmail.com','CCC',3),
     (4,'ddd@gmail.com','DDD',4),
