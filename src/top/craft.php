@@ -64,12 +64,12 @@
                                 ＜就活生側の不満＞
                             </p>
                             <p class="CRAFTpeople2">
-                                就活エージェントが自分に合っていないような気がする<br>
-                                電話やメールの回数が多い
+                                ・就活エージェントが自分に合っていないような気がする<br>
+                                ・電話やメールの回数が多い
                             </p>
                         </div>
                         <div class="CRAFTarrow1">
-                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="">
+                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="150px" style="object-fit: contain;">
                         </div>
                         <div class="CRAFTfigureAgent">
                             <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_agent.png" alt="" style="width: 150px;"></figure>
@@ -80,8 +80,8 @@
                                 ＜就活エージェント側の不満＞
                             </p>
                             <p class="CRAFTpeople2">
-                                やる気のある学生なのかわからない<br>
-                                返事が来ない
+                                ・やる気のある学生なのかわからない<br>
+                                ・返事が来ない
                             </p>
                         </div>
                     </div>
@@ -102,12 +102,12 @@
                     <div class="CRAFTcircle">
                         <div class="CRAFTcircleList">
                             <div class="circleCRAFT">
-                                <figure><img class="CRAFTcircle-img" src="../assets/img/header_logo.png" alt=""></figure>
+                                <figure><img class="CRAFTcircle-img" src="../assets/img/header_logo.png" alt="" width="200px" style="object-fit: contain;"></figure>
                             </div>
                         </div>
                         <div class="arrowGroup1">
-                            <figure><img src="../assets/img/aboutCRAFT_arrow2.png" alt="" width="300"></figure>
-                            <figure><img src="../assets/img/aboutCRAFT_arrow3.png" alt="" width="300"></figure>
+                            <figure><img src="../assets/img/aboutCRAFT_arrow2.png" alt="" width="280"></figure>
+                            <figure><img src="../assets/img/aboutCRAFT_arrow3.png" alt="" width="280"></figure>
                         </div>
                         <div class="backCircle">
                         </div>
