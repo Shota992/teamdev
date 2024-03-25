@@ -1,6 +1,12 @@
 /* authのcss */
 
 /* authページ共通項目 */
+.wrap{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
+
 body {
     margin: 0;
     background-color: #d9d9d9;
@@ -9,12 +15,13 @@ body {
 main {
     background-color: #d9d9d9;
     padding-top: 150px;
+    flex: 1;
 }
 
 .container {
     background-color: #fff;
     width: 50%;
-    margin: auto;
+    margin: auto auto 50px auto;
     height: 80%;
     padding: 80px;
     text-align: center;

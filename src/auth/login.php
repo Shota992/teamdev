@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user && password_verify($password, $user["passwords"])) {
             session_start();
-            $_SESSION['id'] = $user["id"];
+            $_SESSION['user_id'] = $user["user_id"];
             header('Location: /../../../top/aftertop.php');
             exit();
         } else {
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <div class="wrap">
     <?php
     include_once '../includes/header3.php'; ?>
     <main>
@@ -85,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             })
         })
     </script>
+    </div>
 </body>
 
 </html>
