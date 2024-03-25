@@ -14,7 +14,7 @@
     <?php
     include_once '../includes/header2.php';
     ?>
-    <main class="main-body">
+    <main class="process_main-body">
         <div class="processContainer">
             <section class="processTItle">
                 <div class="processTitle1">
@@ -109,7 +109,7 @@
                     <img src="../assets/img/process_steppolygon.png" alt="" class="processTryPolygon">
                 </div>
                 <div class="process-btn">
-                    <button class="btn submit">さっそくTry！</button>
+                    <button class="process_btn">さっそくTry！</button>
                 </div>
             </section>
         </div>
