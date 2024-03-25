@@ -14,8 +14,8 @@
     <?php
     include_once '../includes/header2.php';
     ?>
-    <main class="main-body">
-        <div class="container">
+    <main class="complete_main">
+        <div class="complete_container">
             <!-- 申し込みが完了しました -->
             <section class="complete_figure">
                 <div class="complete_checkmark">
@@ -43,7 +43,7 @@
             </section>
             <!-- topページへ戻る -->
             <section class="complete_topSection">
-                <button class="btn submit">TOPページへ戻る</button>
+                <button class="complete_btn">TOPページへ戻る</button>
             </section>
         </div>
     </main>
