@@ -1,28 +1,29 @@
 /* authのcss */
 
 /* authページ共通項目 */
-body{
+body {
     margin: 0;
-    background-color:#d9d9d9 ;
+    background-color: #d9d9d9;
 }
 
-main{
-    background-color:#d9d9d9 ;
+main {
+    background-color: #d9d9d9;
     padding-top: 150px;
 }
 
-.container{
+.container {
     background-color: #fff;
-    width: 60%;
+    width: 50%;
     margin: auto;
     height: 80%;
-    padding: 100px;
-    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 80px;
-    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.3);
+    padding: 80px;
+    text-align: center;
+    /*インラインブロック要素の子要素を左右で中央寄せ*/
+    border-radius: 70px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
-.top-heading{
+.top-heading {
     display: inline-block;
     font-weight: bold;
     margin-top: 0px;
@@ -34,7 +35,7 @@ form {
     flex-direction: column;
 }
 
-.form-tag{
+.form-tag {
     margin-bottom: 30px;
 }
 
@@ -67,7 +68,7 @@ form {
     background-color: #297dba;
     width: 80%;
     margin: 0 auto;
-    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 .submit:hover {
@@ -79,12 +80,12 @@ form {
 
 
 /* ユーザーログインページ */
-.CRAFT-img{
+.CRAFT-img {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.CRAFT-img img{
-    width: 300px;
-    height: auto;
+.CRAFT-img img {
+    width: 200px;
+    object-fit: contain;
 }
