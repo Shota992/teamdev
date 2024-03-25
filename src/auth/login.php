@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <div class="wrap">
     <?php
     include_once '../includes/header3.php'; ?>
     <main>
@@ -85,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             })
         })
     </script>
+    </div>
 </body>
 
 </html>
