@@ -1,6 +1,10 @@
 /* topフォルダ内にあるページのcss */
 
 /* topフォルダ内ページ共通項目 */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     background-color: #d9d9d9;
@@ -8,6 +12,10 @@ body {
 
 main {
     background-color: #d9d9d9
+}
+
+p {
+    white-space: nowrap;
 }
 
 .container {
@@ -27,7 +35,7 @@ main {
 .mainvisual {
     background: url(../img/mainvisual.jpg) center center /cover no-repeat;
     height: 100vh;
-    padding: 170px 90px;
+    padding: 340px 200px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -68,12 +76,12 @@ main {
 }
 
 .mainvisual-title {
-    font-size: 90px;
+    font-size: 106px;
     color: #fff;
 }
 
 .mainvisual-lead {
-    font-size: 40px;
+    font-size: 32px;
     color: #fff;
     margin-top: 30px;
 }
@@ -93,19 +101,29 @@ main {
 
 
 .mainvisual-button-title {
-    font-size: 37px;
+    font-size: 40px;
     font-weight: bold;
 }
 
-.mainvisual-button-lead {}
+.mainvisual-button-lead {
+    font-size: 20px;
+}
 
 
 /* TOPの紹介ページ */
 
 .card-container {
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     margin-top: 100px;
     flex-direction: row;
+    margin-top: 40px;
+    max-width: 980px;
+    padding: 0 24px;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
 }
 
 .card-container.reverse {
@@ -113,15 +131,28 @@ main {
 }
 
 .card-figure {
-    flex-grow: 1;
+    width: 100%;
+}
+
+.card-figure.reverse {
+    order: 2;
 }
 
 .card-img {
-    width: 300px;
+    width: 386px;
+    height: auto;
+    
+    
 }
 
 .card-content {
     flex-grow: 1;
+    max-width: 1000px;
+    padding: 30px;
+}
+
+.card-content.reverse {
+    order: 1;
 }
 
 .card-content-head {
@@ -129,36 +160,36 @@ main {
     text-align: center;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .card-content-title {
-    font-size: 27px;
+    font-size: 20px;
     font-weight: bold;
     color: #297DBA;
+    width: 80%;
 }
 
 .card-content-button {
-    margin-left: 30px;
+    /* margin-left: 30px; */
     background-color: #297DBA;
     color: #fff;
-    padding: 5px 20px;
+    font-size: 12px;
+    padding: 5px ;
     border-radius: 50px;
-    
+    width: 20%;
 }
 
 .card-content-text {
     display: flex;
-    width: 100%;
-    height: 100%;
     flex-flow: column;
-    align-items: center;
-    justify-content: center;
     
 }
 
 .card-content-text p {
     text-align: left;
     line-height: 50px;
+    font-size: 12px;
 }
 
 .top_list_head{
@@ -169,18 +200,34 @@ main {
     font-size: 25px;
 }
 
-.top_list_div {
+
+.slider-container {
+    overflow: hidden;
+}
+
+.slider {
+    width: 100%;
+    position: relative;
+}
+
+.slides {
     display: flex;
-    margin-top: 60px;
+    width: 200%;
 }
 
-.top_list_item_1 {
-    margin-left: 30px;
+.slide {
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
 }
 
-.top_list_item_2 {
-    margin-left: 30px;
+.slide-img {
+    margin-left: 20px;
+    width: 100%;
 }
+
+
+
 
 /* section */
 
@@ -446,3 +493,4 @@ main {
     border-top: solid 2px #297DBA;
     border-bottom: solid 2px #297DBA;
 }
+
