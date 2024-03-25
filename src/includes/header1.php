@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/includes.css">
 </head>
+
 <body>
-<header>
-        <div class="logo">
+    <header>
+        <h1>
             <a href="/">
                 <img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo">
             </a>
-        </div>
+        </h1>
         <nav class="header-nav">
             <ul class="header_nav_ul">
                 <li><a href="/" class="header_nav_li_1">CRAFTとは</a></li>
@@ -26,4 +28,5 @@
         </nav>
     </header>
 </body>
+
 </html>
