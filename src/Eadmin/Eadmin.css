@@ -45,9 +45,15 @@ body{
     margin: 0;
 }
 
-main{
+.main-body{
     background-color:#d9d9d9 ;
     padding: 240px 0;
+    width: 100%;
+    height: 100%;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container{
@@ -111,3 +117,180 @@ form {
 .submit:hover {
     background-color: #378c78f9;
 }
+
+.side-bar{
+    background-color: #3e9570;
+    width: 20%;
+}
+
+/* ulタグ */
+.side-nav-list{
+    padding-left: 0;
+    padding-top: 100px;
+}
+
+/* liタグ */
+.side-nav{
+    position:relative;
+    list-style: none;
+    padding: 48px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* aタグ */
+.side-nav a{
+    /* 要素全体をリンクにするための5行 */
+    position:absolute;
+    /* top:0;
+    left:0;
+    width:100%;
+    height:100%; */
+    text-decoration: none;
+    font-size: 22px;
+    color: #fff;
+    padding-right: 20px;
+}
+
+.head-title{
+    background-color: #3e9570;
+    display: block;
+    width: 90%;
+    margin-bottom: 100px;
+}
+
+.title-text{
+    color: #fff;
+    margin: 9px auto 9px 20px;
+}
+
+.this-page{
+    background-color: #fff;
+}
+
+.this-page a{
+    color: #3e9570;
+}
+
+/* パスワード変更画面 */
+.all-main{
+    display: flex;
+}
+
+.content{
+    width: 40%;
+}
+
+.password{
+    padding: 140px 0 252px 0;
+}
+
+    /* 管理者画面のサイドバー */
+.side-container {
+    width: 350px;
+    height: 700px;
+    background-color: #397;
+    position: fixed;
+    padding-top: 100px;
+  }
+  
+  .side-content {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .side-sent {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  
+  .side-choiced {
+    background-color: #fff;
+    color: #397;
+  }
+  
+  
+  /* エージェント企業一覧ページ */
+  .body-c {
+    background-color: #ddd;
+  }
+  
+  .student-wrapper {
+    display: flex;
+  }
+
+  .student-main-container {
+    margin-left: 390px;
+    margin-right: 60px;
+    width: 100%;
+  }
+  
+.student-main-inner{
+    margin-top: 100px;
+}
+  
+  .student-main-head-container {
+    width: 830px;
+    height: 40px;
+    background-color: #397;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+  }
+  
+  .student-main-head-sent {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+.student-main-name{
+    height: 30px;
+    width: 800px;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.student-main-name-title{
+    font-size: 20px;
+    color: #397;
+}
+
+.student-main-name-line{
+    width: 100%;
+    height: 3px;
+    background-color: #397;
+}
+
+
+  
+  .student-main-table{
+    margin-top: 40px;
+    border-collapse:collapse;
+  }
+  
+  .student-main-table-container{
+    width: 100%;
+    table-layout: fixed;
+    overflow-x:auto;
+    overflow-y: auto;
+
+  }
+  
+  .student-main-table-head{
+    background-color: #bbb;
+    height: 30px;
+  }
+  
+  .student-main-table-contents{
+    height: 40px;
+  }
+  
+  .student-even{
+    background-color: #ccc;
+  }
+  
