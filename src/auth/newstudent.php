@@ -1,7 +1,6 @@
-<!-- 新規登録画面ページ -->
 <?php
 require("../dbconnect.php");
-print_r('session_start()');
+session_start();
 
 // フォームが送信された場合の処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
