@@ -10,22 +10,22 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-1">
         <h1>
             <a href="/">
                 <img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo">
             </a>
         </h1>
-        <nav class="header-nav">
-            <ul class="header_nav_ul">
-                <li><a href="/" class="header_nav_li_1">CRAFTとは</a></li>
-                <li><a href="/" class="header_nav_li_2">コラム</a></li>
+        <div class="header-nav1">
+            <ul class="header_nav_ul1">
+                <li><a href="/" class="headerNav_li_1">CRAFTとは</a></li>
+                <li><a href="/" class="headerNav_li_2">コラム</a></li>
             </ul>
-            <ul class="header_nav_ul">
-                <li><a href="/" class="header_nav_li_3">新規登録</a></li>
-                <li><a href="/" class="header_nav_li_4">ログイン</a></li>
+            <ul class="header_nav_ul2">
+                <li><a href="/" class="headerNav_li_3">新規登録</a></li>
+                <li><a href="/" class="headerNav_li_4">ログイン</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 </body>
 
