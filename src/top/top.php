@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/top.css">
-    <link rel="stylesheet" href="../assets/sp/style.css">
+    <link rel="stylesheet" href="../assets/sp/sp-top.css">
 </head>
 <body>
 
