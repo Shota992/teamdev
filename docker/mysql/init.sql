@@ -125,9 +125,14 @@ INSERT INTO agent(id, mail,password,agent_id)VALUES
 
 
 -- docker compose exec db bash
+
+-- ここからがsqlの更新（つまり、web上で色々テーブル内容変えても、sqlに書かれている通りのテーブルに作り直される）
 -- cd docker-entrypoint-initdb.d
 -- mysql -u root -p < init.sql
 -- root
+-- ここまで
+
+-- （web上でテーブル操作した時はここから）
 -- mysql -u root -p
 -- root
 -- use posse
