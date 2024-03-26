@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <?php include_once '../includes/header1.php'; ?>
+    <?php 
+    include_once '../includes/header1.php';
+    ?>
     <main>
         <div class="container">
             <!-- 目次 -->
@@ -155,11 +157,11 @@
                                 <br>
                                 <br>
                                 【総合型】総合型の就活エージェントは、幅広い業界・職種の求人を扱っています。<br>
-                                　　　　　就活の始めから終わりまで、トータルでサポートしてくれるのが特徴です。<br>
+                                        就活の始めから終わりまで、トータルでサポートしてくれるのが特徴です。<br>
                                 <br>
                                 【特化型】特化型の就活エージェントは、特定の業界・職種に特化しています。<br>
-                                　　　　　その業界・職種に詳しいアドバイザーが、就活をサポートしてくれるのが<br>
-                                　　　　　特徴です。<br>
+                                        その業界・職種に詳しいアドバイザーが、就活をサポートしてくれるのが<br>
+                                        特徴です。<br>
                                 <br>
                                 <br>
                                 就活生は、自分の志望業界や職種に合わせて、総合型か特化型の就活エージェントを<br>
@@ -190,7 +192,9 @@
             </section>
         </div>
     </main>
-    <?php include_once '../includes/footer1.php'; ?>
+    <?php 
+    include_once '../includes/footer1.php'; 
+    ?>
 </body>
 
 </html>

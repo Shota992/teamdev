@@ -101,7 +101,6 @@
             <small>&copy; POSSE,Inc</small>
         </div>
     </footer>
-    
 </body>
 
 </html>
