@@ -12,12 +12,12 @@
 
 <body>
     <main>
-        <header></header>
+        <?php include_once '../includes/header1.php'?>
         <!-- メインビジュアル -->
         <section class="CRAFTmainVisual">
             <div class="CRAFTmainVisual-inner">
                 <figure class="CRAFTmainVisual-img">
-                    <img src="../assets/img/aboutCRAFT_mainvisual.png" alt="" style="width: 100%;">
+                    <img src="../assets/img/aboutCRAFT_mainvisual.png" alt="" style="width: 100%;  margin-top: 80px;">
                 </figure>
             </div>
         </section>
@@ -163,6 +163,7 @@
             </section>
         </div>
     </main>
+    <?php include_once '../includes/footer1.php'?>
 </body>
 
 </html>

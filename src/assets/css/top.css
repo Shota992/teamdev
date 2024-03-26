@@ -23,7 +23,7 @@ p {
     width: 80%;
     margin: 100px auto;
     height: 90%;
-    padding: 100px;
+    padding: 60px 100px;
     text-align: center;
     /*インラインブロック要素の子要素を左右で中央寄せ*/
     border-radius: 80px;

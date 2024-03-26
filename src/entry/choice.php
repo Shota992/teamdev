@@ -8,9 +8,9 @@ $choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST["search_site"])){
-$search_site = isset($_POST["search_site"]);
+$search_site = $_POST["search_site"];
 
-    //実行
+//実行
 $sql="SELECT * FROM info WHERE site_name like '%{$search_site}%' ";
 $in = $dbh->prepare($sql);
 $in->execute();
@@ -553,6 +553,7 @@ $infos = $in->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <div class="sub-search-container">
+                        <form method="POST" action="./choice.php">
                         <div class="sub-search">
                             <p>
                                 企業名の検索
@@ -566,6 +567,7 @@ $infos = $in->fetchAll(PDO::FETCH_ASSOC);
                                 <input type="submit" name="search" value="検索">
                             </button>
                         </div>
+                        </form>
                         <?php foreach ($infos as $info){?>
                         <div class="search-result">
                             <div class="sub-search-image"><?=$info["logo"];?></div>

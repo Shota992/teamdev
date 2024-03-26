@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../assets/css/top.css">
 </head>
 <body>
-
+    <?php 
+    include_once '../includes/header2.php'; 
+    ?>
     <main>
         <section class="mainvisual-after">
             <div class="mainvisual-inner-after">
@@ -112,6 +114,8 @@
             </section>
         </div>
     </main>
-
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 </html>
