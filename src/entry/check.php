@@ -1,4 +1,3 @@
-<!-- 選択企業の一覧ページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
 $users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
@@ -14,21 +13,60 @@ $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $selects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// POSTリクエストが送信された場合の処理
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $dbh->beginTransaction();
+        
+        // 削除する企業のIDを取得
+        $id = $_POST["id"];
+
+        // choiceテーブルから対象の企業を削除
+        $sql = "DELETE FROM choice WHERE agent_id = :agent_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(":agent_id", $id);
+        $stmt->execute();
+
+        // infoテーブルから対象の企業を削除
+        // $sql = "DELETE FROM info WHERE id = :id";
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->bindParam(":id", $id);
+        // $stmt->execute();
+
+        $dbh->commit();
+        // メッセージをセットしてリダイレクト
+        $_SESSION['message'] = "企業の削除に成功しました。";
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    } catch (PDOException $e) {
+        $dbh->rollBack();
+        // エラーメッセージをセットしてリダイレクト
+        $_SESSION['message'] = "企業の削除に失敗しました。";
+        error_log($e->getMessage());
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
+}
+
 ?>
 
 
 <!DOCTYPE html>
-<lang ="ja">
-    <head>
+<lang html="ja">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>check</title>
+    <title>選択企業一覧確認</title>
     <link rel="stylesheet" href="/../assets/css/check.css" />
     <script src="../assets/scripts/common.js" defer>
     </script>
-    </head>
+</head>
     
 <body>
+    <?php
+    include_once '../includes/header2.php';
+    ?>
     <div class="check-wrapper">
         <div class="check-container">
             <div class="check-inner">
@@ -56,17 +94,23 @@ $selects = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="check-item"><?=$info["area"];?></td>
                             <td class="check-item"><?=$info["amounts"];?></td>
                             <td class="check-item">
-                                <button class="check-delete-button">削除</button>
+                                <form method="POST">
+                                    <input type="hidden" value="<?= $info["id"] ?>" name="id">
+                                    <input type="submit" value="削除" class="submit check-delete-button">
+                                </form>
                             </td>
                         </tr>
                         <?}?>
                     </table>
                 </div>
-        <div class="check-next-box">
-            <button class="check-next-button">個人情報入力画面へ</button>
-        </div>
+                <div class="check-next-box">
+                    <button class="check-next-button">個人情報入力画面へ</button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 </lang>
