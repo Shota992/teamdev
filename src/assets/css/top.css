@@ -468,8 +468,11 @@ p {
 .column-img {
     display: flex;
     align-items: flex-start;
-    width: 500px;
+    /* width: 500px; */
+    width: 100%;
+    max-width: 500px;
     margin: 40px 0px 20px 0px;
+    height: auto;
 }
 
 .columnList {
@@ -480,6 +483,12 @@ p {
 .column-text {
     margin-bottom: 40px;
     text-align: left;
+    /* width: 100%;
+    max-width: 100%; */
+    word-wrap: break-word;
+    line-height: 1.7;
+    margin-left: 40px;
+
 }
 
 .column-textTitle {
@@ -494,3 +503,13 @@ p {
     border-bottom: solid 2px #297DBA;
 }
 
+.column1Body-t {
+    width: 100%;
+    height: auto;
+}
+
+
+
+.text-bold {
+    font-weight: bold;
+}
