@@ -27,8 +27,7 @@ CREATE TABLE if not exists info (
 );
 
 CREATE TABLE if not exists student (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id VARCHAR(255) NOT NULL,
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     sub_name VARCHAR(255) NOT NULL,
     sex VARCHAR(255) NOT NULL,
@@ -84,11 +83,11 @@ INSERT INTO info (id,agent_id,site_name,agent_name,logo,explanation,type,size,ar
     (7,7,'doda','パーソルキャリア株式会社','ggg','ggggggggggggggggggggg','特化','','大阪','700万','税理士','https://gggg','ggg@gmail.com'),
     (8,8,'リクナビ就活エージェント','リクルート株式会社','hhh','hhhhhhhhhhhhhhhhhhhh','特化','','全国','800万','外資系','https://hhhh','hhh@gmail.com');
 
-INSERT INTO student(id,user_id,name,sub_name,sex,school,tel_num,mail,graduation,division,desire)VALUES
-    (1,1,'倉富戸','クラフト','男','蔵大学','000-0000-0000','aaa@gmail.com','2025','文系','商社'),
-    (2,2,'B田','べーだ','女','蔵大学','000-0000-0000','bbb@gmail.com','2025','工学系','IT'),
-    (3,3,'C木','ちぇき','女','蔵大学','000-0000-0000','ccc@gmail.com','2026','文学系','メーカー'),
-    (4,4,'D川','でがわ','男','蔵大学','000-0000-0000','ddd@gmail.com','2027','心理学系','マスコミ');
+INSERT INTO student(user_id,name,sub_name,sex,school,tel_num,mail,graduation,division,desire)VALUES
+    (1,'倉富戸','クラフト','男','蔵大学','000-0000-0000','aaa@gmail.com','2025','文系','商社'),
+    (2,'B田','べーだ','女','蔵大学','000-0000-0000','bbb@gmail.com','2025','工学系','IT'),
+    (3,'C木','ちぇき','女','蔵大学','000-0000-0000','ccc@gmail.com','2026','文学系','メーカー'),
+    (4,'D川','でがわ','男','蔵大学','000-0000-0000','ddd@gmail.com','2027','心理学系','マスコミ');
 
 INSERT INTO choice(id,agent_id,user_id)VALUES
     (1,1,3),
