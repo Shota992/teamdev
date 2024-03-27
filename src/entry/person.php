@@ -94,12 +94,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="form-tag">
                         <label for="sex" class="form-label">性別</label>
-                        <input type="checkbox" name="gender" id="male" />
-                        <label for="male" class="person_checkbox">男性</label>
-                        <input type="checkbox" name="gender" id="female" />
-                        <label for="female" class="person_checkbox">女性</label>
-                        <input type="checkbox" name="gender" id="none" />
-                        <label for="none" class="person_checkbox">回答しない</label>
+                        <input type="radio" name="gender" value="男性" id="male" />
+                        <label for="male" class="person_radio">男性</label>
+                        <input type="radio" name="gender" value="女性" id="female" />
+                        <label for="female" class="person_radio">女性</label>
+                        <input type="radio" name="gender" value="回答しない" id="none" />
+                        <label for="none" class="person_radio">回答しない</label>
                     </div>
                     <div class="form-tag">
                         <label for="school" class="form-label">学校名</label>
@@ -115,67 +115,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="form-tag">
                         <label for="graduation-year" class="form-label">卒業年度</label>
-                        <input type="checkbox" name="graduation_year" id="graduation-2025" />
-                        <label for="graduation-2025" class="person_checkbox">2025年卒</label>
-                        <input type="checkbox" name="graduation_year" id="graduation-2026" />
-                        <label for="graduation-2026" class="person_checkbox">2026年卒</label>
-                        <input type="checkbox" name="graduation_year" id="graduation-2027" />
-                        <label for="graduation-2027" class="person_checkbox">2027年卒</label>
-                        <input type="checkbox" name="graduation_year" id="graduation-else" />
-                        <label for="graduation-else" class="person_checkbox">その他</label>
+                        <input type="radio" name="graduation_year" value="2025" id="graduation-2025" />
+                        <label for="graduation-2025" class="person_radio">2025年卒</label>
+                        <input type="radio" name="graduation_year" value="2026" id="graduation-2026" />
+                        <label for="graduation-2026" class="person_radio">2026年卒</label>
+                        <input type="radio" name="graduation_year" value="2027" id="graduation-2027" />
+                        <label for="graduation-2027" class="person_radio">2027年卒</label>
+                        <input type="radio" name="graduation_year" value="その他" id="graduation-else" />
+                        <label for="graduation-else" class="person_radio">その他</label>
                     </div>
+
                     <div class="form-tag">
                         <label for="classification" class="form-label">文理区分</label>
                     </div>
                     <div class="form-tagContent">
-                        <input type="checkbox" name="division[]" value="literature" id="literature" />
+                        <input type="checkbox" name="division[]" value="文学系" id="literature" />
                         <label for="literature" class="person_checkbox">文学系</label>
-                        <input type="checkbox" name="division[]" value="education" id="education" />
+                        <input type="checkbox" name="division[]" value="教育学系" id="education" />
                         <label for="education" class="person_checkbox">教育学系</label>
-                        <input type="checkbox" name="division[]" value="psychology" id="psychology" />
+                        <input type="checkbox" name="division[]" value="心理学系" id="psychology" />
                         <label for="psychology" class="person_checkbox">心理学系</label>
-                        <input type="checkbox" name="division[]" value="linguistics" id="linguistics" />
+                        <input type="checkbox" name="division[]" value="言語学系" id="linguistics" />
                         <label for="linguistics" class="person_checkbox">言語学系</label>
-                        <input type="checkbox" name="division[]" value="politics" id="politics" />
+                        <input type="checkbox" name="division[]" value="政治学系" id="politics" />
                         <label for="politics" class="person_checkbox">政治学系</label>
-                        <input type="checkbox" name="division[]" value="economics" id="economics" />
+                        <input type="checkbox" name="division[]" value="経済学系" id="economics" />
                         <label for="economics" class="person_checkbox">経済学系</label>
-                        <input type="checkbox" name="division[]" value="law" id="law" class="form-control" />
+                        <input type="checkbox" name="division[]" value="法律学系" id="law" class="form-control" />
                         <label for="law" class="person_checkbox">法律学系</label>
-                        <input type="checkbox" name="division[]" value="management" id="management" />
+                        <input type="checkbox" name="division[]" value="経営学系" id="management" />
                         <label for="management" class="person_checkbox">経営学系</label>
-                        <input type="checkbox" name="division[]" value="science" id="science" />
+                        <input type="checkbox" name="division[]" value="理学系" id="science" />
                         <label for="science" class="person_checkbox">理学系</label>
-                        <input type="checkbox" name="division[]" value="engineering" id="engineering" />
+                        <input type="checkbox" name="division[]" value="工学系" id="engineering" />
                         <label for="engineering" class="person_checkbox">工学系</label>
-                        <input type="checkbox" name="division[]" value="pharmacy" id="pharmacy" />
+                        <input type="checkbox" name="division[]" value="薬学系" id="pharmacy" />
                         <label for="pharmacy" class="person_checkbox">薬学系</label>
-                        <input type="checkbox" name="division[]" value="medicine" id="medicine" />
+                        <input type="checkbox" name="division[]" value="医学系" id="medicine" />
                         <label for="medicine" class="person_checkbox">医学系</label>
-                        <input type="checkbox" name="division[]" value="others" id="others" />
+                        <input type="checkbox" name="division[]" value="その他" id="others" />
                         <label for="others" class="person_checkbox">その他</label>
                     </div>
                     <div class="form-tag">
                         <label for="classification" class="form-label" class="person_checkbox">志望業界</label>
                     </div>
                     <div class="form-tagContent">
-                        <input type="checkbox" name="desire[]" value="maker" id="maker" />
+                        <input type="checkbox" name="desire[]" value="メーカー" id="maker" />
                         <label for="maker" class="person_checkbox">メーカー</label>
-                        <input type="checkbox" name="desire[]" value="trading" id="trading" />
+                        <input type="checkbox" name="desire[]" value="商社" id="trading" />
                         <label for="trading" class="person_checkbox">商社</label>
-                        <input type="checkbox" name="desire[]" value="public-corporation" id="public-corporation" />
+                        <input type="checkbox" name="desire[]" value="官公庁・公社" id="public-corporation" />
                         <label for="public-corporation" class="person_checkbox">官公庁・公社</label>
-                        <input type="checkbox" name="desire[]" value="retail" id="retail" />
+                        <input type="checkbox" name="desire[]" value="小売" id="retail" />
                         <label for="retail" class="person_checkbox">小売</label>
-                        <input type="checkbox" name="desire[]" value="finance" id="finance" />
+                        <input type="checkbox" name="desire[]" value="金融" id="finance" />
                         <label for="finance" class="person_checkbox">金融</label>
-                        <input type="checkbox" name="desire[]" value="service" id="service" />
+                        <input type="checkbox" name="desire[]" value="サービス" id="service" />
                         <label for="service" class="person_checkbox">サービス</label>
-                        <input type="checkbox" name="desire[]" value="mass-media" id="mass-media" />
+                        <input type="checkbox" name="desire[]" value="マスコミ" id="mass-media" />
                         <label for="mass-media" class="person_checkbox">マスコミ</label>
                         <input type="checkbox" name="desire[]" value="IT" id="IT" />
                         <label for="IT" class="person_checkbox">IT</label>
-                        <input type="checkbox" name="desire[]" value="no-decide" id="no-decide" />
+                        <input type="checkbox" name="desire[]" value="未定" id="no-decide" />
                         <label for="no-decide" class="person_checkbox">未定</label>
                     </div>
                 </div>
