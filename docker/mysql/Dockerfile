@@ -19,4 +19,3 @@ COPY ./docker/mysql/my.cnf /etc/my.cnf
 # キャッシュと不要なファイルの削除
 RUN microdnf clean all
 
-
