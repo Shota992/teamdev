@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // データベースに接続
     require_once("../dbconnect.php");
-
     try {
         // データを挿入するSQL文を準備
         $sql = "INSERT INTO student (name, sub_name, sex, school, tel_num, mail, graduation, division, desire)

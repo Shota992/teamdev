@@ -1,32 +1,76 @@
-<!-- 総合・特化選択ページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
-$users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
-$infos = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
-$choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
+$choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
+$info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
+$choice_ing = $dbh->query("SELECT * FROM choice_ing")->fetchAll(PDO::FETCH_ASSOC);
+$user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /auth/login.php');
+    exit(); // リダイレクト後にスクリプトの実行を終了する
+}
+
+// ユーザーIDはセッションから取得
+$user_id = $_SESSION["id"];
+
+// 総合型企業の情報を取得
+$sql ="SELECT * FROM info WHERE type = '総合'";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$generals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// 特化型企業の情報を取得
+$sql1 ="SELECT * FROM info WHERE type = '特化'";
+$stmt = $dbh->prepare($sql1);
+$stmt->execute();
+$specials = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// // POSTリクエストがあるかどうかを確認
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["agent_id"])) {
+        // POSTデータからagent_idを取得
+        $agent_id = $_POST["agent_id"];
+
+        // SQL文の作成と実行（プリペアドステートメントを使用）
+        $sql = "INSERT INTO choice_ing (agent_id, user_id) VALUES (?, ?)";
+        $stmt = $dbh->prepare($sql);
+        if ($stmt->execute([$agent_id, $user_id])) {
+            echo"挿入できました";
+        } else {
+            echo "エラー: 挿入に失敗しました。";
+        }
+    }
+}else{
+    echo "POSTできてません";
+}
+
+
 
 
 
 if (isset($_POST["search_site"])){
-$search_site = $_POST["search_site"];
+    $search_site = $_POST["search_site"];
 
-//実行
-$sql="SELECT * FROM info WHERE site_name like '%{$search_site}%' ";
-$in = $dbh->prepare($sql);
-$in->execute();
-$infos = $in->fetchAll(PDO::FETCH_ASSOC);
+    //実行
+    $sql = "SELECT * FROM info WHERE site_name LIKE ?";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(["%$search_site%"]);
+    $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-}else{
-    $infos=array();
+} else {
+    $infos = array();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/choice.css">
+    <link rel="stylesheet" href="/assets/css/choice.css">
 <!--     <link rel="stylesheet" href="../assets/css/entry.css"> -->
     <title>choice</title>
     <link
@@ -74,94 +118,36 @@ $infos = $in->fetchAll(PDO::FETCH_ASSOC);
                         <div class="container">
                             <div class="slider-container">
                                 <ul class="slider " >
+                                <?php foreach ($generals as $info) { ?>
                                     <li class="slide">
                                         <div class="slider-img">
                                             <img src="" alt=""/>
                                         </div>
                                         <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
+                                            <p class="slider-title" id="companyName"><?=$info["site_name"];?></p>
                                         </div>
                                         <div class="slider-tags">
-                                            <div class="slider-tag big">
-                                                <p class="slider-tagsent">大手</p>
-                                            </div>
-                                            <div class="slider-tag small">
-                                                <p class="slider-tagsent">中小</p>
-                                            </div>
+                                            <?php if ($info['size'] == '大手') { ?>
+                                                <div class="slider-tag big">
+                                                    <p class="slider-tagsent">大手</p>
+                                                </div>
+                                            <?php } elseif ($info['size'] == '中小') { ?>
+                                                <div class="slider-tag small ">
+                                                    <p class="slider-tagsent">中小</p>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                         <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
+                                            <p><?=$info["agent_name"];?></p>
+                                            <p><?=$info["explanation"];?></p>
+                                            <p><?=$info["area"];?></p>
+                                            <p><?=$info["amounts"];?></p>
                                         </div>
+                                        <form class="question-form" method="POST" action="./choice.php">
+                                                <button type="submit" name="agent_id" value="<?=$info["agent_id"];?>">追加</button>
+                                        </form>
                                     </li>
-                                    <li class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag big">
-                                                <p class="slider-tagsent">大手</p>
-                                            </div>
-                                            <div class="slider-tag small">
-                                                <p class="slider-tagsent">中小</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </li>
-                                    <li class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag big">
-                                                <p class="slider-tagsent">大手</p>
-                                            </div>
-                                            <div class="slider-tag small">
-                                                <p class="slider-tagsent">中小</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </li>
-                                    <li class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag big">
-                                                <p class="slider-tagsent">大手</p>
-                                            </div>
-                                            <div class="slider-tag small">
-                                                <p class="slider-tagsent">中小</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </li>
+                                <?php } ?>
                                 </ul>
                             </div>
                             <div class="general-searches">
@@ -193,253 +179,74 @@ $infos = $in->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="special-container container">
                         <div class="slider-container">
-                                <div class="slider">
-                                    <div class="slide">
+                                <ul class="slider">
+                                <?php foreach ($specials as $info) { ?>
+                                    <li class="slide">
                                         <div class="slider-img">
                                             <img src="" alt=""/>
                                         </div>
                                         <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
+                                            <p class="slider-title" id="companyName">企業名</p>
                                         </div>
                                         <div class="slider-tags">
-                                            <div class="slider-tag red">
-                                                <p class="slider-tagsent">営業営業</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">IT</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">Web</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">税理士</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">会計士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">介護士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">リハビリ</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">保育士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">看護師</p>
-                                            </div>
-                                            <div class="slider-tag pink">
-                                                <p class="slider-tagsent">女性</p>
-                                            </div>
-                                            <div class="slider-tag purple">
-                                                <p class="slider-tagsent">外資系</p>
-                                            </div>
+                                            <?php if ($info['category'] == '営業') { ?>
+                                                <div class="slider-tag red eigyou">
+                                                    <p class="slider-tagsent">営業</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == 'IT') { ?>
+                                                <div class="slider-tag blue IT">
+                                                    <p class="slider-tagsent">IT</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == 'Web') { ?>
+                                                <div class="slider-tag blue Web">
+                                                    <p class="slider-tagsent">Web</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '税理士') { ?>
+                                                <div class="slider-tag yellow zei">
+                                                    <p class="slider-tagsent">税理士</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '会計士') { ?>
+                                                <div class="slider-tag yellow kaikei">
+                                                    <p class="slider-tagsent">会計士</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '介護士') { ?>
+                                                <div class="slider-tag green kaigo">
+                                                    <p class="slider-tagsent">介護士</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == 'リハビリ') { ?>
+                                                <div class="slider-tag green riha">
+                                                    <p class="slider-tagsent">リハビリ</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '保育士') { ?>
+                                                <div class="slider-tag green hoiku">
+                                                    <p class="slider-tagsent">保育士</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '看護師') { ?>
+                                                <div class="slider-tag green kango">
+                                                    <p class="slider-tagsent">看護師</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '女性') { ?>
+                                                <div class="slider-tag pink woman">
+                                                    <p class="slider-tagsent">女性</p>
+                                                </div>
+                                            <?php }elseif ($info['category'] == '外資系') { ?>
+                                                <div class="slider-tag purple gaisi">
+                                                    <p class="slider-tagsent">外資系</p>
+                                                </div>
+                                            <? } ?>
                                         </div>
                                         <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
+                                            <p><?=$info["agent_name"];?></p>
+                                            <p><?=$info["explanation"];?></p>
+                                            <p><?=$info["area"];?></p>
+                                            <p><?=$info["amounts"];?></p>
                                         </div>
-                                    </div>
-                                    <div class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag red">
-                                                <p class="slider-tagsent">営業営業</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">IT</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">Web</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">税理士</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">会計士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">介護士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">リハビリ</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">保育士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">看護師</p>
-                                            </div>
-                                            <div class="slider-tag pink">
-                                                <p class="slider-tagsent">女性</p>
-                                            </div>
-                                            <div class="slider-tag purple">
-                                                <p class="slider-tagsent">外資系</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </div>
-                                    <div class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag red">
-                                                <p class="slider-tagsent">営業営業</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">IT</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">Web</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">税理士</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">会計士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">介護士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">リハビリ</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">保育士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">看護師</p>
-                                            </div>
-                                            <div class="slider-tag pink">
-                                                <p class="slider-tagsent">女性</p>
-                                            </div>
-                                            <div class="slider-tag purple">
-                                                <p class="slider-tagsent">外資系</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </div>
-                                    <div class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag red">
-                                                <p class="slider-tagsent">営業営業</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">IT</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">Web</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">税理士</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">会計士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">介護士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">リハビリ</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">保育士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">看護師</p>
-                                            </div>
-                                            <div class="slider-tag pink">
-                                                <p class="slider-tagsent">女性</p>
-                                            </div>
-                                            <div class="slider-tag purple">
-                                                <p class="slider-tagsent">外資系</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </div>
-                                    <div class="slide">
-                                        <div class="slider-img">
-                                            <img src="" alt=""/>
-                                        </div>
-                                        <div class="slider-titles">
-                                            <p class="slider-title">企業名</p>
-                                        </div>
-                                        <div class="slider-tags">
-                                            <div class="slider-tag red">
-                                                <p class="slider-tagsent">営業営業</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">IT</p>
-                                            </div>
-                                            <div class="slider-tag blue">
-                                                <p class="slider-tagsent">Web</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">税理士</p>
-                                            </div>
-                                            <div class="slider-tag yellow">
-                                                <p class="slider-tagsent">会計士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">介護士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">リハビリ</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">保育士</p>
-                                            </div>
-                                            <div class="slider-tag green">
-                                                <p class="slider-tagsent">看護師</p>
-                                            </div>
-                                            <div class="slider-tag pink">
-                                                <p class="slider-tagsent">女性</p>
-                                            </div>
-                                            <div class="slider-tag purple">
-                                                <p class="slider-tagsent">外資系</p>
-                                            </div>
-                                        </div>
-                                        <div class="slider-contents">
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                            <p>aaaaaaaaaaaaa</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <form class="question-form" method="POST" action="./choice.php">
+                                                <button type="submit" name="agent_id" value="<?=$info["agent_id"];?>">追加</button>
+                                        </form>
+                                    </li>
+                                <?php } ?>
+                                </ul>
                             </div>
                             <div class="general-searches">
                                 <p class="general-search-sentence">絞り込み</p>
