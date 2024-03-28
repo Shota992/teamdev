@@ -1,151 +1,157 @@
 <?php
-// dbconnect.phpファイルの読み込み
-require_once "../../dbconnect.php";
+session_start();
+require_once '../../dbconnect.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-// POSTリクエストからデータを取得
-$site_name = $_POST['site-name'] ?? '';
-$agent_name = $_POST['agent-name'] ?? '';
-$explanation = $_POST['agent-overview'] ?? '';
-$type = $_POST['agent-kinds'] ?? '';
-$size = $_POST['agent-scale'] ?? '';
-$area = $_POST['region'] ?? '';
-$amounts = $_POST['job-opening'] ?? '';
-// $_POST['category'] の値が存在するかどうかをチェック
-$category = isset($_POST['category']) ? $_POST['category'] : '';
+    // POSTリクエストからデータを取得
+    $site_name = $_POST['site-name'] ?? '';
+    $agent_name = $_POST['agent-name'] ?? '';
+    $explanation = $_POST['agent-overview'] ?? '';
+    $type = $_POST['agent-kinds'] ?? '';
+    $size = $_POST['agent-scale'] ?? '';
+    $area = $_POST['region'] ?? '';
+    $amounts = $_POST['job-opening'] ?? '';
+    // $_POST['category'] の値が存在するかどうかをチェック
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
 
-// $_POST['category'] の値が配列であることを確認
-if (is_array($category)) {
-    $category = implode(',', $category);
-} else {
-    $category = ''; // もしくは適切なデフォルト値を設定する
+    // $_POST['category'] の値が配列であることを確認
+    if (is_array($category)) {
+        $category = implode(',', $category);
+    } else {
+        $category = ''; // もしくは適切なデフォルト値を設定する
+    }
+    $url = $_POST['agent-url'] ?? '';
+    $email = $_POST['agent-email'] ?? '';
+
+    // アップロード先ディレクトリのパス
+$upload_directory = "uploads/";
+
+// アップロード先ディレクトリが存在しない場合は作成する
+if (!file_exists($upload_directory)) {
+    mkdir($upload_directory, 0755, true); // 0755 は一般的なパーミッション設定です
 }
-$url = $_POST['agent-url'] ?? '';
-$email = $_POST['agent-email'] ?? '';
 
-// ファイルのアップロード処理
-$uploadOk = 1;
-$target_file = "";
-$imageFileType = "";
-
-if (!empty($_FILES["agent-logo"]["name"])) {
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["agent-logo"]["name"]);
+    // ファイルのアップロード処理
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $target_file = "";
+    $imageFileType = "";
+    $upload_error_message = "";
 
-    // ファイルが正しくアップロードされたかどうかを確認
-    $check = getimagesize($_FILES["agent-logo"]["tmp_name"]);
-    if ($check === false) {
-        echo "ファイルは画像ではありません。";
-        $uploadOk = 0;
-    }
+    if (!empty($_FILES["agent-logo"]["name"])) {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["agent-logo"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // ファイルがすでに存在するかどうかを確認し、存在していればアップロードしない
-    if (file_exists($target_file)) {
-        echo "すみません、ファイルは既に存在しています。";
-        $uploadOk = 0;
-    }
+        // ファイルが正しくアップロードされたかどうかを確認
+        $check = getimagesize($_FILES["agent-logo"]["tmp_name"]);
+        if ($check === false) {
+            $upload_error_message = "ファイルは画像ではありません。";
+            $uploadOk = 0;
+        }
 
-    // アップロードファイルのサイズを制限
-    if ($_FILES["agent-logo"]["size"] > 500000) {
-        echo "すみません、ファイルサイズが大きすぎます。";
-        $uploadOk = 0;
-    }
+        // ファイルがすでに存在するかどうかを確認し、存在していればアップロードしない
+        if (file_exists($target_file)) {
+            $upload_error_message = "すみません、ファイルは既に存在しています。";
+            $uploadOk = 0;
+        }
 
-    // 特定のファイル形式のみを許可
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif"
-    ) {
-        echo "すみません、JPG, JPEG, PNG & GIFファイルのみがアップロード可能です。";
-        $uploadOk = 0;
-    }
+        // 特定のファイル形式のみを許可
+        if (
+            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif"
+        ) {
+            $upload_error_message = "すみません、JPG, JPEG, PNG & GIFファイルのみがアップロード可能です。";
+            $uploadOk = 0;
+        }
 
-    // アップロードが許可されているかどうかを確認し、許可されている場合はファイルを移動
-    if ($uploadOk == 1) {
-        if (move_uploaded_file($_FILES["agent-logo"]["tmp_name"], $target_file)) {
-            echo "ファイル " . htmlspecialchars(basename($_FILES["agent-logo"]["name"])) . " がアップロードされました。";
-        } else {
-            echo "ファイルのアップロード中にエラーが発生しました。";
+        // アップロードが許可されているかどうかを確認し、許可されている場合はファイルを移動
+        if ($uploadOk == 1) {
+            if (move_uploaded_file($_FILES["agent-logo"]["tmp_name"], $target_file)) {
+                echo "ファイル " . htmlspecialchars(basename($_FILES["agent-logo"]["name"])) . " がアップロードされました。";
+            } else {
+                $upload_error_message = "ファイルのアップロード中にエラーが発生しました。";
+                $uploadOk = 0;
+            }
         }
     }
-}
 
-try {
-    // データベースへの接続を確立
-    $dbh = new PDO($dsn, $user, $password);
+    if ($uploadOk == 0) {
+        // アップロードエラーがある場合はエラーメッセージを表示して処理を終了
+        echo $upload_error_message;
+        exit;
+    }
 
-    // PDOエラーモードを例外モードに設定
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // データベースへの接続を確立
+        $dbh = new PDO($dsn, $user, $password);
 
-    // SQLクエリを準備
+        // PDOエラーモードを例外モードに設定
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $dbh->prepare("INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (:site_name, :agent_name, :logo, :explanation, :type, :size, :area, :amounts, :category, :url, :email)");
+        // SQLクエリを準備
 
-    // パラメータを割り当ててクエリを実行
-    $stmt->bindParam(':site_name', $site_name);
-    $stmt->bindParam(':agent_name', $agent_name);
-    $stmt->bindParam(':logo', $target_file);
-    $stmt->bindParam(':explanation', $explanation);
-    $stmt->bindParam(':type', $type);
-    $stmt->bindParam(':size', $size);
-    $stmt->bindParam(':area', $area);
-    $stmt->bindParam(':amounts', $amounts);
-    $stmt->bindParam(':category', $category);
-    $stmt->bindParam(':url', $url);
-    $stmt->bindParam(':email', $email);
+        $stmt = $dbh->prepare("INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (:site_name, :agent_name, :logo, :explanation, :type, :size, :area, :amounts, :category, :url, :email)");
 
-    // クエリを実行し、データを挿入
-    $stmt->execute();
+        // パラメータを割り当ててクエリを実行
+        $stmt->bindParam(':site_name', $site_name);
+        $stmt->bindParam(':agent_name', $agent_name);
+        $stmt->bindParam(':logo', $target_file);
+        $stmt->bindParam(':explanation', $explanation);
+        $stmt->bindParam(':type', $type);
+        $stmt->bindParam(':size', $size);
+        $stmt->bindParam(':area', $area);
+        $stmt->bindParam(':amounts', $amounts);
+        $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':url', $url);
+        $stmt->bindParam(':email', $email);
 
-    // データベース接続をクローズ
-    $pdo = null;
-// リダイレクト先のURLを設定
-$redirect_url = "../../Cadmin/index.php";
-// リダイレクト
-header("Location: $redirect_url");
-exit;
-} catch (PDOException $e) {
-// エラーハンドリング
-echo "エラー: " . $e->getMessage();
+        // クエリを実行し、データを挿入
+        $stmt->execute();
+
+        // データベース接続をクローズ
+        $dbh = null;
+        // リダイレクト先のURLを設定
+        $redirect_url = "/Cadmin/index.php";
+        // リダイレクト
+        header("Location: $redirect_url");
+        exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>エージェント企業新規登録画面</title>
-                    <link rel="stylesheet" href="../../assets/css/reset.css">
-                    <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
-                </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エージェント企業新規登録画面</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
+</head>
 
-                <body>
-                    <header class="header-all">
-                        <div header-top>
-                            <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
-                                <img src="../../assets/img/header_logo.png" alt="CRAFT" width="120" style="object-fit: contain;">
-                            </a>
-                        </div>
-                        <div class="header-down">
-                            <img src="../../assets/img/boozer_logo-black.png" alt="boozer" width="150" style="object-fit: contain;">
-                        </div>
-                    </header>
-                    <div class="create-wrapper">
-                        <aside class="create_side-container">
-                            <nav>
-                                <div class="side-sent">
-                                    <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
-                                    <div class="side-content"><a href="/">エージェント企業新規登録</a></div>
-                                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php"></a>新規管理者登録
+<body>
+    <header class="header-all">
+        <div header-top>
+            <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
+                <img src="../../assets/img/header_logo.png" alt="CRAFT" width="120" style="object-fit: contain;">
             </a>
         </div>
-        <div class="side-content"><a href="../../Cadmin/content.php">申込内容一覧</a></div>
-        <div class="side-content"><a href="../../Cadmin/auth/logout.php">ログアウト</a></div>
+        <div class="header-down">
+            <img src="../../assets/img/boozer_logo-black.png" alt="boozer" width="150" style="object-fit: contain;">
         </div>
-        </nav>
+    </header>
+    <div class="create-wrapper">
+        <aside class="create_side-container">
+            <nav>
+                <div class="side-sent">
+                    <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
+                    <div class="side-content"><a href="/">エージェント企業新規登録</a></div>
+                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php"></a>新規管理者登録
+                        </a>
+                    </div>
+                    <div class="side-content"><a href="../../Cadmin/content.php">申込内容一覧</a></div>
+                    <div class="side-content"><a href="../../Cadmin/auth/logout.php">ログアウト</a></div>
+                </div>
+            </nav>
         </aside>
         <main class="create-main">
             <div>
@@ -323,12 +329,12 @@ echo "エラー: " . $e->getMessage();
                     </div>
             </div>
         </main>
+    </div>
+    <footer>
+        <div class="footer-copyright">
+            <small>&copy; POSSE,Inc</small>
         </div>
-        <footer>
-            <div class="footer-copyright">
-                <small>&copy; POSSE,Inc</small>
-            </div>
-        </footer>
+    </footer>
 </body>
 
 </html>
