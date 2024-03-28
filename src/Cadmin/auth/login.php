@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($craft && password_verify($password, $craft["password"])) {
         session_start();
         $_SESSION['id'] = $craft["id"];
-        header('Location: ../index.php');
+        header('Location: /top/aftertop.php');
         exit();
     } else {
       // 認証失敗: エラーメッセージをセット
