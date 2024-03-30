@@ -6,17 +6,17 @@ $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
 } else {
-$user_id = $_SESSION['id'];
+$user_id = $_SESSION['user_id'];
 
 $sql ="SELECT info.*
         FROM choice
         INNER JOIN info ON choice.agent_id = info.agent_id
-        WHERE choice.user_id = :id";
+        WHERE choice.user_id = :user_id";
 $stmt = $dbh->prepare($sql);
-$stmt->bindValue(':id', $user_id);
+$stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

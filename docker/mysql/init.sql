@@ -97,14 +97,14 @@ INSERT INTO choice(id,agent_id,user_id)VALUES
     (6,8,2),
     (7,6,2);
 
-INSERT INTO choice_ing(id,agent_id,user_id)VALUES
-    (1,1,3),
-    (2,4,3),
-    (3,6,3),
-    (4,2,1),
-    (5,3,1),
-    (6,8,2),
-    (7,6,2);
+-- INSERT INTO choice_ing(id,agent_id,user_id)VALUES
+--     (1,1,3),
+--     (2,4,3),
+--     (3,6,3),
+--     (4,2,1),
+--     (5,3,1),
+--     (6,8,2),
+--     (7,6,2);
 
 INSERT INTO craft(id,mail,password)VALUES
     (1,'aaa@gmail.com','$2y$10$9lerfYbP.TR2uvxqq9OQ3uA/B92S9lt14qJbB9gekRtdihfCgw0SW'),

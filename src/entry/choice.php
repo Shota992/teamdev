@@ -6,14 +6,13 @@ $choice_ing = $dbh->query("SELECT * FROM choice_ing")->fetchAll(PDO::FETCH_ASSOC
 $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
 session_start();
-
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
-    exit(); // リダイレクト後にスクリプトの実行を終了する
-}
+    exit();
+}else{
 
 // ユーザーIDはセッションから取得
-$user_id = $_SESSION["id"];
+$user_id = $_SESSION["user_id"];
 
 // 総合型企業の情報を取得
 $sql ="SELECT * FROM info WHERE type = '総合'";
@@ -27,7 +26,7 @@ $stmt = $dbh->prepare($sql1);
 $stmt->execute();
 $specials = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// // POSTリクエストがあるかどうかを確認
+// POSTリクエストがあるかどうかを確認
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["agent_id"])) {
         // POSTデータからagent_idを取得
@@ -37,30 +36,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO choice_ing (agent_id, user_id) VALUES (?, ?)";
         $stmt = $dbh->prepare($sql);
         if ($stmt->execute([$agent_id, $user_id])) {
-            echo"挿入できました";
+            echo "挿入できました";
         } else {
             echo "エラー: 挿入に失敗しました。";
         }
     }
+}
+
+$searchQuery = '';
+
+// 検索フォームがサブミットされたかどうかをチェック
+if(isset($_POST['search-site'])) {
+    // POSTされた検索クエリを取得
+    $searchQuery = '%' . $_POST['search-site'] . '%';
+    // SQL文の作成と実行
+    $sql = "SELECT logo, site_name, agent_id FROM info WHERE site_name LIKE ?";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute([$searchQuery]);
+    $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($searchResults);
 }else{
-    echo "POSTできてません";
+    $searchResults = array();
+}
+
+
+// choice_ingテーブルのカラム数を取得
+$sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
+$stmt = $dbh->prepare($sql);
+$stmt->execute([$user_id]);
+$count = $stmt->fetchColumn();
+
+
+// $sql3 = "DELETE FROM choice_ing WHERE user_id = ?";
+//     $stmt = $dbh->prepare($sql3);
+//     if ($stmt->execute([$user_id])) {
+//         echo "テーブルの中身を削除しました";
+//     } else {
+//         echo "エラー: テーブルの中身の削除に失敗しました。";
+//     }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_POST['action'] == 'unload') {
+        // SQL3を実行
+        $sql3 = "DELETE FROM choice_ing WHERE user_id = ?";
+        $stmt = $dbh->prepare($sql3);
+        if ($stmt->execute([$user_id])) {
+            echo "テーブルの中身を削除しました";
+        } else {
+            echo "エラー: テーブルの中身の削除に失敗しました。";
+        }
+        exit();
+    }
 }
 
 
 
-
-
-if (isset($_POST["search_site"])){
-    $search_site = $_POST["search_site"];
-
-    //実行
-    $sql = "SELECT * FROM info WHERE site_name LIKE ?";
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(["%$search_site%"]);
-    $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} else {
-    $infos = array();
 }
 ?>
 
@@ -73,6 +103,10 @@ if (isset($_POST["search_site"])){
     <link rel="stylesheet" href="/assets/css/choice.css">
 <!--     <link rel="stylesheet" href="../assets/css/entry.css"> -->
     <title>choice</title>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -143,8 +177,9 @@ if (isset($_POST["search_site"])){
                                             <p><?=$info["area"];?></p>
                                             <p><?=$info["amounts"];?></p>
                                         </div>
-                                        <form class="question-form" method="POST" action="./choice.php">
-                                                <button type="submit" name="agent_id" value="<?=$info["agent_id"];?>">追加</button>
+                                        <form class="add-form" method="POST" action="./choice.php">
+                                            <input type="hidden" name="agent_id" value="<?=$info["agent_id"];?>">
+                                            <button type="button" class="add-button">追加</button>
                                         </form>
                                     </li>
                                 <?php } ?>
@@ -241,8 +276,9 @@ if (isset($_POST["search_site"])){
                                             <p><?=$info["area"];?></p>
                                             <p><?=$info["amounts"];?></p>
                                         </div>
-                                        <form class="question-form" method="POST" action="./choice.php">
-                                                <button type="submit" name="agent_id" value="<?=$info["agent_id"];?>">追加</button>
+                                        <form class="add-form" method="POST" action="./choice.php">
+                                            <input type="hidden" name="agent_id" value="<?=$info["agent_id"];?>">
+                                            <button type="button" class="add-button">追加</button>
                                         </form>
                                     </li>
                                 <?php } ?>
@@ -351,44 +387,140 @@ if (isset($_POST["search_site"])){
                     </div>
                 </div>
                 <div class="search">
-                    <div class="description">
-                        <div class="title">
-                            <p>step2　その他の企業も調べて追加する(任意)</p>
-                        </div>
-                        <div class="sentence">
-                            <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
-                        </div>
-                    </div>
-                    <div class="sub-search-container">
-                        <form method="POST" action="./choice.php">
-                        <div class="sub-search">
-                            <p>
-                                企業名の検索
-                            </p>
-                            <div class="kyc-search-bar">
-                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search_site']) ){ echo $_POST['search_site']; } ?>">
-                            </div>
-                        </div>
-                        <div class="submit-container">
-                            <button class="submit">
-                                <input type="submit" name="search" value="検索">
-                            </button>
-                        </div>
-                        </form>
-                        <?php foreach ($infos as $info){?>
-                        <div class="search-result">
-                            <div class="sub-search-image"><?=$info["logo"];?></div>
-                            <div class="sub-search-title"><?=$info["site_name"];?></div>
-                            <button class="sub-search-choice">追加</button>
-                        </div>
-                        <?php }?>
-                    </div>
-                </div>
-                <div class="finished">
-                    <button class="submit">完了</button>
+    <div class="description">
+        <div class="title">
+            <p>step2　その他の企業も調べて追加する(任意)</p>
+        </div>
+        <div class="sentence">
+            <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
+        </div>
+    </div>
+    <div class="sub-search-container">
+        <form method="POST" action="./choice.php">
+            <div class="sub-search">
+                <p>企業名の検索</p>
+                <div class="kyc-search-bar">
+                    <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search-site']) ){ echo $_POST['search-site']; } ?>">
                 </div>
             </div>
-        </div>
+            <div class="submit-container">
+                <button  name="search">
+                    <input type="submit" name="search" value="検索">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="search-result-container">
+    <div class="search-result">
+        <ul>
+            <?php foreach ($searchResults as $info) { ?>
+                <li>
+                    <img src="<?=$info["logo"];?>" alt="Logo">
+                    <p><?=$info["site_name"];?></p>
+                    <p><?=$info["agent_id"];?></p>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div> 
+    <div class="complete-button">
+        <button id="complete-btn">完了</button>
+        <p id="message" style="color: red;"></p>
+    </div>
+
+
+        <script>
+        $(document).ready(function() {
+            $('.add-button').click(function() {
+                var form = $(this).closest('form');
+                var formData = form.serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: formData,
+                    success: function(response) {
+                        // 成功時の処理
+                        console.log(response);
+                        alert('挿入が完了しました');
+                    },
+                    error: function(xhr, status, error) {
+                        // console.error(xhr.responseText);
+                        alert('エラーが発生しました。挿入に失敗しました。');
+                    }
+                });
+            });
+        });
+
+
+        $(document).ready(function() {
+        $('form').submit(function(event) {
+        event.preventDefault();
+
+
+        var searchQuery = $(this).find('input[name="search-site"]').val();
+        console.log(searchQuery);
+
+        $.ajax({
+            type: 'POST',
+            url: 'choice.php',
+            data: { 'search-site': searchQuery },
+            beforeSend: function() {
+                $('.search-result').empty();
+            },
+            success: function(response) {
+                $('.search-result').html(response);
+                alert('検索しました');
+            },
+            error: function(xhr, status, error) {
+                // console.error(xhr.responseText);
+                alert('エラーが発生しました。検索に失敗しました。');
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
+            // 完了ボタンがクリックされたときの処理
+            $('#complete-btn').click(function() {
+                // choice_ingテーブルのカラム数を取得
+                var recordCount = <?php echo count($choice_ing); ?>;
+
+                // カラム数が5個以上の場合
+                if (recordCount >= 5) {
+                    // edit.phpに遷移
+                    window.location.href = 'http://localhost:8080/entry/check.php';
+                } else {
+                    // メッセージを表示
+                    $('#message').text('5個以上追加しましょう');
+                }
+            });
+
+    // 完了ボタンを押さずにページを離れた場合、追加内容をクリアするための処理
+    $(window).on('beforeunload', function() {
+    return 'このページを離れてもよろしいですか？';
+});
+
+$(window).on('unload', function() {
+    $.ajax({
+        type: 'POST',
+        url: 'choice.php',
+        data: { action: 'unload' },
+        success: function(response) {
+            console.log('ページを離れるときの処理が完了しました');
+        },
+        error: function(xhr, status, error) {
+            console.error('ページを離れるときの処理でエラーが発生しました:', error);
+        }
+    });
+});
+
+
+        });
+
+
+    </script>
+
 
 </body>
 </html>

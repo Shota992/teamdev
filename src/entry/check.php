@@ -2,13 +2,22 @@
 require __DIR__ . '/../dbconnect.php';
 $users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 $infos = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
-$choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
+$choices = $dbh->query("SELECT * FROM choice_ing")->fetchAll(PDO::FETCH_ASSOC);
 
 
-$sql="SELECT info.*
-        FROM choice
-        INNER JOIN info on choice.agent_id=info.agent_id
-        WHERE choice.user_id='1'";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+}else{
+
+// ユーザーIDはセッションから取得
+$user_id = $_SESSION["user_id"];
+
+
+$sql = "SELECT DISTINCT info.*
+        FROM choice_ing
+        INNER JOIN info ON choice_ing.agent_id = info.agent_id";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $selects = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST["id"];
 
         // choiceテーブルから対象の企業を削除
-        $sql = "DELETE FROM choice WHERE agent_id = :agent_id";
+        $sql = "DELETE FROM choice_ing WHERE agent_id = :agent_id";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(":agent_id", $id);
         $stmt->execute();
@@ -46,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ' . $_SERVER['PHP_SELF']);
         exit;
     }
+}
+
 }
 
 ?>
@@ -78,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <tr class="check-table-head">
                             <th >企業ロゴ</th>
                             <th >サービス名/企業名</th>
+                            <th>総合/特化</th>
                             <th >企業規模</th>
                             <th >地域</th>
                             <th >求人数</th>
@@ -90,12 +102,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="check-item-service"><?=$info["site_name"];?></div>
                                 <div class="check-company-item-name"><?=$info["agent_name"];?></div>
                             </td>
+                            <td class="check-item"><?=$info["type"];?></td>
                             <td class="check-item"><?=$info["size"];?></td>
                             <td class="check-item"><?=$info["area"];?></td>
                             <td class="check-item"><?=$info["amounts"];?></td>
                             <td class="check-item">
                                 <form method="POST">
-                                    <input type="hidden" value="<?= $info["id"] ?>" name="id">
+                                    <input type="hidden" value="<?= $info["agent_id"] ?>" name="id">
                                     <input type="submit" value="削除" class="submit check-delete-button">
                                 </form>
                             </td>
@@ -103,9 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?}?>
                     </table>
                 </div>
-                <div class="check-next-box">
+                <a href="../entry/person.php" class="check-next-box">
                     <button class="check-next-button">個人情報入力画面へ</button>
-                </div>
+                </a>
             </div>
         </div>
     </div>
