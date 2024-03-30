@@ -1,4 +1,8 @@
 /* 総合特化選択画面　専用 */
+p{
+    opacity: 80%;
+}
+
 body{
     background-color:#d9d9d9 ;
     margin: 120px;
@@ -6,7 +10,7 @@ body{
 
 .wrapper{
     background-color: #fff;
-    border-radius: 5%;
+    border-radius: 80px;
 }
 
 .inner{
@@ -14,18 +18,21 @@ body{
 }
 
 .choices{
-    padding: 60px;
+    padding: 30px;
 }
 
 .description{
-    gap: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.sentence{
+    font-size: 16px;
+}
+
 .title{
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -53,7 +60,7 @@ margin-top: 50px;
 
 .slide{
     margin:10px;
-    width: 240px;
+    width: 600px;
     height:500px ;
     border: 3px solid black;
     border-radius: 5%;
@@ -70,26 +77,27 @@ margin-top: 50px;
     height: 30px;
     /* background-color: #AAA; */
     margin-top: -10px;
+    white-space: nowrap;
 }
 
 .slider-title{
-    font-size: 24px;
+
     font-weight: bold;
     display: flex;
     justify-content: center;
 }
 
+
 .slider-tags{
     height: 30px;
-    /* background-color: #CCC; */
     margin-top: 5px;
     display: flex;
 }
 
 .slider-tag{
-    height: 20px;
-    width: 55px;
-    border-radius: 10%;
+    height: 26px;
+    width: 60px;
+    border-radius: 10px;
     margin-left:10px ;
     display: flex;
     justify-content: center;
@@ -110,9 +118,13 @@ margin-top: 50px;
     background-color: #66bfff;
 }
 
+.tag_class {
+    display: none;
+}
+
 .slider-contents{
     width: all;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 .left-button{

@@ -12,12 +12,12 @@
 
 <body>
     <main>
-        <header></header>
+        <?php include_once '../includes/header1.php'?>
         <!-- メインビジュアル -->
         <section class="CRAFTmainVisual">
             <div class="CRAFTmainVisual-inner">
                 <figure class="CRAFTmainVisual-img">
-                    <img src="../assets/img/aboutCRAFT_mainvisual.png" alt="" style="width: 100%;">
+                    <img src="../assets/img/aboutCRAFT_mainvisual.png" alt="" style="width: 100%;  margin-top: 80px;">
                 </figure>
             </div>
         </section>
@@ -54,8 +54,8 @@
                             利用することにより自分に合ったエージェントと出会うことをサポートします。
                         </p>
                     </div>
-                    <ul class="CRAFTfigure">
-                        <li class="CRAFTfigureStudent">
+                    <div class="CRAFTfigure">
+                        <div class="CRAFTfigureStudent">
                             <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_student.png" alt="" style="width: 150px;"></figure>
                             <div class="CRAFTpeople">
                                 就活生
@@ -64,14 +64,14 @@
                                 ＜就活生側の不満＞
                             </p>
                             <p class="CRAFTpeople2">
-                                就活エージェントが自分に合っていないような気がする<br>
-                                電話やメールの回数が多い
+                                ・就活エージェントが自分に合っていないような気がする<br>
+                                ・電話やメールの回数が多い
                             </p>
-                        </li>
-                        <li class="CRAFTarrow1">
-                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="">
-                        </li>
-                        <li class="CRAFTfigureAgent">
+                        </div>
+                        <div class="CRAFTarrow1">
+                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="150px" style="object-fit: contain;">
+                        </div>
+                        <div class="CRAFTfigureAgent">
                             <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_agent.png" alt="" style="width: 150px;"></figure>
                             <div class="CRAFTpeople">
                                 就活エージェント
@@ -80,11 +80,11 @@
                                 ＜就活エージェント側の不満＞
                             </p>
                             <p class="CRAFTpeople2">
-                                やる気のある学生なのかわからない<br>
-                                返事が来ない
+                                ・やる気のある学生なのかわからない<br>
+                                ・返事が来ない
                             </p>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
                 <!-- CRAFTの仕組み -->
                 <div class="CRAFTlist2">
@@ -99,17 +99,24 @@
                             合ったエージェントに出会うことをサポートします。
                         </p>
                     </div>
-                    <div class="CRAFTcircle">>
-                            <div class="CRAFTcircleList">
-                                <div class="circleCRAFT">
-                                    <figure><img class="CRAFTcircle-img" src="../assets/img/header_logo.png" alt=""></figure>
-                                </div>
+                    <div class="CRAFTcircle">
+                        <div class="CRAFTcircleList">
+                            <div class="circleCRAFT">
+                                <figure><img class="CRAFTcircle-img" src="../assets/img/header_logo.png" alt="" width="200px" style="object-fit: contain;"></figure>
                             </div>
+                        </div>
+                        <div class="arrowGroup1">
+                            <figure><img src="../assets/img/aboutCRAFT_arrow2.png" alt="" width="280"></figure>
+                            <figure><img src="../assets/img/aboutCRAFT_arrow3.png" alt="" width="280"></figure>
+                        </div>
                         <div class="backCircle">
                         </div>
                         <div class="CRAFTcircleDown">
                             <div class="circleStudent">
                                 <figure><img class="CRAFTcircle-img" src="../assets/img/aboutCRAFT_student.png" alt=""></figure>
+                            </div>
+                            <div class="arrowGroup2">
+                                <figure><img src="../assets/img/aboutCRAFT_arrow4.png" alt="" width="150"></figure>
                             </div>
                             <div class="circleAgent">
                                 <figure><img class="CRAFTcircle-img" src="../assets/img/aboutCRAFT_agent.png" alt=""></figure>
@@ -125,38 +132,38 @@
                         </h2>
                     </div>
                     <div>
-                        <ul>
-                            <li class="CRAFTreason1">
-                                <div class="CRAFTreason-img">
-                                    <figure class="CRAFTreason1-img"><img src="../assets/img/aboutCRAFT_reason1.png" alt=""></figure>
-                                </div>
-                                <div class="CRAFTreason1text">
-                                    <h2 class="CRAFTreasonTitle">理由１</h2>
-                                    <div class="CRAFTreasonMain">可能性をつぶしません</div>
-                                    <p>消去法でフィルタリングするため<br>
-                                        選択肢や可能性を潰しません。
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="CRAFTreason2">
-                                <div class="CRAFTreason2text">
-                                    <h2 class="CRAFTreasonTitle">理由２</h2>
-                                    <div class="CRAFTreasonMain">0円でご利用できます</div>
-                                    <p>ご利用にあたり、費用は掛かりません。<br>
-                                        お問い合わせ＝契約ではなく、契約義務もないので、<br>
-                                        妥協せずに条件に合った1社を選ぶことができます。
-                                    </p>
-                                </div>
-                                <div class="CRAFTreason-img">
-                                    <figure class="CRAFTreason2-img"><img src="../assets/img/aboutCRAFT_reason2.png" alt=""></figure>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="CRAFTreason1">
+                            <div class="CRAFTreason-img">
+                                <figure class="CRAFTreason1-img"><img src="../assets/img/aboutCRAFT_reason1.png" alt="" width=200px height=200px></figure>
+                            </div>
+                            <div class="CRAFTreason1text">
+                                <h2 class="CRAFTreasonTitle">理由１</h2>
+                                <div class="CRAFTreasonMain">可能性をつぶしません</div>
+                                <p class="CRAFTreasonP">消去法でフィルタリングするため<br>
+                                    選択肢や可能性を潰しません。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="CRAFTreason2">
+                            <div class="CRAFTreason2text">
+                                <h2 class="CRAFTreasonTitle">理由２</h2>
+                                <div class="CRAFTreasonMain">0円でご利用できます</div>
+                                <p class="CRAFTreasonP">ご利用にあたり、費用は掛かりません。<br>
+                                    お問い合わせ＝契約ではなく、契約義務もないので、<br>
+                                    妥協せずに条件に合った1社を選ぶことができます。
+                                </p>
+                            </div>
+                            <div class="CRAFTreason-img" style="position: relative;">
+                                <figure class="CRAFTreason2-img"><img src="../assets/img/aboutCRAFT_reason2.png" alt="" style="position: absolute;left: 100px;bottom: 100px;"></figure>
+                                <figure><img src="../assets/img/aboutCRAFT_×.png" alt="" style="position: absolute;top: 0px;"></figure>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </main>
+    <?php include_once '../includes/footer1.php'?>
 </body>
 
 </html>
