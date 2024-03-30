@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="side-sent">
                     <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
                     <div class="side-content"><a href="/">エージェント企業新規登録</a></div>
-                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php"></a>新規管理者登録
+                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
                         </a>
                     </div>
                     <div class="side-content"><a href="../../Cadmin/content.php">申込内容一覧</a></div>
@@ -409,7 +409,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         });
     </script>
-</body>
 </body>
 
 </html>

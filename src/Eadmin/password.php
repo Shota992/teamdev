@@ -1,36 +1,44 @@
 <!-- パスワード変更ページ -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>パスワード変更</title>
+    <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="./Eadmin.css">
 </head>
 
 <body>
-    <header class="header">
-        <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
-            <img src="../assets/img/header_logo.png" alt="CRAFT">
-        </a>
-        <img src="../assets/img/boozer_logo-black.png" alt="boozer">
-    </header>
-    <main class="all-main">
-        <aside class="side-bar">
+    <div class="wrapper">
+        <header class="header-all">
+            <div header-top>
+                <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
+                    <img src="../../assets/img/header_logo.png" alt="CRAFT" width="120" style="object-fit: contain;">
+                </a>
+            </div>
+            <div class="header-down">
+                <img src="../../assets/img/boozer_logo-black.png" alt="boozer" width="150" style="object-fit: contain;">
+            </div>
+        </header>
+        <aside class="side-container">
             <nav>
-                <ul class="side-nav-list">
-                    <li class="side-nav"><a href="/" class="side-nav-link">学生情報一覧</a></li>
-                    <li class="side-nav this-page"><a href="/" class="side-nav-link">パスワード変更</a></li>
-                    <li class="side-nav"><a href="/" class="side-nav-link">ログアウト</a></li>
-                </ul>
+                <div class="side-sent">
+                    <div class="side-content"><a href="../Eadmin/student.php">学生情報一覧</a></div>
+                    <div class="side-choiced"><a href="/">パスワード変更</a></div>
+                    <div class="side-content"><a href="../Eadmin/logout.php">ログアウト</a></div>
+                </div>
             </nav>
         </aside>
-        <div class="main-body password">
-            <div class="head-title">
-                <h1 class="title-text">パスワード変更</h1>
+        <main class="main-body password">
+            <div class="student-main-head">
+                <div class="student-main-head-container">
+                    <div class="student-main-head-sent">パスワード変更</div>
+                </div>
             </div>
-            <div class="container content">
+            <div class="container">
                 <form method="POST">
                     <div class="form-tag">
                         <label for="password" class="form-label">現在のパスワード</label>
@@ -43,12 +51,13 @@
                     <button type="submit" disabled class="btn submit">変更</button>
                 </form>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
     <footer class="footer">
         <div class="footer-copyright">
             <small class="copyright">&copy; POSSE,Inc</small>
         </div>
     </footer>
 </body>
+
 </html>
