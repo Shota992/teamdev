@@ -8,7 +8,7 @@ $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $sql = "SELECT info.agent_id, info.site_name, student.name
         FROM choice
         INNER JOIN info ON choice.agent_id = info.agent_id
-        INNER JOIN student ON choice.user_id = student.id";
+        INNER JOIN student ON choice.user_id = student.user_id";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);

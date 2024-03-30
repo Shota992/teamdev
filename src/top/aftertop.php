@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php 
-    include_once '../includes/header2.php'; 
+    include_once '../includes/header2.php';
     ?>
     <main>
         <section class="mainvisual-after">
