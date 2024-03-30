@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="check-item-service"><?=$info["site_name"];?></div>
                                 <div class="check-company-item-name"><?=$info["agent_name"];?></div>
                             </td>
-                            <td class="check-item"><?=$info["size"];?></td>
+                            <td class="check-item"><?=$info["type"];?></td>
                             <td class="check-item"><?=$info["size"];?></td>
                             <td class="check-item"><?=$info["area"];?></td>
                             <td class="check-item"><?=$info["amounts"];?></td>
@@ -116,9 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?}?>
                     </table>
                 </div>
-                <div class="check-next-box">
+                <a href="../entry/person.php" class="check-next-box">
                     <button class="check-next-button">個人情報入力画面へ</button>
-                </div>
+                </a>
             </div>
         </div>
     </div>
