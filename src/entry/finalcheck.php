@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $dbh->commit();
 
         // 申し込みが完了したら指定のページにリダイレクトする
-        header("Location: /../entry/complete.php");
+        // header("Location: /../entry/complete.php");
         exit; // リダイレクト後に実行が継続されないようにする
     } catch (PDOException $e) {
         // トランザクションロールバック
@@ -59,8 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>企業一覧、個人情報の確認</title>
+    <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css" />
-    <script src="./assets/js/script.js" defer></script>
+    <!-- <script src="./assets/js/script.js" defer></script> -->
 </head>
 <body>
     <?php 
@@ -171,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     </div>
                     <div class="final-submit">
                         <div class="final-submit-container">
-                            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                            <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                 <button class="final-submit-button">申し込む</button>
                             </form>    
                         </div>
