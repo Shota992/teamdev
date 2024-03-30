@@ -1,122 +1,125 @@
 <?php
-session_start();
+// dbconnect.phpファイルを読み込む
 require_once '../../dbconnect.php';
+
+// POSTリクエストがあるかどうかを確認
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 画像を保存するディレクトリが存在しない場合は作成する
+    $upload_directory = "../../uploads/";
+    if (!file_exists($upload_directory)) {
+        mkdir($upload_directory, 0777, true);
+    }
 
-    // POSTリクエストからデータを取得
-    $site_name = $_POST['site-name'] ?? '';
-    $agent_name = $_POST['agent-name'] ?? '';
-    $explanation = $_POST['agent-overview'] ?? '';
-    $type = $_POST['agent-kinds'] ?? '';
-    $size = $_POST['agent-scale'] ?? '';
-    $area = $_POST['region'] ?? '';
-    $amounts = $_POST['job-opening'] ?? '';
-    // $_POST['category'] の値が存在するかどうかをチェック
-    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    // カテゴリが選択されている場合のみimplode()関数を適用する
+    $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
 
-    // $_POST['category'] の値が配列であることを確認
-    if (is_array($category)) {
-        $category = implode(',', $category);
+    // すべての項目が入力されているかどうかをチェックするフラグを初期化
+    $all_fields_filled = true;
+
+    // 必須項目が空であるかどうかをチェック
+    if (
+        empty($site_name) ||
+        empty($agent_name) ||
+        empty($agent_overview) ||
+        empty($agent_kinds) ||
+        ($agent_kinds !== "総合型" && empty($agent_scale)) ||
+        empty($region) ||
+        empty($job_opening) ||
+        empty($categories) ||
+        empty($agent_url) ||
+        empty($agent_email)
+    ) {
+        $all_fields_filled = false;
+    }
+
+    // フォームからのデータを取得
+    $site_name = $_POST['site-name'];
+    $agent_name = $_POST['agent-name'];
+    $agent_logo = $_FILES['agent-logo']['name'];
+    $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
+    $agent_overview = $_POST['agent-overview'];
+    $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
+    $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
+    $region = $_POST['region'];
+    $job_opening = $_POST['job-opening'];
+    // カテゴリが選択されている場合のみimplode()関数を適用する
+    $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+    $agent_url = $_POST['agent-url'];
+    $agent_email = $_POST['agent-email'];
+
+
+    // 必須項目が空であるかどうかをチェック
+    if (
+        empty($site_name) ||
+        empty($agent_name) ||
+        empty($agent_logo) ||
+        empty($agent_overview) ||
+        empty($agent_kinds) ||
+        ($agent_kinds !== "総合型" && empty($agent_scale)) ||
+        empty($region) ||
+        empty($job_opening) ||
+        empty($categories) ||
+        empty($agent_url) ||
+        empty($agent_email)
+    ) {
+        // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
+        echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
+        exit; // 処理を中断する
+    }
+
+    // 画像をサーバに保存
+    $target_file = $upload_directory . basename($agent_logo);
+    move_uploaded_file($agent_logo_tmp, $target_file);
+
+    // 総合型の場合、企業規模とカテゴリを空文字列に設定
+    if ($agent_kinds == "総合型") {
+        $agent_scale = '';
+        $categories = '';
     } else {
-        $category = ''; // もしくは適切なデフォルト値を設定する
-    }
-    $url = $_POST['agent-url'] ?? '';
-    $email = $_POST['agent-email'] ?? '';
-
-    // アップロード先ディレクトリのパス
-$upload_directory = "uploads/";
-
-// アップロード先ディレクトリが存在しない場合は作成する
-if (!file_exists($upload_directory)) {
-    mkdir($upload_directory, 0755, true); // 0755 は一般的なパーミッション設定です
-}
-
-    // ファイルのアップロード処理
-    $uploadOk = 1;
-    $target_file = "";
-    $imageFileType = "";
-    $upload_error_message = "";
-
-    if (!empty($_FILES["agent-logo"]["name"])) {
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["agent-logo"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        // ファイルが正しくアップロードされたかどうかを確認
-        $check = getimagesize($_FILES["agent-logo"]["tmp_name"]);
-        if ($check === false) {
-            $upload_error_message = "ファイルは画像ではありません。";
-            $uploadOk = 0;
-        }
-
-        // ファイルがすでに存在するかどうかを確認し、存在していればアップロードしない
-        if (file_exists($target_file)) {
-            $upload_error_message = "すみません、ファイルは既に存在しています。";
-            $uploadOk = 0;
-        }
-
-        // 特定のファイル形式のみを許可
-        if (
-            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
-            $upload_error_message = "すみません、JPG, JPEG, PNG & GIFファイルのみがアップロード可能です。";
-            $uploadOk = 0;
-        }
-
-        // アップロードが許可されているかどうかを確認し、許可されている場合はファイルを移動
-        if ($uploadOk == 1) {
-            if (move_uploaded_file($_FILES["agent-logo"]["tmp_name"], $target_file)) {
-                echo "ファイル " . htmlspecialchars(basename($_FILES["agent-logo"]["name"])) . " がアップロードされました。";
-            } else {
-                $upload_error_message = "ファイルのアップロード中にエラーが発生しました。";
-                $uploadOk = 0;
-            }
-        }
+        // カテゴリが選択されている場合のみimplode()関数を適用する
+        $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
     }
 
-    if ($uploadOk == 0) {
-        // アップロードエラーがある場合はエラーメッセージを表示して処理を終了
-        echo $upload_error_message;
-        exit;
-    }
+    // 総合型の場合、企業規模とカテゴリをnullに設定
+    // if ($agent_kinds == "総合型") {
+    // $agent_scale = null;
+    // $categories = null;
+    // }
 
-        // データベースへの接続を確立
-        $dbh = new PDO($dsn, $user, $password);
 
-        // PDOエラーモードを例外モードに設定
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // SQL文の準備
+    $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        // SQLクエリを準備
+    // プリペアドステートメントを作成
+    $stmt = $dbh->prepare($sql);
 
-        $stmt = $dbh->prepare("INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (:site_name, :agent_name, :logo, :explanation, :type, :size, :area, :amounts, :category, :url, :email)");
+    // パラメータをバインドしてSQLを実行
+    $stmt->bindParam(1, $site_name);
+    $stmt->bindParam(2, $agent_name);
+    $stmt->bindParam(3, $agent_logo);
+    $stmt->bindParam(4, $agent_overview);
+    $stmt->bindParam(5, $agent_kinds);
+    $stmt->bindParam(6, $agent_scale);
+    $stmt->bindParam(7, $region);
+    $stmt->bindParam(8, $job_opening);
+    $stmt->bindParam(9, $categories);
+    $stmt->bindParam(10, $agent_url);
+    $stmt->bindParam(11, $agent_email);
+    $stmt->execute();
 
-        // パラメータを割り当ててクエリを実行
-        $stmt->bindParam(':site_name', $site_name);
-        $stmt->bindParam(':agent_name', $agent_name);
-        $stmt->bindParam(':logo', $target_file);
-        $stmt->bindParam(':explanation', $explanation);
-        $stmt->bindParam(':type', $type);
-        $stmt->bindParam(':size', $size);
-        $stmt->bindParam(':area', $area);
-        $stmt->bindParam(':amounts', $amounts);
-        $stmt->bindParam(':category', $category);
-        $stmt->bindParam(':url', $url);
-        $stmt->bindParam(':email', $email);
+    // ステートメントを閉じる
+    $stmt->closeCursor();
 
-        // クエリを実行し、データを挿入
-        $stmt->execute();
+    // データベース接続を閉じる
+    $dbh = null;
 
-        // データベース接続をクローズ
-        $dbh = null;
-        // リダイレクト先のURLを設定
-        $redirect_url = "/Cadmin/index.php";
-        // リダイレクト
-        header("Location: $redirect_url");
-        exit;
+    // リダイレクト
+    header("Location: ../../../../Cadmin/index.php");
+    exit;
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -158,6 +161,10 @@ if (!file_exists($upload_directory)) {
                 <h1 class="create-title">エージェント企業新規登録</h1>
             </div>
             <div class="create-container">
+                <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && !$all_fields_filled) {
+                    echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
+                } ?>
                 <form action="" class="" method="POST" enctype="multipart/form-data">
                     <table class="table-res-form">
                         <div class="create-list">
@@ -198,7 +205,8 @@ if (!file_exists($upload_directory)) {
                                 <th><label for="agent-kinds" class="create_form-label">企業種類</label>
                                 </th>
                                 <td class="create_td2">
-                                    <select name="agent-kinds" class="create_select">
+                                    <select name="agent-kinds" class="create_select" id="agent-kinds">
+                                        <option value="">選択してください</option>
                                         <option>総合型</option>
                                         <option>特化型</option>
                                     </select>
@@ -208,10 +216,10 @@ if (!file_exists($upload_directory)) {
                         <div class="create-list">
                             <tr>
                                 <th>
-                                    <label for="agent-scale" class="create_form-label">企業規模</label>
+                                    <label for="agent-scale" class="create_form-label" id="agent-scale1">企業規模</label>
                                 </th>
                                 <td class="create_td2">
-                                    <select name="agent-scale" class="create_select">
+                                    <select name="agent-scale" class="create_select" id="agent-scale2">
                                         <option>大企業</option>
                                         <option>中・小企業</option>
                                     </select>
@@ -245,10 +253,10 @@ if (!file_exists($upload_directory)) {
                         <div class="create-list">
                             <tr>
                                 <th>
-                                    <label for="category" class="create_form-label">カテゴリ</label>
+                                    <label for="category" class="create_form-label" id="category1">カテゴリ</label>
                                 </th>
                                 <td class="create_td1">
-                                    <div class="form-tag" style="column-count: 4; text-align: left;">
+                                    <div class="form-tag" style="column-count: 4; text-align: left;" id="category2">
                                         <input type="checkbox" name="category[]" value="営業" id="category1" />
                                         <label for="category1" class="create_checkbox">営業</label>
                                         <input type="checkbox" name="category[]" value="IT" id="category2" />
@@ -323,10 +331,10 @@ if (!file_exists($upload_directory)) {
                                 <p>aaaaaaaaaaaaa</p>
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
-                            </di=>
                         </div>
                         <button type="submit" class="create_btn">新規登録</button>
                     </div>
+                </form>
             </div>
         </main>
     </div>
@@ -335,6 +343,73 @@ if (!file_exists($upload_directory)) {
             <small>&copy; POSSE,Inc</small>
         </div>
     </footer>
+    <script>
+        function validateForm() {
+            var siteName = document.getElementById('site-name').value;
+            var agentName = document.getElementById('agent-name').value;
+            var agentLogo = document.getElementById('agent-logo').value;
+            var agentOverview = document.getElementById('agent-overview').value;
+            var agentKinds = document.getElementById('agent-kinds').value;
+            var region = document.getElementById('region').value;
+            var jobOpening = document.getElementById('job-opening').value;
+            var agentUrl = document.getElementById('agent-url').value;
+            var agentEmail = document.getElementById('agent-email').value;
+
+            // 必須項目の入力チェック
+            // if (siteName === '' || agentName === '' || agentLogo === '' || agentOverview === '' || agentKinds === '' || region === '' || jobOpening === '' || agentUrl === '' || agentEmail === '') {
+            // alert('すべての項目を入力してください。');
+            // return false;
+            // }
+
+            // 総合型の場合、企業規模とカテゴリの入力チェックをスキップ
+            if (agentKinds === '総合型') {
+                return true;
+            }
+
+            // 企業規模とカテゴリの選択チェック
+            var agentScale = document.getElementById('agent-scale').value;
+            var categoryCheckboxes = document.querySelectorAll('input[name="category[]"]');
+            var categorySelected = false;
+            categoryCheckboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    categorySelected = true;
+                }
+            });
+
+            if (agentScale === '' || !categorySelected) {
+                alert('企業規模とカテゴリを選択してください。');
+                return false;
+            }
+
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const agentKindsSelect = document.getElementById('agent-kinds');
+            const category1Div = document.getElementById('category1'); // 新たに追加されたカテゴリ1の要素
+            const category2Div = document.getElementById('category2'); // 新たに追加されたカテゴリ2の要素
+            const agentScale1Div = document.getElementById('agent-scale1'); // 修正された企業規模1の要素
+            const agentScale2Div = document.getElementById('agent-scale2'); // 修正された企業規模2の要素
+
+            if (agentKindsSelect && category1Div && category2Div && agentScale1Div && agentScale2Div) { // 要素がすべて存在することを確認
+                agentKindsSelect.addEventListener('change', function() {
+                    if (this.value === '総合型') {
+                        category1Div.style.visibility = 'hidden'; // カテゴリ1を非表示
+                        category2Div.style.visibility = 'hidden'; // カテゴリ2を非表示
+                        agentScale1Div.style.visibility = 'hidden'; // 企業規模1を非表示
+                        agentScale2Div.style.visibility = 'hidden'; // 企業規模2を非表示
+                    } else if (this.value === '特化型') {
+                        category1Div.style.visibility = 'visible'; // カテゴリ1を表示
+                        category2Div.style.visibility = 'visible'; // カテゴリ2を表示
+                        agentScale1Div.style.visibility = 'visible'; // 企業規模1を表示
+                        agentScale2Div.style.visibility = 'visible'; // 企業規模2を表示
+                    }
+
+                });
+            }
+        });
+    </script>
+</body>
 </body>
 
 </html>
