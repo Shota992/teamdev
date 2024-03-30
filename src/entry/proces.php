@@ -11,9 +11,11 @@
 </head>
 
 <body>
-    <main>
+    <?php
+    include_once '../includes/header2.php';
+    ?>
+    <main class="process_main-body">
         <div class="processContainer">
-            <!-- 見出し -->
             <section class="processTItle">
                 <div class="processTitle1">
                     企業比較→申込みの
@@ -106,12 +108,15 @@
                 <div class="processTry-img">
                     <img src="../assets/img/process_steppolygon.png" alt="" class="processTryPolygon">
                 </div>
-                <div class="process-btn">
-                    <button class="btn">さっそくTry！</button>
-                </div>
+                <a href="../entry/choice.php" class="process-btn">
+                    <button class="process_btn">さっそくTry！</button>
+                </a>
             </section>
         </div>
     </main>
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 
 </html>

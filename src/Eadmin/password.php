@@ -8,6 +8,7 @@
     <title>パスワード変更</title>
     <link rel="stylesheet" href="./Eadmin.css">
 </head>
+
 <body>
     <header class="header">
         <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">

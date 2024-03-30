@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../assets/css/top.css">
 </head>
 <body>
-
+    <?php 
+    include_once '../includes/header2.php';
+    ?>
     <main>
         <section class="mainvisual-after">
             <div class="mainvisual-inner-after">
@@ -16,7 +18,7 @@
                     <div class="mainvisual-head-div">
                             <h1 class="mainvisual-title">CRAFT</h1>
                             <p class="mainvisual-lead">エージェント企業比較サイト</p>
-                        <a href="../entry/choice.php" class="mainvisual-button">
+                        <a href="../entry/proces.php" class="mainvisual-button">
                             <p class="mainvisual-button-title">新規登録</p>
                             <p class="mainvisual-button-lead">して企業に申し込み</p>
                         </a>
@@ -112,6 +114,8 @@
             </section>
         </div>
     </main>
-
+    <?php
+    include_once '../includes/footer1.php';
+    ?>
 </body>
 </html>
