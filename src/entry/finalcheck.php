@@ -1,9 +1,8 @@
-<!-- 書き方1 -->
 <?php
-require __DIR__ . '/../dbconnect.php';
+require_once '../dbconnect.php';
 
 // POSTリクエストが送信された場合の処理
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
         // トランザクション開始
         $dbh->beginTransaction();
@@ -26,9 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_email->execute();
         $emails = $stmt_email->fetchAll(PDO::FETCH_COLUMN);
 
-        // 申し込みが完了したら指定のページにリダイレクトする
-        header("Location: /../entry/complete.php");
-
         // メールの送信
         foreach ($emails as $email) {
             $to = $email;
@@ -44,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // トランザクションコミット
         $dbh->commit();
+
+        // 申し込みが完了したら指定のページにリダイレクトする
+        header("Location: /../entry/complete.php");
         exit; // リダイレクト後に実行が継続されないようにする
     } catch (PDOException $e) {
         // トランザクションロールバック
@@ -54,97 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
-<!-- 書き方2 -->
-<?php
-// require __DIR__ . '/../dbconnect.php';
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // MySQLに接続するための情報
-//     $servername = "db";
-//     $username = "root";
-//     $password = "root";
-//     $dbname = "posse";
-
-//     // MySQLに接続する
-//     $conn = new mysqli($servername, $username, $password, $dbname);
-
-//     // 接続をチェックする
-//     if ($conn->connect_error) {
-//         die("Connection failed: " . $conn->connect_error);
-//     }
-//     // var_dump("aaaaaaa");
-
-//     // ユーザーが選択した企業の情報を取得するクエリを実行する
-//     $sql_companies = "SELECT * FROM choice JOIN info ON choice.agent_id = info.agent_id WHERE choice.user_id = 1"; // ここで適切なユーザーIDを指定する必要があります
-//     $result_companies = $conn->query($sql_companies);
-
-//     $chosen_companies = array(); // 選択した企業の情報を格納する配列
-
-//     if ($result_companies && $result_companies->num_rows > 0) {
-//         while ($row = $result_companies->fetch_assoc()) {
-//             $chosen_companies[] = $row;
-//         }
-//     }
-
-    
-
-
-//     // 個人情報を取得するクエリを実行する
-//     $sql_personal = "SELECT * FROM student WHERE user_id = 1"; // ここで適切なユーザーIDを指定する必要があります
-//     $result_personal = $conn->query($sql_personal);
-
-//     $personal_info = array(); // 個人情報を格納する配列
-
-//     if ($result_personal->num_rows > 0) {
-//         while ($row = $result_personal->fetch_assoc()) {
-//             $personal_info = $row;
-//         }
-//     }
-
-
-//     // メールアドレスを取得するクエリを実行する
-//     $sql = "SELECT mail FROM agent";
-//     $result = $conn->query($sql);
-
-//     if ($result->num_rows > 0) {
-//         // 結果からデータを取得し、配列に格納する
-//         $emails = array();
-//         while ($row = $result->fetch_assoc()) {
-//             $emails[] = $row["mail"];
-//         }
-//         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//             // 申し込みが完了したら指定のページにリダイレクトする
-//             header("Location: /../entry/complete.php");
-
-//             // メールの送信
-//             foreach ($emails as $email) {
-//                 $to = $email;
-//                 $subject = "申し込み通知メール";
-//                 $message = "貴エージェント企業様に学生からの申し込みがありました。詳細は管理画面でご確認ください。";
-//                 $headers = "From: 1007yanagita@gmail.com" . "\r\n" .
-//                             "Reply-To: 1007yanagita@gmail.com" . "\r\n" .
-//                             "X-Mailer: PHP/" . phpversion();
-
-//                 // メールを送信
-//                 mail($to, $subject, $message, $headers);
-//             }
-//             exit; // リダイレクト後に実行が継続されないようにする
-//         }
-//     } else {
-//         echo "送信先のメールアドレスが見つかりませんでした。";
-//     }
-
-//     // MySQL接続を閉じる
-//     $conn->close();
-
-//     // 申し込み完了後の処理（例えば、成功メッセージを表示するなど）
-//     echo "申し込みが完了しました。";
-// }
-?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -154,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <?php 
-    // include_once '../includes/header2.php'; 
+    include_once '../includes/header2.php'; 
     ?>
     <main class="main-body">
         <div class="final-wrapper">
