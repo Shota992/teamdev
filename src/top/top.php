@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/top.css">
-    <link rel="stylesheet" href="../assets/sp/style.css">
+    <link rel="stylesheet" href="../assets/sp/sp-top.css">
 </head>
 <body>
     <?php 
@@ -19,7 +19,7 @@
                     <div class="mainvisual-head-div">
                             <h1 class="mainvisual-title">CRAFT</h1>
                             <p class="mainvisual-lead">エージェント企業比較サイト</p>
-                        <a href="" class="mainvisual-button">
+                        <a href="../auth/login.php" class="mainvisual-button">
                             <p class="mainvisual-button-title">新規登録</p>
                             <p class="mainvisual-button-lead">して企業に申し込み</p>
                         </a>

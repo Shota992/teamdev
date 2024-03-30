@@ -1,319 +1,671 @@
 /* CRAFT管理画面のcss */
 
 /* header */
-.header{
-    background-color: #fff;
-    height: 95px;
-    /* 水平・垂直方向の中央揃え */
-    display: flex;
-    align-items: center;
+.header {
+  width: 100%;
+  height: 95px;
+  position: fixed;
+  background-color: #fff;
+  /* 水平・垂直方向の中央揃え */
+  align-items: center;
+  top: 0px;
+  display: flex;
 }
 
-.header img{
-    width: 280px;
-    height: auto;
-    margin: 0 60px 0 auto;
+.header img {
+  width: 280px;
+  height: auto;
+  margin: 0 60px 0 auto;
 }
 
-.header-logo{
-    margin-left: 55px;
+.header-logo {
+  margin-left: 55px;
 }
 
-.header-logo img{
-    width: 180px;
-    height: auto;
+.header-all {
+  background-color: #fff;
+  /* 水平・垂直方向の中央揃え */
+  align-items: center;
+  top: 0px;
+  width: 100%;
+  height: 90px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
 }
 
 /* footer */
-.footer{
-    background-color: #554f4f;
-    height: 60px;
-    display: block;
-    /* 水平・垂直方向の中央揃え */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.footer {
+  background-color: #554f4f;
+  height: 60px;
+  display: block;
+  /* 水平・垂直方向の中央揃え */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
-.copyright{
-    color: #fff;
-    font-size: 20px;
+.footer-copyright {
+  color: #fff;
+  font-size: 20px;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  padding: 30px;
+  z-index: 1;
+}
+
+.copyright {
+  color: #ffffff;
 }
 
 /* body共通項目 */
-body{
-    margin: 0;
+.wrapper{
+  display: flex; /* フレックスボックスに有効に */
+  flex-flow: column; /* 要素を縦に並べる */
+  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
+body {
+  margin: 0;
 }
 
-main{
-    background-color:#d9d9d9 ;
-    padding: 240px 0;
+main {
+  background: rgba(217, 217, 217, 0.8);
+  margin-top: 40px;
+  padding: 100px 0;
 }
 
-.container{
-    background-color: #fff;
-    width: 33%;
-    margin: auto;
-    height: 80%;
-    padding: 100px;
-    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 80px;
-    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
+.container {
+  background-color: #fff;
+  width: 50%;
+  margin: auto;
+  height: 80%;
+  padding: 100px;
+  text-align: center;
+  /*インラインブロック要素の子要素を左右で中央寄せ*/
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-.top-heading{
-    display: inline-block;
-    margin-top: 0px;
-    margin-bottom: 30px;
+.top-heading {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.form-tag{
-    margin-bottom: 30px;
+.form-tag {
+  margin-bottom: 30px;
 }
 
 .form-label {
-    font-size: 21px;
-    margin: 0 auto;
-    margin-bottom: 8px;
-    display: block;
-    text-align: left;
-    width: 80%;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 21px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+  width: 80%;
 }
 
 .form-control {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 23px;
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 23px;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .btn {
-    padding: 13px 0px;
-    border: none;
-    border-radius: 5px;
-    font-size: 22px;
-    color: #fff;
-    background-color: #D94181;
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.3);
+  padding: 13px 0px;
+  border: none;
+  border-radius: 5px;
+  font-size: 22px;
+  color: #fff;
+  background-color: #D94181;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 .submit:hover {
-    background-color: #872850;
+  background-color: #872850;
 }
 
 
 /* 管理者画面のサイドバー */
 .side-container {
-    width: 350px;
-    height: 700px;
-    background-color: #b36;
-    position: fixed;
-    padding-top: 100px;
-  }
-  
-  .side-content {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  
-  .side-sent {
-    color: #fff;
-    font-size: 16px;
-    margin-right: 20px;
-  }
-  
-  .side-choiced {
-    background-color: #fff;
-    color: #b36;
-  }
-  
-  
-  /* エージェント企業一覧ページ */
-  .body-c {
-    background-color: #ddd;
-  }
-  
-  .index-wrapper {
-    display: flex;
-  }
-  
-  
-  
-  .index-main-container {
-    margin-left: 390px;
-    margin-right: 60px;
-    width: 100%;
-  }
-  
-  .index-main-inner {
-    margin-top: 100px;
-  }
-  
-  .index-main-head-container {
-    width: 100%;
-    height: 40px;
-    background-color: #b36;
-    display: flex;
-    padding-left: 10px;
-    align-items: center;
-  }
-  
-  .index-main-head-sent {
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .index-main-search {
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    margin-left: 50px;
-  }
-  
-  .index-main-search-contents {
-    width: 100%;
-    display: flex;
-    gap: 50px;
-    height: 30px;
-  }
-  
-  .index-main-search-content {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .index-main-search-button {
-    background-color: #b36;
-    width: 100px;
-    color:#fff;
-    border-radius: 10px;
-    opacity: 0.8;
-  }
-  
-  .index-main-table{
-    margin-top: 40px;
-  }
-  
-  .index-main-table-conainer{
-    width: 100%;
-  }
-  
-  .index-main-table-head{
-    background-color: #bbb;
-    height: 30px;
-  }
-  
-  .index-main-table-contents{
-    height: 40px;
-  }
-  
-  .index-even{
-    background-color: #ccc;
-  }
-  
-  /* 申込み内容一覧画面 */
-  .content-wrapper {
-    display: flex;
-  }
-  
-  .content-main-container {
-    margin-left: 390px;
-    margin-right: 60px;
-    width: 100%;
-  }
-  
-  .content-main-inner {
-    margin-top: 100px;
-  }
-  
-  .content-main-head-container {
-    width: 100%;
-    height: 40px;
-    background-color: #b36;
-    display: flex;
-    padding-left: 10px;
-    align-items: center;
-  }
-  
-  .content-main-head-sent {
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .content-main-search {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    margin-left: 50px;
-    height: 100px;
-  }
-  
-  .content-main-search-contents {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    height: 30px;
-  }
-  
-  .content-main-search-radios{
-    display: flex;
-    gap: 50px;
-  }
-  
-  .content-main-search-checks{
-    display: flex;
-    gap:50px;
-  }
-  
-  .content-main-search-content {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .content-main-search-button {
-    background-color: #b36;
-    width: 100px;
-    color:#fff;
-    border-radius: 10px;
-    opacity: 0.8;
-  }
-  
-  .content-main-table{
-    margin-top: 100px;
-  }
-  
-  .content-main-table-container{
-    width: 100%;
-  }
-  
-  .content-main-table-head{
-    background-color: #bbb;
-    height: 30px;
-  }
-  
-  .content-main-table-contents{
-    height: 40px;
-  }
-  
-  .content-main-table-content{
-    padding-left: 20px;
-  }
-  
-  .content-even{
-    background-color: #ccc;
-  }
+  width: 350px;
+  background-color: #b36;
+  padding-top: 100px;
+}
+.create_side-container {
+  width: 100%;
+  background-color: #b36;
+  padding-top: 100px;
+}
+
+.side-content {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.side-sent {
+  color: #fff;
+  font-size: 16px;
+  text-align: end;
+}
+
+.side-choiced {
+  background-color: #fff;
+  color: #b36;
+  padding: 20px;
+}
+
+
+/* エージェント企業一覧ページ */
+
+.index-wrapper {
+  display: flex;
+}
+
+.index-main-head-container {
+  width: 100%;
+  height: 40px;
+  background-color: #b36;
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+}
+
+.index-main-head-sent {
+  color: #fff;
+  font-weight: bold;
+}
+
+.index-main-search {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.index-main-search-contents {
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  height: 30px;
+}
+
+.index-main-search-content {
+  display: flex;
+  gap: 10px;
+}
+
+.index-main-search-button {
+  background-color: #b36;
+  width: 100px;
+  color: #fff;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.index-main-table {
+  margin-top: 40px;
+}
+
+.index-main-table-conainer {
+  width: 100%;
+}
+
+.index-main-table-head {
+  background-color: #bbb;
+  height: 30px;
+}
+
+.index-main-table-contents {
+  height: 40px;
+}
+
+.index-even {
+  background-color: #ccc;
+}
+
+/* 申込み内容一覧画面 */
+.content-wrapper {
+  display: flex;
+}
+
+.content-main-container {
+  margin-left: 390px;
+  margin-right: 60px;
+  width: 100%;
+}
+
+.content-main-inner {
+  margin-top: 100px;
+}
+
+.content-main-head-container {
+  width: 100%;
+  height: 40px;
+  background-color: #b36;
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+}
+
+.content-main-head-sent {
+  color: #fff;
+  font-weight: bold;
+}
+
+.content-main-search {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  height: 100px;
+}
+
+.content-main-search-contents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 30px;
+}
+
+.content-main-search-radios {
+  display: flex;
+  gap: 50px;
+}
+
+.content-main-search-checks {
+  display: flex;
+  gap: 50px;
+}
+
+.content-main-search-content {
+  display: flex;
+  gap: 10px;
+}
+
+.content-main-search-button {
+  background-color: #b36;
+  width: 100px;
+  color: #fff;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.content-main-table {
+  margin-top: 100px;
+}
+
+.content-main-table-container {
+  width: 100%;
+}
+
+.content-main-table-head {
+  background-color: #bbb;
+  height: 30px;
+}
+
+.content-main-table-contents {
+  height: 40px;
+}
+
+.content-main-table-content {
+  padding-left: 20px;
+}
+
+.content-even {
+  background-color: #ccc;
+}
+
+/* 新規エージェント登録ページ */
+.create-wrapper {
+  display: flex;
+}
+
+.create-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  margin: 20px;
+}
+
+.create-main {
+  flex-grow: 1;
+}
+
+.create-container {
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+  padding: 70px;
+  text-align: center;
+  /* インラインブロック要素の子要素を左右で中央寄せ */
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.form-control1 {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  display: block;
+  height: 30px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+
+.create-list {
+  display: flex;
+  align-items: center;
+}
+
+.create_form-label {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+  width: 80%;
+}
+
+.create-list input[type="text"],
+.create-list input[type="email"],
+.create-list textarea,
+.create-list select {
+  border: 1px #b4b2b2 solid;
+  border-radius: 5px;
+  width: 40%;
+  /* カラムの幅を調整 */
+}
+
+.create_select {
+  border: 1px #b4b2b2 solid;
+  padding: 10px;
+  border-radius: 5px;
+  width: 50%;
+  height: 40px;
+  text-align: left;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.create-list button {
+  margin-left: 10px;
+}
+
+.create_td1 {
+  float: left;
+}
+
+.create_td1a {
+  float: left;
+  font-size: 8px;
+  /* display: flex;
+  align-items: baseline; */
+}
+
+.create_td2 {
+  text-align: left;
+}
+
+.reference {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 120px;
+  margin-left: 10px;
+  padding: 5px;
+  font-weight: bold;
+  border: 2px solid #27acd9;
+  background: #27acd9;
+  border-radius: 3px;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.reference:hover {
+  color: #27acd9;
+  background: #fff;
+}
+
+/*テーブルを親要素の幅いっぱいに伸ばす*/
+.table-res-form {
+  width: 100%;
+}
+
+/*一番上の行だけボーダーなし*/
+.table-res-form tr:first-child {
+  border-top: none;
+}
+
+/*thとtd内の余白指定*/
+.table-res-form th, .table-res-form td {
+  padding: 10px;
+}
+
+/*th（項目欄）は30%幅、テキストを右寄せ*/
+.table-res-form th {
+  width: 30%;
+  text-align: left;
+}
+
+/*「必須」部分のスタイリング*/
+.table-res-form .requied {
+  font-size: 0.8em;
+  color: #FFF;
+  display: inline-block;
+  padding: 0.3em 0.3em 0.2em;
+  background: red;
+  border-radius: 2px;
+}
+
+
+/*各入力フォームスタイリング*/
+.table-res-form input[type="text"], input[type="email"] {
+  border: 1px #b4b2b2 solid;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 20px;
+  width: 80%;
+}
+
+/*送信ボタンスタイリング*/
+.table-res-form input[type="submit"] {
+  border: 1px #89BDDE solid;
+  padding: 0.5em 4em;
+  border-radius: 5px;
+  background: #4C9ED9;
+  color: #fff;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+/*送信ボタン・マウスオーバー時スタイリング*/
+.table-res-form input[type="submit"]:hover {
+  background: #006599;
+  box-shadow: none;
+}
+
+/* ラジオボタン */
+input[type=checkbox] {
+  display: none;
+}
+
+.create_checkbox {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  padding:5px 10px 5px 30px;
+  position: relative;
+  width: auto;
+  margin-right: 10px;
+}
+
+.create_checkbox::before {
+  background: #fff;
+  border: 1px solid #231815;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 16px;
+  left: 5px;
+  margin-top: -8px;
+  position: absolute;
+  top: 50%;
+  width: 16px;
+}
+
+.create_checkbox::after {
+  background: #ed7a9c;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 10px;
+  left: 9px;
+  margin-top: -4px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  width: 10px;
+}
+
+input[type="checkbox"]:checked+.create_checkbox::after {
+  opacity: 1;
+}
+
+/* サンプル */
+.create_sample {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-container {
+  height: 400px;
+  margin: 40px;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.create_sample-figure {
+  margin: 10px;
+  width: 240px;
+  height: 300px;
+  border: 3px solid rgba(0, 0, 0, 0.8);
+  border-radius: 5%;
+}
+
+.slider-img {
+  margin: 15px;
+  width: all;
+  height: 100px;
+  background-color: #DDD;
+}
+
+.slider-titles {
+  height: 30px;
+  /* background-color: #AAA; */
+  margin-top: -10px;
+}
+
+.slider-title {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.slider-tags {
+  height: 30px;
+  /* background-color: #CCC; */
+  margin-top: 5px;
+  display: flex;
+}
+
+.slider-tag {
+  height: 20px;
+  width: 55px;
+  border-radius: 10%;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-tagsent {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.big {
+  background-color: #FF6666;
+}
+
+.small {
+  background-color: #66bfff;
+}
+
+.slider-contents {
+  width: all;
+  margin-left: 30px;
+}
+
+/* 新規登録ボタン */
+.keep {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.create_btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 200px;
+  margin-left: 10px;
+  padding: 10px;
+  font-weight: bold;
+  border: 2px solid #B7386D;
+  background: #B7386D;
+  border-radius: 3px;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.create_btn:hover {
+  color: #B7386D;
+  background: #fff;
+}

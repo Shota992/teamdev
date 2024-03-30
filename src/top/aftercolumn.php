@@ -12,7 +12,7 @@
 
 <body>
     <?php 
-    include_once '../includes/header1.php';
+    include_once '../includes/header2.php';
     ?>
     <main>
         <div class="container">

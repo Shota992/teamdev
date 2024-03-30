@@ -1,16 +1,17 @@
 /* entryフォルダ内ページのcss */
 
 /* エージェント企業申し込み手順ページ */
-.process_main-body{
-        background-color: #d9d9d9;
-        width: 100%;
-        height: 100%;
-        /* 水平・垂直方向の中央揃え */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 80px;
+.process_main-body {
+    background: rgba(217, 217, 217, 0.8);
+    width: 100%;
+    height: 100%;
+    /* 水平・垂直方向の中央揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
 }
+
 .processContainer {
     background-color: #fff;
     width: 75%;
@@ -93,7 +94,7 @@
     width: 80px;
 }
 
-.process_btn{
+.process_btn {
     font-weight: bold;
     background: rgba(238, 198, 68, 0.8);
     border: solid 3px rgba(0, 0, 0, 0.8);
@@ -110,7 +111,7 @@ body {
 }
 
 .main-body {
-    background-color: #d9d9d9;
+    background: rgba(217, 217, 217, 0.8);
     padding: 240px 0;
     width: 100%;
     height: 100%;
@@ -136,21 +137,34 @@ body {
 /* 
 個人情報入力ページ
 */
+.top-heading{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+}
+.top-explanation{
+    margin: 30px 0 20px 0;
+}
 .person-form {
-    background-color: #d9d9d9;
+    background: rgba(217, 217, 217, 0.8);
+    font-weight: bold;
     padding: 50px;
-    text-align: center;
     width: 70%;
     margin: auto;
+    border-radius: 10px;
 }
 
 .form-tag {
     margin-bottom: 20px;
+    text-align: left;
 }
-
+.form-tagContent{
+    margin-bottom: 20px;
+    text-align: left;
+    column-count: 3;
+}
 .form-label {
     font-size: 21px;
-    margin: 0 auto;
     margin-bottom: 8px;
     display: block;
     text-align: left;
@@ -159,24 +173,129 @@ body {
 
 .form-control {
     padding: 10px;
+    background-color: #FFF;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 23px;
     display: block;
-    width: 40%;
-    margin: 0 auto;
     margin-bottom: 20px;
 }
 
+.btn {
+    padding: 13px 0px;
+    border-width: 4px;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+    background: rgba(237, 211, 70, 0.8);
+    width: 35%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(0, 0, 0, 0.8);
+}
+
+.submit:hover {
+    background: rgba(237, 187, 70, 0.8);
+}
+
+.person-nav {
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    margin-top: -40px;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+.person_checkbox {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+}
+.person_checkbox::before {
+    background: #fff;
+    border: 1px solid #231815;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 5px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+}
+.person_checkbox::after {
+    border-right: 3px solid #ed7a9c;
+    border-bottom: 3px solid #ed7a9c;
+    content: '';
+    display: block;
+    height: 9px;
+    left: 10px;
+    margin-top: -7px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 5px;
+}
+input[type=checkbox]:checked + .person_checkbox::after {
+    opacity: 1;
+}
+
+/* ラジオボタン */
+input[type=radio] {
+    display: none;
+}
+.person_radio {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+}
+.person_radio::before {
+    background: #fff;
+    border: 1px solid #231815;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 5px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+}
+.person_radio::after {
+    background: #ed7a9c;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 10px;
+    left: 9px;
+    margin-top: -4px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+}
+input[type=radio]:checked + .person_radio::after {
+    opacity: 1;
+}
 
 /* 
 申し込み完了ページ 
 */
 
 /* 申し込みが完了しました */
-.complete_main{
+.complete_main {
     margin-top: 80px;
-    background-color: #d9d9d9;
+    background: rgba(217, 217, 217, 0.8);
     padding: 20px 0 60px 0;
     width: 100%;
     height: 100%;
@@ -185,6 +304,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .complete_container {
     background-color: #fff;
     width: 70%;
@@ -237,9 +357,11 @@ body {
     justify-content: center;
     margin: 30px;
 }
-.complete_flowContent{
+
+.complete_flowContent {
     padding: 0 150px;
 }
+
 .complete_flowHeadText {
     display: flex;
     align-items: center;
@@ -276,7 +398,7 @@ body {
     width: 150px;
 }
 
-.complete_btn{
+.complete_btn {
     font-weight: bold;
     border-radius: 8px;
     margin-top: 10px;
@@ -368,7 +490,7 @@ body {
 
 .final-person-head {
     width: 180px;
-    background-color: #d9d9d9;
+    background: rgba(217, 217, 217, 0.8);
     margin-right: 10px;
     display: flex;
     justify-content: center;
@@ -400,26 +522,26 @@ body {
 .final-submit-button {
     width: 500px;
     height: 40px;
-    background-color: #ed4;
+    background: rgba(237, 211, 70, 0.8);
     font-size: 20px;
     font-weight: bold;
-    border: 3px solid #000;
+    border: 3px solid rgba(0, 0, 0, 0.8);
 }
 
-.final-submit-button:hover{
+.final-submit-button:hover {
     background-color: rgb(238, 198, 68);
 }
 
-.final-edit-button:hover{
+.final-edit-button:hover {
     background-color: rgb(238, 198, 68);
-} 
+}
 
 .final-edit-container {
     display: flex;
     justify-content: center;
     margin-top: 40px;
     text-align: center;
-    border: 3px solid #000;
+    border: 3px solid rgba(0, 0, 0, 0.8);;
 }
 
 .final-edit-button {

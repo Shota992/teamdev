@@ -108,9 +108,9 @@
                 <div class="processTry-img">
                     <img src="../assets/img/process_steppolygon.png" alt="" class="processTryPolygon">
                 </div>
-                <div class="process-btn">
+                <a href="../entry/choice.php" class="process-btn">
                     <button class="process_btn">さっそくTry！</button>
-                </div>
+                </a>
             </section>
         </div>
     </main>
