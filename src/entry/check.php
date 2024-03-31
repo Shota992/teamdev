@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>選択企業一覧確認</title>
+    <link rel="stylesheet" href="/../assets/css/reset.css">
     <link rel="stylesheet" href="/../assets/css/check.css" />
     <script src="../assets/scripts/common.js" defer>
     </script>
