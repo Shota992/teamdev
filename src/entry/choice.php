@@ -74,24 +74,25 @@ $count = $stmt->fetchColumn();
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/choice.css">
+
     <link rel="stylesheet" href="../assets/css/reset.css">
     <title>choice</title>
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <script
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />    <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     ></script>
@@ -105,7 +106,8 @@ $count = $stmt->fetchColumn();
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
-</head>
+   </head>
+
 
 <body class="body">
     <?php
@@ -115,7 +117,7 @@ $count = $stmt->fetchColumn();
             <div class="inner">
                 <div class="choices">
                     <div class="description">
-                        <div >
+                        <div>
                             <p class="title">step1　総合型企業と特化型企業からそれぞれ選んでみる</p>
                         </div>
                         <div class="sentence">
@@ -371,53 +373,50 @@ $count = $stmt->fetchColumn();
                     </div>
                 </div>
                 <div class="search">
-    <div class="description">
-        <div class="title">
-            <p>step2　その他の企業も調べて追加する(任意)</p>
-        </div>
-        <div class="sentence">
-            <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
-        </div>
-    </div>
-    <div class="sub-search-container">
-        <form method="POST" action="./choice.php">
-            <div class="sub-search">
-                <p>企業名の検索</p>
-                <div class="kyc-search-bar">
-                    <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search-site']) ){ echo $_POST['search-site']; } ?>">
+                    <div class="description">
+                        <div class="title">
+                            <p>step2　その他の企業も調べて追加する(任意)</p>
+                        </div>
+                        <div class="sentence">
+                            <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
+                        </div>
+                    </div>
+                    <div class="sub-search-container">
+                        <form method="POST" action="./choice.php">
+                            <div class="sub-search">
+                                <p>企業名の検索</p>
+                                <div class="kyc-search-bar">
+                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search-site']) ){ echo $_POST['search-site']; } ?>">
+                                </div>
+                            </div>
+                            <div class="submit-container">
+                                <button  name="search">
+                                    <input type="submit" name="search" value="検索">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="submit-container">
-                <button  name="search">
-                    <input type="submit" name="search" value="検索">
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="search-result-container">
-    <div class="search-result">
-        <ul>
-            <?php foreach ($searchResults as $info) { ?>
-                <li>
-                    <img src="<?=$info["logo"];?>" alt="Logo">
-                    <p><?=$info["site_name"];?></p>
-                    <p><?=$info["agent_id"];?></p>
-                </li>
-            <?php } ?>
-        </ul>
-    </div>
-</div>
-    <div class="complete-button">
-        <button id="complete-btn">完了</button>
-        <p id="message" style="color: red;"></p>
-    </div>
-    
-            </div>
-        </div>
-        <?php
-    include_once '../includes/footer1.php';
-    ?>
+
+                <div class="search-result-container">
+                    <div class="search-result">
+                        <ul>
+                            <?php foreach ($searchResults as $info) { ?>
+                                <li>
+                                    <img src="<?=$info["logo"];?>" alt="Logo">
+                                    <p><?=$info["site_name"];?></p>
+                                    <p><?=$info["agent_id"];?></p>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div> 
+                <div class="complete-button">
+                    <button id="complete-btn">完了</button>
+                    <p id="message" style="color: red;"></p>
+                </div>
+            </main>
+    <?php include_once '../includes/footer1.php'?>
 
 
         <script>
@@ -527,7 +526,6 @@ $(document).ready(function() {
 });
 
 });
-
 
 
 $(document).ready(function() {

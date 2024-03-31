@@ -37,7 +37,7 @@
 
 /* footer */
 .footer {
-  background-color: #554f4f;
+  background-color: rgba(0, 0, 0, 0.65);
   height: 60px;
   display: block;
   /* 水平・垂直方向の中央揃え */
@@ -64,6 +64,11 @@ footer {
 }
 
 /* body共通項目 */
+.wrapper{
+  display: flex; /* フレックスボックスに有効に */
+  flex-flow: column; /* 要素を縦に並べる */
+  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
 body {
   margin: 0;
 }
@@ -76,7 +81,7 @@ main {
 
 .container {
   background-color: #fff;
-  width: 33%;
+  width: 50%;
   margin: auto;
   height: 80%;
   padding: 100px;
@@ -368,6 +373,7 @@ form {
   border-radius: 5px;
   font-size: 20px;
   display: block;
+  height: 30px;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 20px;

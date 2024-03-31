@@ -72,7 +72,6 @@ $dbh = null;
             <img src="../../assets/img/boozer_logo-black.png" alt="boozer" width="150" style="object-fit: contain;">
         </div>
     </header>
-
     <div class="create-wrapper">
         <aside class="side-container">
             <nav>
