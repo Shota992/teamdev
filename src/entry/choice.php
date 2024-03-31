@@ -72,27 +72,25 @@ $count = $stmt->fetchColumn();
 }
 ?>
 
-
-<!DOCTYPE html>
-<html lang="ja">
+   <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/choice.css">
-
     <link rel="stylesheet" href="../assets/css/reset.css">
     <title>choice</title>
     <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
     <link
-        rel="stylesheet"
-        type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />    <script
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     ></script>
@@ -106,7 +104,7 @@ $count = $stmt->fetchColumn();
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
-   </head>
+</head>
 
 
 <body class="body">
@@ -553,6 +551,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
 
     </script>
 </body>

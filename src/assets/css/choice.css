@@ -16,6 +16,7 @@ p{
     padding: 60px;
 }
 
+
 .choices{
     margin: 30px;
 }
@@ -217,6 +218,16 @@ margin-top: 50px;
 .checklist{
     display: flex;
     gap: -5px;
+}
+
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
 }
 
 .kyc-search-bar{
