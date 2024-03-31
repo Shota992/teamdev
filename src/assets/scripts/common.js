@@ -28,7 +28,9 @@ $(function () {
     autoplay: false,
     dots: true,
     slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    arrows: true,
+    infinite: true
   });
 });
 
