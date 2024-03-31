@@ -11,7 +11,8 @@ CREATE TABLE if not exists user (
 
 
 CREATE TABLE if not exists info (
-    agent_id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    agent_id VARCHAR(255) NOT NULL,
     site_name VARCHAR(255) NOT NULL,
     agent_name VARCHAR(255) NOT NULL,
     logo VARCHAR(255) NOT NULL,
@@ -72,15 +73,15 @@ INSERT INTO user (user_id,email,passwords) VALUES
     (5,'eee@gmail.com','$2y$10$puth9gaybzQVNE2zo2nlsOWbNocCjSMa3jhC6BbDmT3eXerv2vYWa'),
     (6,'fff@gmail.com','$2y$10$.uvyB7bkfWNda4Kw1zv14ucnOzSedULx4cqs76ZPVKcir1JZ2hmue');
 
-INSERT INTO info (agent_id,site_name,agent_name,logo,explanation,type,size,area,amounts,category,url,email) VALUES
-    (1,'doda','パーソルキャリア株式会社','aaa','aaaaaaaaaaaaaaaaaaaaaaaa','総合','大手','全国','100万','','https://aaaa','aaa@gmail.com'),
-    (2,'リクナビ就活エージェント','リクルート株式会社','bbb','bbbbbbbbbbbbbbbbbbbb','総合','中小','東京','200万','','https://bbbb','bbb@gmail.com'),
-    (3,'doda','パーソルキャリア株式会社','ccc','cccccccccccccccccccc','総合','中小','全国','300万','','https://cccc','ccc@gmail.com'),
-    (4,'リクナビ就活エージェント','リクルート株式会社','ddd','dddddddddddddddddddd','総合','大手','東京','400万','','https://dddd','ddd@gmail.com'),
-    (5,'doda','パーソルキャリア株式会社','eee','eeeeeeeeeeeeeeeeeeeee','特化','','東京','500万','女性','https://eeee','eee@gmail.com'),
-    (6,'リクナビ就活エージェント','リクルート株式会社','fff','fffffffffffffffffffff','特化','','全国','600万','IT','https://ffff','fff@gmail.com'),
-    (7,'doda','パーソルキャリア株式会社','ggg','ggggggggggggggggggggg','特化','','大阪','700万','税理士','https://gggg','ggg@gmail.com'),
-    (8,'リクナビ就活エージェント','リクルート株式会社','hhh','hhhhhhhhhhhhhhhhhhhh','特化','','全国','800万','外資系','https://hhhh','hhh@gmail.com');
+INSERT INTO info (id,agent_id,site_name,agent_name,logo,explanation,type,size,area,amounts,category,url,email) VALUES
+    (1,1,'doda','パーソルキャリア株式会社','top_doda_ikon.png','aaaaaaaaaaaaaaaaaaaaaaaa','総合','大手','全国','100万','','https://aaaa','aaa@gmail.com'),
+    (2,2,'リクナビ就活エージェント','リクルート株式会社','top_rikunabi_ikon.png','bbbbbbbbbbbbbbbbbbbb','総合','中小','東京','200万','','https://bbbb','bbb@gmail.com'),
+    (3,3,'doda','パーソルキャリア株式会社','top_doda_ikon.png','cccccccccccccccccccc','総合','中小','全国','300万','','https://cccc','ccc@gmail.com'),
+    (4,4,'リクナビ就活エージェント','リクルート株式会社','top_rikunabi_ikon.png','dddddddddddddddddddd','総合','大手','東京','400万','','https://dddd','ddd@gmail.com'),
+    (5,5,'doda','パーソルキャリア株式会社','top_doda_ikon.png','eeeeeeeeeeeeeeeeeeeee','特化','','東京','500万','女性','https://eeee','eee@gmail.com'),
+    (6,6,'リクナビ就活エージェント','リクルート株式会社','top_rikunabi_ikon.png','fffffffffffffffffffff','特化','','全国','600万','IT','https://ffff','fff@gmail.com'),
+    (7,7,'doda','パーソルキャリア株式会社','top_doda_ikon.png','ggggggggggggggggggggg','特化','','大阪','700万','税理士','https://gggg','ggg@gmail.com'),
+    (8,8,'リクナビ就活エージェント','リクルート株式会社','top_rikunabi_ikon.png','hhhhhhhhhhhhhhhhhhhh','特化','','全国','800万','外資系','https://hhhh','hhh@gmail.com');
 
 INSERT INTO student(user_id,name,sub_name,sex,school,tel_num,mail,graduation,division,desire)VALUES
     (1,'倉富戸','クラフト','男','蔵大学','000-0000-0000','aaa@gmail.com','2025','文系','商社'),
