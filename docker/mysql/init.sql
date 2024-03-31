@@ -84,10 +84,10 @@ INSERT INTO info (id,agent_id,site_name,agent_name,logo,explanation,type,size,ar
     (8,8,'リクナビ就活エージェント','リクルート株式会社','top_rikunabi_ikon.png','hhhhhhhhhhhhhhhhhhhh','特化','','全国','800万','外資系','https://hhhh','hhh@gmail.com');
 
 INSERT INTO student(user_id,name,sub_name,sex,school,tel_num,mail,graduation,division,desire)VALUES
-    (1,'倉富戸','クラフト','男','蔵大学','000-0000-0000','aaa@gmail.com','2025','文系','商社'),
-    (2,'B田','べーだ','女','蔵大学','000-0000-0000','bbb@gmail.com','2025','工学系','IT'),
-    (3,'C木','ちぇき','女','蔵大学','000-0000-0000','ccc@gmail.com','2026','文学系','メーカー'),
-    (4,'D川','でがわ','男','蔵大学','000-0000-0000','ddd@gmail.com','2027','心理学系','マスコミ');
+    -- (1,'倉富戸','クラフト','男','蔵大学','000-0000-0000','aaa@gmail.com','2025','文系','商社'),
+    -- (2,'B田','べーだ','女','蔵大学','000-0000-0000','bbb@gmail.com','2025','工学系','IT'),
+    -- (3,'C木','ちぇき','女','蔵大学','000-0000-0000','ccc@gmail.com','2026','文学系','メーカー'),
+    -- (4,'D川','でがわ','男','蔵大学','000-0000-0000','ddd@gmail.com','2027','心理学系','マスコミ');
 
 INSERT INTO choice(id,agent_id,user_id)VALUES
     (1,1,3),
