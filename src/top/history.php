@@ -28,6 +28,7 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>history</title>
+    <link rel="stylesheet" href="/../assets/css/reset.css">
     <link rel="stylesheet" href="/../assets/css/history.css" />
     <script src="./assets/js/script.js" defer></script>
 </head>
