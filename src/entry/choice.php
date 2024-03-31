@@ -402,7 +402,6 @@ $count = $stmt->fetchColumn();
                                 <li>
                                     <img src="<?=$info["logo"];?>" alt="Logo">
                                     <p><?=$info["site_name"];?></p>
-                                    <p><?=$info["agent_id"];?></p>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -417,7 +416,7 @@ $count = $stmt->fetchColumn();
     <?php include_once '../includes/footer1.php'?>
 
 
-        <script>
+    <script>
         $(document).ready(function() {
             $('.add-button').click(function() {
                 var form = $(this).closest('form');
