@@ -397,7 +397,6 @@ $count = $stmt->fetchColumn();
                         </form>
                     </div>
                 </div>
-
                 <div class="search-result-container">
                     <div class="search-result">
                         <ul>
@@ -415,7 +414,8 @@ $count = $stmt->fetchColumn();
                     <button id="complete-btn">完了</button>
                     <p id="message" style="color: red;"></p>
                 </div>
-            </main>
+            </div>
+        </div>
     <?php include_once '../includes/footer1.php'?>
 
 
