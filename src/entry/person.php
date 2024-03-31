@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+}else{
+
+// ユーザーIDはセッションから取得
+$user_id = $_SESSION["user_id"];
+
 // フォームが送信された場合
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 入力されたデータを取得
@@ -26,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // データを挿入するSQL文を準備
         $sql = "INSERT INTO student (name, sub_name, sex, school, tel_num, mail, graduation, division, desire)
-                VALUES (:name, :sub_name, :gender, :school, :tel_num, :mail, :graduation, :division, :desire)";
+                VALUES (:name, :sub_name, :gender, :school, :tel_num, :mail, :graduation, :division, :desire)
+                WHERE student.user_id = :user_id";
 
         // プリペアドステートメントを作成
         $stmt = $dbh->prepare($sql);
@@ -49,14 +59,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dbh = null;
 
         // リダイレクト先のURLを設定
-        $redirect_url = "../entry/finalcheck.php";
+        $redirect_url = "localhost:8080/entry/finalcheck.php";
 
         // リダイレクト
-        header("Location: $redirect_url");
+        header("Location: /entry/finalcheck.php");
         exit;
     } catch (PDOException $e) {
         echo "エラー: " . $e->getMessage();
     }
+}
+
 }
 ?>
 
@@ -179,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="no-decide" class="person_checkbox">未定</label>
                     </div>
                 </div>
-                <button type="submit" class="btn submit">送信する</button>
+                    <button type="submit" class="btn submit">送信する</button>
             </form>
         </div>
     </main>
