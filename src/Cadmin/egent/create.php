@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <nav>
                 <div class="side-sent">
                     <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
-                    <div class="side-choiced"><a href="#">エージェント企業新規登録</a></div>
+                    <div class="side-content choiced"><a href="#">エージェント企業新規登録</a></div>
                     <div class="side-content"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
                         </a>
                     </div>
