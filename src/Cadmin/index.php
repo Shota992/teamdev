@@ -1,4 +1,3 @@
-<!-- エージェント企業一覧ページ -->
 <?php
 // session_start();
 
@@ -64,7 +63,7 @@ $dbh = null;
 <body>
     <header class="header-all">
         <div header-top>
-            <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
+            <a href="#" class="header-logo" target="_blank" rel="noopener noreferrer">
                 <img src="../../assets/img/header_logo.png" alt="CRAFT" width="120" style="object-fit: contain;">
             </a>
         </div>
@@ -122,22 +121,28 @@ $dbh = null;
                                 <td class="index-main-table-content">メールアドレス</td>
                             </tr>
                             <?php foreach ($infos as $info) { ?>
-                                <a href="./egent/edit.php?id=<?= $info["id"] ?>">
-                                    <tr class="index-main-table-contents index-odd" id="infos-<?= $info["id"] ?>">
-                                        <td class="index-main-table-content">
+                                <tr class="index-main-table-contents index-odd" id="infos-<?= $info["id"] ?>">
+                                    <td class="index-main-table-content">
+                                        <a href="./egent/edit.php?id=<?= $info["id"] ?>">
                                             <?= $info["agent_id"]; ?>
-                                        </td>
-                                        <td class="index-main-table-content">
+                                        </a>
+                                    </td>
+                                    <td class="index-main-table-content">
+                                        <a href="./egent/edit.php?id=<?= $info["id"] ?>">
                                             <?= $info["site_name"]; ?>
-                                        </td>
-                                        <td class="index-main-table-content">
+                                        </a>
+                                    </td>
+                                    <td class="index-main-table-content">
+                                        <a href="./egent/edit.php?id=<?= $info["id"] ?>">
                                             <?= $info["agent_name"]; ?>
-                                        </td>
-                                        <td class="index-main-table-content">
+                                        </a>
+                                    </td>
+                                    <td class="index-main-table-content">
+                                        <a href="./egent/edit.php?id=<?= $info["id"] ?>">
                                             <?= $info["email"]; ?>
-                                        </td>
-                                    </tr>
-                                </a>
+                                        </a>
+                                    </td>
+                                </tr>
                             <?php } ?>
                         </table>
                     </div>
