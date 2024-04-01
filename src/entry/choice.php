@@ -55,7 +55,6 @@ if(isset($_POST['search-site'])) {
     $stmt = $dbh->prepare($sql);
     $stmt->execute([$searchQuery]);
     $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($searchResults);
 }else{
     $searchResults = array();
 }
@@ -72,36 +71,36 @@ $count = $stmt->fetchColumn();
 }
 ?>
 
-   <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/choice.css">
     <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/choice.css">
     <title>choice</title>
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
     <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     ></script>
     <script
-      script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+        script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
     ></script>
     <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
 </head>
@@ -402,7 +401,6 @@ $count = $stmt->fetchColumn();
                                 <li>
                                     <img src="<?=$info["logo"];?>" alt="Logo">
                                     <p><?=$info["site_name"];?></p>
-                                    <p><?=$info["agent_id"];?></p>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -417,7 +415,7 @@ $count = $stmt->fetchColumn();
     <?php include_once '../includes/footer1.php'?>
 
 
-        <script>
+    <script>
         $(document).ready(function() {
             $('.add-button').click(function() {
                 var form = $(this).closest('form');
@@ -439,41 +437,12 @@ $count = $stmt->fetchColumn();
             });
         });
 
-//         $(document).ready(function() {
-//     // 各フォームの処理
-//     $('.delete-button').click(function() {
-//         var form = $(this).closest('form');
-//         var formData = form.serialize();
-//         $.ajax({
-//             type: 'POST',
-//             url: form.attr('action'),
-//             data: formData,
-//             success: function(response) {
-//                 // 成功時の処理
-//                 console.log(response);
-//                 alert('削除が完了しました');
-//             },
-//             error: function(xhr, status, error) {
-//                 // エラー時の処理
-//                 console.error(xhr.responseText);
-//                 alert('エラーが発生しました。削除に失敗しました。');
-//             }
-//         });
-//     });
-// });
-
-
-
-
 
         $(document).ready(function() {
         $('form').submit(function(event) {
         event.preventDefault();
 
-
         var searchQuery = $(this).find('input[name="search-site"]').val();
-        console.log(searchQuery);
-
         $.ajax({
             type: 'POST',
             url: 'choice.php',
@@ -486,7 +455,6 @@ $count = $stmt->fetchColumn();
                 alert('検索しました');
             },
             error: function(xhr, status, error) {
-                // console.error(xhr.responseText);
                 alert('エラーが発生しました。検索に失敗しました。');
             }
         });

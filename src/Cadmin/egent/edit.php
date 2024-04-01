@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
 </head>
-</head>
 
 <body>
     <header class="header-all">
@@ -24,10 +23,10 @@
         </div>
     </header>
     <div class="create-wrapper">
-        <aside class="create_side-container">
+        <aside class="side-container">
             <nav>
                 <div class="side-sent">
-                    <div class="side-choiced"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
+                    <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
                     <div class="side-content"><a href="../../Cadmin/egent/create.php">エージェント企業新規登録</a></div>
                     <div class="side-content"><a href="../../Cadmin/auth/newadmin.php"></a>新規管理者登録
                         </a>
