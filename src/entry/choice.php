@@ -55,7 +55,6 @@ if(isset($_POST['search-site'])) {
     $stmt = $dbh->prepare($sql);
     $stmt->execute([$searchQuery]);
     $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($searchResults);
 }else{
     $searchResults = array();
 }
@@ -443,10 +442,7 @@ $count = $stmt->fetchColumn();
         $('form').submit(function(event) {
         event.preventDefault();
 
-
         var searchQuery = $(this).find('input[name="search-site"]').val();
-        console.log(searchQuery);
-
         $.ajax({
             type: 'POST',
             url: 'choice.php',
@@ -459,7 +455,6 @@ $count = $stmt->fetchColumn();
                 alert('検索しました');
             },
             error: function(xhr, status, error) {
-                // console.error(xhr.responseText);
                 alert('エラーが発生しました。検索に失敗しました。');
             }
         });
