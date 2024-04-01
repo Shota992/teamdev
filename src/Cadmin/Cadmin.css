@@ -35,6 +35,8 @@
   z-index: 1;
 }
 
+
+
 /* footer */
 .footer {
   background-color: rgba(0, 0, 0, 0.65);
@@ -63,12 +65,44 @@ footer {
   color: #ffffff;
 }
 
-/* body共通項目 */
-.wrapper{
-  display: flex; /* フレックスボックスに有効に */
-  flex-flow: column; /* 要素を縦に並べる */
-  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+
+
+/* 管理者画面のサイドバー */
+.side-container {
+  width: 18%;
+  background-color: #b36;
+  padding-top: 100px;
 }
+.create_side-container {
+  width: 100%;
+  background-color: #b36;
+  padding-top: 100px;
+}
+
+.side-content {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.side-sent {
+  color: #fff;
+  font-size: 16px;
+  text-align: end;
+}
+
+.side-choiced {
+  background-color: #fff;
+  color: #b36;
+  padding: 20px;
+}
+
+
+
+/* body共通項目 */
 body {
   margin: 0;
 }
@@ -79,6 +113,20 @@ main {
   padding: 100px 0;
 }
 
+.create-main{
+  width: 82%;
+}
+
+.wrapper{
+  display: flex; /* フレックスボックスに有効に */
+  flex-flow: column; /* 要素を縦に並べる */
+  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
+
+.create-wrapper{
+  display: flex;
+}
+
 .container {
   background-color: #fff;
   width: 50%;
@@ -87,6 +135,17 @@ main {
   padding: 100px;
   text-align: center;
   /*インラインブロック要素の子要素を左右で中央寄せ*/
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.create-container {
+  background-color: #fff;
+  width: 60%;
+  margin: auto;
+  padding: 70px;
+  text-align: center;
+  /* インラインブロック要素の子要素を左右で中央寄せ */
   border-radius: 80px;
   box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
@@ -145,42 +204,9 @@ form {
 }
 
 
-/* 管理者画面のサイドバー */
-.side-container {
-  width: 350px;
-  background-color: #b36;
-  padding-top: 100px;
-}
-.create_side-container {
-  width: 100%;
-  background-color: #b36;
-  padding-top: 100px;
-}
-
-.side-content {
-  height: 50px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 20px;
-}
-
-.side-sent {
-  color: #fff;
-  font-size: 16px;
-  text-align: end;
-}
-
-.side-choiced {
-  background-color: #fff;
-  color: #b36;
-  padding: 20px;
-}
 
 
 /* エージェント企業一覧ページ */
-
 .index-wrapper {
   display: flex;
 }
@@ -362,31 +388,12 @@ form {
 }
 
 /* 新規エージェント登録ページ */
-.create-wrapper {
-  display: flex;
-}
-
 .create-title {
   font-size: 24px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
   margin: 20px;
-}
-
-.create-main {
-  flex-grow: 1;
-}
-
-.create-container {
-  background-color: #fff;
-  width: 80%;
-  margin: auto;
-  padding: 70px;
-  text-align: center;
-  /* インラインブロック要素の子要素を左右で中央寄せ */
-  border-radius: 80px;
-  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 .form-control1 {

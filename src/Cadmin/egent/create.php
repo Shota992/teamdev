@@ -143,12 +143,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </header>
     <div class="create-wrapper">
-        <aside class="create_side-container">
+        <aside class="side-container">
             <nav>
                 <div class="side-sent">
                     <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
-                    <div class="side-content"><a href="/">エージェント企業新規登録</a></div>
-                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
+                    <div class="side-choiced"><a href="#">エージェント企業新規登録</a></div>
+                    <div class="side-content"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
                         </a>
                     </div>
                     <div class="side-content"><a href="../../Cadmin/content.php">申込内容一覧</a></div>
