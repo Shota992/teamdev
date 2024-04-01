@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+
 $searchQuery = '';
 
 // 検索フォームがサブミットされたかどうかをチェック
@@ -54,7 +55,6 @@ if(isset($_POST['search-site'])) {
     $stmt = $dbh->prepare($sql);
     $stmt->execute([$searchQuery]);
     $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($searchResults);
 }else{
     $searchResults = array();
 }
@@ -67,46 +67,18 @@ $stmt->execute([$user_id]);
 $count = $stmt->fetchColumn();
 
 
-// $sql3 = "DELETE FROM choice_ing WHERE user_id = ?";
-//     $stmt = $dbh->prepare($sql3);
-//     if ($stmt->execute([$user_id])) {
-//         echo "テーブルの中身を削除しました";
-//     } else {
-//         echo "エラー: テーブルの中身の削除に失敗しました。";
-//     }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST['action'] == 'unload') {
-        // SQL3を実行
-        $sql3 = "DELETE FROM choice_ing WHERE user_id = ?";
-        $stmt = $dbh->prepare($sql3);
-        if ($stmt->execute([$user_id])) {
-            echo "テーブルの中身を削除しました";
-        } else {
-            echo "エラー: テーブルの中身の削除に失敗しました。";
-        }
-        exit();
-    }
-}
-
-
 
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/choice.css">
-    <title>企業選択</title>
-    <script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    ></script>
+    <title>choice</title>
     <link
         rel="stylesheet"
         type="text/css"
@@ -118,6 +90,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
     <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+    <script
         script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
@@ -128,17 +104,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
 </head>
-<body>
-    <?php 
+
+
+<body class="body">
+    <?php
     include_once '../includes/header2.php';
     ?>
-    <main>
         <div class="wrapper">
             <div class="inner">
-                <!-- <div class="left-button">
-                </div>
-                <div class="left-button">
-                </div> -->
                 <div class="choices">
                     <div class="description">
                         <div>
@@ -159,10 +132,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <?php foreach ($generals as $info) { ?>
                                     <li class="slide">
                                         <div class="slider-img">
-                                            <img src="" alt=""/>
+                                            <img src="../assets/img/<?=$info["logo"];?>" alt=""/ class="choice_logo">
                                         </div>
                                         <div class="slider-titles">
-                                            <p class="slider-title" id="companyName"><?=$info["site_name"];?></p>
+                                            <div class="slider-title" id="companyName"><?=$info["site_name"];?></div>
+                                            <div class="slider-subtitle"><?=$info["agent_name"];?></div>
                                         </div>
                                         <div class="slider-tags">
                                             <?php if ($info['size'] == '大手') { ?>
@@ -176,14 +150,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <?php } ?>
                                         </div>
                                         <div class="slider-contents">
-                                            <p><?=$info["agent_name"];?></p>
-                                            <p><?=$info["explanation"];?></p>
-                                            <p><?=$info["area"];?></p>
-                                            <p><?=$info["amounts"];?></p>
+                                            <div class="choice-explanation-container">
+                                                <p class="choice_explanation"><?=$info["explanation"];?></p>
+                                            </div>
+                                            <p>地域　：<?=$info["area"];?></p>
+                                            <p>求人数：約<?=$info["amounts"];?>件</p>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
                                             <input type="hidden" name="agent_id" value="<?=$info["agent_id"];?>">
-                                            <button type="button" class="add-button">追加</button>
+                                            <button type="button" class="add-button add<?=$info["agent_id"];?>">選択</button>
+                                            <div class="delete-button delete<?=$info["agent_id"];?>">選択済み</div>
                                         </form>
                                     </li>
                                 <?php } ?>
@@ -222,10 +198,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <?php foreach ($specials as $info) { ?>
                                     <li class="slide">
                                         <div class="slider-img">
-                                            <img src="" alt=""/>
+                                            <img src="../assets/img/<?=$info["logo"];?>" alt=""/ class="choice_logo">
                                         </div>
                                         <div class="slider-titles">
-                                            <p class="slider-title" id="companyName">企業名</p>
+                                            <div class="slider-title" id="companyName"><?=$info["site_name"];?></div>
+                                            <div class="slider-subtitle"><?=$info["agent_name"];?></div>
                                         </div>
                                         <div class="slider-tags">
                                             <?php if ($info['category'] == '営業') { ?>
@@ -275,14 +252,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <? } ?>
                                         </div>
                                         <div class="slider-contents">
-                                            <p><?=$info["agent_name"];?></p>
-                                            <p><?=$info["explanation"];?></p>
-                                            <p><?=$info["area"];?></p>
-                                            <p><?=$info["amounts"];?></p>
+                                            <div class="choice-explanation-container">
+                                                <p class="choice_explanation"><?=$info["explanation"];?></p>
+                                            </div>
+                                            <p>地域　：<?=$info["area"];?></p>
+                                            <p>求人数：<?=$info["amounts"];?></p>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
                                             <input type="hidden" name="agent_id" value="<?=$info["agent_id"];?>">
-                                            <button type="button" class="add-button">追加</button>
+                                            <button type="button" class="add-button add<?=$info["agent_id"];?>">選択</button>
+                                            <div class="delete-button delete<?=$info["agent_id"];?>">選択済み</div>
                                         </form>
                                     </li>
                                 <?php } ?>
@@ -422,7 +401,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <li>
                                     <img src="<?=$info["logo"];?>" alt="Logo">
                                     <p><?=$info["site_name"];?></p>
-                                    <p><?=$info["agent_id"];?></p>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -432,11 +410,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button id="complete-btn">完了</button>
                     <p id="message" style="color: red;"></p>
                 </div>
-            </main>
+            </div>
+        </div>
     <?php include_once '../includes/footer1.php'?>
 
 
-        <script>
+    <script>
         $(document).ready(function() {
             $('.add-button').click(function() {
                 var form = $(this).closest('form');
@@ -463,10 +442,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $('form').submit(function(event) {
         event.preventDefault();
 
-
         var searchQuery = $(this).find('input[name="search-site"]').val();
-        console.log(searchQuery);
-
         $.ajax({
             type: 'POST',
             url: 'choice.php',
@@ -479,7 +455,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 alert('検索しました');
             },
             error: function(xhr, status, error) {
-                // console.error(xhr.responseText);
                 alert('エラーが発生しました。検索に失敗しました。');
             }
         });
@@ -487,44 +462,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 });
 
 $(document).ready(function() {
-            // 完了ボタンがクリックされたときの処理
-            $('#complete-btn').click(function() {
-                // choice_ingテーブルのカラム数を取得
-                var recordCount = <?php echo count($choice_ing); ?>;
+    // choice_ingテーブルのレコード数をJavaScriptに埋め込む
+    var recordCount = <?php echo count($choice_ing); ?>;
 
-                // カラム数が5個以上の場合
-                if (recordCount >= 5) {
-                    // edit.phpに遷移
-                    window.location.href = 'http://localhost:8080/entry/check.php';
-                } else {
-                    // メッセージを表示
-                    $('#message').text('5個以上追加しましょう');
-                }
-            });
+    $(document).ready(function() {
+    // 完了ボタンがクリックされたときの処理
+    $('#complete-btn').click(function() {
+        // カラム数が3個以上の場合
+        if (recordCount >= 3) {
+            // edit.phpに遷移
+            window.location.href = 'http://localhost:8080/entry/check.php';
+        } else {
+            // メッセージを表示
+            $('#message').text('3個以上追加しましょう');
+        }
+    });
 
-    // 完了ボタンを押さずにページを離れた場合、追加内容をクリアするための処理
-    $(window).on('beforeunload', function() {
-    return 'このページを離れてもよろしいですか？';
-});
+    // 追加ボタンがクリックされたときの処理
+    $('.add-button').click(function() {
+        // カラム数を1増やす
+        recordCount++;
 
-$(window).on('unload', function() {
-    $.ajax({
-        type: 'POST',
-        url: 'choice.php',
-        data: { action: 'unload' },
-        success: function(response) {
-            console.log('ページを離れるときの処理が完了しました');
-        },
-        error: function(xhr, status, error) {
-            console.error('ページを離れるときの処理でエラーが発生しました:', error);
+        // カラム数が3個以上になった場合
+        if (recordCount >= 3) {
+            // メッセージをクリア
+            $('#message').text('');
         }
     });
 });
 
+});
 
+
+$(document).ready(function() {
+    // 各フォームの処理
+    $('.add-form').each(function() {
+        // フォーム内のagent_idを取得
+        var agentId = $(this).find('input[name="agent_id"]').val();
+
+        // choice_ingテーブルにagent_idが存在するかを確認
+        var isInChoiceIng = <?php echo json_encode(in_array($info["agent_id"], array_column($choice_ing, 'agent_id'))); ?>;
+        
+        // 初期表示の設定
+        if (isInChoiceIng) {
+            $('.add' + agentId).hide(); // 追加ボタンを非表示
+            $('.delete' + agentId).show(); // 取り消しボタンを表示
+        } else {
+            $('.delete' + agentId).hide(); // 取り消しボタンを非表示
+            $('.add' + agentId).show(); // 追加ボタンを表示
+        }
+
+        // 追加ボタンがクリックされたときの処理
+        $('.add' + agentId).click(function() {
+            $('.add' + agentId).hide(); // 追加ボタンを非表示
+            $('.delete' + agentId).show(); // 取り消しボタンを表示
         });
+    });
+});
+
 
 
     </script>
-    </body>
+</body>
 </html>

@@ -1,24 +1,24 @@
 /* 総合特化選択画面　専用 */
+
 p{
     opacity: 80%;
 }
 
-main{
+
+.body{
     background-color:#d9d9d9 ;
-    margin: 120px;
 }
 
 .wrapper{
     background-color: #fff;
     border-radius: 80px;
-}
-
-.inner{
+    margin: 150px;
     padding: 60px;
 }
 
+
 .choices{
-    padding: 30px;
+    margin: 30px;
 }
 
 .description{
@@ -28,11 +28,12 @@ main{
 }
 
 .sentence{
+    margin-top: 18px;
     font-size: 16px;
 }
 
 .title{
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -49,7 +50,7 @@ margin-top: 50px;
 }
 
 .slider-container{
-    height:400px ;
+    height:450px ;
     margin: 40px;
 }
 
@@ -63,7 +64,11 @@ margin-top: 50px;
     width: 600px;
     height:500px ;
     border: 3px solid black;
-    border-radius: 5%;
+    border-radius: 10px;
+}
+
+.slider-container .slide {
+    height: 400px;
 }
 
 .slider-img{
@@ -76,7 +81,6 @@ margin-top: 50px;
 .slider-titles{
     height: 30px;
     /* background-color: #AAA; */
-    margin-top: -10px;
     white-space: nowrap;
 }
 
@@ -87,16 +91,22 @@ margin-top: 50px;
     justify-content: center;
 }
 
+.slider-subtitle{
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+}
+
 
 .slider-tags{
     height: 30px;
-    margin-top: 5px;
+    margin-top: 20px;
     display: flex;
 }
 
 .slider-tag{
-    height: 26px;
-    width: 60px;
+    height: 24px;
+    width: 55px;
     border-radius: 10px;
     margin-left:10px ;
     display: flex;
@@ -127,12 +137,13 @@ margin-top: 50px;
     margin-left: 15px;
 }
 
-.left-button{
-    width: 94px;
-    height: 94px;
-    background-color: #d6d6d6;
-    border-radius: 100%;
-    top: 600px;
+.choice-explanation-container{
+    height: 50px;
+}
+
+.choice_explanation{
+    font-size: 16px;
+    word-wrap: break-word;
 }
 
 .general-searches{
@@ -209,6 +220,16 @@ margin-top: 50px;
     gap: -5px;
 }
 
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
 .kyc-search-bar{
     display: flex;
     align-items: center;
@@ -278,4 +299,66 @@ margin-top: 50px;
     display: flex;
     justify-content: center;
     margin-top: 100px;
+}
+
+
+.slick-arrow:before{
+    content:""!important;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slick-next:before{
+    background: url(../img/right.png)!important;
+    background-size: contain!important;
+}
+
+.slick-prev:before{
+    background: url(../img/left.png)!important;
+    background-size: contain!important;
+}
+
+
+.slider-img {
+    max-width: 100%; /* 親要素の幅に収まるように最大の幅を設定 */
+    height: 50px; /* 親要素の高さに収まるように最大の高さを設定 */
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    background-color: #fff;
+    border:10px solid #ddd;
+}
+
+.slider-img img {
+    width: 100%; /* 画像を親要素に合わせて幅を100%に設定 */
+    max-height: 40px; /* アスペクト比を保つため、高さは自動で調整される */
+}
+
+.add-form{
+    display: flex;
+    justify-content: center
+}
+
+.add-button{
+    width: 80px;
+    border-radius: 10px;
+    background-color: #ddd;
+    font-weight:bold ;
+}
+
+.add-button:hover {
+    background-color: #aaa; /* マウスが乗ったときの背景色を指定 */
+    color: #fff;
+}
+
+.delete-button{
+    width: 100%;
+    background-color: #ed4;
+    font-weight:bold ;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 3px 5px 0 rgba(122, 108, 3, 0.495);
 }
