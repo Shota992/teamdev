@@ -1,10 +1,15 @@
 <?php
 require_once('../../dbconnect.php');
 require "../../vendor/autoload.php";
+
 use Verot\Upload\Upload;
 
-//セッションの開始
 session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../../Cadmin/auth/login.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {

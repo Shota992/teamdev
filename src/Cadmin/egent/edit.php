@@ -6,10 +6,10 @@ use Verot\Upload\Upload;
 
 session_start();
 
-// if (!isset($_SESSION['id'])) {
-//     header('Location: /admin/auth/lognin.php');
-//     exit;
-// }
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../../Cadmin/auth/login.php');
+    exit;
+}
 
 $sql = "SELECT * FROM info WHERE id = :id";
 $stmt = $dbh->prepare($sql);
