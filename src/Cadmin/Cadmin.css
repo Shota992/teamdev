@@ -184,7 +184,7 @@ form {
   border-radius: 5px;
   font-size: 23px;
   display: block;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -417,7 +417,7 @@ form {
   font-size: 20px;
   display: block;
   height: 30px;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -466,6 +466,7 @@ form {
 
 .create_td1 {
   float: left;
+  width: 60%;
 }
 
 .create_td1a {
