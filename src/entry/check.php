@@ -17,8 +17,10 @@ $user_id = $_SESSION["user_id"];
 
 $sql = "SELECT DISTINCT info.*
         FROM choice_ing
-        INNER JOIN info ON choice_ing.agent_id = info.agent_id";
+        INNER JOIN info ON choice_ing.agent_id = info.agent_id
+        WHERE choice_ing.user_id = :user_id";
 $stmt = $dbh->prepare($sql);
+$stmt->bindParam(":user_id", $user_id);
 $stmt->execute();
 $selects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -26,7 +28,6 @@ $selects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $dbh->beginTransaction();
-        
         // 削除する企業のIDを取得
         $id = $_POST["id"];
 
