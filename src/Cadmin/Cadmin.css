@@ -38,17 +38,6 @@
 
 
 /* footer */
-.footer {
-  background-color: rgba(0, 0, 0, 0.65);
-  height: 60px;
-  display: block;
-  /* 水平・垂直方向の中央揃え */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
 .footer-copyright {
   color: #fff;
   font-size: 20px;
@@ -70,11 +59,6 @@ footer {
 /* 管理者画面のサイドバー */
 .side-container {
   width: 18%;
-  background-color: #b36;
-  padding-top: 100px;
-}
-.create_side-container {
-  width: 100%;
   background-color: #b36;
   padding-top: 100px;
 }
@@ -114,8 +98,17 @@ main {
   padding: 100px 0;
 }
 
+.auth-main{
+  display: flex;
+  align-items: center; 
+  height: 100vh; 
+}
+
 .create-main{
   width: 82%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .wrapper{
@@ -126,11 +119,12 @@ main {
 
 .create-wrapper{
   display: flex;
+  flex: 1;
 }
 
 .container {
   background-color: #fff;
-  width: 50%;
+  width: 40%;
   margin: auto;
   height: 80%;
   padding: 100px;
@@ -155,9 +149,17 @@ main {
   display: inline-block;
   margin-top: 0px;
   margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -169,7 +171,6 @@ form {
 .form-label {
   color: rgba(0, 0, 0, 0.8);
   font-size: 21px;
-  font-weight: bold;
   margin: 0 auto;
   margin-bottom: 8px;
   display: block;
@@ -212,9 +213,13 @@ form {
   display: flex;
 }
 
+.index-main-head{
+  width: 80%;
+}
+
 .index-main-head-container {
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: #b36;
   display: flex;
   padding-left: 10px;
@@ -224,6 +229,7 @@ form {
 .index-main-head-sent {
   color: #fff;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .index-main-search {
@@ -254,6 +260,7 @@ form {
 }
 
 .index-main-table {
+  width: 80%;
   margin-top: 40px;
 }
 
@@ -310,9 +317,13 @@ form {
   margin-top: 100px;
 }
 
+.content-main-head{
+  width: 80%;
+}
+
 .content-main-head-container {
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: #b36;
   display: flex;
   padding-left: 10px;
@@ -322,9 +333,11 @@ form {
 .content-main-head-sent {
   color: #fff;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .content-main-search {
+  width: 80%;
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -364,6 +377,7 @@ form {
 }
 
 .content-main-table {
+  width: 80%;
   margin-top: 100px;
 }
 

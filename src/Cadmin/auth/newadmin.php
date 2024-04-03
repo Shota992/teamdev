@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img src="../../assets/img/boozer_logo-black.png" alt="boozer" width="150" style="object-fit: contain;">
             </div>
         </header>
-        <main style="flex: 1; ">
+        <main class="auth-main" style="flex: 1; ">
             <div class="container">
                 <h1 class="top-heading">CRAFT管理者新規登録</h1>
                 <form action="../../Cadmin/auth/newadmin.php" method="POST">
