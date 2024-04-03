@@ -111,7 +111,7 @@ $count = $stmt->fetchColumn();
     <?php
     include_once '../includes/header2.php';
     ?>
-        <div class="wrapper">
+        < class="wrapper">
             <div class="inner">
                 <div class="choices">
                     <div class="description">
@@ -407,13 +407,12 @@ $count = $stmt->fetchColumn();
                             <?php } ?>
                         </ul>
                     </div>
-                </div> 
+                </div>
                 <div class="complete-button">
-                    <button id="complete-btn">完了</button>
+                    <button id="complete-btn">次にすすむ</button>
                     <p id="message" style="color: red;"></p>
                 </div>
             </div>
-        </div>
     <?php include_once '../includes/footer1.php'?>
 
 
@@ -534,7 +533,7 @@ $(document).ready(function() {
 
         // choice_ingテーブルにagent_idが存在するかを確認
         var isInChoiceIng = <?php echo json_encode(in_array($info["agent_id"], array_column($choice_ing, 'agent_id'))); ?>;
-        
+
         // 初期表示の設定
         if (isInChoiceIng) {
             $('.add' + agentId).hide(); // 追加ボタンを非表示
