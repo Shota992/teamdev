@@ -1,112 +1,136 @@
 <?php
-// dbconnect.phpファイルを読み込む
-require_once '../../dbconnect.php';
+require_once('../../dbconnect.php');
+require "../../vendor/autoload.php";
+use Verot\Upload\Upload;
 
-// POSTリクエストがあるかどうかを確認
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 画像を保存するディレクトリが存在しない場合は作成する
-    $upload_directory = "../../uploads/";
-    if (!file_exists($upload_directory)) {
-        mkdir($upload_directory, 0777, true);
-    }
+//セッションの開始
+session_start();
 
-    // カテゴリが選択されている場合のみimplode()関数を適用する
-    $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        // ファイルアップロード処理
+        $file = $_FILES['agent-logo'];
+        $lang = 'ja_JP';
 
-    // すべての項目が入力されているかどうかをチェックするフラグを初期化
-    $all_fields_filled = true;
+        // アップロードされたファイルを渡す
+        $handle = new Upload($file, $lang);
 
-    // 必須項目が空であるかどうかをチェック
-    if (
-        empty($_POST['site-name']) ||
-        empty($_POST['agent-name']) ||
-        empty($_FILES['agent-logo']['name']) ||
-        empty($_POST['agent-overview']) ||
-        empty($_POST['agent-kinds']) ||
-        ($_POST['agent-kinds'] !== "総合型" && empty($_POST['agent-scale'])) ||
-        empty($_POST['region']) ||
-        empty($_POST['job-opening']) ||
-        empty($categories) ||
-        empty($_POST['agent-url']) ||
-        empty($_POST['agent-email'])
-    ) {
-        $all_fields_filled = false;
-    }
+        //ファイルサイズのバリデーション： 5MB
+        $handle->file_max_size = '5120000';
+        // ファイルの拡張子と MIMEタイプをチェック
+        $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
+        // PNGに変換して拡張子を統一
+        $handle->image_convert = 'png';
+        $handle->file_new_name_ext = 'png';
+        // サイズ統一
+        $handle->image_resize = true;
+        $handle->image_x = 300;
 
-    // フォームからのデータを取得
-    $site_name = $_POST['site-name'];
-    $agent_name = $_POST['agent-name'];
-    $agent_logo = $_FILES['agent-logo']['name'];
-    $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
-    $agent_overview = $_POST['agent-overview'];
-    $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
-    $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
-    $region = $_POST['region'];
-    $job_opening = $_POST['job-opening'];
-    $agent_url = $_POST['agent-url'];
-    $agent_email = $_POST['agent-email'];
+        if ($handle->uploaded) {
+            // アップロードディレクトリを指定して保存
+            $handle->process('../uploads/');
+            if ($handle->processed) {
+                // アップロード成功
+                $image_name = $handle->file_dst_name;
+            } else {
+                // アップロード処理失敗
+                throw new Exception($handle->error);
+            }
+        } else {
+            // アップロード失敗
+            throw new Exception($handle->error);
+        }
 
-    // 必須項目が空であるかどうかをチェック
-    if (
-        empty($site_name) ||
-        empty($agent_name) ||
-        empty($agent_logo) ||
-        empty($agent_overview) ||
-        empty($agent_kinds) ||
-        ($agent_kinds !== "総合型" && empty($agent_scale)) ||
-        empty($region) ||
-        empty($job_opening) ||
-        empty($categories) ||
-        empty($agent_url) ||
-        empty($agent_email)
-    ) {
-        // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
-        echo "<script>alert('すべての項目を入力してください。')</script>";
-        exit; // 処理を中断する
-    }
+        // ファイルアップロードのバリデーション
+        if (!isset($_FILES['agent-logo']) || $_FILES['agent-logo']['error'] != UPLOAD_ERR_OK) {
+            throw new Exception("ファイルがアップロードされていない、またはアップロードでエラーが発生しました。");
+        }
 
-    // 画像をサーバに保存
-    $target_file = $upload_directory . basename($agent_logo);
-    move_uploaded_file($agent_logo_tmp, $target_file);
+        // ファイルサイズのバリデーション
+        if ($_FILES['agent-logo']['size'] > 5000000) {
+            throw new Exception("ファイルサイズが大きすぎます。");
+        }
 
-    // 総合型の場合、企業規模とカテゴリを空文字列に設定
-    if ($agent_kinds == "総合型") {
-        $agent_scale = '';
-        $categories = '';
-    } else {
-        // カテゴリが選択されている場合のみimplode()関数を適用する
+        // 許可された拡張子かチェック
+        $allowed_ext = array('jpg', 'jpeg', 'png', 'gif');
+        $file_parts = explode('.', $_FILES['agent-logo']['name']);
+        $file_ext = strtolower(end($file_parts));
+        if (!in_array($file_ext, $allowed_ext)) {
+            throw new Exception("許可されていないファイル形式です。");
+        }
+
+
+        // ファイルの内容が画像であるかをチェック
+        $allowed_mime = array('image/jpeg', 'image/png', 'image/gif');
+        $file_mime = mime_content_type($_FILES['agent-logo']['tmp_name']);
+        if (!in_array($file_mime, $allowed_mime)) {
+            throw new Exception("許可されていないファイル形式です。");
+        }
+
+        // 一時ファイルパスを取得
+        $tmp_file = $_FILES['agent-logo']['tmp_name'];
+
+        // ファイル名を生成
+        $image_name = uniqid() . '.' . $file_ext;
+
+        // アップロード先のディレクトリ
+        $upload_dir = '../uploads/';
+
+        // ファイルの移動
+        // $target_file = $upload_directory . basename($file['name']);
+        // if (!move_uploaded_file($file['tmp_name'], $target_file)) {
+        //     throw new Exception("画像のアップロード中にエラーが発生しました。");
+        // }
+
+        // エージェント企業情報を取得
+        $site_name = $_POST['site-name'];
+        $agent_name = $_POST['agent-name'];
+        $agent_overview = $_POST['agent-overview'];
+        $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
+        $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
+        $region = $_POST['region'];
+        $job_opening = $_POST['job-opening'];
         $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+        $agent_url = $_POST['agent-url'];
+        $agent_email = $_POST['agent-email'];
+
+        // SQL文の準備
+        $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        // プリペアドステートメントを作成
+        $stmt = $dbh->prepare($sql);
+
+        // パラメータをバインドしてSQLを実行
+        $stmt->bindParam(1, $site_name);
+        $stmt->bindParam(2, $agent_name);
+        $stmt->bindParam(3, $file['name']);
+        $stmt->bindParam(4, $agent_overview);
+        $stmt->bindParam(5, $agent_kinds);
+        $stmt->bindParam(6, $agent_scale);
+        $stmt->bindParam(7, $region);
+        $stmt->bindParam(8, $job_opening);
+        $stmt->bindParam(9, $categories);
+        $stmt->bindParam(10, $agent_url);
+        $stmt->bindParam(11, $agent_email);
+        $stmt->execute();
+
+        // ステートメントを閉じる
+        $stmt->closeCursor();
+
+        // データベース接続を閉じる
+        $dbh = null;
+
+        $_SESSION['message'] = "エージェント企業の登録に成功しました。";
+        header('Location: /admin/index.php');
+        exit;
+    } catch (PDOException $e) {
+        $_SESSION['message'] = "エージェント企業の登録に失敗しました。";
+        error_log($e->getMessage());
+        exit;
+    } catch (Exception $e) {
+        $_SESSION['message'] = $e->getMessage();
+        exit;
     }
-
-    // SQL文の準備
-    $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    // プリペアドステートメントを作成
-    $stmt = $dbh->prepare($sql);
-
-    // パラメータをバインドしてSQLを実行
-    $stmt->bindParam(1, $site_name);
-    $stmt->bindParam(2, $agent_name);
-    $stmt->bindParam(3, $agent_logo);
-    $stmt->bindParam(4, $agent_overview);
-    $stmt->bindParam(5, $agent_kinds);
-    $stmt->bindParam(6, $agent_scale);
-    $stmt->bindParam(7, $region);
-    $stmt->bindParam(8, $job_opening);
-    $stmt->bindParam(9, $categories);
-    $stmt->bindParam(10, $agent_url);
-    $stmt->bindParam(11, $agent_email);
-    $stmt->execute();
-
-    // ステートメントを閉じる
-    $stmt->closeCursor();
-
-    // データベース接続を閉じる
-    $dbh = null;
-
-    // リダイレクト
-    header("Location: ../../../../Cadmin/index.php");
-    exit;
 }
 
 
@@ -232,7 +256,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -256,12 +279,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </header>
     <div class="create-wrapper">
-        <aside class="create_side-container">
+        <aside class="side-container">
             <nav>
                 <div class="side-sent">
                     <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
-                    <div class="side-content"><a href="/">エージェント企業新規登録</a></div>
-                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
+                    <div class="side-content choiced"><a href="#">エージェント企業新規登録</a></div>
+                    <div class="side-content"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
                         </a>
                     </div>
                     <div class="side-content"><a href="../../Cadmin/content.php">申込内容一覧</a></div>
@@ -284,7 +307,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <th><label for="site-name" class="create_form-label">サービス名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control" />
+                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control required" placeholder="サービス名を入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -293,7 +316,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>
                                     <label for="agent-name" class="create_form-label">企業名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control" />
+                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control required" placeholder="企業名を入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -301,15 +324,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <th><label for="agent-logo" class="create_form-labelLogo">企業ロゴ</label>
                                 </th>
-                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" /><!--<button type="submit" class="reference">参照</button>-->
-                                </td>
+                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1 required" />
                             </tr>
                         </div>
                         <div class="create-list">
                             <tr>
                                 <th><label for="agent-overview" class="create_form-label">企業の概要 <br>（50文字以内）</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control" />
+                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control required" placeholder="企業の概要・説明を入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -319,7 +341,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-kinds" class="create_select" id="agent-kinds">
-                                        <option value="">選択してください</option>
                                         <option>総合型</option>
                                         <option>特化型</option>
                                     </select>
@@ -358,7 +379,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>
                                     <label for="job-opening" class="create_form-label">求人数</label>
                                 </th>
-                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control" />
+                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required" />
                                     <strong>社</strong>
                                 </td>
                             </tr>
@@ -402,7 +423,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <label for="agent-url" class="create_form-label">企業HPのURL</label>
                                 </th>
                                 <td class="create_td1">
-                                    <input type="text" name="agent-url" id="agent-url" class="form-control" />
+                                    <input type="text" name="agent-url" id="agent-url" class="form-control required" placeholder="企業HPのURLを入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -411,7 +432,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>
                                     <label for="agent-email" class="crate_form-label">メールアドレス</label>
                                 </th>
-                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control" />
+                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control required" placeholder="企業のメールアドレスを入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -523,35 +544,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
 
 
-                document.addEventListener('DOMContentLoaded', function () {
-                    const form = document.querySelector('form');
-
-                    form.addEventListener('submit', function (event) {
-                        event.preventDefault(); // デフォルトのフォーム送信を防止
-
-                        const formData = new FormData(form); // フォームデータを取得
-
-                        fetch('submit.php', {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.text(); // レスポンスのテキストを取得
-                        })
-                        .then(data => {
-                            // レスポンスのテキストを表示するなどの処理を行う
-                            console.log(data);
-                            alert('登録が完了しました');
-                        })
-                        .catch(error => {
-                            console.error('There was a problem with the fetch operation:', error);
-                            alert('エラーが発生しました');
-                        });
-                    });
-                });
+        const submitButton = document.querySelector('.btn.submit')
+        const inputDoms = Array.from(document.querySelectorAll('.required'))
+        inputDoms.forEach(inputDom => {
+            inputDom.addEventListener('input', event => {
+            const isFilled = inputDoms.filter(d => d.value).length === inputDoms.length
+            submitButton.disabled = !isFilled
+            })
+        })
     </script>
 </body>
 
