@@ -18,16 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 必須項目が空であるかどうかをチェック
     if (
-        empty($site_name) ||
-        empty($agent_name) ||
-        empty($agent_overview) ||
-        empty($agent_kinds) ||
-        ($agent_kinds !== "総合型" && empty($agent_scale)) ||
-        empty($region) ||
-        empty($job_opening) ||
+        empty($_POST['site-name']) ||
+        empty($_POST['agent-name']) ||
+        empty($_FILES['agent-logo']['name']) ||
+        empty($_POST['agent-overview']) ||
+        empty($_POST['agent-kinds']) ||
+        ($_POST['agent-kinds'] !== "総合型" && empty($_POST['agent-scale'])) ||
+        empty($_POST['region']) ||
+        empty($_POST['job-opening']) ||
         empty($categories) ||
-        empty($agent_url) ||
-        empty($agent_email)
+        empty($_POST['agent-url']) ||
+        empty($_POST['agent-email'])
     ) {
         $all_fields_filled = false;
     }
@@ -42,11 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
     $region = $_POST['region'];
     $job_opening = $_POST['job-opening'];
-    // カテゴリが選択されている場合のみimplode()関数を適用する
-    $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
     $agent_url = $_POST['agent-url'];
     $agent_email = $_POST['agent-email'];
-
 
     // 必須項目が空であるかどうかをチェック
     if (
@@ -63,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         empty($agent_email)
     ) {
         // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
-        echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
+        echo "<script>alert('すべての項目を入力してください。')</script>";
         exit; // 処理を中断する
     }
 
@@ -79,13 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // カテゴリが選択されている場合のみimplode()関数を適用する
         $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
     }
-
-    // 総合型の場合、企業規模とカテゴリをnullに設定
-    // if ($agent_kinds == "総合型") {
-    // $agent_scale = null;
-    // $categories = null;
-    // }
-
 
     // SQL文の準備
     $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -117,6 +108,128 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../../../../Cadmin/index.php");
     exit;
 }
+
+
+
+
+// // dbconnect.phpファイルを読み込む
+// require_once '../../dbconnect.php';
+
+// // POSTリクエストがあるかどうかを確認
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // 画像を保存するディレクトリが存在しない場合は作成する
+//     $upload_directory = "../../uploads/";
+//     if (!file_exists($upload_directory)) {
+//         mkdir($upload_directory, 0777, true);
+//     }
+
+//     // カテゴリが選択されている場合のみimplode()関数を適用する
+//     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+
+//     // すべての項目が入力されているかどうかをチェックするフラグを初期化
+//     $all_fields_filled = true;
+
+//     // 必須項目が空であるかどうかをチェック
+//     if (
+//         empty($site_name) ||
+//         empty($agent_name) ||
+//         empty($agent_overview) ||
+//         empty($agent_kinds) ||
+//         ($agent_kinds !== "総合型" && empty($agent_scale)) ||
+//         empty($region) ||
+//         empty($job_opening) ||
+//         empty($categories) ||
+//         empty($agent_url) ||
+//         empty($agent_email)
+//     ) {
+//         $all_fields_filled = false;
+//     }
+
+//     // フォームからのデータを取得
+//     $site_name = $_POST['site-name'];
+//     $agent_name = $_POST['agent-name'];
+//     $agent_logo = $_FILES['agent-logo']['name'];
+//     $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
+//     $agent_overview = $_POST['agent-overview'];
+//     $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
+//     $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
+//     $region = $_POST['region'];
+//     $job_opening = $_POST['job-opening'];
+//     // カテゴリが選択されている場合のみimplode()関数を適用する
+//     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+//     $agent_url = $_POST['agent-url'];
+//     $agent_email = $_POST['agent-email'];
+
+
+//     // 必須項目が空であるかどうかをチェック
+//     if (
+//         empty($site_name) ||
+//         empty($agent_name) ||
+//         empty($agent_logo) ||
+//         empty($agent_overview) ||
+//         empty($agent_kinds) ||
+//         ($agent_kinds !== "総合型" && empty($agent_scale)) ||
+//         empty($region) ||
+//         empty($job_opening) ||
+//         empty($categories) ||
+//         empty($agent_url) ||
+//         empty($agent_email)
+//     ) {
+//         // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
+//         echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
+//         exit; // 処理を中断する
+//     }
+
+//     // 画像をサーバに保存
+//     $target_file = $upload_directory . basename($agent_logo);
+//     move_uploaded_file($agent_logo_tmp, $target_file);
+
+//     // 総合型の場合、企業規模とカテゴリを空文字列に設定
+//     if ($agent_kinds == "総合型") {
+//         $agent_scale = '';
+//         $categories = '';
+//     } else {
+//         // カテゴリが選択されている場合のみimplode()関数を適用する
+//         $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+//     }
+
+//     // 総合型の場合、企業規模とカテゴリをnullに設定
+//     // if ($agent_kinds == "総合型") {
+//     // $agent_scale = null;
+//     // $categories = null;
+//     // }
+
+
+//     // SQL文の準備
+//     $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+//     // プリペアドステートメントを作成
+//     $stmt = $dbh->prepare($sql);
+
+//     // パラメータをバインドしてSQLを実行
+//     $stmt->bindParam(1, $site_name);
+//     $stmt->bindParam(2, $agent_name);
+//     $stmt->bindParam(3, $agent_logo);
+//     $stmt->bindParam(4, $agent_overview);
+//     $stmt->bindParam(5, $agent_kinds);
+//     $stmt->bindParam(6, $agent_scale);
+//     $stmt->bindParam(7, $region);
+//     $stmt->bindParam(8, $job_opening);
+//     $stmt->bindParam(9, $categories);
+//     $stmt->bindParam(10, $agent_url);
+//     $stmt->bindParam(11, $agent_email);
+//     $stmt->execute();
+
+//     // ステートメントを閉じる
+//     $stmt->closeCursor();
+
+//     // データベース接続を閉じる
+//     $dbh = null;
+
+//     // リダイレクト
+//     header("Location: ../../../../Cadmin/index.php");
+//     exit;
+// }
 ?>
 
 
@@ -408,6 +521,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 });
             }
         });
+
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    const form = document.querySelector('form');
+
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault(); // デフォルトのフォーム送信を防止
+
+                        const formData = new FormData(form); // フォームデータを取得
+
+                        fetch('submit.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.text(); // レスポンスのテキストを取得
+                        })
+                        .then(data => {
+                            // レスポンスのテキストを表示するなどの処理を行う
+                            console.log(data);
+                            alert('登録が完了しました');
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with the fetch operation:', error);
+                            alert('エラーが発生しました');
+                        });
+                    });
+                });
     </script>
 </body>
 

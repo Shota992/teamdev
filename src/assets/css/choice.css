@@ -362,3 +362,14 @@ input[type="checkbox" i] {
     justify-content: center;
     box-shadow: 0 3px 5px 0 rgba(122, 108, 3, 0.495);
 }
+
+#complete-btn {
+    font-weight: bold;
+    background: rgba(238, 198, 68, 0.8);
+    border: solid 3px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
