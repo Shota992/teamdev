@@ -71,9 +71,16 @@ footer {
 
 .wrapper {
     display: flex;
-    flex: 1;
+    min-height: 100vh;
 }
-
+.login_wrapper{
+    display: flex;
+    /* フレックスボックスに有効に */
+    flex-flow: column;
+    /* 要素を縦に並べる */
+    min-height: 100vh;
+    /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
 body {
     margin: 0;
 }
@@ -81,7 +88,7 @@ body {
 .main-body {
     background: rgba(217, 217, 217, 0.8);
     margin-top: 40px;
-    padding: 100px 0;
+    padding-top: 100px;
     flex-grow: 1;
 }
 
@@ -98,6 +105,8 @@ body {
 }
 
 .top-heading {
+    font-size: 24px;
+    font-weight: bold;
     display: inline-block;
     margin-top: 0px;
     margin-bottom: 30px;
