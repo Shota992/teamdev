@@ -35,9 +35,39 @@ $stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        // choice_ing テーブルからデータを取得
+        $sql = "SELECT * FROM choice_ing WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+        $choice_ing_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // choice テーブルに挿入
+        foreach ($choice_ing_data as $row) {
+            $sql = "INSERT INTO choice (agent_id, user_id) VALUES (:agent_id, :user_id)";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':agent_id', $row['agent_id']);
+            $stmt->bindValue(':user_id', $row['user_id']);
+            $stmt->execute();
+        }
 
+        // choice_ing テーブルからデータを削除
+        $sql = "DELETE FROM choice_ing WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
 
+        // リダイレクト
+        header("Location: ./complete.php");
+        exit;
+    } catch (PDOException $e) {
+        echo "エラー: " . $e->getMessage();
+    }
+}
+
+var_dump($persons);
 
 ?>
 
@@ -164,9 +194,9 @@ $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php } ?>
                     </div>
                     <div class="final-submit">
-                        <a href="./complete.php" class="final-submit-container">
-                                <button class="final-submit-button">申し込む</button>
-                        </a>
+                        <form action="./finalcheck.php" method="post">
+                                    <button class="final-submit-button">申し込む</button>
+                        </form>
                         <div class="final-edit-container">
                             <button class="final-edit-button">入力内容を変更する</button>
                         </div>

@@ -60,18 +60,22 @@ header {
     display: flex;
     justify-content: space-between;
     /* margin: 0 0 0 700px; */
+    margin-left: auto;
+    width: 100%;
 }
 
 .header_nav_ul1 {
     display: flex;
     align-items: center;
     gap: 50px;
+    margin-left: auto;
 }
 
 .header_nav_ul2 {
     display: flex;
     align-items: center;
     gap: 50px;
+    margin-left:auto ;
 }
 
 .headerNav_li_1::after {

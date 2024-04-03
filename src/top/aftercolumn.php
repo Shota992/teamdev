@@ -26,9 +26,9 @@
                 </div>
             </section>
             <!-- コラム１ -->
-            <section class="columnContent1">
+            <section class="columnContent1" id="column1">
                 <div class="columnHead">
-                    <h2 id="column1" class="columnTitleText">
+                    <h2  class="columnTitleText">
                         1.エージェント企業とは
                     </h2>
                 </div>
@@ -55,10 +55,10 @@
                 </div>
             </section>
             <!-- コラム２ -->
-            <section class="columnContent2">
+            <section class="columnContent2" id="column2">
                 <div class="columnHead">
-                    <h2 id="column2" class="columnTitleText" data-scroll>
-                        2.エージェント企業とは
+                    <h2  class="columnTitleText" data-scroll>
+                        2.エージェント企業の選び方
                     </h2>
                 </div>
                 <div class="column2Body">
@@ -110,9 +110,9 @@
                 </div>
             </section>
             <!-- コラム３ -->
-            <section class="columnContent3">
+            <section class="columnContent3" id="column3">
                 <div class="columnHead">
-                    <h2 id="column3" class="columnTitleText" data-scroll>
+                    <h2  class="columnTitleText" data-scroll>
                         3.活用のポイント
                     </h2>
                 </div>

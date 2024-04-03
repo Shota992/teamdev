@@ -16,11 +16,17 @@
                 <img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo">
             </a>
         </h1>
-        <nav>
+        <nav class="header-nav1">
             <ul class="header_nav_ul">
                 <li><a href="/../top/aftercraft.php" class="header_nav_li_1">CRAFTとは</a></li>
                 <li><a href="/../top/aftercolumn.php" class="header_nav_li_2">コラム</a></li>
+                <li><a href="/../top/history.php" class="header_nav_li_2">申込み内容</a></li>
             </ul>
+            <div class="header_nav_ul2">
+                    <form method="POST" action="/auth/logout.php" class="headerNav_li_3">
+                        <input type="submit" value="ログアウト" />
+                    </form>
+            </div>
         </nav>
     </header>
 </body>
