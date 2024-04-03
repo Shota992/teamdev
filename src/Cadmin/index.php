@@ -90,7 +90,7 @@ $dbh = null;
                         <div class="index-main-head-sent">エージェント企業一覧</div>
                     </div>
                 </div>
-                <form method="GET" action="./index.php">
+                <form method="GET" action="./index.php" class="form">
                     <div class="index-main-search">
                         <div class="index-main-search-contents">
                             <div class="index-main-search-content">
