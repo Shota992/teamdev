@@ -113,14 +113,11 @@ INSERT INTO craft(id,mail,password)VALUES
     (4,'negi0141017323@gmail.com','$2y$10$z6l1PUjdsFpIvCEdDJkpl.3Qvj5S28oXu8h8KQKlZcYemC04b8h8G');
 
 INSERT INTO agent(id, mail,password,agent_id)VALUES
-    (1,'mi3mi3king@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
-    (2,'bbb@gmail.com','BBB',2),
-    (3,'ccc@gmail.com','CCC',3),
-    (4,'ddd@gmail.com','DDD',4),
-    (5,'eee@gmail.com','EEE',5),
-    (6,'fff@gmail.com','FFF',6),
-    (7,'ggg@gmail.com','GGG',7),
-    (8,'hhh@gmail.com','HHH',8);
+    (1,'mi3mi3king@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1), 
+    (2,'bbb@gmail.com','$2y$10$M8V6tKZ/.Dz2F9RvNHU/n.Tn0ByN4cD7XzkUe8fC3dXUuz0gHn9H2',2), 
+    (3,'ccc@gmail.com','$2y$10$lLUkZ7.FDEHheUAbvBBByeSArkvERFsYPJ7q3H0TzfpbLLeR56NWC',3),
+
+
 
 
 -- docker compose exec db bash
