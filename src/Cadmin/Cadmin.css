@@ -35,18 +35,9 @@
   z-index: 1;
 }
 
-/* footer */
-.footer {
-  background-color: #554f4f;
-  height: 60px;
-  display: block;
-  /* 水平・垂直方向の中央揃え */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
 
+
+/* footer */
 .footer-copyright {
   color: #fff;
   font-size: 20px;
@@ -63,6 +54,39 @@ footer {
   color: #ffffff;
 }
 
+
+
+/* 管理者画面のサイドバー */
+.side-container {
+  width: 18%;
+  background-color: #b36;
+  padding-top: 100px;
+}
+
+.side-sent {
+  color: #fff;
+  font-size: 20px;
+  text-align: end;
+}
+
+.side-content {
+  height: 80px;
+  padding: 20px;
+  position: relative; 
+}
+
+.side-content a{
+  display: inline-block; /* ブロック要素に変更 */
+  line-height: 40px; /* 要素の高さと一致する行の高さ */
+  width: 100%; 
+  height: 100%;
+}
+
+.choiced {
+  background-color: #fff;
+  color: #b36;
+}
+
 /* body共通項目 */
 body {
   margin: 0;
@@ -74,9 +98,33 @@ main {
   padding: 100px 0;
 }
 
+.auth-main{
+  display: flex;
+  align-items: center; 
+  height: 100vh; 
+}
+
+.create-main{
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper{
+  display: flex; /* フレックスボックスに有効に */
+  flex-flow: column; /* 要素を縦に並べる */
+  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
+
+.create-wrapper{
+  display: flex;
+  flex: 1;
+}
+
 .container {
   background-color: #fff;
-  width: 33%;
+  width: 40%;
   margin: auto;
   height: 80%;
   padding: 100px;
@@ -86,13 +134,32 @@ main {
   box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
+.create-container {
+  background-color: #fff;
+  width: 60%;
+  margin: auto;
+  padding: 70px;
+  text-align: center;
+  /* インラインブロック要素の子要素を左右で中央寄せ */
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
 .top-heading {
   display: inline-block;
   margin-top: 0px;
   margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -104,7 +171,6 @@ form {
 .form-label {
   color: rgba(0, 0, 0, 0.8);
   font-size: 21px;
-  font-weight: bold;
   margin: 0 auto;
   margin-bottom: 8px;
   display: block;
@@ -118,7 +184,7 @@ form {
   border-radius: 5px;
   font-size: 23px;
   display: block;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -140,49 +206,20 @@ form {
 }
 
 
-/* 管理者画面のサイドバー */
-.side-container {
-  width: 350px;
-  background-color: #b36;
-  padding-top: 100px;
-}
-.create_side-container {
-  width: 100%;
-  background-color: #b36;
-  padding-top: 100px;
-}
-
-.side-content {
-  height: 50px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 20px;
-}
-
-.side-sent {
-  color: #fff;
-  font-size: 16px;
-  text-align: end;
-}
-
-.side-choiced {
-  background-color: #fff;
-  color: #b36;
-  padding: 20px;
-}
 
 
 /* エージェント企業一覧ページ */
-
 .index-wrapper {
   display: flex;
 }
 
+.index-main-head{
+  width: 80%;
+}
+
 .index-main-head-container {
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: #b36;
   display: flex;
   padding-left: 10px;
@@ -192,6 +229,7 @@ form {
 .index-main-head-sent {
   color: #fff;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .index-main-search {
@@ -222,6 +260,7 @@ form {
 }
 
 .index-main-table {
+  width: 80%;
   margin-top: 40px;
 }
 
@@ -235,7 +274,28 @@ form {
 }
 
 .index-main-table-contents {
-  height: 40px;
+  height: 50px;
+
+}
+
+.index-main-table-content{
+  position: relative;
+  text-align: center;
+  line-height: 3;
+}
+
+.index-main-table-content a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: normal;
+}
+
+.index-main-table-contents:hover{
+  background-color: #989096;
 }
 
 .index-even {
@@ -257,9 +317,13 @@ form {
   margin-top: 100px;
 }
 
+.content-main-head{
+  width: 80%;
+}
+
 .content-main-head-container {
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: #b36;
   display: flex;
   padding-left: 10px;
@@ -269,9 +333,11 @@ form {
 .content-main-head-sent {
   color: #fff;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .content-main-search {
+  width: 80%;
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -311,6 +377,7 @@ form {
 }
 
 .content-main-table {
+  width: 80%;
   margin-top: 100px;
 }
 
@@ -336,10 +403,6 @@ form {
 }
 
 /* 新規エージェント登録ページ */
-.create-wrapper {
-  display: flex;
-}
-
 .create-title {
   font-size: 24px;
   font-weight: bold;
@@ -348,27 +411,13 @@ form {
   margin: 20px;
 }
 
-.create-main {
-  flex-grow: 1;
-}
-
-.create-container {
-  background-color: #fff;
-  width: 80%;
-  margin: auto;
-  padding: 70px;
-  text-align: center;
-  /* インラインブロック要素の子要素を左右で中央寄せ */
-  border-radius: 80px;
-  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
-}
-
 .form-control1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 20px;
   display: block;
-  width: 80%;
+  height: 30px;
+  width: 90%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -417,6 +466,7 @@ form {
 
 .create_td1 {
   float: left;
+  width: 60%;
 }
 
 .create_td1a {

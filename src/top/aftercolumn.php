@@ -12,7 +12,7 @@
 
 <body>
     <?php 
-    include_once '../includes/header1.php';
+    include_once '../includes/header2.php';
     ?>
     <main>
         <div class="container">
@@ -112,7 +112,7 @@
             <!-- コラム３ -->
             <section class="columnContent3" id="column3">
                 <div class="columnHead">
-                    <h2 class="columnTitleText" data-scroll>
+                    <h2  class="columnTitleText" data-scroll>
                         3.活用のポイント
                     </h2>
                 </div>

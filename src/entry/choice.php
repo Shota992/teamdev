@@ -55,7 +55,6 @@ if(isset($_POST['search-site'])) {
     $stmt = $dbh->prepare($sql);
     $stmt->execute([$searchQuery]);
     $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($searchResults);
 }else{
     $searchResults = array();
 }
@@ -72,50 +71,50 @@ $count = $stmt->fetchColumn();
 }
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/choice.css">
     <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/choice.css">
     <title>choice</title>
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
     <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     ></script>
     <script
-      script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+        script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"
     ></script>
     <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="../assets/scripts/common.js" defer></script>
 </head>
+
 
 <body class="body">
     <?php
     include_once '../includes/header2.php';
     ?>
-        <div class="wrapper">
+        < class="wrapper">
             <div class="inner">
                 <div class="choices">
                     <div class="description">
-                        <div >
+                        <div>
                             <p class="title">step1　総合型企業と特化型企業からそれぞれ選んでみる</p>
                         </div>
                         <div class="sentence">
@@ -371,56 +370,51 @@ $count = $stmt->fetchColumn();
                     </div>
                 </div>
                 <div class="search">
-    <div class="description">
-        <div class="title">
-            <p>step2　その他の企業も調べて追加する(任意)</p>
-        </div>
-        <div class="sentence">
-            <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
-        </div>
-    </div>
-    <div class="sub-search-container">
-        <form method="POST" action="./choice.php">
-            <div class="sub-search">
-                <p>企業名の検索</p>
-                <div class="kyc-search-bar">
-                    <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search-site']) ){ echo $_POST['search-site']; } ?>">
+                    <div class="description">
+                        <div class="title">
+                            <p>step2　その他の企業も調べて追加する(任意)</p>
+                        </div>
+                        <div class="sentence">
+                            <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
+                        </div>
+                    </div>
+                    <div class="sub-search-container">
+                        <form method="POST" action="./choice.php">
+                            <div class="sub-search">
+                                <p>企業名の検索</p>
+                                <div class="kyc-search-bar">
+                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if( !empty($_POST['search-site']) ){ echo $_POST['search-site']; } ?>">
+                                </div>
+                            </div>
+                            <div class="submit-container">
+                                <button  name="search">
+                                    <input type="submit" name="search" value="検索">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="search-result-container">
+                    <div class="search-result">
+                        <ul>
+                            <?php foreach ($searchResults as $info) { ?>
+                                <li>
+                                    <img src="<?=$info["logo"];?>" alt="Logo">
+                                    <p><?=$info["site_name"];?></p>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="complete-button">
+                    <button id="complete-btn">次にすすむ</button>
+                    <p id="message" style="color: red;"></p>
                 </div>
             </div>
-            <div class="submit-container">
-                <button  name="search">
-                    <input type="submit" name="search" value="検索">
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="search-result-container">
-    <div class="search-result">
-        <ul>
-            <?php foreach ($searchResults as $info) { ?>
-                <li>
-                    <img src="<?=$info["logo"];?>" alt="Logo">
-                    <p><?=$info["site_name"];?></p>
-                    <p><?=$info["agent_id"];?></p>
-                </li>
-            <?php } ?>
-        </ul>
-    </div>
-</div>
-    <div class="complete-button">
-        <button id="complete-btn">完了</button>
-        <p id="message" style="color: red;"></p>
-    </div>
-    
-            </div>
-        </div>
-        <?php
-    include_once '../includes/footer1.php';
-    ?>
+    <?php include_once '../includes/footer1.php'?>
 
 
-        <script>
+    <script>
         $(document).ready(function() {
             $('.add-button').click(function() {
                 var form = $(this).closest('form');
@@ -442,41 +436,12 @@ $count = $stmt->fetchColumn();
             });
         });
 
-//         $(document).ready(function() {
-//     // 各フォームの処理
-//     $('.delete-button').click(function() {
-//         var form = $(this).closest('form');
-//         var formData = form.serialize();
-//         $.ajax({
-//             type: 'POST',
-//             url: form.attr('action'),
-//             data: formData,
-//             success: function(response) {
-//                 // 成功時の処理
-//                 console.log(response);
-//                 alert('削除が完了しました');
-//             },
-//             error: function(xhr, status, error) {
-//                 // エラー時の処理
-//                 console.error(xhr.responseText);
-//                 alert('エラーが発生しました。削除に失敗しました。');
-//             }
-//         });
-//     });
-// });
-
-
-
-
 
         $(document).ready(function() {
         $('form').submit(function(event) {
         event.preventDefault();
 
-
         var searchQuery = $(this).find('input[name="search-site"]').val();
-        console.log(searchQuery);
-
         $.ajax({
             type: 'POST',
             url: 'choice.php',
@@ -489,7 +454,6 @@ $count = $stmt->fetchColumn();
                 alert('検索しました');
             },
             error: function(xhr, status, error) {
-                // console.error(xhr.responseText);
                 alert('エラーが発生しました。検索に失敗しました。');
             }
         });
@@ -529,7 +493,6 @@ $(document).ready(function() {
 });
 
 
-
 $(document).ready(function() {
     // 各フォームの処理
     $('.add-form').each(function() {
@@ -538,7 +501,7 @@ $(document).ready(function() {
 
         // choice_ingテーブルにagent_idが存在するかを確認
         var isInChoiceIng = <?php echo json_encode(in_array($info["agent_id"], array_column($choice_ing, 'agent_id'))); ?>;
-        
+
         // 初期表示の設定
         if (isInChoiceIng) {
             $('.add' + agentId).hide(); // 追加ボタンを非表示
@@ -555,6 +518,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
 
     </script>
 </body>

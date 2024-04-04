@@ -224,6 +224,7 @@ p {
 .slide-img {
     margin-left: 20px;
     width: 100%;
+    object-fit: contain;
 }
 
 
@@ -506,6 +507,21 @@ p {
 .column1Body-t {
     width: 100%;
     height: auto;
+}
+
+#column1{
+    margin-top:-100px ;
+    padding-top: 100px;
+}
+
+#column2{
+    margin-top:-100px ;
+    padding-top: 100px;
+}
+
+#column3{
+    margin-top:-100px ;
+    padding-top: 100px;
 }
 
 
