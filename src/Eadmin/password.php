@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <nav>
                     <div class="side-sent">
                         <div class="side-content"><a href="../Eadmin/student.php">学生情報一覧</a></div>
-                        <div class="side-content choiced"><a href="/">パスワード変更</a></div>
+                        <div class="side-content choiced"><a href="#">パスワード変更</a></div>
                         <div class="side-content"><a href="../Eadmin/logout.php">ログアウト</a></div>
                     </div>
                 </nav>

@@ -60,16 +60,20 @@ footer {
 }
 
 /* body共通項目 */
+/* .student-body{
+    display: flex; 
+    flex-flow: column; 
+    min-height: 100vh; 
+} */
+
 .out-wrapper {
     display: flex;
-    /* フレックスボックスに有効に */
     flex-flow: column;
-    /* 要素を縦に並べる */
     min-height: 100vh;
-    /* 最小でも画面の高さ分のbodyの高さを担保する */
 }
 
 .wrapper {
+    flex: 1;
     display: flex;
     min-height: 100vh;
 }

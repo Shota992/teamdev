@@ -36,7 +36,7 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </script>
 </head>
 
-<body>
+<body class="student-body">
     <div class="out-wrapper">
         <header class="header-all">
             <div header-top>
@@ -52,7 +52,7 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <aside class="side-container">
                 <nav>
                     <div class="side-sent">
-                        <div class="side-content choiced"><a href="/">学生情報一覧</a></div>
+                        <div class="side-content choiced"><a href="#">学生情報一覧</a></div>
                         <div class="side-content"><a href="../Eadmin/password.php">パスワード変更</a></div>
                         <div class="side-content"><a href="../Eadmin/logout.php">ログアウト</a></div>
                     </div>
@@ -107,7 +107,7 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <small>&copy; POSSE,Inc</small>
             </div>
         </footer>
-        </div>
+    </div>
 </body>
 
 </html>
