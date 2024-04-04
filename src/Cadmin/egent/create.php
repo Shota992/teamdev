@@ -10,28 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mkdir($upload_directory, 0777, true);
     }
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        // ファイルアップロード処理
-        $file = $_FILES['agent-logo'];
-        $lang = 'ja_JP';
-
-        // アップロードされたファイルを渡す
-        $handle = new Upload($file, $lang);
-
-        //ファイルサイズのバリデーション： 5MB
-        $handle->file_max_size = '5120000';
-        // ファイルの拡張子と MIMEタイプをチェック
-        $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
-        // PNGに変換して拡張子を統一
-        $handle->image_convert = 'png';
-        $handle->file_new_name_ext = 'png';
-        // サイズ統一
-        $handle->image_resize = true;
-        $handle->image_x = 300;
-
-
     // カテゴリが選択されている場合のみimplode()関数を適用する
     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
 
@@ -103,6 +81,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(11, $agent_email);
             $stmt->execute();
 
+            $last_insert_id = $dbh->lastInsertId();
+
+            // agentテーブルにメールアドレスとパスワードを挿入する
+            $agent_email = $_POST['agent-email']; // エージェントのメールアドレス
+
+            // パスワードのハッシュ化
+            $password = password_hash($_POST['agent-email'], PASSWORD_DEFAULT); // メールアドレスを使って適当な方法でハッシュ化
+
+            // SQL文の準備
+            $sql = "INSERT INTO agent (mail, password, agent_id) VALUES (?, ?, ?)";
+
+            // プリペアドステートメントを作成
+            $stmt = $dbh->prepare($sql);
+
+            // パラメータをバインドしてSQLを実行
+            $stmt->bindParam(1, $agent_email);
+            $stmt->bindParam(2, $password);
+            $stmt->bindParam(3, $last_insert_id);
+            $stmt->execute();
+
             // ステートメントを閉じる
             $stmt->closeCursor();
 
@@ -116,28 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<!-- <!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フォーム</title>
-</head>
-
-<body>
-    <?php if (isset($error_message)) : ?>
-        <div style="color: red; margin-bottom: 10px;"><?php echo $error_message; ?></div>
-    <?php endif; ?>
-    <form method="post" enctype="multipart/form-data">
-        <!-- フォームの内容 -->
-    </form>
-</body>
-
-</html>
- -->
-
 
 <!DOCTYPE html>
 <html lang="ja">
