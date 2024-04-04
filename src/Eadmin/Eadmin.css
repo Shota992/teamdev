@@ -75,7 +75,6 @@ footer {
 .wrapper {
     flex: 1;
     display: flex;
-    min-height: 100vh;
 }
 .login_wrapper{
     display: flex;
