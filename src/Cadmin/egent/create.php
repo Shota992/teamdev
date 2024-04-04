@@ -1,15 +1,15 @@
 <?php
-require_once('../../dbconnect.php');
-require "../../vendor/autoload.php";
+// dbconnect.phpファイルを読み込む
+require_once '../../dbconnect.php';
 
-use Verot\Upload\Upload;
+// POSTリクエストがあるかどうかを確認
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 画像を保存するディレクトリが存在しない場合は作成する
+    $upload_directory = "../../uploads/";
+    if (!file_exists($upload_directory)) {
+        mkdir($upload_directory, 0777, true);
+    }
 
-session_start();
-
-if (!isset($_SESSION['id'])) {
-    header('Location: /../../../Cadmin/auth/login.php');
-    exit;
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -31,235 +31,113 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $handle->image_resize = true;
         $handle->image_x = 300;
 
-        if ($handle->uploaded) {
-            // アップロードディレクトリを指定して保存
-            $handle->process('../uploads/');
-            if ($handle->processed) {
-                // アップロード成功
-                $image_name = $handle->file_dst_name;
+
+    // カテゴリが選択されている場合のみimplode()関数を適用する
+    $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+
+    // 必須項目が入力されているかどうかをチェックするフラグを初期化
+    $all_fields_filled = true;
+
+    // 必須項目が空であるかどうかをチェック
+    if (
+        empty($_POST['site-name']) ||
+        empty($_POST['agent-name']) ||
+        empty($_FILES['agent-logo']['name']) ||
+        empty($_POST['agent-overview']) ||
+        empty($_POST['agent-kinds']) ||
+        ($_POST['agent-kinds'] !== "総合型" && empty($_POST['agent-scale'])) ||
+        empty($_POST['region']) ||
+        empty($_POST['job-opening']) ||
+        empty($categories) ||
+        empty($_POST['agent-url']) ||
+        empty($_POST['agent-email'])
+    ) {
+        // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
+        $error_message = "必須項目が入力されていません。";
+        $all_fields_filled = false;
+    } else {
+        
+            // フォームからのデータを取得
+            $site_name = $_POST['site-name'];
+            $agent_name = $_POST['agent-name'];
+            $agent_logo = $_FILES['agent-logo']['name'];
+            $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
+            $agent_overview = $_POST['agent-overview'];
+            $agent_kinds = $_POST['agent-kinds'];
+            $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
+            $region = $_POST['region'];
+            $job_opening = $_POST['job-opening'];
+            $agent_url = $_POST['agent-url'];
+            $agent_email = $_POST['agent-email'];
+
+            // 画像をサーバに保存
+            $target_file = $upload_directory . basename($agent_logo);
+            move_uploaded_file($agent_logo_tmp, $target_file);
+
+            // 総合型の場合、企業規模とカテゴリを空文字列に設定
+            if ($agent_kinds == "総合型") {
+                $agent_scale = '';
+                $categories = '';
             } else {
-                // アップロード処理失敗
-                throw new Exception($handle->error);
+                // カテゴリが選択されている場合のみimplode()関数を適用する
+                $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
             }
-        } else {
-            // アップロード失敗
-            throw new Exception($handle->error);
-        }
 
-        // ファイルアップロードのバリデーション
-        if (!isset($_FILES['agent-logo']) || $_FILES['agent-logo']['error'] != UPLOAD_ERR_OK) {
-            throw new Exception("ファイルがアップロードされていない、またはアップロードでエラーが発生しました。");
-        }
+            // SQL文の準備
+            $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        // ファイルサイズのバリデーション
-        if ($_FILES['agent-logo']['size'] > 5000000) {
-            throw new Exception("ファイルサイズが大きすぎます。");
-        }
+            // プリペアドステートメントを作成
+            $stmt = $dbh->prepare($sql);
 
-        // 許可された拡張子かチェック
-        $allowed_ext = array('jpg', 'jpeg', 'png', 'gif');
-        $file_parts = explode('.', $_FILES['agent-logo']['name']);
-        $file_ext = strtolower(end($file_parts));
-        if (!in_array($file_ext, $allowed_ext)) {
-            throw new Exception("許可されていないファイル形式です。");
-        }
+            // パラメータをバインドしてSQLを実行
+            $stmt->bindParam(1, $site_name);
+            $stmt->bindParam(2, $agent_name);
+            $stmt->bindParam(3, $agent_logo);
+            $stmt->bindParam(4, $agent_overview);
+            $stmt->bindParam(5, $agent_kinds);
+            $stmt->bindParam(6, $agent_scale);
+            $stmt->bindParam(7, $region);
+            $stmt->bindParam(8, $job_opening);
+            $stmt->bindParam(9, $categories);
+            $stmt->bindParam(10, $agent_url);
+            $stmt->bindParam(11, $agent_email);
+            $stmt->execute();
 
+            // ステートメントを閉じる
+            $stmt->closeCursor();
 
-        // ファイルの内容が画像であるかをチェック
-        $allowed_mime = array('image/jpeg', 'image/png', 'image/gif');
-        $file_mime = mime_content_type($_FILES['agent-logo']['tmp_name']);
-        if (!in_array($file_mime, $allowed_mime)) {
-            throw new Exception("許可されていないファイル形式です。");
-        }
+            // データベース接続を閉じる
+            $dbh = null;
 
-        // 一時ファイルパスを取得
-        $tmp_file = $_FILES['agent-logo']['tmp_name'];
-
-        // ファイル名を生成
-        $image_name = uniqid() . '.' . $file_ext;
-
-        // アップロード先のディレクトリ
-        $upload_dir = '../uploads/';
-
-        // ファイルの移動
-        // $target_file = $upload_directory . basename($file['name']);
-        // if (!move_uploaded_file($file['tmp_name'], $target_file)) {
-        //     throw new Exception("画像のアップロード中にエラーが発生しました。");
-        // }
-
-        // エージェント企業情報を取得
-        $site_name = $_POST['site-name'];
-        $agent_name = $_POST['agent-name'];
-        $agent_overview = $_POST['agent-overview'];
-        $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
-        $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
-        $region = $_POST['region'];
-        $job_opening = $_POST['job-opening'];
-        $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-        $agent_url = $_POST['agent-url'];
-        $agent_email = $_POST['agent-email'];
-
-        // SQL文の準備
-        $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        // プリペアドステートメントを作成
-        $stmt = $dbh->prepare($sql);
-
-        // パラメータをバインドしてSQLを実行
-        $stmt->bindParam(1, $site_name);
-        $stmt->bindParam(2, $agent_name);
-        $stmt->bindParam(3, $file['name']);
-        $stmt->bindParam(4, $agent_overview);
-        $stmt->bindParam(5, $agent_kinds);
-        $stmt->bindParam(6, $agent_scale);
-        $stmt->bindParam(7, $region);
-        $stmt->bindParam(8, $job_opening);
-        $stmt->bindParam(9, $categories);
-        $stmt->bindParam(10, $agent_url);
-        $stmt->bindParam(11, $agent_email);
-        $stmt->execute();
-
-        // ステートメントを閉じる
-        $stmt->closeCursor();
-
-        // データベース接続を閉じる
-        $dbh = null;
-
-        $_SESSION['message'] = "エージェント企業の登録に成功しました。";
-        header('Location: /admin/index.php');
-        exit;
-    } catch (PDOException $e) {
-        $_SESSION['message'] = "エージェント企業の登録に失敗しました。";
-        error_log($e->getMessage());
-        exit;
-    } catch (Exception $e) {
-        $_SESSION['message'] = $e->getMessage();
-        exit;
+            // リダイレクト
+            header("Location: /Cadmin/index.php");
+            exit;
+        
     }
 }
-
-
-
-
-// // dbconnect.phpファイルを読み込む
-// require_once '../../dbconnect.php';
-
-// // POSTリクエストがあるかどうかを確認
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // 画像を保存するディレクトリが存在しない場合は作成する
-//     $upload_directory = "../../uploads/";
-//     if (!file_exists($upload_directory)) {
-//         mkdir($upload_directory, 0777, true);
-//     }
-
-//     // カテゴリが選択されている場合のみimplode()関数を適用する
-//     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-
-//     // すべての項目が入力されているかどうかをチェックするフラグを初期化
-//     $all_fields_filled = true;
-
-//     // 必須項目が空であるかどうかをチェック
-//     if (
-//         empty($site_name) ||
-//         empty($agent_name) ||
-//         empty($agent_overview) ||
-//         empty($agent_kinds) ||
-//         ($agent_kinds !== "総合型" && empty($agent_scale)) ||
-//         empty($region) ||
-//         empty($job_opening) ||
-//         empty($categories) ||
-//         empty($agent_url) ||
-//         empty($agent_email)
-//     ) {
-//         $all_fields_filled = false;
-//     }
-
-//     // フォームからのデータを取得
-//     $site_name = $_POST['site-name'];
-//     $agent_name = $_POST['agent-name'];
-//     $agent_logo = $_FILES['agent-logo']['name'];
-//     $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
-//     $agent_overview = $_POST['agent-overview'];
-//     $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
-//     $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
-//     $region = $_POST['region'];
-//     $job_opening = $_POST['job-opening'];
-//     // カテゴリが選択されている場合のみimplode()関数を適用する
-//     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-//     $agent_url = $_POST['agent-url'];
-//     $agent_email = $_POST['agent-email'];
-
-
-//     // 必須項目が空であるかどうかをチェック
-//     if (
-//         empty($site_name) ||
-//         empty($agent_name) ||
-//         empty($agent_logo) ||
-//         empty($agent_overview) ||
-//         empty($agent_kinds) ||
-//         ($agent_kinds !== "総合型" && empty($agent_scale)) ||
-//         empty($region) ||
-//         empty($job_opening) ||
-//         empty($categories) ||
-//         empty($agent_url) ||
-//         empty($agent_email)
-//     ) {
-//         // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
-//         echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
-//         exit; // 処理を中断する
-//     }
-
-//     // 画像をサーバに保存
-//     $target_file = $upload_directory . basename($agent_logo);
-//     move_uploaded_file($agent_logo_tmp, $target_file);
-
-//     // 総合型の場合、企業規模とカテゴリを空文字列に設定
-//     if ($agent_kinds == "総合型") {
-//         $agent_scale = '';
-//         $categories = '';
-//     } else {
-//         // カテゴリが選択されている場合のみimplode()関数を適用する
-//         $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-//     }
-
-//     // 総合型の場合、企業規模とカテゴリをnullに設定
-//     // if ($agent_kinds == "総合型") {
-//     // $agent_scale = null;
-//     // $categories = null;
-//     // }
-
-
-//     // SQL文の準備
-//     $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-//     // プリペアドステートメントを作成
-//     $stmt = $dbh->prepare($sql);
-
-//     // パラメータをバインドしてSQLを実行
-//     $stmt->bindParam(1, $site_name);
-//     $stmt->bindParam(2, $agent_name);
-//     $stmt->bindParam(3, $agent_logo);
-//     $stmt->bindParam(4, $agent_overview);
-//     $stmt->bindParam(5, $agent_kinds);
-//     $stmt->bindParam(6, $agent_scale);
-//     $stmt->bindParam(7, $region);
-//     $stmt->bindParam(8, $job_opening);
-//     $stmt->bindParam(9, $categories);
-//     $stmt->bindParam(10, $agent_url);
-//     $stmt->bindParam(11, $agent_email);
-//     $stmt->execute();
-
-//     // ステートメントを閉じる
-//     $stmt->closeCursor();
-
-//     // データベース接続を閉じる
-//     $dbh = null;
-
-//     // リダイレクト
-//     header("Location: ../../../../Cadmin/index.php");
-//     exit;
-// }
 ?>
+
+<!-- <!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォーム</title>
+</head>
+
+<body>
+    <?php if (isset($error_message)) : ?>
+        <div style="color: red; margin-bottom: 10px;"><?php echo $error_message; ?></div>
+    <?php endif; ?>
+    <form method="post" enctype="multipart/form-data">
+        <!-- フォームの内容 -->
+    </form>
+</body>
+
+</html>
+ -->
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -444,10 +322,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </table>
                     <div class="keep">
                         <div class="create_btn">
-                            <button type="submit">保存</button>
+                            <button type="submit" id="saveButton">保存</button>
                         </div>
                     </div>
-                    <div class="create_sample">
+                    <div class="create_sample" id="createSample">
                         <p class="create_sampleP"> サンプル　学生側には以下のように表示されます</p>
                         <div class="create_sample-figure" style="width: 270.667px;">
                             <div class="slider-img">
@@ -471,7 +349,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
                         </div>
-                        <button type="submit" class="create_btn">新規登録</button>
+                        <button type="submit" class="create_btn" id="registerButton">新規登録</button>
                     </div>
                 </form>
             </div>
