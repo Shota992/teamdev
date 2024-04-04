@@ -8,7 +8,6 @@
     <title>申し込み完了</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css">
-    <link rel="stylesheet" href="../assets/sp/sp-complete.css">
 </head>
 
 <body>
