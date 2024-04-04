@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/includes.css">
+    <link rel="stylesheet" href="../assets/sp/sp-includes.css">
 </head>
 
 <body>
@@ -26,7 +27,13 @@
                 <li><a href="/" class="headerNav_li_4">ログイン</a></li>
             </ul>
         </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>      
+        </div>
     </header>
+    <script src="../assets/scripts/common.js"></script>
 </body>
 
 </html>
