@@ -113,9 +113,9 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="form-tag">
                         <label for="sex" class="form-label">性別</label>
-                        <input type="radio" name="gender" value="男性" id="male" <?php echo isset($user_data['sex']) && $user_data['sex'] == '男性' ? 'checked' : ''; ?> />
+                        <input type="radio" name="gender" value="男" id="male" <?php echo isset($user_data['sex']) && $user_data['sex'] == '男' ? 'checked' : ''; ?> />
                         <label for="male" class="person_radio" >男性</label>
-                        <input type="radio" name="gender" value="女性" id="female" <?php echo isset($user_data['sex']) && $user_data['sex'] == '女性' ? 'checked' : ''; ?>/>
+                        <input type="radio" name="gender" value="女" id="female" <?php echo isset($user_data['sex']) && $user_data['sex'] == '女' ? 'checked' : ''; ?>/>
                         <label for="female" class="person_radio"  >女性</label>
                         <input type="radio" name="gender" value="回答しない" id="none" <?php echo isset($user_data['sex']) && $user_data['sex'] == '回答しない' ? 'checked' : ''; ?>/>
                         <label for="none" class="person_radio"  >回答しない</label>
@@ -180,23 +180,23 @@ if (!isset($_SESSION['user_id'])) {
                         <label for="classification" class="form-label" class="person_checkbox">志望業界</label>
                     </div>
                     <div class="form-tagContent">
-                        <input type="checkbox" name="desire[]" value="メーカー" id="maker" />
+                        <input type="checkbox" name="desire[]" value="メーカー" id="maker" <?php echo isset($user_data['desire']) && in_array('メーカー', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="maker" class="person_checkbox">メーカー</label>
-                        <input type="checkbox" name="desire[]" value="商社" id="trading" />
+                        <input type="checkbox" name="desire[]" value="商社" id="trading" <?php echo isset($user_data['desire']) && in_array('商社', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="trading" class="person_checkbox">商社</label>
-                        <input type="checkbox" name="desire[]" value="官公庁・公社" id="public-corporation" />
+                        <input type="checkbox" name="desire[]" value="官公庁・公社" id="public-corporation" <?php echo isset($user_data['desire']) && in_array('官公庁・公社', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="public-corporation" class="person_checkbox">官公庁・公社</label>
-                        <input type="checkbox" name="desire[]" value="小売" id="retail" />
+                        <input type="checkbox" name="desire[]" value="小売" id="retail" <?php echo isset($user_data['desire']) && in_array('小売', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="retail" class="person_checkbox">小売</label>
-                        <input type="checkbox" name="desire[]" value="金融" id="finance" />
+                        <input type="checkbox" name="desire[]" value="金融" id="finance" <?php echo isset($user_data['desire']) && in_array('金融', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="finance" class="person_checkbox">金融</label>
-                        <input type="checkbox" name="desire[]" value="サービス" id="service" />
+                        <input type="checkbox" name="desire[]" value="サービス" id="service" <?php echo isset($user_data['desire']) && in_array('サービス', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="service" class="person_checkbox">サービス</label>
-                        <input type="checkbox" name="desire[]" value="マスコミ" id="mass-media" />
+                        <input type="checkbox" name="desire[]" value="マスコミ" id="mass-media" <?php echo isset($user_data['desire']) && in_array('マスコミ', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="mass-media" class="person_checkbox">マスコミ</label>
-                        <input type="checkbox" name="desire[]" value="IT" id="IT" />
+                        <input type="checkbox" name="desire[]" value="IT" id="IT" <?php echo isset($user_data['desire']) && in_array('IT', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="IT" class="person_checkbox">IT</label>
-                        <input type="checkbox" name="desire[]" value="未定" id="no-decide" />
+                        <input type="checkbox" name="desire[]" value="未定" id="no-decide" <?php echo isset($user_data['desire']) && in_array('未定', (array)$user_data['desire']) ? 'checked' : ''; ?>/>
                         <label for="no-decide" class="person_checkbox">未定</label>
                     </div>
                 </div>

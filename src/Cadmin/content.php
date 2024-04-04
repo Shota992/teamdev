@@ -1,6 +1,14 @@
 <!-- 申込内容一覧ページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../Cadmin/auth/login.php');
+    exit;
+}
+
 $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);

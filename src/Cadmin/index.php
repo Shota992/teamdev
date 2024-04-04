@@ -1,7 +1,12 @@
 <?php
-// session_start();
-
 require __DIR__ . '/../dbconnect.php';
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../Cadmin/auth/login.php');
+    exit;
+}
 $infos = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 
 $search_site = '';
