@@ -33,7 +33,7 @@
                     </h2>
                 </div>
                 <div class="column1Body">
-                    <figure class="column-image" data-scroll>
+                    <figure class="about-image" data-scroll>
                         <img src="../assets/img/column_1.png" alt="" class="column-img" />
                     </figure>
                     <div class="column1Body-t">

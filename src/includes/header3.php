@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/includes.css">
-    <link rel="stylesheet" href="../assets/sp/sp-includes.css">
 </head>
 
 <body>

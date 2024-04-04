@@ -332,6 +332,7 @@ input[type=radio]:checked + .person_radio::after {
     background: #FFF;
     border: solid 10px #297DBA;
     border-radius: 30px;
+    width: 500px;
     margin: 0 auto;
 }
 

@@ -11,30 +11,12 @@
 }
 
 
-// ヘッダーのハンバーガーメニュー
-const burger = document.querySelector(".burger")
-const nav = document.querySelector(".header-nav1")
-const navLinks = document.querySelectorAll(".header-nav1 ul")
 
-
-burger.addEventListener("click", () =>{
-  nav.classList.toggle("nav-active");
-
-  navLinks.forEach((link,index) =>{
-    console.log(index);
-    link.style.animation = 'navLinksFade 0.5s ease forwards ';
-  })
-    
-
-
-
-});
-
-// ユーザー画面1
 
 
 
 
+// ユーザー画面1
 
 
 
