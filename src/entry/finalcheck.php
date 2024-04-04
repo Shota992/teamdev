@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>finalcheck</title>
     <link rel="stylesheet" href="../assets/css/entry.css" />
+    <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
     <script src="./assets/js/script.js" defer></script>
 </head>
 <body>
