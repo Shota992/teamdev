@@ -59,7 +59,6 @@ if(isset($_POST['search-site'])) {
     $searchResults = array();
 }
 
-
 // choice_ingテーブルのカラム数を取得
 $sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
 $stmt = $dbh->prepare($sql);
@@ -397,12 +396,13 @@ $count = $stmt->fetchColumn();
                 <div class="search-result-container">
                     <div class="search-result">
                         <ul>
-                            <?php foreach ($searchResults as $info) { ?>
+                            <!-- <?php foreach ($searchResults as $info) { ?>
                                 <li>
                                     <img src="<?=$info["logo"];?>" alt="Logo">
                                     <p><?=$info["site_name"];?></p>
                                 </li>
-                            <?php } ?>
+                            <?php } ?> -->
+
                         </ul>
                     </div>
                 </div>
@@ -450,6 +450,7 @@ $count = $stmt->fetchColumn();
                 $('.search-result').empty();
             },
             success: function(response) {
+                console.log(response);
                 $('.search-result').html(response);
                 alert('検索しました');
             },
