@@ -13,112 +13,107 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // カテゴリが選択されている場合のみimplode()関数を適用する
     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
 
-    // すべての項目が入力されているかどうかをチェックするフラグを初期化
+    // 必須項目が入力されているかどうかをチェックするフラグを初期化
     $all_fields_filled = true;
 
     // 必須項目が空であるかどうかをチェック
     if (
-        empty($site_name) ||
-        empty($agent_name) ||
-        empty($agent_overview) ||
-        empty($agent_kinds) ||
-        ($agent_kinds !== "総合型" && empty($agent_scale)) ||
-        empty($region) ||
-        empty($job_opening) ||
+        empty($_POST['site-name']) ||
+        empty($_POST['agent-name']) ||
+        empty($_FILES['agent-logo']['name']) ||
+        empty($_POST['agent-overview']) ||
+        empty($_POST['agent-kinds']) ||
+        ($_POST['agent-kinds'] !== "総合型" && empty($_POST['agent-scale'])) ||
+        empty($_POST['region']) ||
+        empty($_POST['job-opening']) ||
         empty($categories) ||
-        empty($agent_url) ||
-        empty($agent_email)
-    ) {
-        $all_fields_filled = false;
-    }
-
-    // フォームからのデータを取得
-    $site_name = $_POST['site-name'];
-    $agent_name = $_POST['agent-name'];
-    $agent_logo = $_FILES['agent-logo']['name'];
-    $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
-    $agent_overview = $_POST['agent-overview'];
-    $agent_kinds = isset($_POST['agent-kinds']) ? $_POST['agent-kinds'] : null;
-    $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
-    $region = $_POST['region'];
-    $job_opening = $_POST['job-opening'];
-    // カテゴリが選択されている場合のみimplode()関数を適用する
-    $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-    $agent_url = $_POST['agent-url'];
-    $agent_email = $_POST['agent-email'];
-
-
-    // 必須項目が空であるかどうかをチェック
-    if (
-        empty($site_name) ||
-        empty($agent_name) ||
-        empty($agent_logo) ||
-        empty($agent_overview) ||
-        empty($agent_kinds) ||
-        ($agent_kinds !== "総合型" && empty($agent_scale)) ||
-        empty($region) ||
-        empty($job_opening) ||
-        empty($categories) ||
-        empty($agent_url) ||
-        empty($agent_email)
+        empty($_POST['agent-url']) ||
+        empty($_POST['agent-email'])
     ) {
         // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
-        echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
-        exit; // 処理を中断する
-    }
-
-    // 画像をサーバに保存
-    $target_file = $upload_directory . basename($agent_logo);
-    move_uploaded_file($agent_logo_tmp, $target_file);
-
-    // 総合型の場合、企業規模とカテゴリを空文字列に設定
-    if ($agent_kinds == "総合型") {
-        $agent_scale = '';
-        $categories = '';
+        $error_message = "必須項目が入力されていません。";
+        $all_fields_filled = false;
     } else {
-        // カテゴリが選択されている場合のみimplode()関数を適用する
-        $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+        
+            // フォームからのデータを取得
+            $site_name = $_POST['site-name'];
+            $agent_name = $_POST['agent-name'];
+            $agent_logo = $_FILES['agent-logo']['name'];
+            $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
+            $agent_overview = $_POST['agent-overview'];
+            $agent_kinds = $_POST['agent-kinds'];
+            $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
+            $region = $_POST['region'];
+            $job_opening = $_POST['job-opening'];
+            $agent_url = $_POST['agent-url'];
+            $agent_email = $_POST['agent-email'];
+
+            // 画像をサーバに保存
+            $target_file = $upload_directory . basename($agent_logo);
+            move_uploaded_file($agent_logo_tmp, $target_file);
+
+            // 総合型の場合、企業規模とカテゴリを空文字列に設定
+            if ($agent_kinds == "総合型") {
+                $agent_scale = '';
+                $categories = '';
+            } else {
+                // カテゴリが選択されている場合のみimplode()関数を適用する
+                $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
+            }
+
+            // SQL文の準備
+            $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            // プリペアドステートメントを作成
+            $stmt = $dbh->prepare($sql);
+
+            // パラメータをバインドしてSQLを実行
+            $stmt->bindParam(1, $site_name);
+            $stmt->bindParam(2, $agent_name);
+            $stmt->bindParam(3, $agent_logo);
+            $stmt->bindParam(4, $agent_overview);
+            $stmt->bindParam(5, $agent_kinds);
+            $stmt->bindParam(6, $agent_scale);
+            $stmt->bindParam(7, $region);
+            $stmt->bindParam(8, $job_opening);
+            $stmt->bindParam(9, $categories);
+            $stmt->bindParam(10, $agent_url);
+            $stmt->bindParam(11, $agent_email);
+            $stmt->execute();
+
+            $last_insert_id = $dbh->lastInsertId();
+
+            // agentテーブルにメールアドレスとパスワードを挿入する
+            $agent_email = $_POST['agent-email']; // エージェントのメールアドレス
+
+            // パスワードのハッシュ化
+            $password = password_hash($_POST['agent-email'], PASSWORD_DEFAULT); // メールアドレスを使って適当な方法でハッシュ化
+
+            // SQL文の準備
+            $sql = "INSERT INTO agent (mail, password, agent_id) VALUES (?, ?, ?)";
+
+            // プリペアドステートメントを作成
+            $stmt = $dbh->prepare($sql);
+
+            // パラメータをバインドしてSQLを実行
+            $stmt->bindParam(1, $agent_email);
+            $stmt->bindParam(2, $password);
+            $stmt->bindParam(3, $last_insert_id);
+            $stmt->execute();
+
+            // ステートメントを閉じる
+            $stmt->closeCursor();
+
+            // データベース接続を閉じる
+            $dbh = null;
+
+            // リダイレクト
+            header("Location: /Cadmin/index.php");
+            exit;
+        
     }
-
-    // 総合型の場合、企業規模とカテゴリをnullに設定
-    // if ($agent_kinds == "総合型") {
-    // $agent_scale = null;
-    // $categories = null;
-    // }
-
-
-    // SQL文の準備
-    $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    // プリペアドステートメントを作成
-    $stmt = $dbh->prepare($sql);
-
-    // パラメータをバインドしてSQLを実行
-    $stmt->bindParam(1, $site_name);
-    $stmt->bindParam(2, $agent_name);
-    $stmt->bindParam(3, $agent_logo);
-    $stmt->bindParam(4, $agent_overview);
-    $stmt->bindParam(5, $agent_kinds);
-    $stmt->bindParam(6, $agent_scale);
-    $stmt->bindParam(7, $region);
-    $stmt->bindParam(8, $job_opening);
-    $stmt->bindParam(9, $categories);
-    $stmt->bindParam(10, $agent_url);
-    $stmt->bindParam(11, $agent_email);
-    $stmt->execute();
-
-    // ステートメントを閉じる
-    $stmt->closeCursor();
-
-    // データベース接続を閉じる
-    $dbh = null;
-
-    // リダイレクト
-    header("Location: ../../../../Cadmin/index.php");
-    exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -143,12 +138,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </header>
     <div class="create-wrapper">
-        <aside class="create_side-container">
+        <aside class="side-container">
             <nav>
                 <div class="side-sent">
                     <div class="side-content"><a href="../../Cadmin/index.php">エージェント企業一覧</a></div>
-                    <div class="side-content"><a href="/">エージェント企業新規登録</a></div>
-                    <div class="side-choiced"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
+                    <div class="side-content choiced"><a href="#">エージェント企業新規登録</a></div>
+                    <div class="side-content"><a href="../../Cadmin/auth/newadmin.php">新規管理者登録</a>
                         </a>
                     </div>
                     <div class="side-content"><a href="../../Cadmin/content.php">申込内容一覧</a></div>
@@ -171,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <th><label for="site-name" class="create_form-label">サービス名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control" />
+                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control required" placeholder="サービス名を入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -180,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>
                                     <label for="agent-name" class="create_form-label">企業名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control" />
+                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control required" placeholder="企業名を入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -188,15 +183,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <th><label for="agent-logo" class="create_form-labelLogo">企業ロゴ</label>
                                 </th>
-                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" /><!--<button type="submit" class="reference">参照</button>-->
-                                </td>
+                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1 required" />
                             </tr>
                         </div>
                         <div class="create-list">
                             <tr>
                                 <th><label for="agent-overview" class="create_form-label">企業の概要 <br>（50文字以内）</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control" />
+                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control required" placeholder="企業の概要・説明を入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -206,7 +200,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-kinds" class="create_select" id="agent-kinds">
-                                        <option value="">選択してください</option>
                                         <option>総合型</option>
                                         <option>特化型</option>
                                     </select>
@@ -245,7 +238,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>
                                     <label for="job-opening" class="create_form-label">求人数</label>
                                 </th>
-                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control" />
+                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required" />
                                     <strong>社</strong>
                                 </td>
                             </tr>
@@ -289,7 +282,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <label for="agent-url" class="create_form-label">企業HPのURL</label>
                                 </th>
                                 <td class="create_td1">
-                                    <input type="text" name="agent-url" id="agent-url" class="form-control" />
+                                    <input type="text" name="agent-url" id="agent-url" class="form-control required" placeholder="企業HPのURLを入力してください"/>
                                 </td>
                             </tr>
                         </div>
@@ -298,17 +291,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <th>
                                     <label for="agent-email" class="crate_form-label">メールアドレス</label>
                                 </th>
-                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control" />
+                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control required" placeholder="企業のメールアドレスを入力してください"/>
                                 </td>
                             </tr>
                         </div>
                     </table>
                     <div class="keep">
                         <div class="create_btn">
-                            <button type="submit">保存</button>
+                            <button type="submit" id="saveButton">保存</button>
                         </div>
                     </div>
-                    <div class="create_sample">
+                    <div class="create_sample" id="createSample">
                         <p class="create_sampleP"> サンプル　学生側には以下のように表示されます</p>
                         <div class="create_sample-figure" style="width: 270.667px;">
                             <div class="slider-img">
@@ -332,7 +325,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
                         </div>
-                        <button type="submit" class="create_btn">新規登録</button>
+                        <button type="submit" class="create_btn" id="registerButton">新規登録</button>
                     </div>
                 </form>
             </div>
@@ -408,6 +401,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 });
             }
         });
+
+
+        const submitButton = document.querySelector('.btn.submit')
+        const inputDoms = Array.from(document.querySelectorAll('.required'))
+        inputDoms.forEach(inputDom => {
+            inputDom.addEventListener('input', event => {
+            const isFilled = inputDoms.filter(d => d.value).length === inputDoms.length
+            submitButton.disabled = !isFilled
+            })
+        })
     </script>
 </body>
 

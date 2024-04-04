@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
         </main>
-        <footer class="footer">
+        <footer>
             <div class="footer-copyright">
                 <small class="copyright">&copy; POSSE,Inc</small>
             </div>

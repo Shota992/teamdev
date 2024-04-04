@@ -1,6 +1,14 @@
 <!-- 申込内容一覧ページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../Cadmin/auth/login.php');
+    exit;
+}
+
 $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
@@ -44,8 +52,8 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="side-sent">
                         <div class="side-content"><a href="../Cadmin/index.php">エージェント企業一覧</a></div>
                         <div class="side-content"><a href="../Cadmin/egent/create.php">エージェント企業新規登録</a></div>
-                        <div class="side-content"><a href="../Cadmin/auth/newadmin.php"></a>新規管理者登録</a></div>
-                        <div class="side-choiced"><a href="/">申込内容一覧</a></div>
+                        <div class="side-content"><a href="../Cadmin/auth/newadmin.php">新規管理者登録</a></div>
+                        <div class="side-content choiced"><a href="/">申込内容一覧</a></div>
                         <div class="side-content"><a href="../Cadmin/auth/logout.php">ログアウト</a></div>
                     </div>
                 </nav>

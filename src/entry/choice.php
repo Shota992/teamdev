@@ -15,13 +15,13 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION["user_id"];
 
 // 総合型企業の情報を取得
-$sql ="SELECT * FROM info WHERE type = '総合'";
+$sql ="SELECT * FROM info WHERE type = '総合型'";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 $generals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // 特化型企業の情報を取得
-$sql1 ="SELECT * FROM info WHERE type = '特化'";
+$sql1 ="SELECT * FROM info WHERE type = '特化型'";
 $stmt = $dbh->prepare($sql1);
 $stmt->execute();
 $specials = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +58,6 @@ if(isset($_POST['search-site'])) {
 }else{
     $searchResults = array();
 }
-
 
 // choice_ingテーブルのカラム数を取得
 $sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
@@ -397,21 +396,21 @@ $count = $stmt->fetchColumn();
                 <div class="search-result-container">
                     <div class="search-result">
                         <ul>
-                            <?php foreach ($searchResults as $info) { ?>
+                            <!-- <?php foreach ($searchResults as $info) { ?>
                                 <li>
                                     <img src="<?=$info["logo"];?>" alt="Logo">
                                     <p><?=$info["site_name"];?></p>
                                 </li>
-                            <?php } ?>
+                            <?php } ?> -->
+
                         </ul>
                     </div>
-                </div> 
+                </div>
                 <div class="complete-button">
-                    <button id="complete-btn">完了</button>
+                    <button id="complete-btn">次にすすむ</button>
                     <p id="message" style="color: red;"></p>
                 </div>
             </div>
-        </div>
     <?php include_once '../includes/footer1.php'?>
 
 
@@ -451,6 +450,7 @@ $count = $stmt->fetchColumn();
                 $('.search-result').empty();
             },
             success: function(response) {
+                console.log(response);
                 $('.search-result').html(response);
                 alert('検索しました');
             },
@@ -502,7 +502,7 @@ $(document).ready(function() {
 
         // choice_ingテーブルにagent_idが存在するかを確認
         var isInChoiceIng = <?php echo json_encode(in_array($info["agent_id"], array_column($choice_ing, 'agent_id'))); ?>;
-        
+
         // 初期表示の設定
         if (isInChoiceIng) {
             $('.add' + agentId).hide(); // 追加ボタンを非表示

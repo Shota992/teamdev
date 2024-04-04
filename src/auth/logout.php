@@ -9,7 +9,7 @@ $_SESSION = array();
 session_destroy();
 
 // 画面遷移
-header('Location: ../../../top/');
+header('Location: /top/top.php');
 exit;
 
 ?>
