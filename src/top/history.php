@@ -1,5 +1,5 @@
-<?php
-require __DIR__ . '/../dbconnect.php';
+<?php 
+/*require __DIR__ . '/../dbconnect.php';
 $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
@@ -19,8 +19,8 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-?>
+}*/
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
