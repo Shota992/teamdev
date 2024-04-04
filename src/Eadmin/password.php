@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../Eadmin/login.php');
+    exit;
+}
+
 // パスワード変更処理
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // データベースへの接続
@@ -10,26 +18,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 現在のパスワードと新しいパスワードが空でないことを確認
     if (!empty($current_password) && !empty($new_password)) {
-        // ユーザーのメールアドレスを取得
-        $mail = 'ユーザーのメールアドレス'; // ここにユーザーのメールアドレスを代入する
 
-        // 現在のパスワードを取得
-        $query = "SELECT password FROM craft WHERE mail = :mail";
+        // ユーザーのエージェントIDを取得（ここでは省略）
+
+        // データベースから現在のパスワードを取得
+        $query = "SELECT password FROM agent WHERE agent_id = :agent_id";
         $statement = $dbh->prepare($query);
-        $statement->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $statement->bindParam(':agent_id', $agent_id, PDO::PARAM_STR);
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
 
+        // データベース内のハッシュ化されたパスワードを取得
+        $hashed_current_password = $row['password'];
+
         // 入力された現在のパスワードが正しいか確認
-        if (password_verify($current_password, $row['password'])) {
+        if (password_verify($current_password, $hashed_current_password)) {
             // 新しいパスワードをハッシュ化
             $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
             // パスワードの変更処理
-            $update_query = "UPDATE craft SET password = :new_password WHERE mail = :mail";
+            $update_query = "UPDATE agent SET password = :new_password WHERE agent_id = :agent_id";
             $update_statement = $dbh->prepare($update_query);
             $update_statement->bindValue(':new_password', $hashed_new_password, PDO::PARAM_STR);
-            $update_statement->bindValue(':mail', $mail, PDO::PARAM_STR);
+            $update_statement->bindValue(':agent_id', $agent_id, PDO::PARAM_STR);
 
             try {
                 $update_statement->execute();
@@ -87,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <nav>
                     <div class="side-sent">
                         <div class="side-content"><a href="../Eadmin/student.php">学生情報一覧</a></div>
-                        <div class="side-choiced"><a href="/">パスワード変更</a></div>
+                        <div class="side-content choiced"><a href="#">パスワード変更</a></div>
                         <div class="side-content"><a href="../Eadmin/logout.php">ログアウト</a></div>
                     </div>
                 </nav>
