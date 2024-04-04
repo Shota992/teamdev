@@ -32,8 +32,6 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>学生情報閲覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css" />
     <link rel="stylesheet" href="../Eadmin/Eadmin.css" />
-    <script src="./assets/js/script.js">
-    </script>
 </head>
 
 <body class="student-body">
