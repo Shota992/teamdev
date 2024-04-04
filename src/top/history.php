@@ -28,6 +28,7 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>history</title>
+    <link rel="stylesheet" href="/../assets/css/reset.css">
     <link rel="stylesheet" href="/../assets/css/history.css" />
     <script src="./assets/js/script.js" defer></script>
 </head>
@@ -51,8 +52,15 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="history-table-item">
-                                <td class="history-item"><?=$choice["logo"];?></td>
-                                <td class="history-item"><?=$choice["site_name"];?></td>
+                                <td class="history-item">
+                                    <div>
+                                        <img src="../assets/img/<?=$choice["logo"];?>" alt=""/ class="history-logo">
+                                    </div>
+                                </td>
+                                <td class="history-item">
+                                    <?=$choice["site_name"];?>
+                                    <?=$choice["agent_name"];?>
+                                </td>
                                 <td class="history-item"><?=$choice["size"];?></td>
                                 <td class="history-item"><?=$choice["area"];?></td>
                                 <td class="history-item"><?=$choice["amounts"];?></td>

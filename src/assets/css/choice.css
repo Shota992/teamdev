@@ -4,6 +4,7 @@ p{
     opacity: 80%;
 }
 
+
 .body{
     background-color:#d9d9d9 ;
 }
@@ -14,6 +15,7 @@ p{
     margin: 150px;
     padding: 60px;
 }
+
 
 .choices{
     margin: 30px;
@@ -218,6 +220,16 @@ margin-top: 50px;
     gap: -5px;
 }
 
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
 .kyc-search-bar{
     display: flex;
     align-items: center;
@@ -349,4 +361,15 @@ margin-top: 50px;
     display: flex;
     justify-content: center;
     box-shadow: 0 3px 5px 0 rgba(122, 108, 3, 0.495);
+}
+
+#complete-btn {
+    font-weight: bold;
+    background: rgba(238, 198, 68, 0.8);
+    border: solid 3px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }

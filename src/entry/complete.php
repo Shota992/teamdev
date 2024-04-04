@@ -43,7 +43,9 @@
             </section>
             <!-- topページへ戻る -->
             <section class="complete_topSection">
-                <button class="complete_btn">TOPページへ戻る</button>
+                <a href="../top/aftertop.php">
+                    <button class="complete_btn">TOPページへ戻る</button>
+                </a>
             </section>
         </div>
     </main>
