@@ -2,6 +2,8 @@
 
 session_start();
 
+$message = '';
+
 if (!isset($_SESSION['id'])) {
     header('Location: /../../Eadmin/login.php');
     exit;
@@ -57,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // 入力された現在のパスワードが正しくない場合の処理
-            echo "<script>alert('現在のパスワードが正しくありません。');</script>";
+            echo "<script>alert('現在のパスワードが正しくありません');</script>";
             echo "<script>window.location.href = '../Eadmin/password.php';</script>";
             exit;
         }
