@@ -125,27 +125,23 @@ $dbh = null;
                             <td class="index-main-table-content">メールアドレス</td>
                         </tr>
                         <?php foreach ($infos as $info) { ?>
-                            <tr class="index-main-table-contents index-odd" id="infos-<?= $info["id"] ?>">
-                                <td class="index-main-table-content">
-                                    <a href="./egent/edit.php?id=<?= $info["id"] ?>">
+                            <tr class="index-main-table-contents index-odd" id="info-<?= $info["agent_id"] ?>">
+                                
+                                    <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["agent_id"]; ?>
                                     </a>
-                                </td>
-                                <td class="index-main-table-content">
-                                    <a href="./egent/edit.php?id=<?= $info["id"] ?>">
+                                    </td>
+                                    <td class="index-main-table-content">
                                         <?= $info["site_name"]; ?>
-                                    </a>
-                                </td>
-                                <td class="index-main-table-content">
-                                    <a href="./egent/edit.php?id=<?= $info["id"] ?>">
+                                    </td>
+                                    <td class="index-main-table-content">
                                         <?= $info["agent_name"]; ?>
-                                    </a>
-                                </td>
-                                <td class="index-main-table-content">
-                                    <a href="./egent/edit.php?id=<?= $info["id"] ?>">
+                                    </td>
+                                    <td class="index-main-table-content">
                                         <?= $info["email"]; ?>
-                                    </a>
-                                </td>
+                                    </td>
+                                
                             </tr>
                         <?php } ?>
                     </table>

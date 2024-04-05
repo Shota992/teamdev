@@ -301,7 +301,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <button type="submit" id="saveButton">保存</button>
                         </div>
                     </div>
-                    <div class="create_sample" id="createSample">
+                    <div class="create_sample" id="createSam">
                         <p class="create_sampleP"> サンプル　学生側には以下のように表示されます</p>
                         <div class="create_sample-figure" style="width: 270.667px;">
                             <div class="slider-img">
@@ -325,7 +325,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
                         </div>
-                        <button type="submit" class="create_btn" id="registerButton">新規登録</button>
+                        <button type="submit" class="create_btn">新規登録</button>
                     </div>
                 </form>
             </div>

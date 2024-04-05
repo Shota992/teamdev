@@ -135,7 +135,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <div class="choice-explanation-container">
                                                 <p class="choice_explanation"><?= $info["explanation"]; ?></p>
                                             </div>
-                                            <p>地域　：<?= $info["area"]; ?></p>
+                                            <p style="margin: 15px 0;">地域　：<?= $info["area"]; ?></p>
                                             <p>求人数：約<?= $info["amounts"]; ?>件</p>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
@@ -237,7 +237,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <div class="choice-explanation-container">
                                                 <p class="choice_explanation"><?= $info["explanation"]; ?></p>
                                             </div>
-                                            <p>地域　：<?= $info["area"]; ?></p>
+                                            <p style="margin: 10px 0;">地域　：<?= $info["area"]; ?></p>
                                             <p>求人数：<?= $info["amounts"]; ?></p>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
