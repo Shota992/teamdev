@@ -1,0 +1,42 @@
+@media (max-width:768px) {
+    .main-body {
+        padding-top: 90px;
+        padding-bottom: 40px;
+    }
+
+    .container {
+        padding: 100px 0px;
+        margin: 5px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 30px;
+    }
+
+    .person-form {
+        padding: 20px;
+        margin: 0px 20px;
+        width: 90%;
+    }
+
+    .form-label {
+        font-size: 15px;
+    }
+
+    .form-control {
+        width: 260px;
+        padding: 0px;
+    }
+
+    .person_checkbox {
+        padding: 5px 0px;
+        padding-left: 25px;
+        font-size: 13px;
+    }
+
+    .btn  {
+        width: 45%;
+    }
+}

@@ -1,39 +1,39 @@
 <?php
-require __DIR__ . '/../dbconnect.php';
-$users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
+// require __DIR__ . '/../dbconnect.php';
+// $users = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
-$message = '';
+// $message = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (empty($_POST['email'])) {
-        $message = 'メールアドレスは必須項目です。';
-    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $message = '正しいEメールアドレスを指定してください。';
-    } elseif (empty($_POST['password'])) {
-        $message = 'パスワードは必須項目です。';
-    } else {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-
-        $stmt = $dbh->prepare('SELECT * FROM user WHERE email = :email');
-        $stmt->bindValue(':email', $email);
-        $stmt->execute();
-        $user = $stmt->fetch();
+//     if (empty($_POST['email'])) {
+//         $message = 'メールアドレスは必須項目です。';
+//     } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+//         $message = '正しいEメールアドレスを指定してください。';
+//     } elseif (empty($_POST['password'])) {
+//         $message = 'パスワードは必須項目です。';
+//     } else {
+//         $email = $_POST['email'];
+//         $password = $_POST['password'];
 
 
-        if ($user && password_verify($password, $user["passwords"])) {
-            session_start();
-            $_SESSION['user_id'] = $user["user_id"];
-            header('Location: /../../../top/aftertop.php');
-            exit();
-        } else {
-            // 認証失敗: エラーメッセージをセット
-            $message = 'メールアドレスまたはパスワードが間違っています。';
-        }
-    }
-}
+//         $stmt = $dbh->prepare('SELECT * FROM user WHERE email = :email');
+//         $stmt->bindValue(':email', $email);
+//         $stmt->execute();
+//         $user = $stmt->fetch();
+
+
+//         if ($user && password_verify($password, $user["passwords"])) {
+//             session_start();
+//             $_SESSION['user_id'] = $user["user_id"];
+//             header('Location: /../../../top/aftertop.php');
+//             exit();
+//         } else {
+//             // 認証失敗: エラーメッセージをセット
+//             $message = 'メールアドレスまたはパスワードが間違っています。';
+//         }
+//     }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>ログイン</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/auth.css">
+    <link rel="stylesheet" href="../assets/sp/sp-login.css">
 </head>
 
 <body>
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include_once '../includes/header3.php'; ?>
     <main>
         <div class="CRAFT-img">
-            <img src="../assets/img/header_logo.png" alt="CRAFTアイコン">
+            <img  src="../assets/img/header_logo.png" alt="CRAFTアイコン">
         </div>
         <div class="container">
             <?php if ($message !== '') { ?>
