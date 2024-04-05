@@ -14,9 +14,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // メールアドレスを取得するクエリを実行する
-    $sql = "SELECT mail FROM agent";
-    $result = $conn->query($sql);
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        // choice_ing テーブルからデータを取得
+        $sql = "SELECT * FROM choice_ing WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+        $choice_ing_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if ($result->num_rows > 0) {
         // 結果からデータを取得し、配列に格納する
@@ -25,9 +33,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $emails[] = $row["mail"];
         }
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // 申し込みが完了したら指定のページにリダイレクトする
-            header("Location: /../entry/complete.php");
+
+        // choice_ing テーブルからデータを削除
+        $sql = "DELETE FROM choice_ing WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+        
+
+        // 個人情報の取得
+        $sql ="SELECT name, mail,tel_num
+                FROM student
+                WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+        $student_info = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // 学生の名前とメールアドレスを取得
+        $student_name = $student_info['name'];
+        $student_email = $student_info['mail'];
+        $student_num = $student_info['tel_num'];
+
+        foreach ($choices as $info) {
+                        // メール送信のための情報
+                        $to = $info['email'];
+                        $subject = "CRAFT";
+                        $message = "いつもお世話になっております。\n\n";
+                        $message .= "CRAFTから新たに申し込みがありました。\n\n";
+                        $message .= "下記のメールアドレス、または電話番号からのやりとりをお願いします。\n";
+                        $message .= "学生氏名: " . $student_name . "\n";
+                        $message .= "電話番号: " . $student_num . "\n\n";
+                        $message .= "メールアドレス: " . $student_email . "\n\n";
+                        $message .= "学生に関する詳細情報はCRAFTのエージェント企業様向けのページからご確認いただけます。";
+                        $headers = "From: craft@gmail.com";
+                    if (mail($to, $subject, $message, $headers)) {
+                        header("Location: ./complete.php");
+                        continue;
+                    } else {
+                        echo "メールの送信に失敗しました";
+                        echo $emails;
+                    }
+                    exit;
+                }
+
 
             // メールの送信
             foreach ($emails as $email) {
@@ -47,12 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "送信先のメールアドレスが見つかりませんでした。";
     }
 
-    // MySQL接続を閉じる
-    $conn->close();
-
-    // 申し込み完了後の処理（例えば、成功メッセージを表示するなど）
-    echo "申し込みが完了しました。";
-}
 ?>
 
 

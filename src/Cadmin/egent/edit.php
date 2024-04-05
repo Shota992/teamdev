@@ -11,89 +11,113 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
-$sql = "SELECT * FROM info WHERE id = :id";
+if (!isset($_GET['agent_id'])) {
+    exit("IDが指定されていません。");
+}
+
+$agent_id = $_GET['agent_id'];
+
+$sql = "SELECT * FROM info WHERE agent_id = :agent_id";
 $stmt = $dbh->prepare($sql);
-$stmt->bindValue(":id", $_REQUEST["id"]);
+$stmt->bindValue(":agent_id", $agent_id);
 $stmt->execute();
 $info = $stmt->fetch();
 
-$image_name = $info["agent-logo"];
+$image_name = ""; // 画像名を空の文字列で初期化
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-    $dbh->beginTransaction();
+        $dbh->beginTransaction();
 
-    // ファイルアップロード
-    $file = $_FILES['agent-logo'];
-    $lang = 'ja_JP';
+        $file = $_FILES['agent-logo'];
+        $lang = 'ja_JP';
 
-    if (!empty($file['name'])) {
-        $handle = new Upload($file, $lang);
+        if (!empty($file['name'])) {
+            $handle = new Upload($file, $lang);
 
-    if (!$handle->uploaded) {
-        throw new Exception($handle->error);
+            if (!$handle->uploaded) {
+                throw new Exception($handle->error);
+            }
+
+            // ファイルサイズのバリデーション： 5MB
+            $handle->file_max_size = '5120000';
+            // ファイルの拡張子と MIMEタイプをチェック
+            $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
+            // PNGに変換して拡張子を統一
+            $handle->image_convert = 'png';
+            $handle->file_new_name_ext = 'png';
+            // サイズ統一
+            $handle->image_resize = true;
+            $handle->image_x = 300;
+            // アップロードディレクトリを指定して保存
+            $handle->process('../egent/uploads/');
+            if (!$handle->processed) {
+                throw new Exception($handle->error);
+            }
+
+            // 更新前の画像を削除
+            if ($info && isset($info["agent-logo"])) {
+                $image_path = __DIR__ . '/../egent/uploads/' . $info["agent-logo"];
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+
+            $image_name = $handle->file_dst_name;
+        }
+
+        // 企業レコードの更新
+        $sql = "UPDATE info SET site_name = :site_name, agent_name = :agent_name, logo = :logo, explanation = :explanation, type = :type, size = :size, area = :area, amounts = :amounts, category = :category, url = :url, email = :email WHERE agent_id = :agent_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(":agent_id", $agent_id);
+        $stmt->bindValue(":site_name", $_POST["site_name"]);
+        $stmt->bindValue(":agent_name", $_POST["agent-name"]);
+        $stmt->bindValue(":logo", $image_name);
+        $stmt->bindValue(":explanation", $_POST["agent-overview"]);
+        $stmt->bindValue(":type", $_POST["agent-kinds"]);
+        $stmt->bindValue(":size", $_POST["agent-scale"]);
+        $stmt->bindValue(":area", $_POST["region"]);
+        $stmt->bindValue(":amounts", $_POST["job-opening"]);
+        $stmt->bindValue(":category", implode(',', $_POST["category"]));
+        $stmt->bindValue(":url", $_POST["agent-url"]);
+        $stmt->bindValue(":email", $_POST["agent-email"]);
+
+        $stmt->execute(); // SQL実行
+
+        $dbh->commit();
+        $_SESSION['message'] = "エージェント企業編集に成功しました。";
+        header('Location:http://localhost:8080/Cadmin/index.php');
+        exit;
+    } catch (PDOException $e) {
+        $dbh->rollBack();
+        $_SESSION['message'] = "エージェント企業編集に失敗しました。";
+        error_log($e->getMessage());
+        exit;
+    } catch (Exception $e) {
+        $_SESSION['message'] = $e->getMessage();
+        error_log($e->getMessage());
+        exit;
     }
-
-      // ファイルサイズのバリデーション： 5MB
-        $handle->file_max_size = '5120000';
-      // ファイルの拡張子と MIMEタイプをチェック
-        $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
-      // PNGに変換して拡張子を統一
-        $handle->image_convert = 'png';
-        $handle->file_new_name_ext = 'png';
-      // サイズ統一
-        $handle->image_resize = true;
-        $handle->image_x = 300;
-      // アップロードディレクトリを指定して保存
-        $handle->process('../egent/uploads/');
-        if (!$handle->processed) {
-        throw new Exception($handle->error);
-        }
-
-      // 更新前の画像を削除
-        if ($image_name) {
-        $image_path = __DIR__ . '/../egent/uploads/' . $image_name;
-        if (file_exists($image_path)) {
-            unlink($image_path);
-        }
-        }
-
-        $image_name = $handle->file_dst_name;
-    }
-
-    // 企業レコードの更新
-    $sql = "INSERT INTO info (agent_id, site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) 
-                VALUES (:agent_id, :site_name, :agent_name, :logo, :explanation, :type, :size, :area, :amounts, :category, :url, :email)";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(":agent_id", $_POST["agent_id"]);
-    $stmt->bindValue(":site_name", $_POST["site_name"]);
-    $stmt->bindValue(":agent_name", $_POST["agent_name"]);
-    $stmt->bindValue(":logo", $image_name);
-    $stmt->bindValue(":explanation", $_POST["explanation"]);
-    $stmt->bindValue(":type", $_POST["type"]);
-    $stmt->bindValue(":size", $_POST["size"]);
-    $stmt->bindValue(":area", $_POST["area"]);
-    $stmt->bindValue(":amounts", $_POST["amounts"]);
-    $stmt->bindValue(":category", $_POST["category"]);
-    $stmt->bindValue(":url", $_POST["url"]);
-    $stmt->bindValue(":email", $_POST["email"]);
-
-    $dbh->commit();
-    $_SESSION['message'] = "エージェント企業編集に成功しました。";
-    header('Location: /../../index.php');
-    exit;
-} catch (PDOException $e) {
-    $dbh->rollBack();
-    $_SESSION['message'] = "エージェント企業編集に失敗しました。";
-    error_log($e->getMessage());
-    exit;
-}  catch (Exception $e) {
-    $_SESSION['message'] = $e->getMessage();
-    error_log($e->getMessage());
-    exit;
-}
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エージェント企業編集画面</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
+</head>
+
+<body>
+    <!-- 以下、HTMLのフォーム部分を追加してください -->
+</body>
+
+</html>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -138,9 +162,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <table class="table-res-form">
                         <div class="create-list">
                             <tr>
-                                <th><label for="site-name" class="create_form-label">サービス名</label>
+                                <th><label for="site_name" class="create_form-label">サービス名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control" value="<?= $info["site_name"] ?>" />
+                                <td class="create_td1"><input type="text" name="site_name" id="site_name" class="form-control" value="<?= $info["site_name"] ?>" />
                                 </td>
                             </tr>
                         </div>
