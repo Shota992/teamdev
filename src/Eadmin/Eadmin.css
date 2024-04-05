@@ -85,6 +85,21 @@ footer {
     min-height: 100vh;
     /* 最小でも画面の高さ分のbodyの高さを担保する */
 }
+
+.login-container{
+    background-color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 100px;
+    text-align: center;
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.login-title{
+    margin-top: 0;
+}
+
 body {
     margin: 0;
 }
@@ -99,13 +114,12 @@ body {
     align-items: center;
 }
 
-.container {
+.password-container{
     background-color: #fff;
     width: 40%;
     margin: auto;
     padding: 100px;
     text-align: center;
-    /*インラインブロック要素の子要素を左右で中央寄せ*/
     border-radius: 80px;
     box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
