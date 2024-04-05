@@ -8,9 +8,13 @@
     <title>CRAFTとは</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/top.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/sp/sp-craft.css">
 </head>
 
-<body>
+<body class="body_2">
     <main>
         <?php include_once '../includes/header1.php'?>
         <!-- メインビジュアル -->
@@ -29,14 +33,14 @@
                 </div>
                 <div class="CRAFTexplanationWrapper">
                     <div class="CRAFTexplanationBody">
-                        <p class="CRAFTexplanationText" style="display: inline-block;text-align: left;">
+                        <div class="CRAFTexplanationText" style="display: inline-block;text-align: left;">
                             CRAFTとは、就活生の活動を支援する、総合情報サイトです。<br>
                             <br>
                             就活生の悩みに寄り添い、迷いや疑問を解消するためのコラムを提供しています。<br>
                             <br>
                             また、就造エージェント比較サービスを開始し、様々な就活エージェントに関する<br>
                             情報発信とエージェント企業への申し込みのサポートを行っています。
-                        </p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -49,10 +53,10 @@
                         </h2>
                     </div>
                     <div class="CRAFTlistContent">
-                        <p class="CRAFTlistContentTEXT">
+                        <div class="CRAFTlistContentTEXT">
                             従来は学生がエージェント企業に直接申し込みを行っていましたが、CRAFTを<br>
                             利用することにより自分に合ったエージェントと出会うことをサポートします。
-                        </p>
+                        </div>
                     </div>
                     <div class="CRAFTfigure">
                         <div class="CRAFTfigureStudent">
@@ -60,13 +64,13 @@
                             <div class="CRAFTpeople">
                                 就活生
                             </div>
-                            <p class="CRAFTpeople1">
+                            <div class="CRAFTpeople1">
                                 ＜就活生側の不満＞
-                            </p>
-                            <p class="CRAFTpeople2">
+                            </div>
+                            <div class="CRAFTpeople2">
                                 ・就活エージェントが自分に合っていないような気がする<br>
                                 ・電話やメールの回数が多い
-                            </p>
+                            </div>
                         </div>
                         <div class="CRAFTarrow1">
                             <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="150px" style="object-fit: contain;">
@@ -76,13 +80,13 @@
                             <div class="CRAFTpeople">
                                 就活エージェント
                             </div>
-                            <p class="CRAFTpeople1">
+                            <div class="CRAFTpeople1">
                                 ＜就活エージェント側の不満＞
-                            </p>
-                            <p class="CRAFTpeople2">
+                            </div>
+                            <div class="CRAFTpeople2">
                                 ・やる気のある学生なのかわからない<br>
                                 ・返事が来ない
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,20 +98,20 @@
                         </h2>
                     </div>
                     <div class="CRAFTlistContent">
-                        <p class="CRAFTlistContentTEXT">
+                        <div class="CRAFTlistContentTEXT">
                             CRAFTサービスが学生とエージェント企業の仲介者の役割を担い、学生に<br>
                             合ったエージェントに出会うことをサポートします。
-                        </p>
+                        </div>
                     </div>
                     <div class="CRAFTcircle">
                         <div class="CRAFTcircleList">
                             <div class="circleCRAFT">
-                                <figure><img class="CRAFTcircle-img" src="../assets/img/header_logo.png" alt="" width="200px" style="object-fit: contain;"></figure>
+                                <figure><img class="CRAFTcircle-img" src="../assets/img/aboutCRAFT_logo.png" alt="" width="200px" style="object-fit: contain;"></figure>
                             </div>
                         </div>
                         <div class="arrowGroup1">
-                            <figure><img src="../assets/img/aboutCRAFT_arrow2.png" alt="" width="280"></figure>
-                            <figure><img src="../assets/img/aboutCRAFT_arrow3.png" alt="" width="280"></figure>
+                            <figure><img class="arrowGroup1_sp" src="../assets/img/aboutCRAFT_arrow2.png" alt="" width="280"></figure>
+                            <figure><img class="arrowGroup1_sp" src="../assets/img/aboutCRAFT_arrow3.png" alt="" width="280"></figure>
                         </div>
                         <div class="backCircle">
                         </div>
@@ -116,7 +120,7 @@
                                 <figure><img class="CRAFTcircle-img" src="../assets/img/aboutCRAFT_student.png" alt=""></figure>
                             </div>
                             <div class="arrowGroup2">
-                                <figure><img src="../assets/img/aboutCRAFT_arrow4.png" alt="" width="150"></figure>
+                                <figure><img  class="arrowGroup2_sp" src="../assets/img/aboutCRAFT_arrow4.png" alt="" width="150"></figure>
                             </div>
                             <div class="circleAgent">
                                 <figure><img class="CRAFTcircle-img" src="../assets/img/aboutCRAFT_agent.png" alt=""></figure>
@@ -139,23 +143,23 @@
                             <div class="CRAFTreason1text">
                                 <h2 class="CRAFTreasonTitle">理由１</h2>
                                 <div class="CRAFTreasonMain">可能性をつぶしません</div>
-                                <p class="CRAFTreasonP">消去法でフィルタリングするため<br>
+                                <div class="CRAFTreasonP">消去法でフィルタリングするため<br>
                                     選択肢や可能性を潰しません。
-                                </p>
+                                </div>
                             </div>
                         </div>
                         <div class="CRAFTreason2">
                             <div class="CRAFTreason2text">
                                 <h2 class="CRAFTreasonTitle">理由２</h2>
                                 <div class="CRAFTreasonMain">0円でご利用できます</div>
-                                <p class="CRAFTreasonP">ご利用にあたり、費用は掛かりません。<br>
+                                <div class="CRAFTreasonP">ご利用にあたり、費用は掛かりません。<br>
                                     お問い合わせ＝契約ではなく、契約義務もないので、<br>
                                     妥協せずに条件に合った1社を選ぶことができます。
-                                </p>
+                                </div>
                             </div>
                             <div class="CRAFTreason-img" style="position: relative;">
-                                <figure class="CRAFTreason2-img"><img src="../assets/img/aboutCRAFT_reason2.png" alt="" style="position: absolute;left: 100px;bottom: 100px;"></figure>
-                                <figure><img src="../assets/img/aboutCRAFT_×.png" alt="" style="position: absolute;top: 0px;"></figure>
+                                <figure class="CRAFTreason2-img"><img class="CRAFTmoney-img" src="../assets/img/aboutCRAFT_reason2.png" alt="" style="position: absolute;left: 100px;bottom: 100px;"></figure>
+                                <figure><img class="CRAFTbatu-img" src="../assets/img/aboutCRAFT_×.png" alt="" style="position: absolute;top: 0px;"></figure>
                             </div>
                         </div>
                     </div>

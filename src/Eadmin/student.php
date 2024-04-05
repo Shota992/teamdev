@@ -1,6 +1,13 @@
-<!-- 学生情報閲覧ページ -->
 <?php
 require_once '../dbconnect.php';
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../Eadmin/login.php');
+    exit;
+}
+
 $students = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $agents = $dbh->query("SELECT * FROM agent")->fetchAll(PDO::FETCH_ASSOC);
 $choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
@@ -25,11 +32,9 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>学生情報閲覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css" />
     <link rel="stylesheet" href="../Eadmin/Eadmin.css" />
-    <script src="./assets/js/script.js">
-    </script>
 </head>
 
-<body>
+<body class="student-body">
     <div class="out-wrapper">
         <header class="header-all">
             <div header-top>
@@ -45,7 +50,7 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <aside class="side-container">
                 <nav>
                     <div class="side-sent">
-                        <div class="side-choiced"><a href="/">学生情報一覧</a></div>
+                        <div class="side-content choiced"><a href="#">学生情報一覧</a></div>
                         <div class="side-content"><a href="../Eadmin/password.php">パスワード変更</a></div>
                         <div class="side-content"><a href="../Eadmin/logout.php">ログアウト</a></div>
                     </div>
@@ -100,7 +105,7 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <small>&copy; POSSE,Inc</small>
             </div>
         </footer>
-        </div>
+    </div>
 </body>
 
 </html>

@@ -9,11 +9,13 @@
 
 body {
     margin: 0;
-    background-color: #d9d9d9;
+    /* background-color: #d9d9d9; */
 }
 
+.body_2{
+    background-color: #DFE4EC;
+}
 main {
-    background-color: #d9d9d9;
     padding-top: 150px;
     flex: 1;
 }
@@ -21,12 +23,12 @@ main {
 .container {
     background-color: #fff;
     width: 50%;
-    margin: auto auto 50px auto;
+    margin: 15px auto 50px auto;
     height: 80%;
     padding: 80px;
     text-align: center;
     /*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 70px;
+    border-radius: 50px;
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -90,6 +92,13 @@ form {
 .CRAFT-img {
     text-align: center;
     margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: 0 auto;
 }
 
 .CRAFT-img img {

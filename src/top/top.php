@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRAFT topページ</title>
+    <title>CRAFT</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/top.css">
     <link rel="stylesheet" href="../assets/sp/sp-top.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <?php 
@@ -19,7 +22,7 @@
                     <div class="mainvisual-head-div">
                             <h1 class="mainvisual-title">CRAFT</h1>
                             <p class="mainvisual-lead">エージェント企業比較サイト</p>
-                        <a href="../auth/newstudent.php" class="mainvisual-button">
+                        <a href="" class="mainvisual-button">
                             <p class="mainvisual-button-title">新規登録</p>
                             <p class="mainvisual-button-lead">して企業に申し込み</p>
                         </a>
@@ -38,7 +41,7 @@
                             <h2 class="card-content-title">
                                 エージェント企業とは
                             </h2>
-                            <a href="./column.php#column1" class="card-content-button">
+                            <a href="" class="card-content-button">
                                 詳細
                             </a>
                         </div>
@@ -60,7 +63,7 @@
                             <h2 class="card-content-title">
                                 エージェント企業の選び方
                             </h2>
-                            <a href="./column.php#column2" class="card-content-button">
+                            <a href="" class="card-content-button">
                                 詳細
                             </a>
                         </div>
@@ -85,7 +88,7 @@
                             <h2 class="card-content-title">
                                 活用のポイント
                             </h2>
-                            <a href="./column.php#column3" class="card-content-button">
+                            <a href="" class="card-content-button">
                                 詳細
                             </a>
                         </div>

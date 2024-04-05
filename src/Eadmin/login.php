@@ -61,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </header>
         <main class="main-body" style="flex: 1; ">
-            <div style="text-align: center;">
+            <div class="login-title" style="text-align: center;">
                 <h1 class="top-heading">エージェント企業様向け</h1>
                 <?php if ($message !== '') { ?>
                     <p style="color: red;"><?= $message ?></p>
                 <?php }; ?>
             </div>
-            <div class="container">
+            <div class="login-container">
                 <form method="POST">
                     <div class="form-tag">
                         <label for="email" class="form-label">ログインID（メールアドレス）</label>
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
         </main>
-        <footer class="footer">
+        <footer>
             <div class="footer-copyright">
                 <small class="copyright">&copy; POSSE,Inc</small>
             </div>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/sp/sp-column.css">
 </head>
 
-<body>
+<body class="body_2">
     <?php 
     include_once '../includes/header2.php';
     ?>

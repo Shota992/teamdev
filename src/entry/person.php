@@ -89,6 +89,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>個人情報入力</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css">
+    <link rel="stylesheet" href="../assets/sp/sp-person.css">
 </head>
 
 <body>

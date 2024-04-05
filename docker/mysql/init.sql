@@ -113,14 +113,16 @@ INSERT INTO craft(id,mail,password)VALUES
     (4,'negi0141017323@gmail.com','$2y$10$z6l1PUjdsFpIvCEdDJkpl.3Qvj5S28oXu8h8KQKlZcYemC04b8h8G');
 
 INSERT INTO agent(id, mail,password,agent_id)VALUES
-    (1,'mi3mi3king@gmail.com','$2y$10$xCk30weRxncps7HPkuiLW.zPBGcil702sjN8eE8k3KoYxGkK1DVK2',1),
-    (2,'bbb@gmail.com','BBB',2),
-    (3,'ccc@gmail.com','CCC',3),
-    (4,'ddd@gmail.com','DDD',4),
-    (5,'eee@gmail.com','EEE',5),
-    (6,'fff@gmail.com','FFF',6),
-    (7,'ggg@gmail.com','GGG',7),
-    (8,'hhh@gmail.com','HHH',8);
+    (1,'aaa@gmail.com','$2y$10$MIppQ6qiusgTDUfOx39IteL5sm3jpHLdRxOQPxCKeKvPhMsPxMzVa',1), 
+    (2,'bbb@gmail.com','$2y$10$.02LLvqLgkR8zcmaDKKKVu0fy4CEg72UPS.6bp4Ct.PKeLaAN6yqO',2), 
+    (3,'ccc@gmail.com','$2y$10$sOym37XFbxi2yq93.aStMuqouYSL8wckVXwZPDcPtSGLg0gbi5eWG',3),
+    (4,'ddd@gmail.com','$2y$10$QcDw483anG12/fuNOWzBTessGImN3XKhFMn1ZAA0hmmCG7jWNeDdS',4),
+    (5,'eee@gmail.com','$2y$10$KmKL.K5wGkeu.ROeGJvM.erPucYfF.p8UnuU0sOFG3YZNf3x3jWx2',5),
+    (6,'fff@gmail.com','$2y$10$7ou8OKXmYYrBQJ5qyuFcLe.gGVbVrDMMx4N7TiWgmQbDmNszf0w2W',6),
+    (7,'ggg@gmail.com','$2y$10$1jgr8p.Njj2rY9iQ/EsRGOlfJfLfzX4gcN7I1BDufFVyJk4mDrJPW',7),
+    (8,'hhh@gmail.com','$2y$10$0YxjUv6o5z8zEbrT97Oex.u.E3w03drNNEa.AeoJvs7/zSVuBRZ3i',8);
+
+
 
 
 -- docker compose exec db bash

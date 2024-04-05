@@ -81,6 +81,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(11, $agent_email);
             $stmt->execute();
 
+            $last_insert_id = $dbh->lastInsertId();
+
+            // agentテーブルにメールアドレスとパスワードを挿入する
+            $agent_email = $_POST['agent-email']; // エージェントのメールアドレス
+
+            // パスワードのハッシュ化
+            $password = password_hash($_POST['agent-email'], PASSWORD_DEFAULT); // メールアドレスを使って適当な方法でハッシュ化
+
+            // SQL文の準備
+            $sql = "INSERT INTO agent (mail, password, agent_id) VALUES (?, ?, ?)";
+
+            // プリペアドステートメントを作成
+            $stmt = $dbh->prepare($sql);
+
+            // パラメータをバインドしてSQLを実行
+            $stmt->bindParam(1, $agent_email);
+            $stmt->bindParam(2, $password);
+            $stmt->bindParam(3, $last_insert_id);
+            $stmt->execute();
+
             // ステートメントを閉じる
             $stmt->closeCursor();
 
@@ -94,28 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<!-- <!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フォーム</title>
-</head>
-
-<body>
-    <?php if (isset($error_message)) : ?>
-        <div style="color: red; margin-bottom: 10px;"><?php echo $error_message; ?></div>
-    <?php endif; ?>
-    <form method="post" enctype="multipart/form-data">
-        <!-- フォームの内容 -->
-    </form>
-</body>
-
-</html>
- -->
-
 
 <!DOCTYPE html>
 <html lang="ja">
