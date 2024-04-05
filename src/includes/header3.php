@@ -13,7 +13,7 @@
     <header>
         <div class="header_parent">
             <div>
-                <a href="/"><img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo"></a>
+                <a href="../top/top.php"><img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo"></a>
             </div>
             <div class="header_logo_boozerImg">
                 <a href="/"><img src="../assets/img/boozer_logo-black.png" alt="boozer inc" class="header_logo_boozer"></a>
