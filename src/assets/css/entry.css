@@ -2,7 +2,6 @@
 
 /* エージェント企業申し込み手順ページ */
 .process_main-body {
-    background: rgba(217, 217, 217, 0.8);
     width: 100%;
     height: 100%;
     /* 水平・垂直方向の中央揃え */
@@ -13,6 +12,7 @@
 }
 
 .processContainer {
+    color: rgba(0, 0, 0, 0.8);
     background-color: #fff;
     width: 75%;
     margin: 80px auto;
@@ -20,7 +20,7 @@
     padding: 100px 80px;
     text-align: center;
     /*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 80px;
+    border-radius: 70px;
     box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -79,6 +79,10 @@
 }
 
 .processStepHead {
+    border-image: linear-gradient(to right, #297DBA 0%, #9EB9CC 100%);
+    background-repeat: no-repeat;
+	background-size: 100% 30%;
+	background-position: bottom;
     text-align: left;
     font-size: 24px;
     font-weight: bold;
@@ -96,6 +100,7 @@
 
 .process_btn {
     font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
     background: rgba(238, 198, 68, 0.8);
     border: solid 3px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
@@ -110,8 +115,12 @@ body {
     margin: 0;
 }
 
+.body_2 {
+    background-color: #DFE4EC;
+}
+
 .main-body {
-    background: rgba(217, 217, 217, 0.8);
+    /* background: rgba(217, 217, 217, 0.8); */
     padding: 240px 0;
     width: 100%;
     height: 100%;
@@ -137,14 +146,16 @@ body {
 /* 
 個人情報入力ページ
 */
-.top-heading{
+.top-heading {
     font-size: 24px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.8);
 }
-.top-explanation{
+
+.top-explanation {
     margin: 30px 0 20px 0;
 }
+
 .person-form {
     background: rgba(217, 217, 217, 0.8);
     font-weight: bold;
@@ -158,11 +169,13 @@ body {
     margin-bottom: 20px;
     text-align: left;
 }
-.form-tagContent{
+
+.form-tagContent {
     margin-bottom: 20px;
     text-align: left;
     column-count: 3;
 }
+
 .form-label {
     font-size: 21px;
     margin-bottom: 8px;
@@ -208,6 +221,7 @@ body {
 input[type=checkbox] {
     display: none;
 }
+
 .person_checkbox {
     box-sizing: border-box;
     cursor: pointer;
@@ -216,6 +230,7 @@ input[type=checkbox] {
     position: relative;
     width: auto;
 }
+
 .person_checkbox::before {
     background: #fff;
     border: 1px solid #231815;
@@ -228,6 +243,7 @@ input[type=checkbox] {
     top: 50%;
     width: 16px;
 }
+
 .person_checkbox::after {
     border-right: 3px solid #ed7a9c;
     border-bottom: 3px solid #ed7a9c;
@@ -242,7 +258,8 @@ input[type=checkbox] {
     transform: rotate(45deg);
     width: 5px;
 }
-input[type=checkbox]:checked + .person_checkbox::after {
+
+input[type=checkbox]:checked+.person_checkbox::after {
     opacity: 1;
 }
 
@@ -250,6 +267,7 @@ input[type=checkbox]:checked + .person_checkbox::after {
 input[type=radio] {
     display: none;
 }
+
 .person_radio {
     box-sizing: border-box;
     cursor: pointer;
@@ -258,6 +276,7 @@ input[type=radio] {
     position: relative;
     width: auto;
 }
+
 .person_radio::before {
     background: #fff;
     border: 1px solid #231815;
@@ -271,6 +290,7 @@ input[type=radio] {
     top: 50%;
     width: 16px;
 }
+
 .person_radio::after {
     background: #ed7a9c;
     border-radius: 50%;
@@ -284,7 +304,8 @@ input[type=radio] {
     top: 50%;
     width: 10px;
 }
-input[type=radio]:checked + .person_radio::after {
+
+input[type=radio]:checked+.person_radio::after {
     opacity: 1;
 }
 
@@ -404,6 +425,14 @@ input[type=radio]:checked + .person_radio::after {
     padding: 10px;
     background: rgba(238, 198, 68, 0.8);
     border: solid 3px rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+.final-body {
+    background-color: #d9d9d9;
+    margin: 120px;
 }
 
 
@@ -540,7 +569,8 @@ input[type=radio]:checked + .person_radio::after {
     justify-content: center;
     margin-top: 40px;
     text-align: center;
-    border: 3px solid rgba(0, 0, 0, 0.8);;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    ;
 }
 
 .final-edit-button {

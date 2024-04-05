@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ログイン後CRAFT</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/top.css">
+
 </head>
 <body>
     <?php 
@@ -99,23 +100,95 @@
                     </div>
                 </div>
             </section>
-            <section>
+            <<section>
                 <div>
                     <div class="top_list_head">
                         <h2 class="top_list_title">エージェント企業一覧</h2>
                     </div>
-                    <div class="top_list_div">
-                        <div class="top_list_item_1"><img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" ></div>
-                        <div class="top_list_item_2"><img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"></div>
-                        <div class="top_list_item_1"><img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" ></div>
-                        <div class="top_list_item_2"><img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"></div>
-                    </div>
                 </div>
             </section>
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slides" data-duration="10">
+                        <div class="slide">
+                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
+                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"class="slide-img">
+                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img" >
+                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                        </div>
+                        <div class="slide">
+                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img" >
+                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
+                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <?php
     include_once '../includes/footer1.php';
     ?>
 </body>
+<script>
+    window.addEventListener( 'DOMContentLoaded', ( event ) => {
+    const slides = document.getElementsByClassName('slides');
+
+    for ( let i = 0; i < slides.length; ++i ) {
+   // 対象ラッパー要素
+    const target = slides[ i ];
+   // ループ1回分の時間
+   const duration = parseInt( target.dataset.duration ) * 1000 || 10000;
+   // スライダーの進行方向(右から左 or 左から右)
+    const isAlternate = target.classList.contains( 'alternate' );
+   // ロゴ数の取得
+    const childNum = target.firstElementChild.children.length;
+   // ロゴの幅の算出
+   const logoWidth = ( (100 / childNum ) * 100 / 100 ).toFixed( 2 );
+   // ロゴの幅をセット
+    target.style.setProperty( '--logo-width', `${ logoWidth }%` );
+
+   // 開始時間
+    let startTime = 0;
+   // 経過時間
+    let elapsed = 0;
+   // 進捗(0-1)
+    let progress = 0;
+
+    const loop　 = ( currentTime ) => {
+        if ( !startTime ) {
+        startTime = currentTime;
+        }
+     // 現在の経過時間
+    elapsed = currentTime - startTime;
+     // 現在の進捗
+    progress = Math.min( 1, elapsed / duration );
+
+     // 進捗が 100%(位置が 50%)になったらリセットして再ループ
+    if ( progress >= 1 ) {
+        startTime = 0;
+        elapsed = 0;
+        progress = 0;
+    }
+
+     // スライドの位置を更新
+    if ( isAlternate ) {
+       // 左から右の場合
+       target.style.transform = `translate3d(${ -50 + progress * 50 }%, 0, 0)`;
+    } else {
+       // 右から左の場合
+       target.style.transform = `translate3d(-${ progress * 50 }%, 0, 0)`;
+    }
+
+     // 次のフレームをリクエストする
+    window.requestAnimationFrame( loop );
+    }
+
+   // ループを開始
+    window.requestAnimationFrame( loop );
+    };
+} );
+</script>
+
 </html>

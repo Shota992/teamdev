@@ -6,7 +6,7 @@ p{
 
 
 .body{
-    background-color:#d9d9d9 ;
+    background-color: #DFE4EC;
 }
 
 .wrapper{
@@ -45,6 +45,7 @@ margin-top: 50px;
 
 .container{
     border: 8px solid #297dba;
+    border-radius: 10px;
     height: 600px;
     width: 100%;
 }
@@ -147,6 +148,7 @@ margin-top: 50px;
 }
 
 .general-searches{
+    padding-left: 20px;
     width: 780px;
     margin: auto;
     display: flex;
@@ -159,8 +161,8 @@ margin-top: 50px;
     width: 300px;
     align-items: center;
     gap: 20px;
-    border: 2px solid black;
-    border-radius: 5%;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
 }
 
 .general-search-sentence{
@@ -170,15 +172,15 @@ margin-top: 50px;
 
 .special-search{
     display: flex;
-    width:600px;
+    /* width:600px; */
     height: 150px;
     align-items: center;
     gap: 20px;
-    border: 2px solid black;
-    border-radius: 5%;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    column-count: 4;
 }
 
 .special-container{
@@ -210,7 +212,7 @@ margin-top: 50px;
 }
 
 .special-search1{
-    width: 550px;
+    /* width: 550px; */
     display: flex;
     gap: 20px;
 }
@@ -338,14 +340,18 @@ input[type="checkbox" i] {
 }
 
 .add-form{
+    padding-top: 10px;
     display: flex;
     justify-content: center
 }
 
 .add-button{
     width: 80px;
+    padding: 5px;
+    text-align: center;
     border-radius: 10px;
-    background-color: #ddd;
+    background-color: gray;
+    color: #fff;
     font-weight:bold ;
 }
 

@@ -1,5 +1,6 @@
 /* headerとfooterのcss */
 header {
+    color: #003b68;
     width: 100%;
     padding: 10px 2% 10px;
     background-color: #fff;
@@ -60,6 +61,7 @@ header {
 
 /* ヘッダー１のcss */
 .header-1 {
+    color: #003b68;
     width: 100%;
     padding: 10px 2% 10px;
     background-color: #fff;
@@ -314,7 +316,8 @@ header {
 
 /* footer */
 footer {
-    background: rgba(0, 0, 0, 0.65);
+    background: #003b68;
+    /* background: rgba(0, 0, 0, 0.65); */
     text-align: center;
     padding: 30px;
 }
