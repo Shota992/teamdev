@@ -20,4 +20,7 @@ COPY --from=builder /go/src/github.com/mailhog/mhsendmail/mhsendmail /usr/local/
 RUN chmod +x /usr/local/bin/mhsendmail \
   && echo 'sendmail_path = "/usr/local/bin/mhsendmail --smtp-addr=mailhog:1025"' > /usr/local/etc/php/conf.d/sendmail.ini
 
+# Composer の最新版を install
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 COPY src /usr/share/nginx/html
