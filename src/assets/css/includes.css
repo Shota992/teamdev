@@ -3,10 +3,11 @@ header {
     width: 100%;
     padding: 10px 2% 10px;
     background-color: #fff;
-    position: fixed;
+    position: sticky;
     top: 0px;
     display: flex;
     align-items: flex-end;
+    z-index: 999;
 }
 
 .header_parent {
@@ -23,12 +24,16 @@ header {
 .header_logo_boozerImg {
     display: flex;
     align-items: end;
+    /* width: 25%; */
+    height: 83px;
 }
 
 .header_logo_boozer {
     width: 250px;
     object-fit: contain;
     align-items: end;
+    /* width: 100%; */
+    height: 83px;
 }
 
 .header-nav {
@@ -38,13 +43,19 @@ header {
 
 .header_nav_ul {
     display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 152%;
+    justify-content: center;
+
 }
 
 .headerNav_li_1 {
     /* margin: 0 0 0 290px; */
     font-weight: bold;
     position: relative;
-    font-size: 16px;
+    font-size: 20px;
+    width: 80%;
 }
 
 /* ヘッダー１のcss */
@@ -54,13 +65,14 @@ header {
     background-color: #fff;
     position: fixed;
     top: 0px;
+    display: flex;
+    
 }
 
 .header-nav1 {
     display: flex;
     justify-content: space-between;
     /* margin: 0 0 0 700px; */
-    margin-left: auto;
     width: 100%;
 }
 
@@ -68,14 +80,25 @@ header {
     display: flex;
     align-items: center;
     gap: 50px;
-    margin-left: auto;
+    width: 152%;
+    justify-content: center;
 }
 
 .header_nav_ul2 {
     display: flex;
     align-items: center;
     gap: 50px;
-    margin-left:auto ;
+    width: 70%;
+    justify-content: flex-end;
+}
+
+.header_nav_ul2-block {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 70%;
+    justify-content: flex-end;
 }
 
 .headerNav_li_1::after {
@@ -100,7 +123,7 @@ header {
     /* margin: 0 0 0 90px; */
     font-weight: bold;
     position: relative;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .headerNav_li_2::after {
@@ -172,10 +195,11 @@ header {
 }
 
 .header_nav_li_1 {
-    margin: 0 0 0 290px;
+    /* margin: 0 0 0 290px; */
     font-weight: bold;
     position: relative;
-    font-size: 16px;
+    font-size: 20px;
+    width: 80%;
 }
 
 .header_nav_li_1::after {
@@ -269,6 +293,22 @@ header {
 .header_nav_li_4:hover::after {
     transform: scale(1, 1);
     transform-origin: left top;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #000000;
+    margin: 5px;
+}
+
+.nav-active {
+    transform: translate(0%) !important;
 }
 
 

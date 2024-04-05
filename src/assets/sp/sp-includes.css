@@ -1,0 +1,88 @@
+@media (max-width:768px) {
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+/* ヘッダーのレスポンシブ */
+
+    .header-1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header_logo {
+        width: 100px;
+    }
+    
+    .header_logo_boozer {
+        width: 150px;
+    }
+    
+    .header-nav1 {
+        position: absolute;
+        right: 0;
+        height: 92vh;
+        top: 8vh;
+        background-color: aqua;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        transform: translateX(100%);
+        transition: all 0.5s ease-in-out;
+    }
+    
+    .header-nav1 ul {
+        opacity: 0;
+    }
+    
+    .header_nav_ul1 {
+        flex-direction: column;
+        width: auto;
+        justify-content: space-around;
+    }
+    
+    .header_nav_ul2 {
+        flex-direction: column;
+        width: auto;
+        justify-content: space-around;
+        
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    @keyframes navLinksFade {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+
+
+
+    /* フッターのレスポンシブ */
+
+    .footer_group {
+        flex-direction: column;
+    }
+
+    .footer_li {
+        font-size: 12px;
+    }
+
+    .footer_logo {
+        margin: 0 auto;
+    }
+
+    .copyright {
+        margin-top: 20px;
+    }
+    
+    
+    }

@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>選択企業一覧確認</title>
     <link rel="stylesheet" href="/../assets/css/reset.css">
     <link rel="stylesheet" href="/../assets/css/check.css" />
+    <link rel="stylesheet" href="../assets/sp/sp-check.css">
     <script src="../assets/scripts/common.js" defer>
     </script>
 </head>
