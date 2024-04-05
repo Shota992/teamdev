@@ -1,76 +1,138 @@
 /* エージェント企業管理画面のcss */
 
 /* header */
-.header{
-    background-color: #fff;
+.header {
+    width: 100%;
     height: 95px;
+    position: fixed;
+    background-color: #fff;
     /* 水平・垂直方向の中央揃え */
-    display: flex;
     align-items: center;
+    top: 0px;
+    display: flex;
 }
 
-.header img{
+.header img {
     width: 280px;
     height: auto;
     margin: 0 60px 0 auto;
 }
 
-.header-logo{
+.header-logo {
     margin-left: 55px;
 }
 
-.header-logo img{
-    width: 180px;
-    height: auto;
+.header-all {
+    background-color: #fff;
+    /* 水平・垂直方向の中央揃え */
+    align-items: center;
+    top: 0px;
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
 }
 
+
 /* footer */
-.footer{
-    background-color: #554f4f;
+.footer {
+    background: rgba(0, 0, 0, 0.65);
     height: 60px;
     display: block;
     /* 水平・垂直方向の中央揃え */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
-.copyright{
+.footer-copyright {
     color: #fff;
     font-size: 20px;
 }
 
+footer {
+    background: rgba(0, 0, 0, 0.65);
+    text-align: center;
+    padding: 30px;
+}
+
 /* body共通項目 */
-body{
+/* .student-body{
+    display: flex; 
+    flex-flow: column; 
+    min-height: 100vh; 
+} */
+
+.out-wrapper {
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+}
+.login_wrapper{
+    display: flex;
+    /* フレックスボックスに有効に */
+    flex-flow: column;
+    /* 要素を縦に並べる */
+    min-height: 100vh;
+    /* 最小でも画面の高さ分のbodyの高さを担保する */
+}
+
+.login-container{
+    background-color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 100px;
+    text-align: center;
+    border-radius: 80px;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.login-title{
+    margin-top: 0;
+}
+
+body {
     margin: 0;
 }
 
-.main-body{
-    background-color:#d9d9d9 ;
-    padding: 240px 0;
-    width: 100%;
-    height: 100%;
-    /* 水平・垂直方向の中央揃え */
+.main-body {
+    background: rgba(217, 217, 217, 0.8);
+    margin-top: 40px;
+    padding-top: 100px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.container{
+.password-container{
     background-color: #fff;
-    width: 33%;
+    width: 40%;
     margin: auto;
-    height: 80%;
     padding: 100px;
-    text-align: center;/*インラインブロック要素の子要素を左右で中央寄せ*/
+    text-align: center;
     border-radius: 80px;
-    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-.top-heading{
+.top-heading {
+    font-size: 24px;
+    font-weight: bold;
     display: inline-block;
     margin-top: 0px;
     margin-bottom: 30px;
+}
+
+.error-message {
+    color: red;
 }
 
 form {
@@ -78,12 +140,14 @@ form {
     flex-direction: column;
 }
 
-.form-tag{
+.form-tag {
     margin-bottom: 30px;
 }
 
 .form-label {
+    color: rgba(0, 0, 0, 0.8);
     font-size: 21px;
+    font-weight: bold;
     margin: 0 auto;
     margin-bottom: 8px;
     display: block;
@@ -92,12 +156,12 @@ form {
 }
 
 .form-control {
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 23px;
+    font-size: 20px;
     display: block;
     width: 80%;
+    height: 30px;
     margin: 0 auto;
     margin-bottom: 20px;
 }
@@ -111,186 +175,135 @@ form {
     background-color: #45aa7f;
     width: 80%;
     margin: 0 auto;
-    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 .submit:hover {
     background-color: #378c78f9;
 }
 
-.side-bar{
-    background-color: #3e9570;
-    width: 20%;
-}
 
-/* ulタグ */
-.side-nav-list{
-    padding-left: 0;
-    padding-top: 100px;
-}
-
-/* liタグ */
-.side-nav{
-    position:relative;
-    list-style: none;
-    padding: 48px 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-/* aタグ */
-.side-nav a{
-    /* 要素全体をリンクにするための5行 */
-    position:absolute;
-    /* top:0;
-    left:0;
-    width:100%;
-    height:100%; */
-    text-decoration: none;
-    font-size: 22px;
-    color: #fff;
-    padding-right: 20px;
-}
-
-.head-title{
+.head-title {
     background-color: #3e9570;
     display: block;
     width: 90%;
     margin-bottom: 100px;
 }
 
-.title-text{
+.title-text {
     color: #fff;
     margin: 9px auto 9px 20px;
 }
 
-.this-page{
+.this-page {
     background-color: #fff;
 }
 
-.this-page a{
+.this-page a {
     color: #3e9570;
 }
 
 /* パスワード変更画面 */
-.all-main{
+.all-main {
     display: flex;
 }
 
-.content{
-    width: 40%;
-}
 
-.password{
-    padding: 140px 0 252px 0;
-}
-
-    /* 管理者画面のサイドバー */
+/* 管理者画面のサイドバー */
 .side-container {
-    width: 350px;
-    height: 700px;
+    width: 18%;
     background-color: #397;
-    position: fixed;
     padding-top: 100px;
-  }
-  
-  .side-content {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  
-  .side-sent {
+}
+
+.side-sent {
     color: #fff;
-    font-size: 16px;
-    margin-right: 20px;
-  }
-  
-  .side-choiced {
+    font-size: 20px;
+    text-align: end;
+}
+
+.side-content {
+    height: 80px;
+    padding: 20px;
+    position: relative; 
+}
+
+.side-content a{
+    display: inline-block; /* ブロック要素に変更 */
+    line-height: 40px; /* 要素の高さと一致する行の高さ */
+    width: 100%; 
+    height: 100%;
+}
+
+.choiced {
     background-color: #fff;
     color: #397;
-  }
-  
-  
-  /* エージェント企業一覧ページ */
-  .body-c {
-    background-color: #ddd;
-  }
-  
-  .student-wrapper {
-    display: flex;
-  }
-
-  .student-main-container {
-    margin-left: 390px;
-    margin-right: 60px;
-    width: 100%;
-  }
-  
-.student-main-inner{
-    margin-top: 100px;
 }
-  
-  .student-main-head-container {
-    width: 830px;
-    height: 40px;
+
+
+/* エージェント企業一覧ページ */
+.student-main-head{
+    width: 80%;
+}
+
+.student-main-head-container {
+    width: 100%;
+    height: 60px;
     background-color: #397;
     display: flex;
     padding-left: 10px;
     align-items: center;
-  }
-  
-  .student-main-head-sent {
+}
+
+.student-main-head-sent {
     color: #fff;
     font-weight: bold;
-  }
-  
+    font-size: 22px;
+}
+
 .student-main-name{
-    height: 30px;
-    width: 800px;
-    padding-top: 20px;
-    padding-left: 10px;
+    width: 80%;
 }
 
-.student-main-name-title{
-    font-size: 20px;
-    color: #397;
+.student-main-name-title {
+    margin-top: 40px;
+    font-size: 24px;
+    color: #2F7859;
+    font-weight: bold;
+    padding-left: 25px;
 }
 
-.student-main-name-line{
+.student-main-name-line {
     width: 100%;
     height: 3px;
     background-color: #397;
 }
 
 
-  
-  .student-main-table{
-    margin-top: 40px;
-    border-collapse:collapse;
-  }
-  
-  .student-main-table-container{
-    width: 100%;
-    table-layout: fixed;
-    overflow-x:auto;
-    overflow-y: auto;
+.student-main-table{
+    width: 80%;
+    margin-top: 30px;
+}
 
-  }
-  
-  .student-main-table-head{
+.student-main-table-container{
+    width: 100%;
+}
+
+.student-main-table-head {
     background-color: #bbb;
-    height: 30px;
-  }
-  
-  .student-main-table-contents{
-    height: 40px;
-  }
-  
-  .student-even{
+    height: 60px;
+}
+
+.student-main-table-contents {
+    height: 60px;
+}
+
+.student-main-table-content{
+    text-align: center;
+    padding-left: 10px;
+    vertical-align: middle;
+    font-size: 19px;
+}
+.student-even {
     background-color: #ccc;
-  }
-  
+}

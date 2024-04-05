@@ -1,13 +1,20 @@
 /* topフォルダ内にあるページのcss */
 
 /* topフォルダ内ページ共通項目 */
-body {
-    margin: 0;
-    background-color: #d9d9d9;
+html {
+    scroll-behavior: smooth;
 }
 
-main {
-    background-color: #d9d9d9
+body {
+    margin: 0;
+    background: rgba(217, 217, 217, 0.6);
+}
+
+.body_2{
+    background-color: #DFE4EC;
+}
+p {
+    white-space: nowrap;
 }
 
 .container {
@@ -15,10 +22,10 @@ main {
     width: 80%;
     margin: 100px auto;
     height: 90%;
-    padding: 100px;
+    padding: 60px 100px;
     text-align: center;
     /*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 80px;
+    border-radius: 60px;
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -26,10 +33,20 @@ main {
 /* mainvisual */
 .mainvisual {
     background: url(../img/mainvisual.jpg) center center /cover no-repeat;
+    object-fit: contain;
+    margin-top: 80px;
+    padding: 340px 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.mainvisual-after {
+    background: url(../img/mainvisual_2.jpg) center center /cover no-repeat;
     height: 100vh;
     padding: 170px 90px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
 }
 
@@ -39,10 +56,16 @@ main {
     justify-content: flex-end;
 }
 
+.mainvisual-inner-after {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .mainvisual-head {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 
@@ -53,12 +76,12 @@ main {
 }
 
 .mainvisual-title {
-    font-size: 90px;
+    font-size: 106px;
     color: #fff;
 }
 
 .mainvisual-lead {
-    font-size: 40px;
+    font-size: 32px;
     color: #fff;
     margin-top: 30px;
 }
@@ -78,30 +101,59 @@ main {
 
 
 .mainvisual-button-title {
-    font-size: 37px;
+    font-size: 40px;
     font-weight: bold;
 }
 
-.mainvisual-button-lead {}
+.mainvisual-button-lead {
+    font-size: 20px;
+}
 
 
 /* TOPの紹介ページ */
 
 .card-container {
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     margin-top: 100px;
+    flex-direction: row;
+    margin-top: 40px;
+    max-width: 980px;
+    padding: 0 24px;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+}
+
+.card-container.reverse {
+    background-color: #dbe2e9;
+    flex-direction: row-reverse;
 }
 
 .card-figure {
-    flex-grow: 1;
+    width: 100%;
+}
+
+.card-figure.reverse {
+    order: 2;
 }
 
 .card-img {
-    width: 300px;
+    width: 386px;
+    height: auto;
+    
+    
 }
 
 .card-content {
     flex-grow: 1;
+    max-width: 1000px;
+    padding: 30px;
+}
+
+.card-content.reverse {
+    order: 1;
 }
 
 .card-content-head {
@@ -109,37 +161,81 @@ main {
     text-align: center;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .card-content-title {
-    font-size: 27px;
+    font-size: 24px;
     font-weight: bold;
-    color: #297DBA;
+    color: #003b68;
+    width: 80%;
 }
 
 .card-content-button {
-    margin-left: 30px;
+    /* margin-left: 30px; */
     background-color: #297DBA;
     color: #fff;
-    padding: 5px 20px;
+    font-size: 18px;
+    padding: 5px ;
     border-radius: 50px;
-    
+    width: 20%;
 }
 
 .card-content-text {
     display: flex;
-    width: 100%;
-    height: 100%;
     flex-flow: column;
-    align-items: center;
-    justify-content: center;
     
 }
 
 .card-content-text p {
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
     text-align: left;
-    line-height: 50px;
+    line-height: 30px;
+    font-size: 18px;
 }
+
+.top_list_head{
+    margin-top: 60px;
+}
+
+.top_list_title {
+    display: inline;
+    margin-bottom: 30px;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: solid 5px  #dbe2e9;
+    color: #003b68;;
+}
+
+
+.slider-container {
+    overflow: hidden;
+}
+
+.slider {
+    width: 100%;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    width: 200%;
+}
+
+.slide {
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.slide-img {
+    margin-left: 20px;
+    width: 100%;
+}
+
+
+
 
 /* section */
 
@@ -172,6 +268,7 @@ main {
     border-radius: 40px;
     margin: 0 auto;
     padding: 32px 48px;
+    width: 100%;
 }
 
 .CRAFTlistTitle {
@@ -187,6 +284,7 @@ main {
     font-weight: bold;
     text-align: center;
     margin: 50px 0 20px 0;
+    overflow-wrap: break-word;
 }
 
 .CRAFTlistContent {
@@ -197,6 +295,7 @@ main {
     display: inline-block;
     text-align: left;
     margin: 10px 0 20px 0;
+    overflow-wrap: break-word;
 }
 
 /* 従来の仕組み */
@@ -228,11 +327,16 @@ main {
 .CRAFTpeople2{
     text-align: left;
     width: 250px;
+    overflow-wrap: break-word;
 }
 .CRAFTarrow1 {
     display: flex;
     align-items: center;
     gap: 30px;
+}
+
+.CRAFTfigureStudent {
+    overflow-wrap: break-word;
 }
 
 /* CRAFTの仕組み */
@@ -377,11 +481,17 @@ main {
     height: 60px;
 }
 
+.column-image {
+    width: 70%;
+}
+
 .column-img {
     display: flex;
     align-items: flex-start;
-    width: 500px;
+    object-fit: contain;
+    /* width: 500px; */
     margin: 40px 0px 20px 0px;
+    width: 100%;
 }
 
 .columnList {

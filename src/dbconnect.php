@@ -5,8 +5,6 @@ $password = 'root';
 
 try {
     $dbh = new PDO($dsn, $user, $password);
-    // echo 'Connection to DB<br>';
-    
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
 }
