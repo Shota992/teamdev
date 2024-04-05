@@ -363,7 +363,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="sub-search-container">
                     <form method="POST" action="./choice.php">
                         <div class="sub-search">
-                            <p>企業名の検索</p>
+                            <p class="search-title">企業名の検索</p>
                             <div class="kyc-search-bar">
                                 <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if (!empty($_POST['search-site'])) {
                                                                                                                                             echo $_POST['search-site'];
@@ -371,7 +371,7 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                         <div class="submit-container">
-                            <button name="search">
+                            <button name="search" class="search_button">
                                 <input type="submit" name="search" value="検索">
                             </button>
                         </div>
@@ -393,7 +393,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="complete-button">
                 <button id="complete-btn">次にすすむ</button>
-                <p id="message" style="color: red;"></p>
+                <p id="message" style="color: red; text-align: center;"></p>
             </div>
         </div>
     </div>
