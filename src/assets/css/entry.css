@@ -353,7 +353,6 @@ input[type=radio]:checked+.person_radio::after {
     background: #FFF;
     border: solid 10px #297DBA;
     border-radius: 30px;
-    width: 500px;
     margin: 0 auto;
 }
 
@@ -430,10 +429,12 @@ input[type=radio]:checked+.person_radio::after {
 
 
 
+
 .final-body {
     background-color: #d9d9d9;
     margin: 120px;
 }
+
 
 .final-wrapper {
     background-color: #fff;
@@ -446,11 +447,10 @@ input[type=radio]:checked+.person_radio::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(100vh - 120px);
 }
 
 .final-company {
-    width: 100%;
+    width: 550px;
 }
 
 .final-company-title-container {

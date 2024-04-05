@@ -8,6 +8,7 @@
     <title>申し込み完了</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css">
+    <link rel="stylesheet" href="../assets/sp/sp-complete.css">
 </head>
 
 <body>
@@ -43,9 +44,7 @@
             </section>
             <!-- topページへ戻る -->
             <section class="complete_topSection">
-                <a href="../top/aftertop.php">
-                    <button class="complete_btn">TOPページへ戻る</button>
-                </a>
+                <button class="complete_btn">TOPページへ戻る</button>
             </section>
         </div>
     </main>

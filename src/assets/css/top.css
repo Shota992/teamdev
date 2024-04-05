@@ -232,7 +232,6 @@ p {
 .slide-img {
     margin-left: 20px;
     width: 100%;
-    object-fit: contain;
 }
 
 
@@ -269,6 +268,7 @@ p {
     border-radius: 40px;
     margin: 0 auto;
     padding: 32px 48px;
+    width: 100%;
 }
 
 .CRAFTlistTitle {
@@ -284,6 +284,7 @@ p {
     font-weight: bold;
     text-align: center;
     margin: 50px 0 20px 0;
+    overflow-wrap: break-word;
 }
 
 .CRAFTlistContent {
@@ -294,6 +295,7 @@ p {
     display: inline-block;
     text-align: left;
     margin: 10px 0 20px 0;
+    overflow-wrap: break-word;
 }
 
 /* 従来の仕組み */
@@ -325,11 +327,16 @@ p {
 .CRAFTpeople2{
     text-align: left;
     width: 250px;
+    overflow-wrap: break-word;
 }
 .CRAFTarrow1 {
     display: flex;
     align-items: center;
     gap: 30px;
+}
+
+.CRAFTfigureStudent {
+    overflow-wrap: break-word;
 }
 
 /* CRAFTの仕組み */
@@ -474,14 +481,17 @@ p {
     height: 60px;
 }
 
+.column-image {
+    width: 70%;
+}
+
 .column-img {
     display: flex;
     align-items: flex-start;
+    object-fit: contain;
     /* width: 500px; */
-    width: 100%;
-    max-width: 500px;
     margin: 40px 0px 20px 0px;
-    height: auto;
+    width: 100%;
 }
 
 .columnList {
@@ -492,12 +502,6 @@ p {
 .column-text {
     margin-bottom: 40px;
     text-align: left;
-    /* width: 100%;
-    max-width: 100%; */
-    word-wrap: break-word;
-    line-height: 1.7;
-    margin-left: 40px;
-
 }
 
 .column-textTitle {
@@ -510,30 +514,4 @@ p {
     margin-top: 40px;
     border-top: solid 2px #297DBA;
     border-bottom: solid 2px #297DBA;
-}
-
-.column1Body-t {
-    width: 100%;
-    height: auto;
-}
-
-#column1{
-    margin-top:-100px ;
-    padding-top: 100px;
-}
-
-#column2{
-    margin-top:-100px ;
-    padding-top: 100px;
-}
-
-#column3{
-    margin-top:-100px ;
-    padding-top: 100px;
-}
-
-
-
-.text-bold {
-    font-weight: bold;
 }

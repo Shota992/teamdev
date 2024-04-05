@@ -1,4 +1,4 @@
-<?php
+<?php 
 require __DIR__ . '/../dbconnect.php';
 $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
@@ -6,11 +6,10 @@ $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
 session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['id'])) {
     header('Location: /auth/login.php');
 } else {
     $user_id = $_SESSION['user_id'];
-
     $sql = "SELECT info.*
         FROM choice
         INNER JOIN info ON choice.agent_id = info.agent_id
@@ -19,8 +18,9 @@ if (!isset($_SESSION['user_id'])) {
     $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
     $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 }
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -34,6 +34,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
     <script src="./assets/js/script.js" defer></script>
 </head>
 
@@ -47,13 +48,22 @@ if (!isset($_SESSION['user_id'])) {
                         <p class="history-title">エージェント企業申込み履歴</p>
                     </div>
                     <div class="history-table-container">
-                        <table border="1" class="history-table">
-                            <tr class="history-table-head">
-                                <th>企業ロゴ</th>
-                                <th>サービス名/企業名</th>
-                                <th>企業規模</th>
-                                <th>地域</th>
-                                <th>求人数</th>
+
+                    <table border="1" class="history-table">
+                        <tr class="history-table-head">
+                            <th >企業ロゴ</th>
+                            <th >サービス名/企業名</th>
+                            <th >企業規模</th>
+                            <th >地域</th>
+                            <th >求人数</th>
+                        </tr>
+                        <?php foreach ($choices as $choice) { ?>
+                            <tr class="history-table-item">
+                                <td class="history-item"><?=$choice["logo"];?></td>
+                                <td class="history-item"><?=$choice["site_name"];?></td>
+                                <td class="history-item"><?=$choice["size"];?></td>
+                                <td class="history-item"><?=$choice["area"];?></td>
+                                <td class="history-item"><?=$choice["amounts"];?></td>
                             </tr>
                             <?php foreach ($choices as $choice) { ?>
                                 <tr class="history-table-item">

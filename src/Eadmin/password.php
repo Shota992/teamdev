@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 現在のパスワードと新しいパスワードが空でないことを確認
     if (!empty($current_password) && !empty($new_password)) {
 
-        // ユーザーのエージェントIDを取得（ここでは省略）
+        // ユーザーのエージェントIDを取得
+        $agent_id = $_SESSION['id'];
 
         // データベースから現在のパスワードを取得
         $query = "SELECT password FROM agent WHERE agent_id = :agent_id";
@@ -46,24 +47,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $update_statement->execute();
                 // パスワードが正常に変更された場合の処理
                 echo "<script>alert('パスワードが変更されました。');</script>";
-                echo "<script>window.location.href = 'index.php';</script>";
+                echo "<script>window.location.href = '../Eadmin/student.php';</script>";
                 exit;
             } catch (PDOException $e) {
                 // エラーが発生した場合の処理
                 echo "<script>alert('パスワード変更ができませんでした。');</script>";
-                echo "<script>window.location.href = 'index.php';</script>";
+                echo "<script>window.location.href = '../Eadmin/student.php';</script>";
                 exit;
             }
         } else {
             // 入力された現在のパスワードが正しくない場合の処理
             echo "<script>alert('現在のパスワードが正しくありません。');</script>";
-            echo "<script>window.location.href = '../Eadmin/student.php';</script>";
+            echo "<script>window.location.href = '../Eadmin/password.php';</script>";
             exit;
         }
     } else {
         // フォームが不完全な場合の処理
         echo "<script>alert('現在のパスワードと新しいパスワードを入力してください。');</script>";
-        echo "<script>window.location.href = '../Eadmin/student.php';</script>";
+        echo "<script>window.location.href = '../Eadmin/password.php';</script>";
         exit;
     }
 }
@@ -109,15 +110,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="student-main-head-sent">パスワード変更</div>
                     </div>
                 </div>
-                <div class="container">
-                    <form method="POST">
+                <div class="password-container">
+                    <form method="POST" id="passwordForm">
                         <div class="form-tag">
-                            <label for="password" class="form-label">現在のパスワード</label>
-                            <input type="password" name="current_password" class="form-control" id="password">
+                            <label for="current_password" class="form-label">現在のパスワード</label>
+                            <input type="password" name="current_password" class="form-control" id="current_password">
                         </div>
                         <div class="form-tag">
-                            <label for="password" class="form-label">新しいパスワード</label>
-                            <input type="password" name="new_password" id="password" class="form-control">
+                            <label for="new_password" class="form-label">新しいパスワード</label>
+                            <input type="password" name="new_password" id="new_password" class="form-control">
                         </div>
                         <button type="submit" class="btn submit">変更</button>
                     </form>
