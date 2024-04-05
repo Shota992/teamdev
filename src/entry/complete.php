@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css">
     <link rel="stylesheet" href="../assets/sp/sp-complete.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="body_2">
     <?php
     include_once '../includes/header2.php';
     ?>
@@ -44,7 +47,7 @@
             </section>
             <!-- topページへ戻る -->
             <section class="complete_topSection">
-                <button class="complete_btn">TOPページへ戻る</button>
+                <button class="complete_btn"><a href="../top/aftertop.php">TOPページへ戻る</a></button>
             </section>
         </div>
     </main>
