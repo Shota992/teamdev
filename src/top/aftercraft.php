@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/css/top.css">
 </head>
 
-<body>
+<body class="body_2">
     <main>
         <?php include_once '../includes/header2.php'?>
         <!-- メインビジュアル -->

@@ -45,48 +45,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>ログイン</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="body_2">
     <div class="wrap">
-    <?php
-    include_once '../includes/header3.php'; ?>
-    <main>
-        <div class="CRAFT-img">
-            <img src="../assets/img/header_logo.png" alt="CRAFTアイコン">
-        </div>
-        <div class="container">
-            <?php if ($message !== '') { ?>
-                <p style="color: red;"><?= $message ?></p>
-            <?php }; ?>
-            <form method="POST">
-                <div class="form-tag">
-                    <label for="email" class="form-label">ログインID（メールアドレス）</label>
-                    <input type="email" name="email" class="email form-control" id="email">
-                </div>
-                <div class="form-tag">
-                    <label for="password" class="form-label">パスワード</label>
-                    <input type="password" name="password" id="password" class="form-control">
-                </div>
-                <button type="submit" disabled class="btn submit">ログイン</button>
-            </form>
-        </div>
-    </main>
-    <?php
-    include_once '../includes/footer2.php';
-    ?>
-    <script>
-        const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        const submitButton = document.querySelector('.btn.submit')
-        const emailInput = document.querySelector('.email')
-        inputDoms = Array.from(document.querySelectorAll('.form-control'))
-        inputDoms.forEach(inpuDom => {
-            inpuDom.addEventListener('input', event => {
-                const isFilled = inputDoms.filter(d => d.value).length === inputDoms.length
-                submitButton.disabled = !(isFilled && EMAIL_REGEX.test(emailInput.value))
+        <?php
+        include_once '../includes/header3.php'; ?>
+        <main>
+            <div class="CRAFT-img">
+                <img src="../assets/img/header_logo.png" alt="CRAFTアイコン">
+            </div>
+            <div class="container">
+                <?php if ($message !== '') { ?>
+                    <p style="color: red;"><?= $message ?></p>
+                <?php }; ?>
+                <form method="POST">
+                    <div class="form-tag">
+                        <label for="email" class="form-label">ログインID（メールアドレス）</label>
+                        <input type="email" name="email" class="email form-control" id="email">
+                    </div>
+                    <div class="form-tag">
+                        <label for="password" class="form-label">パスワード</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                    </div>
+                    <button type="submit" disabled class="btn submit">ログイン</button>
+                </form>
+            </div>
+        </main>
+        <?php
+        include_once '../includes/footer2.php';
+        ?>
+        <script>
+            const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+            const submitButton = document.querySelector('.btn.submit')
+            const emailInput = document.querySelector('.email')
+            inputDoms = Array.from(document.querySelectorAll('.form-control'))
+            inputDoms.forEach(inpuDom => {
+                inpuDom.addEventListener('input', event => {
+                    const isFilled = inputDoms.filter(d => d.value).length === inputDoms.length
+                    submitButton.disabled = !(isFilled && EMAIL_REGEX.test(emailInput.value))
+                })
             })
-        })
-    </script>
+        </script>
     </div>
 </body>
 
