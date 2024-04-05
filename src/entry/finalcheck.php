@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 exit; // リダイレクト後に実行が継続されないようにする
             }
-        } catch{
+        } catch(PDOException $e){
             echo "送信先のメールアドレスが見つかりませんでした。";
         }
     }
