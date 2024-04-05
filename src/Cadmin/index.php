@@ -152,7 +152,7 @@ $dbh = null;
                         <tr class="index-main-table-head">
                             <td class="index-main-table-content">企業ID</td>
                             <td class="index-main-table-content">サービス名</td>
-                            <td class="index-main-table-content">企業名</td>
+                            <td class="index-main-table-content job-name">企業名</td>
                             <td class="index-main-table-content">メールアドレス</td>
                             <td></td>
                         </tr>
@@ -165,19 +165,27 @@ $dbh = null;
                                     </a>
                                     </td>
                                     <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["site_name"]; ?>
+                                    </a>
                                     </td>
                                     <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["agent_name"]; ?>
+                                    </a>
                                     </td>
                                     <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["email"]; ?>
+                                    </a>
                                     </td>
                                     <td class="check-item">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <form method="POST">
                                             <input type="hidden" value="<?= $info["agent_id"] ?>" name="id">
                                             <input type="submit" value="削除" class="submit check-delete-button">
                                         </form>
+                                    </a>
                                     </td>
                             </tr>
                         <?php } ?>
