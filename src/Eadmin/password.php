@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="student-main-head-sent">パスワード変更</div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="password-container">
                     <form method="POST" id="passwordForm">
                         <div class="form-tag">
                             <label for="current_password" class="form-label">現在のパスワード</label>
