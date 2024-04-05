@@ -156,6 +156,7 @@ main {
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .form {
@@ -271,6 +272,7 @@ form {
 .index-main-table-head {
   background-color: #bbb;
   height: 30px;
+  width: 100%;
 }
 
 .index-main-table-contents {
@@ -711,4 +713,17 @@ input[type="checkbox"]:checked+.create_checkbox::after {
 .create_btn:hover {
   color: #B7386D;
   background: #fff;
+}
+
+.check-delete-button {
+  background-color: #B7386D;
+  color: #fff;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.check-item{
+  vertical-align: middle;
 }
