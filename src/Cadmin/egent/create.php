@@ -10,28 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mkdir($upload_directory, 0777, true);
     }
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        // ファイルアップロード処理
-        $file = $_FILES['agent-logo'];
-        $lang = 'ja_JP';
-
-        // アップロードされたファイルを渡す
-        $handle = new Upload($file, $lang);
-
-        //ファイルサイズのバリデーション： 5MB
-        $handle->file_max_size = '5120000';
-        // ファイルの拡張子と MIMEタイプをチェック
-        $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
-        // PNGに変換して拡張子を統一
-        $handle->image_convert = 'png';
-        $handle->file_new_name_ext = 'png';
-        // サイズ統一
-        $handle->image_resize = true;
-        $handle->image_x = 300;
-
-
     // カテゴリが選択されている場合のみimplode()関数を適用する
     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
 
@@ -325,7 +303,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <button type="submit" id="saveButton">保存</button>
                         </div>
                     </div>
-                    <div class="create_sample" id="createSample">
+                    <div class="create_sample" id="createSam">
                         <p class="create_sampleP"> サンプル　学生側には以下のように表示されます</p>
                         <div class="create_sample-figure" style="width: 270.667px;">
                             <div class="slider-img">
@@ -349,7 +327,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
                         </div>
-                        <button type="submit" class="create_btn" id="registerButton">新規登録</button>
+                        <button type="submit" class="create_btn">新規登録</button>
                     </div>
                 </form>
             </div>

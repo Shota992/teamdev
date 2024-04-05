@@ -35,6 +35,8 @@ $stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // choice_ing テーブルからデータを取得
@@ -58,6 +60,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         $stmt->execute();
+        
+
+        // 個人情報の取得
+        $sql ="SELECT name, mail,tel_num
+                FROM student
+                WHERE user_id = :user_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+        $student_info = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // 学生の名前とメールアドレスを取得
+        $student_name = $student_info['name'];
+        $student_email = $student_info['mail'];
+        $student_num = $student_info['tel_num'];
+
+        foreach ($choices as $info) {
+                        // メール送信のための情報
+                        $to = $info['email'];
+                        $subject = "CRAFT";
+                        $message = "いつもお世話になっております。\n\n";
+                        $message .= "CRAFTから新たに申し込みがありました。\n\n";
+                        $message .= "下記のメールアドレス、または電話番号からのやりとりをお願いします。\n";
+                        $message .= "学生氏名: " . $student_name . "\n";
+                        $message .= "電話番号: " . $student_num . "\n\n";
+                        $message .= "メールアドレス: " . $student_email . "\n\n";
+                        $message .= "学生に関する詳細情報はCRAFTのエージェント企業様向けのページからご確認いただけます。";
+                        $headers = "From: craft@gmail.com";
+                    if (mail($to, $subject, $message, $headers)) {
+                        header("Location: ./complete.php");
+                        continue;
+                    } else {
+                        echo "メールの送信に失敗しました";
+                        echo $emails;
+                    }
+                    exit;
+                }
 
         // リダイレクト
         header("Location: ./complete.php");
@@ -66,8 +105,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "エラー: " . $e->getMessage();
     }
 }
-
-var_dump($persons);
 
 ?>
 
