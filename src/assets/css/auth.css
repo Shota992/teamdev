@@ -90,6 +90,13 @@ form {
 .CRAFT-img {
     text-align: center;
     margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: 0 auto;
 }
 
 .CRAFT-img img {

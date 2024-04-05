@@ -1,5 +1,5 @@
 <?php 
-/*require __DIR__ . '/../dbconnect.php';
+require __DIR__ . '/../dbconnect.php';
 $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
@@ -19,7 +19,7 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':id', $user_id);
 $stmt->execute();
 $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}*/
+}
 ?> 
 
 <!DOCTYPE html>
@@ -29,6 +29,7 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>history</title>
     <link rel="stylesheet" href="/../assets/css/history.css" />
+    <link rel="stylesheet" href="../assets/sp/sp-history.css">
     <script src="./assets/js/script.js" defer></script>
 </head>
 <body class="body">

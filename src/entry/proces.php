@@ -1,4 +1,23 @@
-<!-- エージェント企業申し込み手順ページ -->
+<?php
+require_once('../dbconnect.php');
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+} else {
+    $user_id = $_SESSION["user_id"];
+    $sql = "DELETE FROM choice_ing WHERE user_id=?";
+    $stmt = $dbh->prepare($sql);
+    if ($stmt->execute([$user_id])) {
+    } else {
+    }
+}
+// データベース接続を閉じる
+$dbh = null;
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -108,9 +127,9 @@
                 <div class="processTry-img">
                     <img src="../assets/img/process_steppolygon.png" alt="" class="processTryPolygon">
                 </div>
-                <div class="process-btn">
+                <a href="../entry/choice.php" class="process-btn">
                     <button class="process_btn">さっそくTry！</button>
-                </div>
+                </a>
             </section>
         </div>
     </main>
