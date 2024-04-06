@@ -1,14 +1,51 @@
 <?php
 // dbconnect.phpファイルを読み込む
 require_once '../../dbconnect.php';
+require "../../vendor/autoload.php";
+use Verot\Upload\Upload;
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: /../../../Cadmin/auth/login.php');
+    exit;
+}
 
 // POSTリクエストがあるかどうかを確認
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
     // 画像を保存するディレクトリが存在しない場合は作成する
-    $upload_directory = "../../uploads/";
-    if (!file_exists($upload_directory)) {
-        mkdir($upload_directory, 0777, true);
-    }
+    $upload_directory = "../egent/uploads/";
+
+    $dbh->beginTransaction();
+
+    // ファイルアップロード
+    $file = $_FILES['agent-logo'];
+    $lang = 'ja_JP';
+
+    $handle = new Upload($file, $lang);
+
+    // ファイルサイズのバリデーション： 5MB
+    $handle->file_max_size = '5120000';
+    // ファイルの拡張子と MIMEタイプをチェック
+    $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
+    // PNGに変換して拡張子を統一
+    $handle->image_convert = 'png';
+    $handle->file_new_name_ext = 'png';
+    // サイズ統一
+    $handle->image_resize = true;
+    $handle->image_x = 718;
+    // 一意のファイル名を生成して設定
+    $image_name = uniqid() . '.' . $handle->file_src_name_ext;
+    $handle->file_new_name_body = $image_name;
+    // アップロードディレクトリを指定して保存
+    $handle->process('../egent/uploads/');
+    // if (!$handle->processed) {
+    //     throw new Exception($handle->error);
+    // }
+
+
+
 
     // カテゴリが選択されている場合のみimplode()関数を適用する
     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
@@ -16,11 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 必須項目が入力されているかどうかをチェックするフラグを初期化
     $all_fields_filled = true;
 
+
+
+
     // 必須項目が空であるかどうかをチェック
     if (
         empty($_POST['site-name']) ||
         empty($_POST['agent-name']) ||
-        empty($_FILES['agent-logo']['name']) ||
+        empty($_FILES['agent_logo']['name']) ||
         empty($_POST['agent-overview']) ||
         empty($_POST['agent-kinds']) ||
         ($_POST['agent-kinds'] !== "総合型" && empty($_POST['agent-scale'])) ||
@@ -33,13 +73,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
         $error_message = "必須項目が入力されていません。";
         $all_fields_filled = false;
+
+
+
     } else {
-        
             // フォームからのデータを取得
             $site_name = $_POST['site-name'];
             $agent_name = $_POST['agent-name'];
-            $agent_logo = $_FILES['agent-logo']['name'];
-            $agent_logo_tmp = $_FILES['agent-logo']['tmp_name'];
+            $agent_logo = $_FILES['agent_logo']['name'];
+            $agent_logo_tmp = $_FILES['agent_logo']['tmp_name'];
             $agent_overview = $_POST['agent-overview'];
             $agent_kinds = $_POST['agent-kinds'];
             $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
@@ -108,9 +150,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $dbh = null;
 
             // リダイレクト
+            $_SESSION['message'] = "問題作成に成功しました。";
             header("Location: /Cadmin/index.php");
             exit;
-        
+            
+    }
+} catch (PDOException $e) {
+    $dbh->rollBack();
+    $_SESSION['message'] = "問題作成に失敗しました。";
+    error_log($e->getMessage());
+    exit;
     }
 }
 ?>
@@ -160,6 +209,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && !$all_fields_filled) {
                     echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
                 } ?>
+
                 <form action="" class="" method="POST" enctype="multipart/form-data">
                     <table class="table-res-form">
                         <div class="create-list">
@@ -181,9 +231,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="create-list">
                             <tr>
-                                <th><label for="agent-logo" class="create_form-labelLogo">企業ロゴ</label>
+                                <th><label for="agent_logo" class="create_form-labelLogo">企業ロゴ</label>
                                 </th>
-                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1 required" />
+                                <td class="create_td1a"><input type="file" name="agent_logo" id="agent_logo" class="form-control1  required" enctype="multipart/form-data" />
                             </tr>
                         </div>
                         <div class="create-list">
@@ -340,7 +390,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         function validateForm() {
             var siteName = document.getElementById('site-name').value;
             var agentName = document.getElementById('agent-name').value;
-            var agentLogo = document.getElementById('agent-logo').value;
+            var agentLogo = document.getElementById('agent_logo').value;
             var agentOverview = document.getElementById('agent-overview').value;
             var agentKinds = document.getElementById('agent-kinds').value;
             var region = document.getElementById('region').value;
