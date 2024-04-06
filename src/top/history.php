@@ -67,11 +67,11 @@ if (!isset($_SESSION['user_id'])) {
                             <tr class="history-table-item">
                                 <td class="history-item">
                                     <div>
-                                        <img src="../assets/img/<?= $choice["logo"]; ?>" alt="" / class="history-logo">
+                                        <img src="../assets/img/<?= $choice["logo"]; ?>" alt="" class="history-logo">
                                     </div>
                                 </td>
                                 <td class="history-item">
-                                    <?= $choice["site_name"]; ?>
+                                    <?= $choice["site_name"]; ?>/
                                     <?= $choice["agent_name"]; ?>
                                 </td>
                                 <td class="history-item"><?= $choice["size"]; ?></td>
