@@ -510,6 +510,7 @@ form {
   margin-left: -50px;
 }
 .create_tdA {
+  float: left;
   width: 100%;
   margin-left: -50px;
 }
