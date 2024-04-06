@@ -46,6 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>CRAFT管理者ログイン</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../Cadmin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -61,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </header>
         <main  class="auth-main" style="flex: 1; ">
-            <div class="container">
+            <div class="login-container">
                 <h1 class="top-heading">CRAFT管理者向け</h1>
                 <?php if ($message !== '') { ?>
                     <p style="color: red;"><?= $message ?></p>
@@ -73,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-tag">
                         <label for="password" class="form-label">パスワード</label>
-                        <input type="password" name="password" id="password" class="form-control1">
+                        <input type="password" name="password" id="password" class="email form-control">
                     </div>
                     <button type="submit" disabled class="btn submit">ログイン</button>
                 </form>

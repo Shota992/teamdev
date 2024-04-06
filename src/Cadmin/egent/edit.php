@@ -110,6 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>エージェント企業編集画面</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
