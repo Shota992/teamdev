@@ -58,13 +58,6 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="history-table-item">
-                                <td class="history-item"><?=$choice["logo"];?></td>
-                                <td class="history-item"><?=$choice["site_name"];?></td>
-                                <td class="history-item"><?=$choice["size"];?></td>
-                                <td class="history-item"><?=$choice["area"];?></td>
-                                <td class="history-item"><?=$choice["amounts"];?></td>
-                            </tr>
-                            <tr class="history-table-item">
                                 <td class="history-item">
                                     <div>
                                         <img src="../assets/img/<?= $choice["logo"]; ?>" alt="" / class="history-logo">
@@ -72,7 +65,7 @@ if (!isset($_SESSION['user_id'])) {
                                 </td>
                                 <td class="history-item">
                                     <?= $choice["site_name"]; ?>
-                                    <?= $choice["agent_name"]; ?>
+                                    <span style="font-size: 8px; color: grey;"><?= $choice["agent_name"]; ?></span>
                                 </td>
                                 <td class="history-item"><?= $choice["size"]; ?></td>
                                 <td class="history-item"><?= $choice["area"]; ?></td>
@@ -82,7 +75,6 @@ if (!isset($_SESSION['user_id'])) {
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
