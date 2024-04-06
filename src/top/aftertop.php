@@ -119,7 +119,7 @@ $dbh = null;
                     </div>
                 </div>
             </section>
-            <<section>
+            <section>
                 <div>
                     <div class="top_list_head">
                         <h2 class="top_list_title">エージェント企業一覧</h2>

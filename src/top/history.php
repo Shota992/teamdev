@@ -18,7 +18,6 @@ if (!isset($_SESSION['id'])) {
     $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
     $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 }
 ?> 
 
