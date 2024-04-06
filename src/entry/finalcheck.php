@@ -36,7 +36,6 @@ $stmt->execute();
 $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // choice_ing テーブルからデータを取得
@@ -94,9 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } else {
                         echo "メールの送信に失敗しました";
                         echo $emails;
+
                     }
-                    exit;
-                }
 
         // リダイレクト
         header("Location: ./complete.php");

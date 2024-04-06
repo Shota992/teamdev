@@ -156,6 +156,7 @@ main {
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .form {
@@ -264,6 +265,10 @@ form {
   margin-top: 40px;
 }
 
+.job-name{
+  width: 219px;
+}
+
 .index-main-table-conainer {
   width: 100%;
 }
@@ -271,6 +276,7 @@ form {
 .index-main-table-head {
   background-color: #bbb;
   height: 30px;
+  width: 100%;
 }
 
 .index-main-table-contents {
@@ -284,13 +290,15 @@ form {
 }
 
 .index-main-table-content a {
-  display: block;
+  display: flex;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   line-height: normal;
+  justify-content: center;
+  align-items: center;
 }
 
 .index-main-table-contents:hover{
@@ -711,4 +719,17 @@ input[type="checkbox"]:checked+.create_checkbox::after {
 .create_btn:hover {
   color: #B7386D;
   background: #fff;
+}
+
+.check-delete-button {
+  background-color: #B7386D;
+  color: #fff;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.check-item{
+  vertical-align: middle;
 }

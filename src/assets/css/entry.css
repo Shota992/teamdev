@@ -81,8 +81,8 @@
 .processStepHead {
     border-image: linear-gradient(to right, #297DBA 0%, #9EB9CC 100%);
     background-repeat: no-repeat;
-	background-size: 100% 30%;
-	background-position: bottom;
+    background-size: 100% 30%;
+    background-position: bottom;
     text-align: left;
     font-size: 24px;
     font-weight: bold;
@@ -316,7 +316,6 @@ input[type=radio]:checked+.person_radio::after {
 /* 申し込みが完了しました */
 .complete_main {
     margin-top: 80px;
-    background: rgba(217, 217, 217, 0.8);
     padding: 20px 0 60px 0;
     width: 100%;
     height: 100%;
@@ -328,7 +327,7 @@ input[type=radio]:checked+.person_radio::after {
 
 .complete_container {
     background-color: #fff;
-    width: 70%;
+    /* width: 70%; */
     margin: 20px 0 0 0;
     height: 80%;
     padding: 40px 120px;
@@ -343,17 +342,14 @@ input[type=radio]:checked+.person_radio::after {
 }
 
 .complete_figure {
-    display: inline-block;
     display: flex;
-    text-align: center;
     flex-direction: column;
-    text-align: center;
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    background: #FFF;
-    border: solid 10px #297DBA;
+    padding: 20px 50px;
     border-radius: 30px;
     margin: 0 auto;
+    background: #FFF;
+    border: solid 8px #297DBA;
+    width: fit-content;
 }
 
 .complete_figureText1 {

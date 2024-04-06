@@ -113,24 +113,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <!-- 以下、HTMLのフォーム部分を追加してください -->
-</body>
-
-</html>
-
-
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>エージェント企業編集画面</title>
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
-</head>
-
-<body>
     <header class="header-all">
         <div header-top>
             <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
