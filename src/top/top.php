@@ -1,12 +1,12 @@
 <?php
-require __DIR__ . '/../dbconnect.php';
+// require __DIR__ . '/../dbconnect.php';
 
-$info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
+// $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql = "SELECT logo FROM info";
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
-    $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     $sql = "SELECT logo FROM info";
+//     $stmt = $dbh->prepare($sql);
+//     $stmt->execute();
+//     $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
