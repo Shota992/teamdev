@@ -16,7 +16,7 @@
 <body>
     <header class="header-1">
         <h1>
-            <a href="../top/top.php">
+            <a href="../top/aftertop.php">
                 <img src="../assets/img/header_logo.png" alt="CRAFT" class="header_logo">
             </a>
         </h1>
@@ -24,6 +24,10 @@
             <ul class="header_nav_ul1">
                 <li><a href="../top/aftercraft.php" class="headerNav_li_1">CRAFTとは</a></li>
                 <li><a href="../top/aftercolumn.php" class="headerNav_li_2">コラム</a></li>
+            </ul>
+            <ul class="header_nav_ul2">
+                <li><a href="../entry/history.php" class="headerNav_li_3">申し込み履歴</a></li>
+                <li><a href="../auth/logout.php" class="headerNav_li_4">ログアウト</a></li>
             </ul>
         </div>
         <div class="burger">
