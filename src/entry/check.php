@@ -90,13 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="check-table-container">
                     <table border="1" class="check-table">
                         <tr class="check-table-head">
-                            <th >企業ロゴ</th>
-                            <th >サービス名/企業名</th>
-                            <th>総合/特化</th>
-                            <th >企業規模</th>
-                            <th >地域</th>
-                            <th >求人数</th>
-                            <th ></th>
+                            <th class="check-head-title">企業ロゴ</th>
+                            <th class="check-head-title">サービス名/企業名</th>
+                            <th class="check-head-title">総合/特化</th>
+                            <th class="check-head-title">企業規模</th>
+                            <th class="check-head-title">地域</th>
+                            <th class="check-head-title">求人数</th>
+                            <th class="check-head-title"></th>
                         </tr>
                         <?php foreach ($selects as $info) { ?>
                         <tr class="check-table-item">
@@ -119,9 +119,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?}?>
                     </table>
                 </div>
-                <a href="../entry/person.php" class="check-next-box">
-                    <button class="check-next-button">個人情報入力画面へ</button>
-                </a>
+                <div class="complete-button">
+                    <a href="../entry/person.php">
+                        <button id="complete-btn">個人情報入力画面へ</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
