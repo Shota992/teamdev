@@ -92,6 +92,9 @@ $dbh = null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エージェント企業一覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Cadmin/Cadmin.css" />
     <script src="./assets/js/script.js">
     </script>
