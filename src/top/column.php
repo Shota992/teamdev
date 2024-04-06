@@ -61,7 +61,7 @@
             <section class="columnContent2">
                 <div class="columnHead">
                     <h2 id="column2" class="columnTitleText" data-scroll>
-                        2.エージェント企業とは
+                        2.エージェント企業の選び方
                     </h2>
                 </div>
                 <div class="column2Body">

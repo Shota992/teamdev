@@ -99,9 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // リダイレクト
         header("Location: ./complete.php");
         exit;
-    } catch (PDOException $e) {
-        echo "エラー: " . $e->getMessage();
-    }
+    } 
+}catch (PDOException $e) {
+    echo "エラー: " . $e->getMessage();
+}
 }
 
 ?>
