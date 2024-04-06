@@ -23,7 +23,7 @@ $stmt->bindValue(":agent_id", $agent_id);
 $stmt->execute();
 $info = $stmt->fetch();
 
-$image_name = ""; // 画像名を空の文字列で初期化
+$image_name = $info["agent-logo"]; // 画像名を空の文字列で初期化
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
