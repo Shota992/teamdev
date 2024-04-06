@@ -6,7 +6,7 @@ $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
 } else {
     $user_id = $_SESSION['user_id'];
@@ -18,7 +18,6 @@ if (!isset($_SESSION['id'])) {
     $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
     $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 }
 ?> 
 

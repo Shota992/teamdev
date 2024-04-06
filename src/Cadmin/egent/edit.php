@@ -23,7 +23,7 @@ $stmt->bindValue(":agent_id", $agent_id);
 $stmt->execute();
 $info = $stmt->fetch();
 
-$image_name = $info["agent-logo"]; // 画像名を空の文字列で初期化
+$image_name = ""; // 画像名を空の文字列で初期化
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -116,6 +116,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <!-- 以下、HTMLのフォーム部分を追加してください -->
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エージェント企業編集画面</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
+</head>
+
+<body>
     <header class="header-all">
         <div header-top>
             <a href="" class="header-logo" target="_blank" rel="noopener noreferrer">
@@ -197,8 +215,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-scale" class="create_select">
-                                        <option <?= ($info["size"] == "大手") ? "selected" : "" ?>>大企業</option>
-                                        <option <?= ($info["size"] == "中小") ? "selected" : "" ?>>中・小企業</option>
+                                        <option <?= ($info["size"] == "大手") ? "selected" : "" ?>>大手</option>
+                                        <option <?= ($info["size"] == "中小") ? "selected" : "" ?>>中小</option>
                                     </select>
                                 </td>
                             </tr>

@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
     header('Location: /../../Cadmin/auth/login.php');
     exit;
 }
+
 $infos = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 
 $search_site = '';
@@ -125,31 +126,45 @@ $dbh = null;
             </aside>
             <main class="create-main">
                 <div class="index-main-head">
+                <?php
+                    // セッション変数からメッセージを取得して表示
+                    if (isset($_SESSION['message'])) {
+                        echo '<span style="color: red;">' . $_SESSION['message'] . '</span>';
+                        // メッセージを表示したらセッション変数を削除
+                        unset($_SESSION['message']);
+                    }
+                ?>
                     <div class="index-main-head-container">
                         <div class="index-main-head-sent">エージェント企業一覧</div>
                     </div>
                 </div>
-                <form method="GET" action="./index.php" class="form">
+                <!-- <form method="GET" action="./index.php" class="form">
                     <div class="index-main-search">
                         <div class="index-main-search-contents">
                             <div class="index-main-search-content">
                                 <div class="index-main-search-title">サービス名</div>
-                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if (!empty($_GET['search_site'])) {
-                                                                                                                                                        echo $_GET['search_site'];
-                                                                                                                                                    } ?>">
+                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-site" value="
+                                <?php 
+                                    // if (!empty($_GET['search_site'])) {
+                                    //     echo $_GET['search_site'];
+                                    // }
+                                ?>"
                             </div>
                             <div class="index-main-search-content">
                                 <div class="index-main-search-title">企業名</div>
-                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-agent" value="<?php if (!empty($_GET['search_agent'])) {
-                                                                                                                                                        echo $_GET['search_agent'];
-                                                                                                                                                    } ?>">
+                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-agent" value="
+                                <?php 
+                                    // if (!empty($_GET['search_agent'])) {
+                                    //     echo $_GET['search_agent'];
+                                    // }
+                                ?>">
                             </div>
                             <button class="index-main-search-button">
                                 <input type="submit" name="search" value="検索">
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> -->
                 <div class="index-main-table">
                     <table class="index-main-table-conainer">
                         <tr class="index-main-table-head">

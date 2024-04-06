@@ -1,10 +1,6 @@
 /* 選択企業一覧ページ */
-.check-table th, .check-table td {
-    
-  }
-  
   body {
-    background-color: #d9d9d9;
+    background-color: #dfe4ec;
     margin: 120px;
   }
   
@@ -31,6 +27,11 @@
   .check-title-sent {
     font-size: 28px;
     font-weight: bold;
+  }
+
+  .check-head-title{
+    text-align: center;
+    vertical-align: middle;
   }
   
   .check-table-container {
@@ -61,7 +62,7 @@
     font-size: 14px;
 }
   
-  .check-delete-button {
+.check-delete-button {
     background-color: #27b;
     color: #fff;
     width: 60px;
@@ -69,17 +70,21 @@
     text-align: center;
     border-radius: 10px;
   }
-  
-  .check-next-box {
-    height: 60px;
+
+.complete-button {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+#complete-btn {
+    font-weight: bold;
+    background: rgba(238, 198, 68, 0.8);
+    border: solid 2px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 14px;
+    width: 200px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-  }
-  
-  .check-next-button {
-    height: 40px;
-    width: 170px;
-    background-color: #ed4;
-  }
+}

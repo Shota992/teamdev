@@ -1,4 +1,3 @@
-<!-- 申込内容一覧ページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
 
@@ -67,7 +66,7 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="content-main-head-sent">申し込み内容一覧</div>
                     </div>
                 </div>
-                <div class="content-main-search">
+                <!-- <div class="content-main-search">
                     <div class="content-main-search-contents">
                         <div class="content-main-search-radios">
                             <div class="content-main-search-radio">
@@ -99,15 +98,15 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <button class="content-main-search-button">検索</button>
-                </div>
+                </div> -->
                 <div class="content-main-table">
                     <table class="content-main-table-container">
-                        <tr class="content-main-table-head">
-                            <td class="content-main-table-content">申込み日時</td>
-                            <td class="content-main-table-content">企業ID</td>
-                            <td class="content-main-table-content">サイト名</td>
-                            <td class="content-main-table-content">学生氏名</td>
-                            <td class="content-main-table-content">タスク完了</td>
+                        <tr class="content-main-table-allhead">
+                            <td class="content-main-table-head">申込み日時</td>
+                            <td class="content-main-table-head">企業ID</td>
+                            <td class="content-main-table-head">サイト名</td>
+                            <td class="content-main-table-head">学生氏名</td>
+                            <td class="content-main-table-head">タスク完了</td>
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="index-main-table-contents content-odd">
