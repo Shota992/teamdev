@@ -1,3 +1,22 @@
+<?php
+require_once('../dbconnect.php');
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+} else {
+    $user_id = $_SESSION["user_id"];
+    $sql = "DELETE FROM choice_ing WHERE user_id=?";
+    $stmt = $dbh->prepare($sql);
+    if ($stmt->execute([$user_id])) {
+    } else {
+    }
+}
+// データベース接続を閉じる
+$dbh = null;
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,7 +29,7 @@
     <link rel="stylesheet" href="../assets/sp/sp-column.css">
 </head>
 
-<body>
+<body class="body_2">
     <?php 
     include_once '../includes/header2.php';
     ?>

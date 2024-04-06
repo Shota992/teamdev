@@ -4,17 +4,17 @@
 .wrap{
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
 }
 
 body {
     margin: 0;
-    background-color: #d9d9d9;
 }
 
+.body_2{
+    background-color: #DFE4EC;
+}
 main {
-    background-color: #d9d9d9;
-    padding-top: 150px;
+    padding-top: 80px;
     flex: 1;
 }
 
@@ -26,7 +26,7 @@ main {
     padding: 80px;
     text-align: center;
     /*インラインブロック要素の子要素を左右で中央寄せ*/
-    border-radius: 70px;
+    border-radius: 50px;
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -35,6 +35,7 @@ main {
     font-weight: bold;
     margin-top: 0px;
     margin-bottom: 30px;
+    font-size: 25px;
 }
 
 form {

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($agents && password_verify($password, $agents["password"])) {
             session_start();
-            $_SESSION['id'] = $agents["id"];
+            $_SESSION['agent_id'] = $agents["agent_id"];
             header('Location: student.php');
             exit();
         } else {
@@ -61,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </header>
         <main class="main-body" style="flex: 1; ">
-            <div style="text-align: center;">
+            <div class="login-title" style="text-align: center;">
                 <h1 class="top-heading">エージェント企業様向け</h1>
-                <?php if ($message !== '') { ?>
-                    <p style="color: red;"><?= $message ?></p>
-                <?php }; ?>
             </div>
-            <div class="container">
+            <div class="login-container">
+                <?php if ($message !== '') { ?>
+                    <p style="color: red;" class="error-message"><?= $message ?></p>
+                <?php }; ?>
                 <form method="POST">
                     <div class="form-tag">
                         <label for="email" class="form-label">ログインID（メールアドレス）</label>
@@ -75,7 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-tag">
                         <label for="password" class="form-label">パスワード</label>
-                        <input type="password" name="password" id="password" class="form-control" height="30px">
+                        <p class="caution-message">（初回ログインの際はログインIDを再度入力）</p>
+                        <input type="password" name="password" id="password" class="form-control password-form" height="30px">
                     </div>
                     <button type="submit" disabled class="btn submit">ログイン</button>
                 </form>
