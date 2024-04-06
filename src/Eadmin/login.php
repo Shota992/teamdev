@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($agents && password_verify($password, $agents["password"])) {
             session_start();
-            $_SESSION['id'] = $agents["id"];
+            $_SESSION['agent_id'] = $agents["agent_id"];
             header('Location: student.php');
             exit();
         } else {
