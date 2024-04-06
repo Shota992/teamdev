@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
     header('Location: /../../Cadmin/auth/login.php');
     exit;
 }
+
 $infos = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 
 $search_site = '';
@@ -91,6 +92,14 @@ $dbh = null;
             </aside>
             <main class="create-main">
                 <div class="index-main-head">
+                <?php
+                    // セッション変数からメッセージを取得して表示
+                    if (isset($_SESSION['message'])) {
+                        echo '<span style="color: red;">' . $_SESSION['message'] . '</span>';
+                        // メッセージを表示したらセッション変数を削除
+                        unset($_SESSION['message']);
+                    }
+                ?>
                     <div class="index-main-head-container">
                         <div class="index-main-head-sent">エージェント企業一覧</div>
                     </div>
