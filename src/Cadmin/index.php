@@ -28,8 +28,7 @@ if (isset($_GET["search"])) {
         $search_site = $_GET["search_site"];
         $search_agent = $_GET["search_agent"];
     }
-
-
+    
     //実行
     // $sql="SELECT * FROM info WHERE site_name LIKE '%{$search_site}%' and agent_name like '%{$search_agent}%'";
     // $in = $dbh->prepare($sql);
@@ -37,7 +36,6 @@ if (isset($_GET["search"])) {
     // $infos = $in->fetchAll(PDO::FETCH_ASSOC);
 
 } else {
-
     // //「検索」ボタン押下してないとき
     // $sql='SELECT * FROM fruit WHERE 1';
     // $rec = $dbh->prepare($sql);
@@ -45,10 +43,43 @@ if (isset($_GET["search"])) {
     // $rec_list = $rec->fetchAll(PDO::FETCH_ASSOC);
 }
 
+$sql = "SELECT info.*
+        FROM info";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$selects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// POSTリクエストが送信された場合の処理
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $dbh->beginTransaction();
+        // 削除する企業のIDを取得
+        $id = $_POST["id"];
+
+        // infoテーブルから対象の企業を削除
+        $sql = "DELETE FROM info WHERE agent_id = :agent_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(":agent_id", $id);
+        $stmt->execute();
+
+        $dbh->commit();
+        // メッセージをセットしてリダイレクト
+        $_SESSION['message'] = "企業の削除に成功しました。";
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    } catch (PDOException $e) {
+        $dbh->rollBack();
+        // エラーメッセージをセットしてリダイレクト
+        $_SESSION['message'] = "企業の削除に失敗しました。";
+        error_log($e->getMessage());
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
+
+}
+
 //データベース切断
 $dbh = null;
-
-// }
 
 ?>
 
@@ -60,6 +91,9 @@ $dbh = null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エージェント企業一覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Cadmin/Cadmin.css" />
     <script src="./assets/js/script.js">
     </script>
@@ -121,8 +155,9 @@ $dbh = null;
                         <tr class="index-main-table-head">
                             <td class="index-main-table-content">企業ID</td>
                             <td class="index-main-table-content">サービス名</td>
-                            <td class="index-main-table-content">企業名</td>
+                            <td class="index-main-table-content job-name">企業名</td>
                             <td class="index-main-table-content">メールアドレス</td>
+                            <td></td>
                         </tr>
                         <?php foreach ($infos as $info) { ?>
                             <tr class="index-main-table-contents index-odd" id="info-<?= $info["agent_id"] ?>">
@@ -133,15 +168,28 @@ $dbh = null;
                                     </a>
                                     </td>
                                     <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["site_name"]; ?>
+                                    </a>
                                     </td>
                                     <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["agent_name"]; ?>
+                                    </a>
                                     </td>
                                     <td class="index-main-table-content">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
                                         <?= $info["email"]; ?>
+                                    </a>
                                     </td>
-                                
+                                    <td class="check-item">
+                                    <a href="./egent/edit.php?agent_id=<?= $info["agent_id"] ?>">
+                                        <form method="POST">
+                                            <input type="hidden" value="<?= $info["agent_id"] ?>" name="id">
+                                            <input type="submit" value="削除" class="submit check-delete-button">
+                                        </form>
+                                    </a>
+                                    </td>
                             </tr>
                         <?php } ?>
                     </table>

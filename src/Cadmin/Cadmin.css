@@ -58,27 +58,29 @@ footer {
 
 /* 管理者画面のサイドバー */
 .side-container {
-  width: 18%;
+  width: 300px;
   background-color: #b36;
   padding-top: 100px;
 }
 
 .side-sent {
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   text-align: end;
 }
 
 .side-content {
   height: 80px;
-  padding: 20px;
-  position: relative; 
+  padding: 16px;
+  position: relative;
 }
 
-.side-content a{
-  display: inline-block; /* ブロック要素に変更 */
-  line-height: 40px; /* 要素の高さと一致する行の高さ */
-  width: 100%; 
+.side-content a {
+  display: inline-block;
+  /* ブロック要素に変更 */
+  line-height: 40px;
+  /* 要素の高さと一致する行の高さ */
+  width: 100%;
   height: 100%;
 }
 
@@ -93,38 +95,41 @@ body {
 }
 
 main {
-  background: rgba(217, 217, 217, 0.8);
+  background: rgba(217, 217, 217, 0.5);
   margin-top: 40px;
-  padding: 100px 0;
+  padding: 100px 0 50px 0;
 }
 
-.auth-main{
+.auth-main {
   display: flex;
-  align-items: center; 
-  height: 100vh; 
+  align-items: center;
+  height: 100vh;
 }
 
-.create-main{
-  width: 82%;
+.create-main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.wrapper{
-  display: flex; /* フレックスボックスに有効に */
-  flex-flow: column; /* 要素を縦に並べる */
-  min-height: 100vh; /* 最小でも画面の高さ分のbodyの高さを担保する */
+.wrapper {
+  display: flex;
+  /* フレックスボックスに有効に */
+  flex-flow: column;
+  /* 要素を縦に並べる */
+  min-height: 100vh;
+  /* 最小でも画面の高さ分のbodyの高さを担保する */
 }
 
-.create-wrapper{
+.create-wrapper {
   display: flex;
   flex: 1;
 }
 
 .container {
   background-color: #fff;
-  width: 40%;
+  width: 50%;
   margin: auto;
   height: 80%;
   padding: 100px;
@@ -134,9 +139,19 @@ main {
   box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
+.login-container {
+  background-color: #fff;
+  width: 50%;
+  margin: 0 auto;
+  padding: 100px;
+  text-align: center;
+  border-radius: 80px;
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
 .create-container {
   background-color: #fff;
-  width: 60%;
+  width: 75%;
   margin: auto;
   padding: 70px;
   text-align: center;
@@ -170,7 +185,8 @@ form {
 
 .form-label {
   color: rgba(0, 0, 0, 0.8);
-  font-size: 21px;
+  font-size: 20px;
+  font-weight: bold;
   margin: 0 auto;
   margin-bottom: 8px;
   display: block;
@@ -178,16 +194,7 @@ form {
   width: 80%;
 }
 
-.form-control {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 23px;
-  display: block;
-  width: 95%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
+/* : */
 
 .btn {
   padding: 13px 0px;
@@ -213,7 +220,7 @@ form {
   display: flex;
 }
 
-.index-main-head{
+.index-main-head {
   width: 80%;
 }
 
@@ -255,13 +262,19 @@ form {
   background-color: #b36;
   width: 100px;
   color: #fff;
-  border-radius: 10px;
+  border-radius: 8px;
   opacity: 0.8;
+  padding: 10px;
+  text-align: center;
 }
 
 .index-main-table {
   width: 80%;
   margin-top: 40px;
+}
+
+.job-name {
+  width: 219px;
 }
 
 .index-main-table-conainer {
@@ -271,34 +284,50 @@ form {
 .index-main-table-head {
   background-color: #bbb;
   height: 30px;
+  width: 100%;
 }
 
 .index-main-table-contents {
   height: 50px;
 }
 
-.index-main-table-content{
+.index-main-table-content {
   position: relative;
   text-align: center;
   line-height: 3;
 }
 
 .index-main-table-content a {
-  display: block;
+  display: flex;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   line-height: normal;
+  justify-content: center;
+  align-items: center;
 }
 
-.index-main-table-contents:hover{
+.index-main-table-contents:hover {
   background-color: #fff
 }
 
 .index-even {
   background-color: #ccc;
+}
+
+.index-main-search-title {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+.index-main-search-input {
+  border-radius: 5px;
+  background-color: #FFF;
+  border: solid 2px rgba(0, 0, 0, 0.65);
 }
 
 /* 申込み内容一覧画面 */
@@ -316,7 +345,7 @@ form {
   margin-top: 100px;
 }
 
-.content-main-head{
+.content-main-head {
   width: 80%;
 }
 
@@ -440,6 +469,7 @@ form {
 
 .create-list input[type="text"],
 .create-list input[type="email"],
+.create-list input[type="password"],
 .create-list textarea,
 .create-list select {
   border: 1px #b4b2b2 solid;
@@ -465,14 +495,21 @@ form {
 
 .create_td1 {
   float: left;
-  width: 60%;
+  width: 100%;
+  margin-left: -50px;
+}
+.create_tdA {
+  width: 100%;
+  margin-left: -50px;
+}
+.create_tdB {
+  width: 100%;
 }
 
 .create_td1a {
   float: left;
   font-size: 8px;
-  /* display: flex;
-  align-items: baseline; */
+  margin-left: -10px;
 }
 
 .create_td2 {
@@ -566,7 +603,7 @@ input[type=checkbox] {
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  padding:5px 10px 5px 30px;
+  padding: 5px 10px 5px 30px;
   position: relative;
   width: auto;
   margin-right: 10px;
@@ -690,15 +727,30 @@ input[type="checkbox"]:checked+.create_checkbox::after {
 .keep {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-top: 15px;
 }
 
 .create_btn {
   display: block;
   text-align: center;
   text-decoration: none;
-  width: 200px;
-  margin-left: 10px;
+  width: 150px;
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: bold;
+  border: 2px solid #B7386D;
+  background: #B7386D;
+  border-radius: 3px;
+  color: #fff;
+  transition: 0.5s;
+}
+.create_btn2 {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
+  margin-top: 15px;
   padding: 10px;
   font-weight: bold;
   border: 2px solid #B7386D;
@@ -711,4 +763,17 @@ input[type="checkbox"]:checked+.create_checkbox::after {
 .create_btn:hover {
   color: #B7386D;
   background: #fff;
+}
+
+.check-delete-button {
+  background-color: #B7386D;
+  color: #fff;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.check-item {
+  vertical-align: middle;
 }

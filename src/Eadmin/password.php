@@ -4,7 +4,7 @@ session_start();
 
 $message = '';
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['agent_id'])) {
     header('Location: /../../Eadmin/login.php');
     exit;
 }
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($current_password) && !empty($new_password)) {
 
         // ユーザーのエージェントIDを取得
-        $agent_id = $_SESSION['id'];
+        $agent_id = $_SESSION['agent_id'];
 
         // データベースから現在のパスワードを取得
         $query = "SELECT password FROM agent WHERE agent_id = :agent_id";
@@ -48,26 +48,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $update_statement->execute();
                 // パスワードが正常に変更された場合の処理
-                echo "<script>alert('パスワードが変更されました。');</script>";
+                $_SESSION['password_change_message'] = 'パスワードが変更されました。';
                 echo "<script>window.location.href = '../Eadmin/student.php';</script>";
-                exit;
             } catch (PDOException $e) {
                 // エラーが発生した場合の処理
-                echo "<script>alert('パスワード変更ができませんでした。');</script>";
+                $_SESSION['password_change_message'] = 'パスワードが変更できませんでした。';
                 echo "<script>window.location.href = '../Eadmin/student.php';</script>";
-                exit;
             }
         } else {
             // 入力された現在のパスワードが正しくない場合の処理
-            echo "<script>alert('現在のパスワードが正しくありません');</script>";
-            echo "<script>window.location.href = '../Eadmin/password.php';</script>";
-            exit;
+            $message = '現在のパスワードが正しくありません';
         }
     } else {
         // フォームが不完全な場合の処理
-        echo "<script>alert('現在のパスワードと新しいパスワードを入力してください。');</script>";
-        echo "<script>window.location.href = '../Eadmin/password.php';</script>";
-        exit;
+        $message = '現在のパスワードと新しいパスワードを入力してください。';
     }
 }
 ?>
@@ -108,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </aside>
             <main class="main-body password">
                 <div class="student-main-head">
+                    <span style="color: red;"><?php echo $message; ?></span>
                     <div class="student-main-head-container">
                         <div class="student-main-head-sent">パスワード変更</div>
                     </div>
