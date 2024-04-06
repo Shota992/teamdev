@@ -213,6 +213,7 @@ p {
 
 .slider-container {
     overflow: hidden;
+    margin-top: 40px;
 }
 
 .slider {
