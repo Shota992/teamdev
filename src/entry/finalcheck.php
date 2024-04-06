@@ -233,9 +233,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form action="./finalcheck.php" method="post">
                                     <button class="final-submit-button">申し込む</button>
                         </form>
-                        <div class="final-edit-container">
-                            <button class="final-edit-button">入力内容を変更する</button>
-                        </div>
                     </div>
                 </div>
             </div>

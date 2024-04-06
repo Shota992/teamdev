@@ -86,6 +86,12 @@ header {
     justify-content: center;
 }
 
+.after-login{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 120px;
+}
+
 .header_nav_ul2 {
     display: flex;
     align-items: center;
