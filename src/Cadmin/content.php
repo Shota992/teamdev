@@ -30,6 +30,9 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>申込み内容一覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../Cadmin/Cadmin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <script src="./assets/js/script.js" defer></script>
 </head>
 
@@ -58,8 +61,6 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </nav>
             </aside>
             <main class="create-main">
-                <!-- <div class="content-main-container">
-                <div class="content-main-inner"> -->
                 <div class="content-main-head">
                     <div class="content-main-head-container">
                         <div class="content-main-head-sent">申し込み内容一覧</div>

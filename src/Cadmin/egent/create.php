@@ -309,6 +309,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>エージェント企業新規登録画面</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -367,7 +370,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div class="create-list">
                             <tr>
-                                <th><label for="agent_logo" class="create_form-labelLogo">企業ロゴ</label>
+
+                                <th><label for="agent-logo" class="create_form-label">企業ロゴ</label>
+
                                 </th>
                                 <td class="create_td1a"><input type="file" name="agent_logo" id="agent_logo" class="form-control1  required" enctype="multipart/form-data" />
                             </tr>
@@ -399,8 +404,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-scale" class="create_select" id="agent-scale2">
-                                        <option>大企業</option>
-                                        <option>中・小企業</option>
+                                        <option>大手</option>
+                                        <option>中小</option>
                                     </select>
                                 </td>
                             </tr>
@@ -424,7 +429,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="job-opening" class="create_form-label">求人数</label>
                                 </th>
-                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required" />
+                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required"  style="margin-left: 50px"/>
                                     <strong>社</strong>
                                 </td>
                             </tr>
@@ -475,7 +480,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="create-list">
                             <tr>
                                 <th>
-                                    <label for="agent-email" class="crate_form-label">メールアドレス</label>
+                                    <label for="agent-email" class="create_form-label">メールアドレス</label>
                                 </th>
                                 <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control required" placeholder="企業のメールアドレスを入力してください"/>
                                 </td>
@@ -511,7 +516,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
                         </div>
-                        <button type="submit" class="create_btn">新規登録</button>
+                        <button type="submit" class="create_btn2">新規登録</button>
                     </div>
                 </form>
             </div>

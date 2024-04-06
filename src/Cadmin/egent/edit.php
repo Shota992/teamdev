@@ -110,6 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>エージェント企業編集画面</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../Cadmin/Cadmin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -164,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <tr>
                                 <th><label for="site_name" class="create_form-label">サービス名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="site_name" id="site_name" class="form-control" value="<?= $info["site_name"] ?>" />
+                                <td class="create_tdA"><input type="text" name="site_name" id="site_name" class="form-control" value="<?= $info["site_name"] ?>" />
                                 </td>
                             </tr>
                         </div>
@@ -173,13 +176,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="agent-name" class="create_form-label">企業名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control" value="<?= $info["agent_name"] ?>" />
+                                <td class="create_tdA"><input type="text" name="agent-name" id="agent-name" class="form-control" value="<?= $info["agent_name"] ?>" />
                                 </td>
                             </tr>
                         </div>
                         <div class="create-list">
                             <tr>
-                                <th><label for="agent-logo" class="create_form-labelLogo">企業ロゴ</label>
+                                <th><label for="agent-logo" class="create_form-label">企業ロゴ</label>
                                 </th>
                                 <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" />
                                 </td>
@@ -189,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <tr>
                                 <th><label for="agent-overview" class="create_form-label">企業の概要 <br>（50文字以内）</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control"  value="<?= $info["explanation"] ?>"/>
+                                <td class="create_tdA"><input type="text" name="agent-overview" id="agent-overview" class="form-control" value="<?= $info["explanation"] ?>" />
                                 </td>
                             </tr>
                         </div>
@@ -212,8 +215,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-scale" class="create_select">
-                                        <option <?= ($info["size"] == "大手") ? "selected" : "" ?>>大企業</option>
-                                        <option <?= ($info["size"] == "中小") ? "selected" : "" ?>>中・小企業</option>
+                                        <option <?= ($info["size"] == "大手") ? "selected" : "" ?>>大手</option>
+                                        <option <?= ($info["size"] == "中小") ? "selected" : "" ?>>中小</option>
                                     </select>
                                 </td>
                             </tr>
@@ -223,8 +226,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="region" class="create_form-label">地域</label>
                                 </th>
-                                <td class="create_td1">
-                                    <input type="text" name="region" id="region" class="form-control required"  value="<?= $info["area"] ?>"/>
+                                <td class="create_tdA">
+                                    <input type="text" name="region" id="region" class="form-control required" value="<?= $info["area"] ?>" />
                                 </td>
                             </tr>
                         </div>
@@ -233,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="job-opening" class="create_form-label">求人数</label>
                                 </th>
-                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required" value="<?= $info["amounts"] ?>"/>
+                                <td class="create_tdB" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required" value="<?= $info["amounts"] ?>" />
                                     <strong>社</strong>
                                 </td>
                             </tr>
@@ -243,32 +246,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="category" class="create_form-label">カテゴリ</label>
                                 </th>
-                                <td class="create_td1">
+                                <td class="create_tdA">
                                     <div class="form-tag" style="column-count: 4; text-align: left;">
-                                    <?php
-                                    $categories = explode(',', $info["category"]); // カテゴリはカンマ区切りの文字列なので、explode関数を使って配列に変換
-                                    ?>
-                                        <input type="checkbox" name="category[]" value="営業" id="category1" <?= (in_array("営業", $categories)) ? "checked" : "" ?>/>
+                                        <?php
+                                        $categories = explode(',', $info["category"]); // カテゴリはカンマ区切りの文字列なので、explode関数を使って配列に変換
+                                        ?>
+                                        <input type="checkbox" name="category[]" value="営業" id="category1" <?= (in_array("営業", $categories)) ? "checked" : "" ?> />
                                         <label for="category1" class="create_checkbox">営業</label>
-                                        <input type="checkbox" name="category[]" value="IT" id="category2" <?= (in_array("IT", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="IT" id="category2" <?= (in_array("IT", $categories)) ? "checked" : "" ?> />
                                         <label for="category2" class="create_checkbox">IT</label>
-                                        <input type="checkbox" name="category[]" value="Web" id="category3" <?= (in_array("Web", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="Web" id="category3" <?= (in_array("Web", $categories)) ? "checked" : "" ?> />
                                         <label for="category3" class="create_checkbox">Web</label>
-                                        <input type="checkbox" name="category[]" value="税理士" id="category4" <?= (in_array("税理士", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="税理士" id="category4" <?= (in_array("税理士", $categories)) ? "checked" : "" ?> />
                                         <label for="category4" class="create_checkbox">税理士</label>
-                                        <input type="checkbox" name="category[]" value="会計士" id="category5" <?= (in_array("会計士", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="会計士" id="category5" <?= (in_array("会計士", $categories)) ? "checked" : "" ?> />
                                         <label for="category5" class="create_checkbox">会計士</label>
-                                        <input type="checkbox" name="category[]" value="介護職" id="category6" <?= (in_array("介護職", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="介護職" id="category6" <?= (in_array("介護職", $categories)) ? "checked" : "" ?> />
                                         <label for="category6" class="create_checkbox">介護職</label>
-                                        <input type="checkbox" name="category[]" value="リハビリ" id="category7" <?= (in_array("リハビリ", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="リハビリ" id="category7" <?= (in_array("リハビリ", $categories)) ? "checked" : "" ?> />
                                         <label for="category7" class="create_checkbox">リハビリ</label>
-                                        <input type="checkbox" name="category[]" value="保育士" id="category8" <?= (in_array("保育士", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="保育士" id="category8" <?= (in_array("保育士", $categories)) ? "checked" : "" ?> />
                                         <label for="category8" class="create_checkbox">保育士</label>
-                                        <input type="checkbox" name="category[]" value="看護師" id="category9" <?= (in_array("看護師", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="看護師" id="category9" <?= (in_array("看護師", $categories)) ? "checked" : "" ?> />
                                         <label for="category9" class="create_checkbox">看護師</label>
-                                        <input type="checkbox" name="category[]" value="女性" id="category10" <?= (in_array("女性", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="女性" id="category10" <?= (in_array("女性", $categories)) ? "checked" : "" ?> />
                                         <label for="category10" class="create_checkbox">女性</label>
-                                        <input type="checkbox" name="category[]" value="外資系" id="category11" <?= (in_array("外資系", $categories)) ? "checked" : "" ?>/>
+                                        <input type="checkbox" name="category[]" value="外資系" id="category11" <?= (in_array("外資系", $categories)) ? "checked" : "" ?> />
                                         <label for="category11" class="create_checkbox">外資系</label>
                                     </div>
                                 </td>
@@ -279,17 +282,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="agent-url" class="create_form-label">企業HPのURL</label>
                                 </th>
-                                <td class="create_td1">
-                                    <input type="text" name="agent-url" id="agent-url" class="form-control required" value="<?= $info["url"] ?>"/>
+                                <td class="create_tdA">
+                                    <input type="text" name="agent-url" id="agent-url" class="form-control required" value="<?= $info["url"] ?>" />
                                 </td>
                             </tr>
                         </div>
                         <div class="create-list">
                             <tr>
                                 <th>
-                                    <label for="agent-email" class="crate_form-label">メールアドレス</label>
+                                    <label for="agent-email" class="create_form-label">メールアドレス</label>
                                 </th>
-                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control required" value="<?= $info["email"] ?>"/>
+                                <td class="create_tdA"><input type="email" name="agent-email" id="agent-email" class="form-control required" value="<?= $info["email"] ?>" />
                                 </td>
                             </tr>
                         </div>
@@ -297,6 +300,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="create_sample">
                         <button type="submit" class="create_btn">完了</button>
                     </div>
+                </form>
             </div>
         </main>
     </div>

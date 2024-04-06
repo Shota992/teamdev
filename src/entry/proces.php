@@ -80,8 +80,9 @@ $dbh = null;
                             その他にも気になる企業を検索してみる
                         </h2>
                         <div class="processStepContent">
-                            step1で選んだ企業以外にも、名前の聞いたことのある企業があったら、<br>
-                            選択することができます。積極的に調べてみましょう。<br>
+                            step1で選んだ企業以外にも、名前の聞いたことのある企業があった
+                            <br>ら選択することができます。積極的に調べてみましょう。
+                            <p style="color: red;">(実装中のため、現在この機能はご利用できません)</p>
                         </div>
                     </div>
                     <div class="processPersonImg">
