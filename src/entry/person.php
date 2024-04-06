@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../assets/sp/sp-person.css">
 </head>
 
-<body>
+<body class="body_2">
     <?php
     include_once  '../includes/header2.php';
     ?>

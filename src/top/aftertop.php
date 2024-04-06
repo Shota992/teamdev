@@ -1,3 +1,29 @@
+<?php
+session_start();
+require __DIR__ . '/../dbconnect.php';
+
+$info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT logo FROM info";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+} else {
+    $user_id = $_SESSION["user_id"];
+    $sql = "DELETE FROM choice_ing WHERE user_id=?";
+    $stmt = $dbh->prepare($sql);
+    if ($stmt->execute([$user_id])) {
+    } else {
+    }
+}
+// データベース接続を閉じる
+$dbh = null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +45,9 @@
                     <div class="mainvisual-head-div">
                             <h1 class="mainvisual-title">CRAFT</h1>
                             <p class="mainvisual-lead">エージェント企業比較サイト</p>
-                        <a href="" class="mainvisual-button">
-                            <p class="mainvisual-button-title">新規登録</p>
-                            <p class="mainvisual-button-lead">して企業に申し込み</p>
+                        <a href="../entry/proces.php" class="mainvisual-button">
+                            <p class="mainvisual-button-title">企業に申し込み</p>
+                            <p class="mainvisual-button-lead"></p>
                         </a>
                     </div>
                 </div>
@@ -38,7 +64,7 @@
                             <h2 class="card-content-title">
                                 エージェント企業とは
                             </h2>
-                            <a href="" class="card-content-button">
+                            <a href="../top/aftercolumn.php#column1" class="card-content-button">
                                 詳細
                             </a>
                         </div>
@@ -60,7 +86,7 @@
                             <h2 class="card-content-title">
                                 エージェント企業の選び方
                             </h2>
-                            <a href="" class="card-content-button">
+                            <a href="../top/aftercolumn.php#column2" class="card-content-button">
                                 詳細
                             </a>
                         </div>
@@ -84,7 +110,7 @@
                             <h2 class="card-content-title">
                                 活用のポイント
                             </h2>
-                            <a href="" class="card-content-button">
+                            <a href="../top/aftercolumn.php#column3" class="card-content-button">
                                 詳細
                             </a>
                         </div>
@@ -100,7 +126,7 @@
                     </div>
                 </div>
             </section>
-            <<section>
+            <section>
                 <div>
                     <div class="top_list_head">
                         <h2 class="top_list_title">エージェント企業一覧</h2>
@@ -111,16 +137,14 @@
                 <div class="slider">
                     <div class="slides" data-duration="10">
                         <div class="slide">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"class="slide-img">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img" >
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                            <?php foreach ($infos as $info) { ?>
+                                <img src="../assets/img/<?= $info["logo"]; ?>" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
+                            <? } ?>
                         </div>
                         <div class="slide">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img" >
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                            <?php foreach ($infos as $info) { ?>
+                                <img src="../assets/img/<?= $info["logo"]; ?>" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
+                            <? } ?>
                         </div>
                     </div>
                 </div>
@@ -156,7 +180,7 @@
    // 進捗(0-1)
     let progress = 0;
 
-    const loop　 = ( currentTime ) => {
+    const loop  = ( currentTime ) => {
         if ( !startTime ) {
         startTime = currentTime;
         }

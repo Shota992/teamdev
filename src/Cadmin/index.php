@@ -92,6 +92,9 @@ $dbh = null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エージェント企業一覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Cadmin/Cadmin.css" />
     <script src="./assets/js/script.js">
     </script>
@@ -135,27 +138,33 @@ $dbh = null;
                         <div class="index-main-head-sent">エージェント企業一覧</div>
                     </div>
                 </div>
-                <form method="GET" action="./index.php" class="form">
+                <!-- <form method="GET" action="./index.php" class="form">
                     <div class="index-main-search">
                         <div class="index-main-search-contents">
                             <div class="index-main-search-content">
                                 <div class="index-main-search-title">サービス名</div>
-                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if (!empty($_GET['search_site'])) {
-                                                                                                                                                        echo $_GET['search_site'];
-                                                                                                                                                    } ?>">
+                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-site" value="
+                                <?php 
+                                    // if (!empty($_GET['search_site'])) {
+                                    //     echo $_GET['search_site'];
+                                    // }
+                                ?>"
                             </div>
                             <div class="index-main-search-content">
                                 <div class="index-main-search-title">企業名</div>
-                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-agent" value="<?php if (!empty($_GET['search_agent'])) {
-                                                                                                                                                        echo $_GET['search_agent'];
-                                                                                                                                                    } ?>">
+                                <input class="index-main-search-input" type="text" placeholder="検索" autocomplete="off" name="search-agent" value="
+                                <?php 
+                                    // if (!empty($_GET['search_agent'])) {
+                                    //     echo $_GET['search_agent'];
+                                    // }
+                                ?>">
                             </div>
                             <button class="index-main-search-button">
                                 <input type="submit" name="search" value="検索">
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> -->
                 <div class="index-main-table">
                     <table class="index-main-table-conainer">
                         <tr class="index-main-table-head">

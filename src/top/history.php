@@ -6,7 +6,7 @@ $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
 } else {
     $user_id = $_SESSION['user_id'];
@@ -18,7 +18,6 @@ if (!isset($_SESSION['id'])) {
     $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
     $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 }
 ?> 
 
@@ -59,13 +58,6 @@ if (!isset($_SESSION['id'])) {
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="history-table-item">
-                                <td class="history-item"><?=$choice["logo"];?></td>
-                                <td class="history-item"><?=$choice["site_name"];?></td>
-                                <td class="history-item"><?=$choice["size"];?></td>
-                                <td class="history-item"><?=$choice["area"];?></td>
-                                <td class="history-item"><?=$choice["amounts"];?></td>
-                            </tr>
-                            <tr class="history-table-item">
                                 <td class="history-item">
                                     <div>
                                         <img src="../assets/img/<?= $choice["logo"]; ?>" alt="" / class="history-logo">
@@ -73,7 +65,7 @@ if (!isset($_SESSION['id'])) {
                                 </td>
                                 <td class="history-item">
                                     <?= $choice["site_name"]; ?>
-                                    <?= $choice["agent_name"]; ?>
+                                    <span style="font-size: 8px; color: grey;"><?= $choice["agent_name"]; ?></span>
                                 </td>
                                 <td class="history-item"><?= $choice["size"]; ?></td>
                                 <td class="history-item"><?= $choice["area"]; ?></td>
@@ -83,7 +75,6 @@ if (!isset($_SESSION['id'])) {
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>

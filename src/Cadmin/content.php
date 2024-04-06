@@ -1,4 +1,3 @@
-<!-- 申込内容一覧ページ -->
 <?php
 require __DIR__ . '/../dbconnect.php';
 
@@ -31,6 +30,9 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>申込み内容一覧</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../Cadmin/Cadmin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <script src="./assets/js/script.js" defer></script>
 </head>
 
@@ -59,14 +61,12 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </nav>
             </aside>
             <main class="create-main">
-                <!-- <div class="content-main-container">
-                <div class="content-main-inner"> -->
                 <div class="content-main-head">
                     <div class="content-main-head-container">
                         <div class="content-main-head-sent">申し込み内容一覧</div>
                     </div>
                 </div>
-                <div class="content-main-search">
+                <!-- <div class="content-main-search">
                     <div class="content-main-search-contents">
                         <div class="content-main-search-radios">
                             <div class="content-main-search-radio">
@@ -98,15 +98,15 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <button class="content-main-search-button">検索</button>
-                </div>
+                </div> -->
                 <div class="content-main-table">
                     <table class="content-main-table-container">
-                        <tr class="content-main-table-head">
-                            <td class="content-main-table-content">申込み日時</td>
-                            <td class="content-main-table-content">企業ID</td>
-                            <td class="content-main-table-content">サイト名</td>
-                            <td class="content-main-table-content">学生氏名</td>
-                            <td class="content-main-table-content">タスク完了</td>
+                        <tr class="content-main-table-allhead">
+                            <td class="content-main-table-head">申込み日時</td>
+                            <td class="content-main-table-head">企業ID</td>
+                            <td class="content-main-table-head">サイト名</td>
+                            <td class="content-main-table-head">学生氏名</td>
+                            <td class="content-main-table-head">タスク完了</td>
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="index-main-table-contents content-odd">

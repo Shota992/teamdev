@@ -243,7 +243,7 @@ form {
 
 /* エージェント企業一覧ページ */
 .student-main-head{
-    width: 80%;
+    width: 90%;
 }
 
 .student-main-head-container {
@@ -262,7 +262,7 @@ form {
 }
 
 .student-main-name{
-    width: 80%;
+    width: 90%;
 }
 
 .student-main-name-title {
@@ -281,7 +281,7 @@ form {
 
 
 .student-main-table{
-    width: 80%;
+    width: 90%;
     margin-top: 30px;
 }
 
@@ -306,4 +306,17 @@ form {
 }
 .student-even {
     background-color: #ccc;
+}
+
+.caution-message{
+    font-size: 15px;
+}
+
+.password-form{
+    margin-top: 15px;
+}
+
+.error-message{
+    font-size: 15px;
+    margin-bottom: 15px;
 }
