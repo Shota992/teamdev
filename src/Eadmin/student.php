@@ -3,10 +3,11 @@ require_once '../dbconnect.php';
 
 session_start();
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['agent_id'])) {
     header('Location: /../../Eadmin/login.php');
     exit;
 }
+$agent_id = $_SESSION['agent_id'];
 
 $students = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 $agents = $dbh->query("SELECT * FROM agent")->fetchAll(PDO::FETCH_ASSOC);
@@ -15,11 +16,21 @@ $choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 
 $sql = "SELECT student.*
         FROM choice
-        INNER JOIN student on choice.user_id=student.user_id
-        WHERE choice.agent_id='2'";
+        INNER JOIN student ON choice.user_id = student.user_id
+        WHERE choice.agent_id = :agent_id";
 $stmt = $dbh->prepare($sql);
+$stmt->bindValue(':agent_id', $agent_id);
 $stmt->execute();
-$agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "SELECT agent_name
+        FROM info
+        WHERE agent_id=:agent_id";
+$stmt = $dbh->prepare($sql);
+$stmt->bindValue(':agent_id', $agent_id);
+$stmt->execute();
+$agent_info = $stmt->fetch(PDO::FETCH_ASSOC);
+$agent_name = $agent_info['agent_name'];
 
 ?>
 
@@ -60,12 +71,20 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <!-- <div class="student-main-container">
                 <div class="student-main-inner"> -->
                 <div class="student-main-head">
+                <?php
+                    // セッション変数からメッセージを取得して表示
+                    if (isset($_SESSION['password_change_message'])) {
+                        echo '<span style="color: black;">' . $_SESSION['password_change_message'] . '</span>';
+                        // メッセージを表示したらセッション変数を削除
+                        unset($_SESSION['password_change_message']);
+                    }
+                ?>
                     <div class="student-main-head-container">
                         <div class="student-main-head-sent">エージェント企業一覧</div>
                     </div>
                 </div>
                 <div class="student-main-name">
-                    <div class="student-main-name-title">○○企業様</div>
+                    <div class="student-main-name-title"><?php echo $agent_name; ?>　様</div>
                     <div class="student-main-name-line"></div>
                 </div>
                 <div class="student-main-table">
@@ -82,7 +101,7 @@ $agents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="student-main-table-content">志望業界</td>
                             <td class="student-main-table-content">申込み日時</td>
                         </tr>
-                        <?php foreach ($agents as $student) { ?>
+                        <?php foreach ($students as $student) { ?>
                             <tr class="student-main-table-contents student-odd">
                                 <td class="student-main-table-content"><?= $student["name"]; ?></td>
                                 <td class="student-main-table-content"><?= $student["sub_name"]; ?></td>
