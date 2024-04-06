@@ -26,7 +26,7 @@
                 <li><a href="../top/aftercolumn.php" class="headerNav_li_2">コラム</a></li>
             </ul>
             <ul class="header_nav_ul2">
-                <li><a href="../entry/history.php" class="headerNav_li_3">申し込み履歴</a></li>
+                <li><a href="../top/history.php" class="headerNav_li_3">申し込み履歴</a></li>
                 <li><a href="../auth/logout.php" class="headerNav_li_4">ログアウト</a></li>
             </ul>
         </div>
