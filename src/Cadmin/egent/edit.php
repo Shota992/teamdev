@@ -50,14 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $handle->image_resize = true;
             $handle->image_x = 300;
             // アップロードディレクトリを指定して保存
-            $handle->process('../egent/uploads/');
+            $handle->process('../../assets/img/');
             if (!$handle->processed) {
                 throw new Exception($handle->error);
             }
 
             // 更新前の画像を削除
             if ($info && isset($info["agent-logo"])) {
-                $image_path = __DIR__ . '/../egent/uploads/' . $info["agent-logo"];
+                $image_path = __DIR__ . '../../assets/img/' . $info["agent-logo"];
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }

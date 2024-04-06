@@ -1,7 +1,14 @@
 <?php
-require_once('../dbconnect.php');
-
 session_start();
+require __DIR__ . '/../dbconnect.php';
+
+$info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT logo FROM info";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
     exit();
@@ -130,16 +137,14 @@ $dbh = null;
                 <div class="slider">
                     <div class="slides" data-duration="10">
                         <div class="slide">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px"class="slide-img">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img" >
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                            <?php foreach ($infos as $info) { ?>
+                                <img src="../assets/img/<?= $info["logo"]; ?>" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
+                            <? } ?>
                         </div>
                         <div class="slide">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img" >
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
-                            <img src="../assets/img/top_doda_ikon.png" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
-                            <img src="../assets/img/top_rikunabi_ikon.png" alt="リクナビのアイコン" width="175px" height="70px" class="slide-img">
+                            <?php foreach ($infos as $info) { ?>
+                                <img src="../assets/img/<?= $info["logo"]; ?>" alt="dodaのアイコン" width="175px" height="70px" class="slide-img">
+                            <? } ?>
                         </div>
                     </div>
                 </div>
