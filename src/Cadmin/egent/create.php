@@ -263,8 +263,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-scale" class="create_select" id="agent-scale2">
-                                        <option>大企業</option>
-                                        <option>中・小企業</option>
+                                        <option>大手</option>
+                                        <option>中小</option>
                                     </select>
                                 </td>
                             </tr>

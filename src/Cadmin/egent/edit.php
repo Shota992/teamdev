@@ -212,8 +212,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-scale" class="create_select">
-                                        <option <?= ($info["size"] == "大手") ? "selected" : "" ?>>大企業</option>
-                                        <option <?= ($info["size"] == "中小") ? "selected" : "" ?>>中・小企業</option>
+                                        <option <?= ($info["size"] == "大手") ? "selected" : "" ?>>大手</option>
+                                        <option <?= ($info["size"] == "中小") ? "selected" : "" ?>>中小</option>
                                     </select>
                                 </td>
                             </tr>
