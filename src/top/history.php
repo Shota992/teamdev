@@ -30,6 +30,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>申し込み履歴</title>
     <link rel="stylesheet" href="/../assets/css/reset.css">
     <link rel="stylesheet" href="/../assets/css/history.css" />
+    <link rel="stylesheet" href="../assets/sp/sp-history.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
