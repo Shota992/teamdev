@@ -89,18 +89,6 @@
 }
 
 #complete-btn {
-<<<<<<< HEAD
-  font-weight: bold;
-  background: rgba(238, 198, 68, 0.8);
-  border: solid 2px rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  padding: 14px;
-  width: 200px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-=======
     font-weight: bold;
     background: rgba(238, 198, 68, 0.8);
     border: solid 2px rgba(0, 0, 0, 0.8);
@@ -118,5 +106,3 @@
   border: 3px solid #27b;
   padding: 5px;
 }
-
->>>>>>> 5d747018195f3ececb5fbb06f339614440c362a0

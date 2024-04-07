@@ -30,7 +30,6 @@
 
     .CRAFTfigure-img {
         object-fit: contain;
-        width: 80px;
         margin: 0px;
     }
 
@@ -43,6 +42,7 @@
         transform: rotate(90deg);
         align-items: center;
         justify-content: center;
+        margin: 30px;
     }
 
     .CRAFTarrow1IMG {

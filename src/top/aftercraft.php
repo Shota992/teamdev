@@ -94,7 +94,7 @@ $dbh = null;
                             </div>
                         </div>
                         <div class="CRAFTarrow1">
-                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="150px" style="object-fit: contain;">
+                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="120px" style="object-fit: contain;">
                         </div>
                         <div class="CRAFTfigureAgent">
                             <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_agent.png" alt="" style="width: 150px;"></figure>
