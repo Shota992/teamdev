@@ -35,6 +35,7 @@ p {
 .mainvisual {
     background: url(../img/mainvisual.jpg) center center /cover no-repeat;
     object-fit: contain;
+    height: 100vh;
     margin-top: 80px;
     padding: 340px 200px;
     display: flex;
@@ -44,6 +45,7 @@ p {
 
 .mainvisual-after {
     background: url(../img/mainvisual_2.jpg) center center /cover no-repeat;
+    object-fit: contain;
     height: 100vh;
     padding: 170px 90px;
     display: flex;

@@ -1,8 +1,4 @@
-
 /* レスポンシブデザイン */
-
-/* レスポンシブデザイン */
-
 @media (max-width:1200px) {
     img {
         max-width: 100%;
@@ -18,35 +14,37 @@
     /* mainvisual */
 
     .mainvisual {
-        height: 380px;
         padding: 100px 20px;
         margin-top: auto;
     }
 
     .mainvisual-title {
+
         font-size: 50px;
 
     }
-.mainvisual-after{
-    height: 20px;
-}
+
+    .mainvisual-after {
+        height: 20px;
+    }
+
     .mainvisual-lead {
         margin-top: 20px;
-        font-size: 15px;
+        font-size: 25px;
     }
 
     .mainvisual-button {
-        padding: 10px 24px;
+        padding: 20px 70px;
         margin-top: 20px;
         display: inline-block;
     }
 
     .mainvisual-button-title {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     .mainvisual-button-lead {
-        font-size: 12px;
+        font-size: 16px;
     }
 
 
@@ -67,7 +65,6 @@
     }
 
     .card-content-title {
-        margin-top: -50px;
         font-size: 30px;
     }
 
@@ -83,14 +80,10 @@
         margin-top: 0px;
     }
 
-
-
 }
 
 
-
 @media (max-width: 768px) {
-
 
     /* 共通項目 */
     img {
@@ -184,141 +177,103 @@
         display: flex;
         width: 500%;
     }
-}
 
+    /* 共通項目 */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 
+    .container {
+        margin: 20px auto;
+        padding: 10px 20px;
+    }
 
+    /* mainvisual */
 
+    .mainvisual {
+        margin-top: 60px;
+        padding: 100px 20px;
+    }
 
+    .mainvisual-after {
+        padding: 170px 30px;
+    }
 
+    .mainvisual-title {
+        font-size: 60px;
 
+    }
 
+    .mainvisual-lead {
+        margin-top: 20px;
+        font-size: 20px;
+    }
 
+    .mainvisual-button {
+        padding: 20px 50px;
+        margin-top: 20px;
+        display: inline-block;
+    }
 
+    .mainvisual-button-title {
+        font-size: 25px;
+    }
 
+    .mainvisual-button-lead {
+        font-size: 14px;
+    }
 
 
+    /* TOPの紹介ページ */
 
+    .card-container {
+        grid-template-columns: 1fr;
+    }
 
+    .card-content {
+        margin-top: -10px;
+        padding: 10px;
+    }
 
+    .card-figure.reverse {
+        order: 1;
+    }
 
+    .card-content.reverse {
+        order: 2;
+    }
 
+    .card-content-title {
+        font-size: 16px;
+    }
 
 
+    .card-content-text {
+        margin-top: -20px;
+    }
 
+    .card-content-button {
+        font-size: 8px;
+    }
 
+    .card-content-text p {
+        line-height: 15px;
+        font-size: 8px;
+    }
 
+    .top_list_title {
+        font-size: 16px;
+    }
 
+    .top_list_head {
+        margin-top: 0px;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .slides {
+        display: flex;
+        width: 500%;
+    }
 
 
 }

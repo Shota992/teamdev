@@ -76,7 +76,7 @@ INSERT INTO info (agent_id,site_name,agent_name,logo,explanation,type,size,area,
     (4,'LiBzPARTNERS','株式会社リブ','LiBzPARTNERS.png','2014年に創立して以来、一貫して女性のキャリア支援を事業として行ってきたサービスです','特化型','大手','東京','400万','女性','https://www.libinc.co.jp/','LiBzPARTNERS@gmail.com'),
     (5,'KOTORA','株式会社コトラ','logo-kotora-pc.png','金融業界・コンサルタントの転職に強みを持つ転職エージェントです','特化型','中小','東京','200万','会計士','https://www.kotora.jp/','kotora@gmail.com'),
     (6,'マイナビエージェント','株式会社マイナビ','mainabi.png','20〜30代前半を中心とした若手人材の転職支援を得意とし、幅広い業種・職種の転職サポートを行っています','総合型','大手','東京','800万','','https://mynavi-agent.jp/entry/?utm_source=cpa_011_general_oth&utm_medium=affiliate&utm_campaign=cpa_011_general_oth&nst=0&cid=c01htw2eeaq1rtv7arbrhvsfrcm&p=pgcww0wbn1ym','mainabi@gmail.com'),
-    (7,'BIZREACH','株式会社ビズリーチ','logo_bizreach_sp.png','227万人以上（2024年2月末時点）の優秀な人材が登録する国内最大級のデータベースから「欲しい」人材を自ら探して直接スカウトできるサービスです','総合型','中小','大阪','20万','','https://www.bizreach.jp/','bizreach@gmail.com'),
+    (7,'BIZREACH','株式会社ビズリーチ','BizReach-02.png','227万人以上（2024年2月末時点）の優秀な人材が登録する国内最大級のデータベースから「欲しい」人材を自ら探して直接スカウトできるサービスです','総合型','中小','大阪','20万','','https://www.bizreach.jp/','bizreach@gmail.com'),
     (8,'WILLOF TECH','株式会社ウィルオブ・ワーク','willoftech.png','IT業界を専門とした転職エージェントです','特化型','中小','全国','10万','IT','https://willof.jp/techcareer/lp/form-only-1/?utm_source=accesstrade&utm_medium=affiliate&utm_campaign=suberanai_tenshoku&atss=0100p9ii00h9s7-a64b0ff509b7ef2e9c4c208be0842c30&atnct=techcareer_0100p9ii00h9s7-a64b0ff509b7ef2e9c4c208be0842c30','willoftech@gmail.com');
 
 -- INSERT INTO student(user_id,name,sub_name,sex,school,tel_num,mail,graduation,division,desire)VALUES
