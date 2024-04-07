@@ -89,14 +89,14 @@ INSERT INTO info (agent_id,site_name,agent_name,logo,explanation,type,size,area,
 --     -- (3,'C木','ちぇき','女','蔵大学','000-0000-0000','ccc@gmail.com','2026','文学系','メーカー'),
 --     -- (4,'D川','でがわ','男','蔵大学','000-0000-0000','ddd@gmail.com','2027','心理学系','マスコミ');
 
-INSERT INTO choice(id,agent_id,user_id)VALUES
-    (1,1,3),
-    (2,4,3),
-    (3,6,3),
-    (4,2,1),
-    (5,3,1),
-    (6,8,2),
-    (7,6,2);
+INSERT INTO choice(id,agent_id,user_id,time)VALUES
+    (1,1,3,'2024-04-07 11:03:22'),
+    (2,4,3,'2024-04-07 11:03:22'),
+    (3,6,3,'2024-04-07 11:03:22'),
+    (4,2,1,'2024-04-07 11:03:22'),
+    (5,3,1,'2024-04-07 11:03:22'),
+    (6,8,2,'2024-04-07 11:03:22'),
+    (7,6,2,'2024-04-07 11:03:22');
 
 -- INSERT INTO choice_ing(id,agent_id,user_id)VALUES
 --     (1,1,3),
