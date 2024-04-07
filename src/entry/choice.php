@@ -358,16 +358,20 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="sentence">
                         <p>step1で選んだ企業以外にも、絞り込みや検索をして企業を追加できます。</p>
+                        <p style="color: red;">(実装中のため、現在この機能はご利用できません)</p>
                     </div>
                 </div>
-                <div class="sub-search-container">
+                <!-- <div class="sub-search-container">
                     <form method="POST" action="./choice.php">
                         <div class="sub-search">
                             <p class="search-title">企業名の検索</p>
                             <div class="kyc-search-bar">
-                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="<?php if (!empty($_POST['search-site'])) {
-                                                                                                                                            echo $_POST['search-site'];
-                                                                                                                                        } ?>">
+                                <input class="kyc-search-box" type="text" placeholder="検索" autocomplete="off" name="search-site" value="
+                                <?php 
+                                // if (!empty($_POST['search-site'])) {
+                                //     echo $_POST['search-site'];
+                                // } 
+                                ?>">
                             </div>
                         </div>
                         <div class="submit-container">
@@ -376,7 +380,7 @@ if (!isset($_SESSION['user_id'])) {
                             </button>
                         </div>
                     </form>
-                </div>
+                </div> -->
             </div>
             <div class="search-result-container">
                 <div class="search-result">
