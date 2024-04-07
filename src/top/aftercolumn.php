@@ -13,6 +13,7 @@ if (!isset($_SESSION['user_id'])) {
     } else {
     }
 }
+
 // データベース接続を閉じる
 $dbh = null;
 ?>

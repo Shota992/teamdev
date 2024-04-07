@@ -6,6 +6,7 @@ $choice_ing = $dbh->query("SELECT * FROM choice_ing")->fetchAll(PDO::FETCH_ASSOC
 $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 $students = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 
+
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
@@ -26,6 +27,7 @@ if (!isset($_SESSION['user_id'])) {
     $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+
 // 個人情報の取得
 $sql = "SELECT *
         FROM student
@@ -36,10 +38,14 @@ $stmt->execute();
 $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
 
+
         $current_time = date('Y-m-d H:i:s');
+
 
         // choice_ing テーブルからデータを取得
         $sql = "SELECT * FROM choice_ing WHERE user_id = :user_id";
@@ -47,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindValue(':user_id', $user_id);
         $stmt->execute();
         $choice_ing_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
         // choice テーブルに挿入
         foreach ($choice_ing_data as $row) {
@@ -57,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindValue(':time', $current_time);
             $stmt->execute();
         }
+
 
         // choice_ing テーブルからデータを削除
         $sql = "DELETE FROM choice_ing WHERE user_id = :user_id";
@@ -74,10 +82,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         $student_info = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
         // 学生の名前とメールアドレスを取得
         $student_name = $student_info['name'];
         $student_email = $student_info['mail'];
         $student_num = $student_info['tel_num'];
+
 
         foreach ($choices as $info) {
             // メール送信のための情報
@@ -108,7 +118,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -231,6 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <div class="final-person-sent"><?= $student["desire"]; ?></div>
                                     </div>
                                 </div>
+
                             </div>
                         <?php } ?>
                     </div>
@@ -248,4 +261,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 </body>
 
+
 </html>
+
