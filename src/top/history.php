@@ -37,9 +37,9 @@ if (!isset($_SESSION['user_id'])) {
     <script src="./assets/js/script.js" defer></script>
 </head>
 
-<body class="body">
+<body class="body" style=" display: flex; flex-flow: column;   min-height: 100vh;">
     <?php include_once '../includes/header2.php'; ?>
-    <main>
+    <main style="flex: 1;">
         <div class="history-wrapper">
             <div class="history-container">
                 <div class="history-inner">
@@ -58,21 +58,15 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="history-table-item">
-                                <td class="history-item"><?=$choice["logo"];?></td>
-                                <td class="history-item"><?=$choice["site_name"];?></td>
-                                <td class="history-item"><?=$choice["size"];?></td>
-                                <td class="history-item"><?=$choice["area"];?></td>
-                                <td class="history-item"><?=$choice["amounts"];?></td>
-                            </tr>
-                            <tr class="history-table-item">
                                 <td class="history-item">
                                     <div>
                                         <img src="../assets/img/<?= $choice["logo"]; ?>" alt="" class="history-logo">
                                     </div>
                                 </td>
                                 <td class="history-item">
-                                    <?= $choice["site_name"]; ?>/
-                                    <?= $choice["agent_name"]; ?>
+                                    <?= $choice["site_name"]; ?>
+                                    <span style="font-size: 8px; color: grey;"><?= $choice["agent_name"]; ?></span>
+
                                 </td>
                                 <td class="history-item"><?= $choice["size"]; ?></td>
                                 <td class="history-item"><?= $choice["area"]; ?></td>
@@ -82,7 +76,6 @@ if (!isset($_SESSION['user_id'])) {
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
