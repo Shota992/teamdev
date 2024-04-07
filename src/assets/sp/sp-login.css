@@ -1,6 +1,29 @@
-@media (max-width:768px){
+@media (max-width:768px) {
+    .wrap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+
     main {
+        flex: 1;
         padding-top: 50px;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .body_2 {
+        display: flex;
+        /* フレックスボックスに有効に */
+        flex-flow: column;
+        /* 要素を縦に並べる */
+        min-height: 100vh;
+        /* 最小でも画面の高さ分のbodyの高さを担保する */
+        background-color: #DFE4EC;
     }
 
     .container {
@@ -8,4 +31,10 @@
         padding: 30px;
     }
 
+    .CRAFT-img {
+        width: 150px;
+    }
+    .form-label{
+        font-size: 16px;
+    }
 }
