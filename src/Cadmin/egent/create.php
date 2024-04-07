@@ -19,22 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $handle->file_max_size = '5120000';
         // ファイルの拡張子と MIMEタイプをチェック
         $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
-        // PNGに変換して拡張子を統一
-        $handle->image_convert = 'png';
-        $handle->file_new_name_ext = 'png';
-        // サイズ統一
-        $handle->image_resize = true;
-        $handle->image_x = 300;
+
         if ($handle->uploaded) {
+            // PNGに変換して拡張子を統一
+            $handle->image_convert = 'png';
+            $handle->file_new_name_ext = 'png';
+            // サイズ統一
+            $handle->image_resize = true;
+            $handle->image_x = 300;
+
             // アップロードディレクトリを指定して保存
             $handle->process('../../assets/img/');
-            if ($handle->processed) {
-                // アップロード成功
-                $image_name = $handle->file_dst_name;
-            } else {
-                // アップロード処理失敗
-                throw new Exception($handle->error);
-            }
+            $image_name = $handle->file_dst_name;
         } else {
             // アップロード失敗
             throw new Exception($handle->error);
@@ -69,9 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 一時ファイルパスを取得
         $tmp_file = $_FILES['agent_logo']['tmp_name'];
 
-        // ファイル名を生成
-        $image_name = uniqid() . '.' . $file_ext;
-
         // アップロード先のディレクトリ
         $upload_dir = '../../assets/img/';
 
@@ -102,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // パラメータをバインドしてSQLを実行
         $stmt->bindParam(1, $site_name);
         $stmt->bindParam(2, $agent_name);
-        $stmt->bindParam(3, $file['name']);
+        $stmt->bindParam(3, $image_name);
         $stmt->bindParam(4, $agent_overview);
         $stmt->bindParam(5, $agent_kinds);
         $stmt->bindParam(6, $agent_scale);
@@ -131,173 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-
-
-
-
-// // dbconnect.phpファイルを読み込む
-// require_once '../../dbconnect.php';
-// require "../../vendor/autoload.php";
-// use Verot\Upload\Upload;
-
-// session_start();
-
-// if (!isset($_SESSION['id'])) {
-//     header('Location: /../../../Cadmin/auth/login.php');
-//     exit;
-// }
-
-// // POSTリクエストがあるかどうかを確認
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     try {
-//     // 画像を保存するディレクトリが存在しない場合は作成する
-//     $upload_directory = "../../assets/img";
-
-//     $dbh->beginTransaction();
-
-//     // ファイルアップロード
-//     $file = $_FILES['agent_logo'];
-//     $lang = 'ja_JP';
-
-//     $handle = new Upload($file, $lang);
-
-//     // ファイルサイズのバリデーション： 5MB
-//     $handle->file_max_size = '5120000';
-//     // ファイルの拡張子と MIMEタイプをチェック
-//     $handle->allowed = array('image/jpeg', 'image/png', 'image/gif');
-//     // PNGに変換して拡張子を統一
-//     $handle->image_convert = 'png';
-//     $handle->file_new_name_ext = 'png';
-//     // サイズ統一
-//     $handle->image_resize = true;
-//     $handle->image_x = 718;
-//     // 一意のファイル名を生成して設定
-//     $image_name = uniqid() . '.' . $handle->file_src_name_ext;
-//     $handle->file_new_name_body = $image_name;
-//     // アップロードディレクトリを指定して保存
-//     $handle->process('../../assets/img');
-//     // if (!$handle->processed) {
-//     //     throw new Exception($handle->error);
-//     // }
-
-
-
-
-//     // カテゴリが選択されている場合のみimplode()関数を適用する
-//     $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-
-//     // 必須項目が入力されているかどうかをチェックするフラグを初期化
-//     $all_fields_filled = true;
-
-
-
-
-//     // 必須項目が空であるかどうかをチェック
-//     if (
-//         empty($_POST['site-name']) ||
-//         empty($_POST['agent-name']) ||
-//         empty($_FILES['agent_logo']['name']) ||
-//         empty($_POST['agent-overview']) ||
-//         empty($_POST['agent-kinds']) ||
-//         ($_POST['agent-kinds'] !== "総合型" && empty($_POST['agent-scale'])) ||
-//         empty($_POST['region']) ||
-//         empty($_POST['job-opening']) ||
-//         empty($categories) ||
-//         empty($_POST['agent-url']) ||
-//         empty($_POST['agent-email'])
-//     ) {
-//         // すべての項目が入力されていない場合はエラーメッセージを表示して処理を中断
-//         $error_message = "必須項目が入力されていません。";
-//         $all_fields_filled = false;
-
-
-
-//     } else {
-//             // フォームからのデータを取得
-//             $site_name = $_POST['site-name'];
-//             $agent_name = $_POST['agent-name'];
-//             $agent_logo = $_FILES['agent_logo']['name'];
-//             $agent_logo_tmp = $_FILES['agent_logo']['tmp_name'];
-//             $agent_overview = $_POST['agent-overview'];
-//             $agent_kinds = $_POST['agent-kinds'];
-//             $agent_scale = isset($_POST['agent-scale']) ? $_POST['agent-scale'] : null;
-//             $region = $_POST['region'];
-//             $job_opening = $_POST['job-opening'];
-//             $agent_url = $_POST['agent-url'];
-//             $agent_email = $_POST['agent-email'];
-
-//             // 画像をサーバに保存
-//             $target_file = $upload_directory . basename($agent_logo);
-//             move_uploaded_file($agent_logo_tmp, $target_file);
-
-//             // 総合型の場合、企業規模とカテゴリを空文字列に設定
-//             if ($agent_kinds == "総合型") {
-//                 $agent_scale = '';
-//                 $categories = '';
-//             } else {
-//                 // カテゴリが選択されている場合のみimplode()関数を適用する
-//                 $categories = isset($_POST['category']) ? implode(", ", $_POST['category']) : '';
-//             }
-
-//             // SQL文の準備
-//             $sql = "INSERT INTO info (site_name, agent_name, logo, explanation, type, size, area, amounts, category, url, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-//             // プリペアドステートメントを作成
-//             $stmt = $dbh->prepare($sql);
-
-//             // パラメータをバインドしてSQLを実行
-//             $stmt->bindParam(1, $site_name);
-//             $stmt->bindParam(2, $agent_name);
-//             $stmt->bindParam(3, $agent_logo);
-//             $stmt->bindParam(4, $agent_overview);
-//             $stmt->bindParam(5, $agent_kinds);
-//             $stmt->bindParam(6, $agent_scale);
-//             $stmt->bindParam(7, $region);
-//             $stmt->bindParam(8, $job_opening);
-//             $stmt->bindParam(9, $categories);
-//             $stmt->bindParam(10, $agent_url);
-//             $stmt->bindParam(11, $agent_email);
-//             $stmt->execute();
-
-//             $last_insert_id = $dbh->lastInsertId();
-
-//             // agentテーブルにメールアドレスとパスワードを挿入する
-//             $agent_email = $_POST['agent-email']; // エージェントのメールアドレス
-
-//             // パスワードのハッシュ化
-//             $password = password_hash($_POST['agent-email'], PASSWORD_DEFAULT); // メールアドレスを使って適当な方法でハッシュ化
-
-//             // SQL文の準備
-//             $sql = "INSERT INTO agent (mail, password, agent_id) VALUES (?, ?, ?)";
-
-//             // プリペアドステートメントを作成
-//             $stmt = $dbh->prepare($sql);
-
-//             // パラメータをバインドしてSQLを実行
-//             $stmt->bindParam(1, $agent_email);
-//             $stmt->bindParam(2, $password);
-//             $stmt->bindParam(3, $last_insert_id);
-//             $stmt->execute();
-
-//             // ステートメントを閉じる
-//             $stmt->closeCursor();
-
-//             // データベース接続を閉じる
-//             $dbh = null;
-
-//             // リダイレクト
-//             $_SESSION['message'] = "問題作成に成功しました。";
-//             header("Location: /Cadmin/index.php");
-//             exit;
-            
-//     }
-// } catch (PDOException $e) {
-//     $dbh->rollBack();
-//     $_SESSION['message'] = "問題作成に失敗しました。";
-//     error_log($e->getMessage());
-//     exit;
-//     }
-// }
 ?>
 
 <!DOCTYPE html>
