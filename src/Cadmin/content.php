@@ -109,7 +109,7 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="content-main-table-head">タスク完了</td>
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
-                            <tr class="index-main-table-contents content-odd">
+                            <tr class="index-main-table-contents-second content-odd">
                                 <td class="content-main-table-content">24/04/01</td>
                                 <td class="content-main-table-content"><?= $choice["agent_id"]; ?></td>
                                 <td class="content-main-table-content"><?= $choice["site_name"]; ?></td>
