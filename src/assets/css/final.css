@@ -1,180 +1,183 @@
-body{
-    background-color: #ddd;
-}
-.final-body{
-    background-color: #d9d9d9;
-    margin: 120px 250px 50px 250px;
+.final-body {
+  background-color: #d9d9d9;
+  margin: 0px;
+  display: flex;
+  /* フレックスボックスに有効に */
+  flex-flow: column;
+  /* 要素を縦に並べる */
+  min-height: 100vh;
+  /* 最小でも画面の高さ分のbodyの高さを担保する */
 }
 
-.final-wrapper {
-    background-color: #fff;
-    border-radius: 5%;
-  }
-  
-  .final-inner {
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-.final-company {
-    width: 550px;
-  }
-  
-  .final-company-title-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .final-company-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
+.final-main {
+  margin: 0px;
+  flex: 1;
+}
+
+.final-container {
+  background-color: #fff;
+  width: 75%;
+  margin: 100px auto;
+  height: 90%;
+  padding: 60px 100px;
+  text-align: center;
+  /*インラインブロック要素の子要素を左右で中央寄せ*/
+  border-radius: 50px;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+
+.final-company-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.final-company-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .final-company-table-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-    flex-direction: column
-  }
-
-.final-company-table{
-    background-color: #ddd;
-    width: 400px;
-    height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  flex-direction: column
 }
 
-.final-company-items{
-    display: flex;
-    margin: 10px;
-    gap: 20px;
+.final-company-table {
+  background-color: #ddd;
+  width: 400px;
+  height: 60px;
+}
+
+.final-company-items {
+  display: flex;
+  margin: 10px;
+  gap: 20px;
 }
 
 
-  .final-company-item-logo {
-    width: 80px;
-    height: 35px;
-    max-width: 100%; /* 親要素の幅に収まるように最大の幅を設定 */
-    display: flex;
-    padding: 15px;
-    align-items: center;
-    background-color: #fff;
-    border:3px solid #27b;
-  }
-  
-  .final-company-item-service {
-    font-size: 18px;
-    font-weight: semi bold;
-  }
-  
-  .final-company-item-name {
-    font-size: 10px;
-    margin-left: 20px;
-  }
+.final-company-item-logo {
+  width: 80px;
+  height: 35px;
+  max-width: 100%;
+  /* 親要素の幅に収まるように最大の幅を設定 */
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  background-color: #fff;
+  border: 3px solid #27b;
+}
+
+.final-company-item-service {
+  font-size: 18px;
+  font-weight: semi bold;
+}
+
+.final-company-item-name {
+  font-size: 10px;
+  margin-left: 20px;
+}
 
 
 
 
 .final-person {
-    margin-top: 60px;
-  }
-  
-  .final-person-title-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .final-person-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .final-person-table-container {
-    margin-top: 30px;
-  }
-  
-  .final-person-table {
-    width: 400px;
-    display: flex;
-  }
-  
-  .final-person-head {
-    height: 30px;
-    margin-bottom: 8px;
-  }
-  
-  .final-person-head {
-    width: 180px;
-    background-color: #d9d9d9;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .final-person-item {
-    width: 200px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-  }
-  
-  .final-person-sent {
-    font-weight: Semi Bold;
-  }
-  
-  .final-submit {
-    margin-top: 60px;
-  }
-  
-  .final-submit-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .final-submit-button {
-    width: 500px;
-    height: 40px;
-    background-color: #ed4;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 2px solid #a90;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-  }
-
-.final-submit-button:hover{
-    background-color: #fe5;
+  margin-top: 60px;
 }
-  
-  .final-edit-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  
-  .final-edit-button {
-    width: 500px;
-    height: 40px;
-    background-color: #eee;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-  }
 
-  .final-edit-button:hover{
-    background-color: #fff;
-  }
+.final-person-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.final-person-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.final-person-table-container {
+  margin-top: 30px;
+}
+
+.final-person-table {
+  width: 400px;
+  display: flex;
+}
+
+.final-person-head {
+  height: 30px;
+  margin-bottom: 8px;
+}
+
+.final-person-head {
+  width: 180px;
+  background-color: #d9d9d9;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.final-person-item {
+  width: 200px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.final-person-sent {
+  font-weight: Semi Bold;
+}
+
+.final-submit {
+  margin-top: 60px;
+}
+
+.final-submit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.final-submit-button {
+  width: 500px;
+  height: 40px;
+  background-color: #ed4;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #a90;
+  color: #333;
+}
+
+.final-submit-button:hover {
+  background-color: #fe5;
+}
+
+.final-edit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.final-edit-button {
+  width: 500px;
+  height: 40px;
+  background-color: #eee;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.final-edit-button:hover {
+  background-color: #fff;
+}
