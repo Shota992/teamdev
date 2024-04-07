@@ -38,6 +38,9 @@ $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
+
+        $current_time = date('Y-m-d H:i:s');
+
         // choice_ing テーブルからデータを取得
         $sql = "SELECT * FROM choice_ing WHERE user_id = :user_id";
         $stmt = $dbh->prepare($sql);
@@ -47,10 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // choice テーブルに挿入
         foreach ($choice_ing_data as $row) {
-            $sql = "INSERT INTO choice (agent_id, user_id) VALUES (:agent_id, :user_id)";
+            $sql = "INSERT INTO choice (agent_id, user_id,time) VALUES (:agent_id, :user_id , :time)";
             $stmt = $dbh->prepare($sql);
             $stmt->bindValue(':agent_id', $row['agent_id']);
             $stmt->bindValue(':user_id', $row['user_id']);
+            $stmt->bindValue(':time', $current_time);
             $stmt->execute();
         }
 
@@ -233,9 +237,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form action="./finalcheck.php" method="post">
                                     <button class="final-submit-button">申し込む</button>
                         </form>
-                        <div class="final-edit-container">
-                            <button class="final-edit-button">入力内容を変更する</button>
-                        </div>
                     </div>
                 </div>
             </div>
