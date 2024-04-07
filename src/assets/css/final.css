@@ -1,31 +1,26 @@
-.final-body {
+body{
+  background-color: #ddd;
+}
+.final-body{
   background-color: #d9d9d9;
-  margin: 0px;
-  display: flex;
-  /* フレックスボックスに有効に */
-  flex-flow: column;
-  /* 要素を縦に並べる */
-  min-height: 100vh;
-  /* 最小でも画面の高さ分のbodyの高さを担保する */
+  margin: 120px 250px 50px 250px;
 }
 
-.final-main {
-  margin: 0px;
-  flex: 1;
-}
-
-.final-container {
+.final-wrapper {
   background-color: #fff;
-  width: 75%;
-  margin: 100px auto;
-  height: 90%;
-  padding: 60px 100px;
-  text-align: center;
-  /*インラインブロック要素の子要素を左右で中央寄せ*/
-  border-radius: 50px;
-  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 5%;
 }
 
+.final-inner {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.final-company {
+  width: 550px;
+}
 
 .final-company-title-container {
   width: 100%;
@@ -47,13 +42,13 @@
   flex-direction: column
 }
 
-.final-company-table {
+.final-company-table{
   background-color: #ddd;
   width: 400px;
   height: 60px;
 }
 
-.final-company-items {
+.final-company-items{
   display: flex;
   margin: 10px;
   gap: 20px;
@@ -63,13 +58,12 @@
 .final-company-item-logo {
   width: 80px;
   height: 35px;
-  max-width: 100%;
-  /* 親要素の幅に収まるように最大の幅を設定 */
+  max-width: 100%; /* 親要素の幅に収まるように最大の幅を設定 */
   display: flex;
   padding: 15px;
   align-items: center;
   background-color: #fff;
-  border: 3px solid #27b;
+  border:3px solid #27b;
 }
 
 .final-company-item-service {
@@ -151,10 +145,13 @@
   font-weight: bold;
   border-radius: 10px;
   border: 2px solid #a90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #333;
 }
 
-.final-submit-button:hover {
+.final-submit-button:hover{
   background-color: #fe5;
 }
 
@@ -178,6 +175,6 @@
   color: #333;
 }
 
-.final-edit-button:hover {
+.final-edit-button:hover{
   background-color: #fff;
 }
