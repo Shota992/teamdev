@@ -116,16 +116,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企業一覧・個人情報の確認</title>
+    <title>企業一覧、個人情報の確認</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/final.css" />
     <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
     <!-- <script src="./assets/js/script.js" defer></script> -->
 </head>
 
-<body class="final-body">
+<body>
     <?php include_once '../includes/header2.php'; ?>
-    <main class="final-main">
+    <div class="final-body">
         <div class="final-wrapper">
             <div class="final-container">
                 <div class="final-inner">
@@ -150,6 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             <?php } ?>
                         </div>
+
                     </div>
                     <div class="final-person">
                         <div class="final-person-title-container">
@@ -242,7 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
         </div>
-    </main>
+    </div>
     <?php
     include_once '../includes/footer1.php';
     ?>
