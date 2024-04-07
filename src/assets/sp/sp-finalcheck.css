@@ -1,27 +1,37 @@
-@media (max-width:768px){
-    
-    .main-body {
-        padding: 120px 0px;
+@media (max-width:768px) {
+
+    .final-body {
+        margin: 0px;
+        display: flex;
+        /* フレックスボックスに有効に */
+        flex-flow: column;
+        /* 要素を縦に並べる */
+        min-height: 100vh;
+        /* 最小でも画面の高さ分のbodyの高さを担保する */
     }
-    
-    .final-wrapper {
-        width: 90%;
+.final-container{
+    border-radius: 20px;
+    padding: 0px;
+}
+    .final-inner {
+        margin-top: 100px;
+        padding: 10px;
     }
-    
+
     .final-company-table-container {
         margin: 0px 140px;
     }
-    
+
     .final-person-table {
         width: 300px;
     }
-    
+
     .final-submit-button {
-        width: 300px;
+        width: 150px;
     }
-    
+
     .final-edit-button {
         width: 300px;
     }
-    
-    }
+
+}
