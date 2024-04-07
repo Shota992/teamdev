@@ -354,7 +354,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <tr>
                                 <th><label for="site-name" class="create_form-label">サービス名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control required" placeholder="サービス名を入力してください"/>
+                                <td class="create_td1"><input type="text" name="site-name" id="site-name" class="form-control" placeholder="サービス名を入力してください" required/>
                                 </td>
                             </tr>
                         </div>
@@ -363,7 +363,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="agent-name" class="create_form-label">企業名</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control required" placeholder="企業名を入力してください"/>
+                                <td class="create_td1"><input type="text" name="agent-name" id="agent-name" class="form-control " placeholder="企業名を入力してください" required/>
                                 </td>
                             </tr>
                         </div>
@@ -373,14 +373,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th><label for="agent-logo" class="create_form-label">企業ロゴ</label>
 
                                 </th>
-                                <td class="create_td1a"><input type="file" name="agent_logo" id="agent_logo" class="form-control1  required" enctype="multipart/form-data" />
+                                <td class="create_td1a"><input type="file" name="agent_logo" id="agent_logo" class="form-control1  " enctype="multipart/form-data" required/>
                             </tr>
                         </div>
                         <div class="create-list">
                             <tr>
                                 <th><label for="agent-overview" class="create_form-label">企業の概要 <br>（50文字以内）</label>
                                 </th>
-                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control required" placeholder="企業の概要・説明を入力してください"/>
+                                <td class="create_td1"><input type="text" name="agent-overview" id="agent-overview" class="form-control " placeholder="企業の概要・説明を入力してください"required/>
                                 </td>
                             </tr>
                         </div>
@@ -428,7 +428,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="job-opening" class="create_form-label">求人数</label>
                                 </th>
-                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control required"  style="margin-left: 50px"/>
+                                <td class="create_td1" style="display: flex; align-items: end;"><input type="text" name="job-opening" id="job-opening" class="form-control"  style="margin-left: 50px" required/>
                                     <strong>社</strong>
                                 </td>
                             </tr>
@@ -472,7 +472,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <label for="agent-url" class="create_form-label">企業HPのURL</label>
                                 </th>
                                 <td class="create_td1">
-                                    <input type="text" name="agent-url" id="agent-url" class="form-control required" placeholder="企業HPのURLを入力してください"/>
+                                    <input type="text" name="agent-url" id="agent-url" class="form-control" placeholder="企業HPのURLを入力してください" required/>
                                 </td>
                             </tr>
                         </div>
@@ -481,16 +481,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th>
                                     <label for="agent-email" class="create_form-label">メールアドレス</label>
                                 </th>
-                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control required" placeholder="企業のメールアドレスを入力してください"/>
+                                <td class="create_td1"><input type="email" name="agent-email" id="agent-email" class="form-control" placeholder="企業のメールアドレスを入力してください" required/>
                                 </td>
                             </tr>
                         </div>
                     </table>
-                    <div class="keep">
-                        <div class="create_btn">
-                            <button type="submit" id="saveButton">保存</button>
-                        </div>
-                    </div>
                     <div class="create_sample" id="createSam">
                         <p class="create_sampleP"> サンプル　学生側には以下のように表示されます</p>
                         <div class="create_sample-figure" style="width: 270.667px;">
@@ -515,7 +510,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <p>aaaaaaaaaaaaa</p>
                             </div>
                         </div>
-                        <button type="submit" class="create_btn2">新規登録</button>
+                        <div class="create_btn">
+                            <button type="submit" id="saveButton">新規登録</button>
+                        </div>
                     </div>
                 </form>
             </div>
