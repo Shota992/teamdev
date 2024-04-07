@@ -12,7 +12,7 @@ $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
 $student = $dbh->query("SELECT * FROM student")->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT info.agent_id, info.site_name, student.name
+$sql = "SELECT info.agent_id, info.site_name, student.name,choice.time
         FROM choice
         INNER JOIN info ON choice.agent_id = info.agent_id
         INNER JOIN student ON choice.user_id = student.user_id";
@@ -110,7 +110,7 @@ $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </tr>
                         <?php foreach ($choices as $choice) { ?>
                             <tr class="index-main-table-contents content-odd">
-                                <td class="content-main-table-content">24/04/01</td>
+                                <td class="content-main-table-content"><?= $choice["time"]; ?></td>
                                 <td class="content-main-table-content"><?= $choice["agent_id"]; ?></td>
                                 <td class="content-main-table-content"><?= $choice["site_name"]; ?></td>
                                 <td class="content-main-table-content"><?= $choice["name"]; ?></td>
