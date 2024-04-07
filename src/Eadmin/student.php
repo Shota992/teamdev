@@ -14,7 +14,7 @@ $agents = $dbh->query("SELECT * FROM agent")->fetchAll(PDO::FETCH_ASSOC);
 $choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 
 
-$sql = "SELECT student.*
+$sql = "SELECT student.*,choice.time
         FROM choice
         INNER JOIN student ON choice.user_id = student.user_id
         WHERE choice.agent_id = :agent_id";
@@ -112,7 +112,7 @@ $agent_name = $agent_info['agent_name'];
                                 <td class="student-main-table-content"><?= $student["graduation"]; ?></td>
                                 <td class="student-main-table-content"><?= $student["division"]; ?></td>
                                 <td class="student-main-table-content"><?= $student["desire"]; ?></td>
-                                <td class="student-main-table-content">20204/03/12 21:45</td>
+                                <td class="student-main-table-content"><?= $student["time"]; ?></td>
                             </tr>
                         <?php } ?>
                     </table>

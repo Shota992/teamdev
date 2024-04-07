@@ -291,6 +291,10 @@ form {
   height: 50px;
 }
 
+.index-main-table-contents-second {
+  height: 50px;
+}
+
 .index-main-table-content {
   position: relative;
   text-align: center;
@@ -417,24 +421,24 @@ form {
 .content-main-table-head{
   text-align: center;
   vertical-align: middle;
-  font-size: 19px;
+  background-color: #bbb;
+  height: 30px;
+  font-size: 16px;
 }
 
 .content-main-table-container {
   width: 100%;
 }
-
-.content-main-table-head {
-  background-color: #bbb;
-  height: 30px;
-}
-
+  
 .content-main-table-contents {
   height: 40px;
 }
 
 .content-main-table-content {
   padding-left: 20px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 14px;
 }
 
 .content-even {
