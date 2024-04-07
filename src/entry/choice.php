@@ -1,70 +1,70 @@
 <?php
-// require __DIR__ . '/../dbconnect.php';
-// $choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
-// $info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
-// $choice_ing = $dbh->query("SELECT * FROM choice_ing")->fetchAll(PDO::FETCH_ASSOC);
-// $user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
+require __DIR__ . '/../dbconnect.php';
+$choice = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
+$info = $dbh->query("SELECT * FROM info")->fetchAll(PDO::FETCH_ASSOC);
+$choice_ing = $dbh->query("SELECT * FROM choice_ing")->fetchAll(PDO::FETCH_ASSOC);
+$user = $dbh->query("SELECT * FROM user")->fetchAll(PDO::FETCH_ASSOC);
 
-// session_start();
-// if (!isset($_SESSION['user_id'])) {
-//     header('Location: /auth/login.php');
-//     exit();
-// } else {
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+} else {
 
-//     // ユーザーIDはセッションから取得
-//     $user_id = $_SESSION["user_id"];
+    // ユーザーIDはセッションから取得
+    $user_id = $_SESSION["user_id"];
 
-//     // 総合型企業の情報を取得
-//     $sql = "SELECT * FROM info WHERE type = '総合型'";
-//     $stmt = $dbh->prepare($sql);
-//     $stmt->execute();
-//     $generals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // 総合型企業の情報を取得
+    $sql = "SELECT * FROM info WHERE type = '総合型'";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $generals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//     // 特化型企業の情報を取得
-//     $sql1 = "SELECT * FROM info WHERE type = '特化型'";
-//     $stmt = $dbh->prepare($sql1);
-//     $stmt->execute();
-//     $specials = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // 特化型企業の情報を取得
+    $sql1 = "SELECT * FROM info WHERE type = '特化型'";
+    $stmt = $dbh->prepare($sql1);
+    $stmt->execute();
+    $specials = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//     // POSTリクエストがあるかどうかを確認
-//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//         if (isset($_POST["agent_id"])) {
-//             // POSTデータからagent_idを取得
-//             $agent_id = $_POST["agent_id"];
+    // POSTリクエストがあるかどうかを確認
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["agent_id"])) {
+            // POSTデータからagent_idを取得
+            $agent_id = $_POST["agent_id"];
 
-//             // SQL文の作成と実行（プリペアドステートメントを使用）
-//             $sql = "INSERT INTO choice_ing (agent_id, user_id) VALUES (?, ?)";
-//             $stmt = $dbh->prepare($sql);
-//             if ($stmt->execute([$agent_id, $user_id])) {
-//                 echo "挿入できました";
-//             } else {
-//                 echo "エラー: 挿入に失敗しました。";
-//             }
-//         }
-//     }
+            // SQL文の作成と実行（プリペアドステートメントを使用）
+            $sql = "INSERT INTO choice_ing (agent_id, user_id) VALUES (?, ?)";
+            $stmt = $dbh->prepare($sql);
+            if ($stmt->execute([$agent_id, $user_id])) {
+                echo "挿入できました";
+            } else {
+                echo "エラー: 挿入に失敗しました。";
+            }
+        }
+    }
 
 
-//     $searchQuery = '';
+    $searchQuery = '';
 
-//     // 検索フォームがサブミットされたかどうかをチェック
-//     if (isset($_POST['search-site'])) {
-//         // POSTされた検索クエリを取得
-//         $searchQuery = '%' . $_POST['search-site'] . '%';
-//         // SQL文の作成と実行
-//         $sql = "SELECT logo, site_name, agent_id FROM info WHERE site_name LIKE ?";
-//         $stmt = $dbh->prepare($sql);
-//         $stmt->execute([$searchQuery]);
-//         $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     } else {
-//         $searchResults = array();
-//     }
+    // 検索フォームがサブミットされたかどうかをチェック
+    if (isset($_POST['search-site'])) {
+        // POSTされた検索クエリを取得
+        $searchQuery = '%' . $_POST['search-site'] . '%';
+        // SQL文の作成と実行
+        $sql = "SELECT logo, site_name, agent_id FROM info WHERE site_name LIKE ?";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute([$searchQuery]);
+        $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $searchResults = array();
+    }
 
-//     // choice_ingテーブルのカラム数を取得
-//     $sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
-//     $stmt = $dbh->prepare($sql);
-//     $stmt->execute([$user_id]);
-//     $count = $stmt->fetchColumn();
-// }
+    // choice_ingテーブルのカラム数を取得
+    $sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute([$user_id]);
+    $count = $stmt->fetchColumn();
+}
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="sentence">
                         <p>総合型企業：幅広い業界の求人を扱っており、始めから終わりまでサポート</p>
-                        <br>
+                        <br><br>
                         <p>特化型企業：ある業界、職種に特化し、より詳しい情報を提供してもらえる</p>
                     </div>
                 </div>
