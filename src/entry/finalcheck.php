@@ -134,8 +134,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
     <!-- <script src="./assets/js/script.js" defer></script> -->
 </head>
+<<<<<<< HEAD
+
+<body>
+    <?php include_once '../includes/header2.php'; ?>
+=======
 <body>
 <?php include_once '../includes/header2.php'; ?>
+>>>>>>> 5d747018195f3ececb5fbb06f339614440c362a0
     <div class="final-body">
         <div class="final-wrapper">
             <div class="final-container">
@@ -147,6 +153,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </p>
                         </div>
                         <div class="final-company-table-container">
+<<<<<<< HEAD
+                            <?php foreach ($choices as $info) { ?>
+                                <div class="final-company-table">
+                                    <div class="final-company-items">
+                                        <div class="final-company-item-logo">
+                                            <img src="../assets/img/<?= $info["logo"]; ?>" alt="" class="choice_logo">
+                                        </div>
+                                        <div class="final-company-item-sent">
+                                            <div class="final-company-item-service"><?= $info["site_name"]; ?></div>
+                                            <div class="final-company-item-name"><?= $info["agent_name"]; ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+=======
     <?php foreach ($choices as $info) { ?>
         <div class="final-company-table">
             <div class="final-company-items">
@@ -161,6 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     <?php } ?>
 </div>
+>>>>>>> 5d747018195f3ececb5fbb06f339614440c362a0
 
                     </div>
                     <div class="final-person">

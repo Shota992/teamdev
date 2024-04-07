@@ -1,83 +1,106 @@
 /* 選択企業一覧ページ */
-  body {
-    background-color: #dfe4ec;
-    margin: 120px;
-  }
-  
-  .check-wrapper {
-    background-color: #fff;
-    border-radius: 40px;
-    width: 65%;
-    margin: 0 auto;
-  }
-  
-  .check-inner {
-    padding: 60px;
-    margin-top: 150px;
-    margin-bottom: 100px;
-  }
-  
-  .check-title {
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .check-title-sent {
-    font-size: 28px;
-    font-weight: bold;
-  }
+.check-body {
+  background-color: #dfe4ec;
+  margin: 0px;
+  display: flex;
+  /* フレックスボックスに有効に */
+  flex-flow: column;
+  /* 要素を縦に並べる */
+  min-height: 100vh;
+  /* 最小でも画面の高さ分のbodyの高さを担保する */
 
-  .check-head-title{
-    text-align: center;
-    vertical-align: middle;
-  }
-  
-  .check-table-container {
-    margin-top: 20px;
-  }
-  
-  .check-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .check-table-head {
-    height: 40px;
-    background-color: #ddd;
-  }
-  
-  .check-table-item {
-    height: 60px;
-  }
-  
-  .check-item {
-    padding: 10px;
-    vertical-align: middle;
-  }
-
-.check-company-item-name{
-    margin-left: 40px;
-    font-size: 14px;
 }
-  
+
+.check-main {
+  flex: 1;
+}
+
+.check-container {
+  background-color: #fff;
+  border-radius: 40px;
+  width: 75%;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
+  margin: 100px auto;
+  height: 90%;
+  padding: 60px 100px;
+  text-align: center;
+  /*インラインブロック要素の子要素を左右で中央寄せ*/
+}
+
+
+.check-title {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-title-sent {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.check-head-title {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.check-table-container {
+  margin-top: 20px;
+}
+
+.check-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.check-table-head {
+  height: 40px;
+  background-color: #ddd;
+}
+
+.check-table-item {
+  height: 60px;
+}
+
+.check-item {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.check-company-item-name {
+  margin-left: 40px;
+  font-size: 14px;
+}
+
 .check-delete-button {
-    background-color: #27b;
-    color: #fff;
-    width: 60px;
-    height: 30px;
-    text-align: center;
-    border-radius: 10px;
-  }
+  background-color: #27b;
+  color: #fff;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
 
 .complete-button {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
 #complete-btn {
+<<<<<<< HEAD
+  font-weight: bold;
+  background: rgba(238, 198, 68, 0.8);
+  border: solid 2px rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 14px;
+  width: 200px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+=======
     font-weight: bold;
     background: rgba(238, 198, 68, 0.8);
     border: solid 2px rgba(0, 0, 0, 0.8);
@@ -96,3 +119,4 @@
   padding: 5px;
 }
 
+>>>>>>> 5d747018195f3ececb5fbb06f339614440c362a0
