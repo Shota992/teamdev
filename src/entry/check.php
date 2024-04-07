@@ -100,7 +100,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </tr>
                         <?php foreach ($selects as $info) { ?>
                         <tr class="check-table-item">
-                            <td class="check-item">logo</td>
+                            <td class="check-item">
+                                <div>
+                                    <img src="../assets/img/<?= $info["logo"]; ?>" alt="" class="history-logo">
+                                </div>
+                            </td>
                             <td class="check-item">
                                 <div class="check-item-service"><?=$info["site_name"];?></div>
                                 <div class="check-company-item-name"><?=$info["agent_name"];?></div>
