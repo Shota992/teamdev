@@ -60,7 +60,7 @@
                     </div>
                     <div class="CRAFTfigure">
                         <div class="CRAFTfigureStudent">
-                            <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_student.png" alt="" style="width: 150px;"></figure>
+                            <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_student.png" alt="" class="CRAFTfigure-imgImg"></figure>
                             <div class="CRAFTpeople">
                                 就活生
                             </div>
@@ -73,10 +73,10 @@
                             </div>
                         </div>
                         <div class="CRAFTarrow1">
-                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="150px" style="object-fit: contain;">
+                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" class="CRAFTarrow1IMG">
                         </div>
                         <div class="CRAFTfigureAgent">
-                            <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_agent.png" alt="" style="width: 150px;"></figure>
+                            <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_agent.png" alt="" class="CRAFTfigure-imgImg"></figure>
                             <div class="CRAFTpeople">
                                 就活エージェント
                             </div>
