@@ -85,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindValue(":area", $_POST["region"]);
         $stmt->bindValue(":amounts", $_POST["job-opening"]);
         $stmt->bindValue(":category", $category_string);
-        // $stmt->bindValue(":category", implode(',', $_POST["category"]));
         $stmt->bindValue(":url", $_POST["agent-url"]);
         $stmt->bindValue(":email", $_POST["agent-email"]);
 
