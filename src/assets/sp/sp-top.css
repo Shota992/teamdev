@@ -15,33 +15,32 @@
     /* mainvisual */
 
     .mainvisual {
-        height: 380px;
-        padding: 100px 20px;
+        padding: 180px 190px;
         margin-top: auto;
     }
 
     .mainvisual-title {
-        font-size: 50px;
+        font-size: 80px;
 
     }
 
     .mainvisual-lead {
         margin-top: 20px;
-        font-size: 15px;
+        font-size: 25px;
     }
 
     .mainvisual-button {
-        padding: 10px 24px;
+        padding: 10px 70px;
         margin-top: 20px;
         display: inline-block;
     }
 
     .mainvisual-button-title {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     .mainvisual-button-lead {
-        font-size: 12px;
+        font-size: 16px;
     }
 
 
@@ -102,22 +101,21 @@
 
     .mainvisual {
         margin-top: 60px;
-        height: 250px;
-        padding: 100px 20px;
+        padding: 170px 40px;
     }
 
     .mainvisual-title {
-        font-size: 32px;
+        font-size: 60px;
 
     }
 
     .mainvisual-lead {
         margin-top: 20px;
-        font-size: 15px;
+        font-size: 20px;
     }
 
     .mainvisual-button {
-        padding: 10px 24px;
+        padding: 10px 50px;
         margin-top: 20px;
         display: inline-block;
     }
@@ -127,7 +125,7 @@
     }
 
     .mainvisual-button-lead {
-        font-size: 12px;
+        font-size: 14px;
     }
 
 
@@ -316,4 +314,3 @@
 
 
 
-}
