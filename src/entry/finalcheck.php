@@ -11,25 +11,25 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: /auth/login.php');
     exit();
-}else{
+} else {
 
-// ユーザーIDはセッションから取得
-$user_id = $_SESSION["user_id"];
+    // ユーザーIDはセッションから取得
+    $user_id = $_SESSION["user_id"];
 
-// 選択企業情報の取得
-$sql ="SELECT info.*
+    // 選択企業情報の取得
+    $sql = "SELECT info.*
         FROM choice_ing
         INNER JOIN info ON choice_ing.agent_id = info.agent_id
         WHERE choice_ing.user_id = :user_id";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(':user_id', $user_id);
-$stmt->execute();
-$choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':user_id', $user_id);
+    $stmt->execute();
+    $choices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
 // 個人情報の取得
-$sql ="SELECT *
+$sql = "SELECT *
         FROM student
         WHERE student.user_id = :user_id";
 $stmt = $dbh->prepare($sql);
@@ -71,10 +71,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         $stmt->execute();
-        
+
 
         // 個人情報の取得
-        $sql ="SELECT name, mail,tel_num
+        $sql = "SELECT name, mail,tel_num
                 FROM student
                 WHERE user_id = :user_id";
         $stmt = $dbh->prepare($sql);
@@ -90,33 +90,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         foreach ($choices as $info) {
-                        // メール送信のための情報
-                        $to = $info['email'];
-                        $subject = "CRAFT";
-                        $message = "いつもお世話になっております。\n\n";
-                        $message .= "CRAFTから新たに申し込みがありました。\n\n";
-                        $message .= "下記のメールアドレス、または電話番号からのやりとりをお願いします。\n";
-                        $message .= "学生氏名: " . $student_name . "\n";
-                        $message .= "電話番号: " . $student_num . "\n";
-                        $message .= "メールアドレス: " . $student_email . "\n\n";
-                        $message .= "学生に関する詳細情報はCRAFTのエージェント企業様向けのページからご確認いただけます。";
-                        $headers = "From: craft@gmail.com";
-                    if (mail($to, $subject, $message, $headers)) {
-                        header("Location: ./complete.php");
-                        continue;
-                    } else {
-                        echo "メールの送信に失敗しました";
-                        echo $emails;
+            // メール送信のための情報
+            $to = $info['email'];
+            $subject = "CRAFT";
+            $message = "いつもお世話になっております。\n\n";
+            $message .= "CRAFTから新たに申し込みがありました。\n\n";
+            $message .= "下記のメールアドレス、または電話番号からのやりとりをお願いします。\n";
+            $message .= "学生氏名: " . $student_name . "\n";
+            $message .= "電話番号: " . $student_num . "\n";
+            $message .= "メールアドレス: " . $student_email . "\n\n";
+            $message .= "学生に関する詳細情報はCRAFTのエージェント企業様向けのページからご確認いただけます。";
+            $headers = "From: craft@gmail.com";
+            if (mail($to, $subject, $message, $headers)) {
+                header("Location: ./complete.php");
+                continue;
+            } else {
+                echo "メールの送信に失敗しました";
+                echo $emails;
+            }
 
-                    }
-
-        // リダイレクト
-        header("Location: ./complete.php");
-        exit;
-    } 
-}catch (PDOException $e) {
-    echo "エラー: " . $e->getMessage();
-}
+            // リダイレクト
+            header("Location: ./complete.php");
+            exit;
+        }
+    } catch (PDOException $e) {
+        echo "エラー: " . $e->getMessage();
+    }
 }
 
 
@@ -125,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,9 +134,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
 </head>
 
-
 <body>
     <?php include_once '../includes/header2.php'; ?>
+
     <div class="final-body">
         <div class="final-wrapper">
             <div class="final-container">
@@ -148,9 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </p>
                         </div>
                         <div class="final-company-table-container">
-<<<<<<< HEAD
-                            <?php foreach ($choices as $info) { ?>
-                                <div class="final-company-table">
+                            <?php foreach ($choices as $info) { ?> <div class="final-company-table">
                                     <div class="final-company-items">
                                         <div class="final-company-item-logo">
                                             <img src="../assets/img/<?= $info["logo"]; ?>" alt="" class="choice_logo">
@@ -163,7 +161,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             <?php } ?>
                         </div>
-
                     </div>
                     <div class="final-person">
                         <div class="final-person-title-container">
@@ -172,86 +169,85 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </div>
                         <?php foreach ($persons as $student) { ?>
-                        <div class="final-person-table-container">
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">お名前</div>
+                            <div class="final-person-table-container">
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">お名前</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["name"]; ?></div>
+                                    </div>
                                 </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["name"];?></div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">フリガナ</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["sub_name"]; ?></div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">性別</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["sex"]; ?></div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">携帯電話番号</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["tel_num"]; ?></div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">大学名</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["school"]; ?></div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">メールアドレス</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["mail"]; ?></div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">卒業年度</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["graduation"]; ?>年卒</div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">文理区分</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["division"]; ?></div>
+                                    </div>
+                                </div>
+                                <div class="final-person-table">
+                                    <div class="final-person-head">
+                                        <div class="final-person-sent">志望業界</div>
+                                    </div>
+                                    <div class="final-person-item">
+                                        <div class="final-person-sent"><?= $student["desire"]; ?></div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">フリガナ</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["sub_name"];?></div>
-                                </div>
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">性別</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["sex"];?></div>
-                                </div>
-
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">携帯電話番号</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["tel_num"];?></div>
-                                </div>
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">大学名</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["school"];?></div>
-                                </div>
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">メールアドレス</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["mail"];?></div>
-                                </div>
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">卒業年度</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["graduation"];?>年卒</div>
-                                </div>
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">文理区分</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["division"];?></div>
-                                </div>
-                            </div>
-                            <div class="final-person-table">
-                                <div class="final-person-head">
-                                    <div class="final-person-sent">志望業界</div>
-                                </div>
-                                <div class="final-person-item">
-                                    <div class="final-person-sent"><?=$student["desire"];?></div>
-                                </div>
-                            </div>
-                        </div>
                         <?php } ?>
                     </div>
                     <div class="final-submit">
                         <form action="./finalcheck.php" method="post">
-                                    <button class="final-submit-button">申し込む</button>
+                            <button class="final-submit-button">申し込む</button>
                         </form>
                     </div>
                 </div>
@@ -265,5 +261,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 </html>
-
-
