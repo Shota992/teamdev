@@ -14,8 +14,9 @@ body {
     background-color: #DFE4EC;
 }
 main {
-    padding-top: 80px;
+    padding-top: 60px;
     flex: 1;
+    height: 100vh;
 }
 
 .container {

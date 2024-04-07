@@ -8,9 +8,8 @@
     }
     
     .container {
-        border-radius: 20px;
         margin: 20px auto;
-        padding: 10px 20px;
+        padding: 100px 20px;
     }
     
     /* mainvisual */
@@ -18,7 +17,6 @@
     .mainvisual {
         height: 380px;
         padding: 100px 20px;
-        margin-top: auto;
     }
     
     .mainvisual-title {
@@ -49,8 +47,6 @@
     /* TOPの紹介ページ */
     
     .card-container {
-        padding: 0px;
-        margin-top: 20px;
         grid-template-columns: 1fr;
     }
     
@@ -63,7 +59,6 @@
     }
     
     .card-content-title  {
-        margin-top: -50px;
         font-size: 30px;
     }
     
@@ -76,7 +71,7 @@
     
     .card-content-text p {
         font-size: 22px;
-        margin-top: 0px;
+        margin-top: 30px;
     } 
     
     
@@ -98,19 +93,18 @@ img {
 
 .container {
     margin: 20px auto;
-    padding: 10px 20px;
+    padding: 100px 20px;
 }
 
 /* mainvisual */
 
 .mainvisual {
-    margin-top: 60px;
-    height: 250px;
+    height: 380px;
     padding: 100px 20px;
 }
 
 .mainvisual-title {
-    font-size: 32px;
+    font-size: 50px;
 
 }
 
@@ -139,10 +133,7 @@ img {
 .card-container {
     grid-template-columns: 1fr;
 }
-.card-content{
-    margin-top: -10px;
-    padding: 10px;
-}
+
 .card-figure.reverse {
     order: 1;
 }
@@ -152,10 +143,7 @@ img {
 }
 
 .card-content-title  {
-    font-size: 16px;
-}
-.card-content-text  {
-    margin-top: -20px;
+    font-size: 12px;
 }
 
 .card-content-button {
@@ -163,19 +151,11 @@ img {
 }
 
 .card-content-text p {
-    line-height: 15px;
     font-size: 8px;
 }
-.top_list_title{
-    font-size: 16px;
-}
-.top_list_head {
-    margin-top: 0px;
-}
-img.slide-img{
-width: 70px;
-height: 30px;
-}
+
+
+
 
 
 

@@ -48,7 +48,19 @@ $(function () {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
-    infinite: true
+    infinite: true,
+    responsive: [
+        {
+        breakpoint: 640,
+            settings: {
+                arrows: false,
+                slidesToShow: 1,
+                centerPadding: "10%",
+                swipe: true,
+                swipeToSlide: true,
+            },
+        },
+    ],
   });
 });
 
@@ -198,3 +210,4 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 
+    

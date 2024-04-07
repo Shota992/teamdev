@@ -91,7 +91,11 @@
         right: 0;
         height: 92vh;
         top: 8vh;
+<<<<<<< HEAD
+        background-color: #ffffff6e;
+=======
         background-color: gainsboro;
+>>>>>>> 2bad4c4e8bda3861c72066b883438570c8415826
         flex-direction: column;
         justify-content: space-around;
         align-items: center;

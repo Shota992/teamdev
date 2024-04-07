@@ -119,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>企業一覧、個人情報の確認</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/final.css" />
+    <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
     <!-- <script src="./assets/js/script.js" defer></script> -->
 </head>
 <body>
