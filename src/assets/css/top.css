@@ -104,6 +104,10 @@ p {
     display: inline-block;
 }
 
+.mainvisual-button:hover{
+    background-color: rgba(216, 234, 147, 0.795);
+    color: #003b68;
+}
 
 .mainvisual-button-title {
     font-size: 40px;
@@ -184,6 +188,11 @@ p {
     padding: 5px;
     border-radius: 50px;
     width: 20%;
+}
+
+.card-content-button:hover{
+    background-color: #9EB9CC;
+    color: #fff;
 }
 
 .card-content-text {
