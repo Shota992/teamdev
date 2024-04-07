@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <tr>
                                 <th><label for="agent-logo" class="create_form-label">企業ロゴ</label>
                                 </th>
-                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" />
+                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" value="<?php echo $info["logo"]; ?>"/>
                                 </td>
                             </tr>
                         </div>

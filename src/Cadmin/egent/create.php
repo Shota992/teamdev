@@ -216,6 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-kinds" class="create_select" id="agent-kinds">
+                                        <option>未選択</option>
                                         <option>総合型</option>
                                         <option>特化型</option>
                                     </select>
@@ -229,6 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </th>
                                 <td class="create_td2">
                                     <select name="agent-scale" class="create_select" id="agent-scale2">
+                                        <option>未選択</option>
                                         <option>大手</option>
                                         <option>中小</option>
                                     </select>
@@ -262,10 +264,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="create-list">
                             <tr>
                                 <th>
-                                    <label for="category" class="create_form-label" id="category1">カテゴリ</label>
+                                    <label for="category" class="create_form-label" id="categoryA">カテゴリ</label>
                                 </th>
                                 <td class="create_td1">
-                                    <div class="form-tag" style="column-count: 4; text-align: left;" id="category2">
+                                    <div class="form-tag" style="column-count: 4; text-align: left;" id="categoryB">
                                         <input type="checkbox" name="category[]" value="営業" id="category1" />
                                         <label for="category1" class="create_checkbox">営業</label>
                                         <input type="checkbox" name="category[]" value="IT" id="category2" />
@@ -392,24 +394,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         document.addEventListener('DOMContentLoaded', function() {
             const agentKindsSelect = document.getElementById('agent-kinds');
-            const category1Div = document.getElementById('category1'); // 新たに追加されたカテゴリ1の要素
-            const category2Div = document.getElementById('category2'); // 新たに追加されたカテゴリ2の要素
+            const category1Div = document.getElementById('categoryA'); // 新たに追加されたカテゴリ1の要素
+            const category2Div = document.getElementById('categoryB'); // 新たに追加されたカテゴリ2の要素
             const agentScale1Div = document.getElementById('agent-scale1'); // 修正された企業規模1の要素
             const agentScale2Div = document.getElementById('agent-scale2'); // 修正された企業規模2の要素
 
             if (agentKindsSelect && category1Div && category2Div && agentScale1Div && agentScale2Div) { // 要素がすべて存在することを確認
                 agentKindsSelect.addEventListener('change', function() {
-                    if (this.value === '総合型') {
-                        category1Div.style.visibility = 'hidden'; // カテゴリ1を非表示
-                        category2Div.style.visibility = 'hidden'; // カテゴリ2を非表示
-                        agentScale1Div.style.visibility = 'hidden'; // 企業規模1を非表示
-                        agentScale2Div.style.visibility = 'hidden'; // 企業規模2を非表示
-                    } else if (this.value === '特化型') {
-                        category1Div.style.visibility = 'visible'; // カテゴリ1を表示
-                        category2Div.style.visibility = 'visible'; // カテゴリ2を表示
-                        agentScale1Div.style.visibility = 'visible'; // 企業規模1を表示
-                        agentScale2Div.style.visibility = 'visible'; // 企業規模2を表示
-                    }
+                    // if (this.value === '総合型') {
+                    //     category1Div.style.visibility = 'hidden'; // カテゴリ1を非表示
+                    //     category2Div.style.visibility = 'hidden'; // カテゴリ2を非表示
+                    //     agentScale1Div.style.visibility = 'hidden'; // 企業規模1を非表示
+                    //     agentScale2Div.style.visibility = 'hidden'; // 企業規模2を非表示
+                    // } else if (this.value === '特化型') {
+                    //     category1Div.style.visibility = 'visible'; // カテゴリ1を表示
+                    //     category2Div.style.visibility = 'visible'; // カテゴリ2を表示
+                    //     agentScale1Div.style.visibility = 'visible'; // 企業規模1を表示
+                    //     agentScale2Div.style.visibility = 'visible'; // 企業規模2を表示
+                    // }
 
                 });
             }
