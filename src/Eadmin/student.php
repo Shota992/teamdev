@@ -112,7 +112,7 @@ $agent_name = $agent_info['agent_name'];
                                 <td class="student-main-table-content"><?= $student["graduation"]; ?></td>
                                 <td class="student-main-table-content"><?= $student["division"]; ?></td>
                                 <td class="student-main-table-content"><?= $student["desire"]; ?></td>
-                                <td class="student-main-table-content">20204/03/12 21:45</td>
+                                <td class="student-main-table-content"><?= $student["time"]; ?></td>
                             </tr>
                         <?php } ?>
                     </table>
