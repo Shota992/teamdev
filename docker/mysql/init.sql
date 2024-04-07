@@ -41,7 +41,8 @@ CREATE TABLE if not exists student (
 CREATE TABLE if not exists choice (
     id INT PRIMARY KEY AUTO_INCREMENT,
     agent_id VARCHAR(255) NOT NULL,
-    user_id VARCHAR(255) NOT NULL
+    user_id VARCHAR(255) NOT NULL,
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE if not exists choice_ing(

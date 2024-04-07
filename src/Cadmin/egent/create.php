@@ -348,7 +348,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && !$all_fields_filled) {
                     echo "<div style='color: red; margin-bottom: 10px;'>すべての項目を入力してください。</div>";
                 } ?>
-
                 <form action="" class="" method="POST" enctype="multipart/form-data">
                     <table class="table-res-form">
                         <div class="create-list">
