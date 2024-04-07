@@ -436,10 +436,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="create-list">
                             <tr>
                                 <th>
-                                    <label for="category" class="create_form-label" id="category1">カテゴリ</label>
+                                    <label for="category" class="create_form-label" id="categoryA">カテゴリ</label>
                                 </th>
                                 <td class="create_td1">
-                                    <div class="form-tag" style="column-count: 4; text-align: left;" id="category2">
+                                    <div class="form-tag" style="column-count: 4; text-align: left;" id="categoryB">
                                         <input type="checkbox" name="category[]" value="営業" id="category1" />
                                         <label for="category1" class="create_checkbox">営業</label>
                                         <input type="checkbox" name="category[]" value="IT" id="category2" />
@@ -569,8 +569,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         document.addEventListener('DOMContentLoaded', function() {
             const agentKindsSelect = document.getElementById('agent-kinds');
-            const category1Div = document.getElementById('category1'); // 新たに追加されたカテゴリ1の要素
-            const category2Div = document.getElementById('category2'); // 新たに追加されたカテゴリ2の要素
+            const category1Div = document.getElementById('categoryA'); // 新たに追加されたカテゴリ1の要素
+            const category2Div = document.getElementById('categoryB'); // 新たに追加されたカテゴリ2の要素
             const agentScale1Div = document.getElementById('agent-scale1'); // 修正された企業規模1の要素
             const agentScale2Div = document.getElementById('agent-scale2'); // 修正された企業規模2の要素
 
