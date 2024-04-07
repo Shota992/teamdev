@@ -1,0 +1,295 @@
+
+/* レスポンシブデザイン */
+
+@media (max-width:1200px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .container {
+        margin: 20px auto;
+        padding: 100px 20px;
+    }
+    
+    /* mainvisual */
+    
+    .mainvisual {
+        height: 380px;
+        padding: 100px 20px;
+    }
+    
+    .mainvisual-title {
+        font-size: 50px;
+    
+    }
+    
+    .mainvisual-lead {
+        margin-top: 20px;
+        font-size: 15px;
+    }
+    
+    .mainvisual-button {
+        padding: 10px 24px;
+        margin-top: 20px;
+        display: inline-block;
+    }  
+    
+    .mainvisual-button-title {
+        font-size: 25px;
+    }
+    
+    .mainvisual-button-lead {
+        font-size: 12px;
+    }
+    
+    
+    /* TOPの紹介ページ */
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-figure.reverse {
+        order: 1;
+    }
+    
+    .card-content.reverse {
+        order: 2;
+    }
+    
+    .card-content-title  {
+        font-size: 30px;
+    }
+    
+    .card-content-button {
+        font-size: 20px;
+        width: 13%;
+    }
+
+    
+    
+    .card-content-text p {
+        font-size: 22px;
+        margin-top: 30px;
+    } 
+    
+    
+    
+}
+
+
+
+@media  (max-width: 768px) {
+
+
+/* 共通項目 */
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 100px 20px;
+}
+
+/* mainvisual */
+
+.mainvisual {
+    height: 380px;
+    padding: 100px 20px;
+}
+
+.mainvisual-title {
+    font-size: 50px;
+
+}
+
+.mainvisual-lead {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.mainvisual-button {
+    padding: 10px 24px;
+    margin-top: 20px;
+    display: inline-block;
+}  
+
+.mainvisual-button-title {
+    font-size: 25px;
+}
+
+.mainvisual-button-lead {
+    font-size: 12px;
+}
+
+
+/* TOPの紹介ページ */
+
+.card-container {
+    grid-template-columns: 1fr;
+}
+
+.card-figure.reverse {
+    order: 1;
+}
+
+.card-content.reverse {
+    order: 2;
+}
+
+.card-content-title  {
+    font-size: 12px;
+}
+
+.card-content-button {
+    font-size: 8px;
+}
+
+.card-content-text p {
+    font-size: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

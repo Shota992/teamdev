@@ -33,6 +33,7 @@ $dbh = null;
     <title>ログイン後CRAFT</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/top.css">
+    <link rel="stylesheet" href="../assets/sp/sp-aftertop.css">
 
 </head>
 <body>

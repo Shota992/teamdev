@@ -49,4 +49,9 @@
     .slider-tag {
         width: 100%;
     }
+
+    .slider-container {
+        margin: 40px 0px;
+    }
 }
+
