@@ -206,4 +206,5 @@ $infos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     });
 </script>
 
+
 </html>
