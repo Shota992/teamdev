@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-tag">
                         <label for="password" class="form-label">パスワード</label>
-                        <input type="password" name="password" id="password" class="email form-control">
+                        <input type="password" name="password"  class="email form-control" id="password">
                     </div>
                     <button type="submit" disabled class="btn submit">ログイン</button>
                 </form>

@@ -27,6 +27,7 @@ $dbh = null;
     <title>申し込み手順</title>
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/entry.css">
+    <link rel="stylesheet" href="../assets/sp/sp-proces.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
@@ -55,7 +56,7 @@ $dbh = null;
                     </div>
                     <div class="processStepText">
                         <h2 class="processStepHead">
-                            総合型企業、特化型企業から複数社を選んでみる
+                            総合型/特化型企業から複数社を選択
                         </h2>
                         <div class="processStepContent">
                             総合型企業：幅広い業界の求人を扱っており、始めから終わりまでサポート<br>
@@ -66,7 +67,7 @@ $dbh = null;
                         </div>
                     </div>
                     <div class="processPersonImg">
-                        <img src="../assets/img/process_person1.png" alt="">
+                        <img src="../assets/img/process_person1.png" alt="" class="process_personImg">
                     </div>
                 </div>
                 <!-- step2 -->
@@ -77,7 +78,7 @@ $dbh = null;
                     </div>
                     <div class="processStepText">
                         <h2 class="processStepHead">
-                            その他にも気になる企業を検索してみる
+                            その他にも気になる企業を検索
                         </h2>
                         <div class="processStepContent">
                             step1で選んだ企業以外にも、名前の聞いたことのある企業があった
@@ -86,7 +87,7 @@ $dbh = null;
                         </div>
                     </div>
                     <div class="processPersonImg">
-                        <img src="../assets/img/process_person2.png" alt="">
+                        <img src="../assets/img/process_person2.png" alt="" class="process_personImg">
                     </div>
                 </div>
                 <!-- step3 -->
@@ -105,7 +106,7 @@ $dbh = null;
                         </div>
                     </div>
                     <div class="processPersonImg">
-                        <img src="../assets/img/process_person3.png" alt="">
+                        <img src="../assets/img/process_person3.png" alt="" class="process_personImg">
                     </div>
                 </div>
                 <!-- step4 -->
@@ -122,7 +123,7 @@ $dbh = null;
                         </div>
                     </div>
                     <div class="processPersonImg">
-                        <img src="../assets/img/process_person4.png" alt="">
+                        <img src="../assets/img/process_person4.png" alt="" class="process_personImg">
                     </div>
                 </div>
             </section>
