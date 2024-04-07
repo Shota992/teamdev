@@ -116,7 +116,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <?php foreach ($generals as $info) { ?>
                                     <li class="slide">
                                         <div class="slider-img">
-                                            <img src="../assets/img/<?= $info["logo"]; ?>" alt="" / class="choice_logo">
+                                            <img src="../assets/img/<?= $info["logo"]; ?>" alt="" class="choice_logo">
                                         </div>
                                         <div class="slider-titles">
                                             <div class="slider-title" id="companyName"><?= $info["site_name"]; ?></div>
