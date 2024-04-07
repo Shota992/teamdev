@@ -120,7 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/final.css" />
     <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
-    <!-- <script src="./assets/js/script.js" defer></script> -->
 </head>
 <body>
 <?php include_once '../includes/header2.php'; ?>

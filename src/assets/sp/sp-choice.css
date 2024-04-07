@@ -1,3 +1,22 @@
+@media (max-width:1200px) {
+    .wrapper {
+        margin: 150px 60px;
+    }
+
+    .container {
+        height: 700px;
+    }
+
+    .special-container {
+        height: 790px;
+    }
+
+    .general-searches {
+        flex-direction: column;
+        width: 80%;
+    }
+}
+
 @media (max-width:768px) {
     
     .wrapper {
@@ -12,7 +31,7 @@
     }
 
     .container {
-        height: 625px;
+        height: 650px;
     }
 
     .slider-tags {
@@ -31,7 +50,7 @@
     }
 
     .special-container {
-        height: 725px !important;
+        height: 750px !important;
     }
 
     .special-search1  {
