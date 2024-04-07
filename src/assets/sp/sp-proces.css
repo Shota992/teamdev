@@ -1,0 +1,138 @@
+@media (max-width:768px) {
+
+    .body_2 {
+        background-color: #DFE4EC;
+    }
+
+    /* エージェント企業申し込み手順ページ */
+    .process_main-body {
+        /* width: 100%;
+    height: 100%;
+    /* 水平・垂直方向の中央揃え */
+        /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;  */
+    }
+
+    .processContainer {
+        color: rgba(0, 0, 0, 0.8);
+        background-color: #fff;
+        width: 80%;
+        margin: 30px auto;
+        height: 80%;
+        padding: 20px 20px;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+    }
+
+.processTItle {
+    gap: 0px;
+}
+
+.processNumber-img {
+    width: 50px;
+    object-fit: contain;
+
+}
+
+.processTitle1 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.processTitle2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.processStep1 {
+    box-shadow: 7px 7px 13px rgba(177,177,177,.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 30px 20px 20px 20px;
+}
+
+.processStep2 {
+    box-shadow: 7px 7px 13px rgba(177,177,177,.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 30px 20px 20px 20px;
+}
+
+.processStep3 {
+    box-shadow: 7px 7px 13px rgba(177,177,177,.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 30px 20px 20px 20px;
+}
+
+.processStep4 {
+    box-shadow: 7px 7px 13px rgba(177,177,177,.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 30px 20px 20px 20px;
+}
+
+.processStepImg {
+    margin: 10px;
+    width: 50px;
+}
+
+.processPolygon-img {
+    display: none;
+}
+
+.process_personImg{
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+    margin: 10px;
+}
+.processStepText {
+    order: 1;
+    margin-left: 0px;
+}
+
+.processStepHead {
+    border-image: linear-gradient(to right, #297DBA 0%, #9EB9CC 100%);
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.processStepContent {
+    font-size: 10px;
+    text-align: left;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.processTryPolygon {
+    width: 60px;
+}
+
+.process_btn {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+    background: rgba(238, 198, 68, 0.8);
+    border: solid 3px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 10px;
+}
+}

@@ -37,9 +37,9 @@ if (!isset($_SESSION['user_id'])) {
     <script src="./assets/js/script.js" defer></script>
 </head>
 
-<body class="body">
+<body class="body" style=" display: flex; flex-flow: column;   min-height: 100vh;">
     <?php include_once '../includes/header2.php'; ?>
-    <main>
+    <main style="flex: 1;">
         <div class="history-wrapper">
             <div class="history-container">
                 <div class="history-inner">
