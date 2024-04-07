@@ -137,6 +137,7 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
                                             <p style="margin: 15px 0;">地域　：<?= $info["area"]; ?></p>
                                             <p>求人数：約<?= $info["amounts"]; ?>件</p>
+                                            <a href="<?= $info["url"]; ?>" style="font-size: 8px; color: blue;">この企業のHP</a>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
                                             <input type="hidden" name="agent_id" value="<?= $info["agent_id"]; ?>">
@@ -239,6 +240,7 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
                                             <p style="margin: 10px 0;">地域　：<?= $info["area"]; ?></p>
                                             <p>求人数：<?= $info["amounts"]; ?></p>
+                                            <a href="<?= $info["url"]; ?>" style="font-size: 8px; color: blue;">この企業のHP</a>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
                                             <input type="hidden" name="agent_id" value="<?= $info["agent_id"]; ?>">
