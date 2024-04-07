@@ -227,6 +227,19 @@ p {
 .special-search1 {
     display: flex;
     gap: 20px;
+    flex-grow: 1;
+}
+
+.special-search2 {
+    display: flex;
+    gap: 20px;
+    flex-grow: 2;
+}
+
+.special-search3 {
+    display: flex;
+    gap: 20px;
+    flex-grow: 3;
 }
 
 .checklist {
