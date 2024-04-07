@@ -30,6 +30,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>申し込み履歴</title>
     <link rel="stylesheet" href="/../assets/css/reset.css">
     <link rel="stylesheet" href="/../assets/css/history.css" />
+    <link rel="stylesheet" href="../assets/sp/sp-history.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
@@ -37,9 +38,9 @@ if (!isset($_SESSION['user_id'])) {
     <script src="./assets/js/script.js" defer></script>
 </head>
 
-<body class="body">
+<body class="body" style=" display: flex; flex-flow: column;   min-height: 100vh;">
     <?php include_once '../includes/header2.php'; ?>
-    <main>
+    <main style="flex: 1;">
         <div class="history-wrapper">
             <div class="history-container">
                 <div class="history-inner">

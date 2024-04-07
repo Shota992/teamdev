@@ -13,10 +13,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 } else {
 
-
     // ユーザーIDはセッションから取得
     $user_id = $_SESSION["user_id"];
-
 
     // 選択企業情報の取得
     $sql = "SELECT info.*
@@ -75,8 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
 
-
-
         // 個人情報の取得
         $sql = "SELECT name, mail,tel_num
                 FROM student
@@ -113,7 +109,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo $emails;
             }
 
-
             // リダイレクト
             header("Location: ./complete.php");
             exit;
@@ -130,7 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="ja">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -140,7 +134,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../assets/sp/sp-finalcheck.css">
     <!-- <script src="./assets/js/script.js" defer></script> -->
 </head>
-
 
 <body class="final-body">
     <?php include_once '../includes/header2.php'; ?>
@@ -250,6 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <div class="final-person-sent"><?= $student["desire"]; ?></div>
                                     </div>
                                 </div>
+
                             </div>
                         <?php } ?>
                     </div>
@@ -269,3 +263,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 </html>
+

@@ -4,6 +4,7 @@
 .wrap{
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 body {
@@ -11,10 +12,14 @@ body {
 }
 
 .body_2{
-    background-color: #DFE4EC;
+    margin: 0;
+    background-color: #DFE4EC;   
+    display: flex; /* フレックスボックスに有効に */
+    flex-flow: column; /* 要素を縦に並べる */
+    min-height: 100vh;/* 最小でも画面の高さ分のbodyの高さを担保する */ 
 }
 main {
-    padding-top: 80px;
+    padding-top: 50px;
     flex: 1;
 }
 

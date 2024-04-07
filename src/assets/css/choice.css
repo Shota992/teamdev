@@ -227,6 +227,19 @@ p {
 .special-search1 {
     display: flex;
     gap: 20px;
+    flex-grow: 1;
+}
+
+.special-search2 {
+    display: flex;
+    gap: 20px;
+    flex-grow: 2;
+}
+
+.special-search3 {
+    display: flex;
+    gap: 20px;
+    flex-grow: 3;
 }
 
 .checklist {
@@ -332,11 +345,13 @@ input[type="checkbox"i] {
 .slick-next:before {
     background: url(../img/right.png) !important;
     background-size: contain !important;
+
 }
 
 .slick-prev:before {
     background: url(../img/left.png) !important;
     background-size: contain !important;
+    margin-left: -40px;
 }
 
 
@@ -346,7 +361,7 @@ input[type="checkbox"i] {
     height: 100px;
     /* 親要素の高さに収まるように最大の高さを設定 */
     display: flex;
-    padding: 15px;
+    /* padding: 15px; */
     align-items: center;
     background-color: #fff;
     border: 10px solid #ddd;
@@ -355,7 +370,7 @@ input[type="checkbox"i] {
 .slider-img img {
     width: 100%;
     /* 画像を親要素に合わせて幅を100%に設定 */
-    max-height: 40px;
+    max-height: 72%;
     /* アスペクト比を保つため、高さは自動で調整される */
 }
 
@@ -426,4 +441,13 @@ input[type="checkbox"i] {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+}
+
+.choice-url{
+    color: blue;
+    margin-top: 10px;
+}
+
+.choice-url:hover{
+    color: #7fa5c4;
 }

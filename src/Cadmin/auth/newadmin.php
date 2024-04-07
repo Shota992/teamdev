@@ -71,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h1 class="top-heading">CRAFT管理者新規登録</h1>
                 <form action="../../Cadmin/auth/newadmin.php" method="POST">
                     <div class="form-tag">
+                        <?php if (!empty($errors['mail'])) : ?>
+                            <p class="error"><?php echo $errors['mail']; ?></p>
+                        <?php endif; ?>
                         <label for="email" class="form-label">ログインID（メールアドレス）</label>
                         <input type="email" name="email" class="email form-control" id="email">
                         <?php if (!empty($errors['email'])) : ?>

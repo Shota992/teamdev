@@ -14,7 +14,7 @@ $agents = $dbh->query("SELECT * FROM agent")->fetchAll(PDO::FETCH_ASSOC);
 $choices = $dbh->query("SELECT * FROM choice")->fetchAll(PDO::FETCH_ASSOC);
 
 
-$sql = "SELECT student.*
+$sql = "SELECT student.*,choice.time
         FROM choice
         INNER JOIN student ON choice.user_id = student.user_id
         WHERE choice.agent_id = :agent_id";

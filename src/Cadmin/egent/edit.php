@@ -66,6 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $image_name = $handle->file_dst_name;
         }
 
+        // $_POST["category"] の存在を確認し、存在しない場合は空の配列を代入する
+        $category = isset($_POST["category"]) ? $_POST["category"] : [];
+
+        // カテゴリが空の場合、空の文字列を代入する
+        $category_string = !empty($category) ? implode(',', $category) : "";
+
         // 企業レコードの更新
         $sql = "UPDATE info SET site_name = :site_name, agent_name = :agent_name, logo = :logo, explanation = :explanation, type = :type, size = :size, area = :area, amounts = :amounts, category = :category, url = :url, email = :email WHERE agent_id = :agent_id";
         $stmt = $dbh->prepare($sql);
@@ -78,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindValue(":size", $_POST["agent-scale"]);
         $stmt->bindValue(":area", $_POST["region"]);
         $stmt->bindValue(":amounts", $_POST["job-opening"]);
-        $stmt->bindValue(":category", implode(',', $_POST["category"]));
+        $stmt->bindValue(":category", $category_string);
         $stmt->bindValue(":url", $_POST["agent-url"]);
         $stmt->bindValue(":email", $_POST["agent-email"]);
 
@@ -100,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -164,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <tr>
                                 <th><label for="agent-logo" class="create_form-label">企業ロゴ</label>
                                 </th>
-                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" />
+                                <td class="create_td1a"><input type="file" name="agent-logo" id="agent-logo" class="form-control1" value="<?php echo $info["logo"]; ?>"/>
                                 </td>
                             </tr>
                         </div>
@@ -241,17 +246,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <label for="category4" class="create_checkbox">税理士</label>
                                         <input type="checkbox" name="category[]" value="会計士" id="category5" <?= (in_array("会計士", $categories)) ? "checked" : "" ?> />
                                         <label for="category5" class="create_checkbox">会計士</label>
-                                        <input type="checkbox" name="category[]" value="介護職" id="category6" <?= (in_array("介護職", $categories)) ? "checked" : "" ?> />
+                                        <input type="checkbox" name="category" value="介護職" id="category6" <?= (in_array("介護職", $categories)) ? "checked" : "" ?> />
                                         <label for="category6" class="create_checkbox">介護職</label>
-                                        <input type="checkbox" name="category[]" value="リハビリ" id="category7" <?= (in_array("リハビリ", $categories)) ? "checked" : "" ?> />
+                                        <input type="checkbox" name="category" value="リハビリ" id="category7" <?= (in_array("リハビリ", $categories)) ? "checked" : "" ?> />
                                         <label for="category7" class="create_checkbox">リハビリ</label>
-                                        <input type="checkbox" name="category[]" value="保育士" id="category8" <?= (in_array("保育士", $categories)) ? "checked" : "" ?> />
+                                        <input type="checkbox" name="category" value="保育士" id="category8" <?= (in_array("保育士", $categories)) ? "checked" : "" ?> />
                                         <label for="category8" class="create_checkbox">保育士</label>
-                                        <input type="checkbox" name="category[]" value="看護師" id="category9" <?= (in_array("看護師", $categories)) ? "checked" : "" ?> />
+                                        <input type="checkbox" name="category" value="看護師" id="category9" <?= (in_array("看護師", $categories)) ? "checked" : "" ?> />
                                         <label for="category9" class="create_checkbox">看護師</label>
-                                        <input type="checkbox" name="category[]" value="女性" id="category10" <?= (in_array("女性", $categories)) ? "checked" : "" ?> />
+                                        <input type="checkbox" name="category" value="女性" id="category10" <?= (in_array("女性", $categories)) ? "checked" : "" ?> />
                                         <label for="category10" class="create_checkbox">女性</label>
-                                        <input type="checkbox" name="category[]" value="外資系" id="category11" <?= (in_array("外資系", $categories)) ? "checked" : "" ?> />
+                                        <input type="checkbox" name="category" value="外資系" id="category11" <?= (in_array("外資系", $categories)) ? "checked" : "" ?> />
                                         <label for="category11" class="create_checkbox">外資系</label>
                                     </div>
                                 </td>

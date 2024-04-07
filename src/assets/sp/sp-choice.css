@@ -1,0 +1,52 @@
+@media (max-width:768px) {
+    
+    .wrapper {
+        margin: 100px 20px;
+        border-radius: 20px;
+        padding: 20px 0px;
+        margin-bottom: 30px;
+    }
+
+    .choices {
+        margin: 30px 15px;
+    }
+
+    .container {
+        height: 625px;
+    }
+
+    .slider-tags {
+        width: 100%;
+    }
+
+    .general-searches {
+        flex-direction: column;
+        width: 95%;
+        padding-left: 0px;
+        gap: 20px;
+    }
+
+    .general-search {
+        padding: 5px;
+    }
+
+    .special-container {
+        height: 725px !important;
+    }
+
+    .special-search1  {
+        gap: 3px;
+    }
+
+    .special-search2 {
+        gap: 3px;
+    }
+
+    .special-search3 {
+        gap: 3px;
+    }
+
+    .slider-tag {
+        width: 100%;
+    }
+}
