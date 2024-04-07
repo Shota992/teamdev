@@ -46,18 +46,7 @@ if (!isset($_SESSION['user_id'])) {
 
     $searchQuery = '';
 
-    // // 検索フォームがサブミットされたかどうかをチェック
-    // if (isset($_POST['search-site'])) {
-    //     // POSTされた検索クエリを取得
-    //     $searchQuery = '%' . $_POST['search-site'] . '%';
-    //     // SQL文の作成と実行
-    //     $sql = "SELECT logo, site_name, agent_id FROM info WHERE site_name LIKE ?";
-    //     $stmt = $dbh->prepare($sql);
-    //     $stmt->execute([$searchQuery]);
-    //     $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // } else {
-    //     $searchResults = array();
-    // }
+
 
     // choice_ingテーブルのカラム数を取得
     $sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
@@ -102,7 +91,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <div class="sentence">
                         <p>総合型企業：幅広い業界の求人を扱っており、始めから終わりまでサポート</p>
-                        <br>
+                        <br><br>
                         <p>特化型企業：ある業界、職種に特化し、より詳しい情報を提供してもらえる</p>
                     </div>
                 </div>
