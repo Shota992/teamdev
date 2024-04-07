@@ -51,7 +51,7 @@ $(function () {
     infinite: true,
     responsive: [
         {
-        breakpoint: 640,
+        breakpoint: 1201,
             settings: {
                 arrows: false,
                 slidesToShow: 1,
