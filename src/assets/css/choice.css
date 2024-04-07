@@ -145,7 +145,7 @@ p {
 }
 
 .choice-explanation-container {
-    height: 50px;
+    height: 80px;
 }
 
 .choice_explanation {
@@ -199,6 +199,7 @@ p {
 
 .special-container {
     height: 730px;
+
 }
 
 .red {
@@ -451,4 +452,38 @@ input[type="checkbox"i] {
 
 .choice-url:hover{
     color: #7fa5c4;
+}
+
+.choice-btn {
+    background-color: #0764c7;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    margin-right: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 影の追加 */
+    transition: transform 0.3s ease; /* ホバー時のトランジション効果 */
+}
+
+.choice-btn:hover {
+    transform: scale(1.05); /* ホバー時に少し拡大する効果 */
+}
+
+.link {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.choice-btn-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999;
 }

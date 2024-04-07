@@ -1,5 +1,99 @@
 @media (max-width:768px) {
-    .check-wrapper {
-        width: 90%;
+
+    .check-body {
+        margin: 0px;
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
+    }
+
+    .check-container {
+        width: auto;
+        border-radius: 20px;
+        padding: 0px;
+    }
+
+    .check-inner {
+        margin-top: 100px;
+        padding: 10px;
+    }
+
+    .check-table {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .check-delete-button {
+        padding: 5px 30px;
+    }
+
+    .check-delete-button {
+        background-color: #27b;
+        color: #fff;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 8px;
+        width: 40px;
+        height: 20px;
+        text-align: center;
+    }
+
+    .complete-button {
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 14px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .check-title-sent {
+        font-size: 16px;
+    }
+.check-head-title{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5px;
+    width: 70px;
+}
+    .check-title {
+        margin-top: 20px;
+        height: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .check-table-head {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 25px;
+        font-size: 8px;
+        gap: 5px;
+    }
+
+    .check-table-item {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 5px;
+        font-size: 10px;
+    }
+
+    .check-item-service {
+        font-size: 6px;
+        width: 70px;
+    }
+
+    .check-company-item-name {
+        width: 70px;
+        font-size: 6px;
+        margin-left: 0px;
+        text-align: left;
+    }
+
+    .check-item {
+        padding: 5px;
     }
 }

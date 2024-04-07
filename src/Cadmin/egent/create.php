@@ -318,24 +318,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p class="create_sampleP"> サンプル　学生側には以下のように表示されます</p>
                         <div class="create_sample-figure" style="width: 270.667px;">
                             <div class="slider-img">
-                                <img src="" alt="">
+                                <img src="../../assets/img/aboutCRAFT_logo.png" alt="" width="180px" height="80px">
                             </div>
                             <div class="slider-titles">
-                                <p class="slider-title">企業名</p>
+                                <p class="slider-title">CRAFT</p>
+                                <p class="slider-title-sub">posse</p>
                             </div>
                             <div class="slider-tags">
                                 <div class="slider-tag big">
                                     <p class="slider-tagsent">大手</p>
                                 </div>
-                                <div class="slider-tag small">
-                                    <p class="slider-tagsent">中小</p>
-                                </div>
                             </div>
                             <div class="slider-contents">
-                                <p>aaaaaaaaaaaaa</p>
-                                <p>aaaaaaaaaaaaa</p>
-                                <p>aaaaaaaaaaaaa</p>
-                                <p>aaaaaaaaaaaaa</p>
+                                <p>エージェント企業比較サイト</p>
+                                <p>地域：全国</p>
+                                <p>求人数：1000万</p>
+                                <p style="color:blue;">この企業のHPはこちら</p>
                             </div>
                         </div>
                         <div class="create_btn">

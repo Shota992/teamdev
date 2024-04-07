@@ -1,4 +1,23 @@
-<!-- CRAFTとはページ -->
+<?php
+require_once('../dbconnect.php');
+
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /auth/login.php');
+    exit();
+} else {
+    $user_id = $_SESSION["user_id"];
+    $sql = "DELETE FROM choice_ing WHERE user_id=?";
+    $stmt = $dbh->prepare($sql);
+    if ($stmt->execute([$user_id])) {
+    } else {
+    }
+}
+
+// データベース接続を閉じる
+$dbh = null;
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -75,7 +94,7 @@
                             </div>
                         </div>
                         <div class="CRAFTarrow1">
-                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="150px" style="object-fit: contain;">
+                            <img src="../assets/img/aboutCRAFT-arrow1.png" alt="" width="120px" style="object-fit: contain;">
                         </div>
                         <div class="CRAFTfigureAgent">
                             <figure class="CRAFTfigure-img"><img src="../assets/img/aboutCRAFT_agent.png" alt="" style="width: 150px;"></figure>
