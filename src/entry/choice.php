@@ -46,18 +46,7 @@ if (!isset($_SESSION['user_id'])) {
 
     $searchQuery = '';
 
-    // 検索フォームがサブミットされたかどうかをチェック
-    if (isset($_POST['search-site'])) {
-        // POSTされた検索クエリを取得
-        $searchQuery = '%' . $_POST['search-site'] . '%';
-        // SQL文の作成と実行
-        $sql = "SELECT logo, site_name, agent_id FROM info WHERE site_name LIKE ?";
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute([$searchQuery]);
-        $searchResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } else {
-        $searchResults = array();
-    }
+
 
     // choice_ingテーブルのカラム数を取得
     $sql = "SELECT COUNT(*) FROM choice_ing WHERE user_id = ?";
@@ -116,7 +105,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <?php foreach ($generals as $info) { ?>
                                     <li class="slide">
                                         <div class="slider-img">
-                                            <img src="../assets/img/<?= $info["logo"]; ?>" alt="" / class="choice_logo">
+                                            <img src="../assets/img/<?= $info["logo"]; ?>" alt="" class="choice_logo">
                                         </div>
                                         <div class="slider-titles">
                                             <div class="slider-title" id="companyName"><?= $info["site_name"]; ?></div>
@@ -132,6 +121,51 @@ if (!isset($_SESSION['user_id'])) {
                                                     <p class="slider-tagsent">中小</p>
                                                 </div>
                                             <?php } ?>
+                                            <?php if ($info['category'] == '営業') { ?>
+                                                <div class="slider-tag red eigyou">
+                                                    <p class="slider-tagsent">営業</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == 'IT') { ?>
+                                                <div class="slider-tag blue IT">
+                                                    <p class="slider-tagsent">IT</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == 'Web') { ?>
+                                                <div class="slider-tag blue Web">
+                                                    <p class="slider-tagsent">Web</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '税理士') { ?>
+                                                <div class="slider-tag yellow zei">
+                                                    <p class="slider-tagsent">税理士</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '会計士') { ?>
+                                                <div class="slider-tag yellow kaikei">
+                                                    <p class="slider-tagsent">会計士</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '介護士') { ?>
+                                                <div class="slider-tag green kaigo">
+                                                    <p class="slider-tagsent">介護士</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == 'リハビリ') { ?>
+                                                <div class="slider-tag green riha">
+                                                    <p class="slider-tagsent">リハビリ</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '保育士') { ?>
+                                                <div class="slider-tag green hoiku">
+                                                    <p class="slider-tagsent">保育士</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '看護師') { ?>
+                                                <div class="slider-tag green kango">
+                                                    <p class="slider-tagsent">看護師</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '女性') { ?>
+                                                <div class="slider-tag pink woman">
+                                                    <p class="slider-tagsent">女性</p>
+                                                </div>
+                                            <?php } elseif ($info['category'] == '外資系') { ?>
+                                                <div class="slider-tag purple gaisi">
+                                                    <p class="slider-tagsent">外資系</p>
+                                                </div>
+                                            <? } ?>
                                         </div>
                                         <div class="slider-contents">
                                             <div class="choice-explanation-container">
@@ -139,6 +173,9 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
                                             <p style="margin: 15px 0;">地域　：<?= $info["area"]; ?></p>
                                             <p>求人数：約<?= $info["amounts"]; ?>件</p>
+
+                                            <a href="<?= $info["url"]; ?>" class="choice-url">この企業のHPはこちら</a>
+
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
                                             <input type="hidden" name="agent_id" value="<?= $info["agent_id"]; ?>">
@@ -189,6 +226,15 @@ if (!isset($_SESSION['user_id'])) {
                                             <div class="slider-subtitle"><?= $info["agent_name"]; ?></div>
                                         </div>
                                         <div class="slider-tags">
+                                            <?php if ($info['size'] == '大手') { ?>
+                                                <div class="slider-tag big">
+                                                    <p class="slider-tagsent">大手</p>
+                                                </div>
+                                            <?php } elseif ($info['size'] == '中小') { ?>
+                                                <div class="slider-tag small ">
+                                                    <p class="slider-tagsent">中小</p>
+                                                </div>
+                                            <?php } ?>
                                             <?php if ($info['category'] == '営業') { ?>
                                                 <div class="slider-tag red eigyou">
                                                     <p class="slider-tagsent">営業</p>
@@ -241,6 +287,7 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
                                             <p style="margin: 10px 0;">地域　：<?= $info["area"]; ?></p>
                                             <p>求人数：<?= $info["amounts"]; ?></p>
+                                            <a href="<?= $info["url"]; ?>" style="font-size: 8px; color: blue;">この企業のHP</a>
                                         </div>
                                         <form class="add-form" method="POST" action="./choice.php">
                                             <input type="hidden" name="agent_id" value="<?= $info["agent_id"]; ?>">

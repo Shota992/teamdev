@@ -532,6 +532,10 @@ form {
   text-align: left;
 }
 
+.create_sampleP{
+  margin-top: 40px;
+}
+
 .reference {
   display: block;
   text-align: center;

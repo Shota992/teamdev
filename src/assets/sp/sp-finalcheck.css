@@ -1,3 +1,4 @@
+
 @media (max-width:1200px) {
     .final-body {
         margin: 120px 10px 120px 10px;
@@ -50,12 +51,28 @@
 
     .final-company-item-service {
         font-size: 15px;
+      
+@media (max-width:768px) {
+
+    .final-body {
+        margin: 0px;
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
     }
-    
+.final-container{
+    border-radius: 20px;
+    padding: 0px;
+}
+    .final-inner {
+        margin-top: 100px;
+        padding: 10px;
+    }
+
     .final-company-table-container {
         width: 100%;
     }
-    
+
     .final-person-table {
         width: 300px;
     }
@@ -64,12 +81,13 @@
         overflow-wrap: break-word;
     }
     
+
     .final-submit-button {
-        width: 300px;
+        width: 150px;
     }
-    
+
     .final-edit-button {
         width: 300px;
     }
-    
-    }
+
+}

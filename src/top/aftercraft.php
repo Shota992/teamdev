@@ -14,6 +14,11 @@
 <body class="body_2">
     <main>
         <?php include_once '../includes/header2.php'?>
+        <a href="../entry/proces.php" class="choice-btn-container">
+            <div class="choice-btn">
+                <p class="link">エージェント<br>企業に<br>申込み</p>
+            </div>
+        </a>
         <!-- メインビジュアル -->
         <section class="CRAFTmainVisual">
             <div class="CRAFTmainVisual-inner">
